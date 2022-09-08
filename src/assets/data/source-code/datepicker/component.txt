@@ -1,0 +1,24 @@
+import { Component } from "@angular/core";
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-form-field',
+  templateUrl: './form-field.component.html',
+  styleUrls: ['./form-field.component.css']
+})
+
+export class FormFieldComponent {
+  switchTheme; //false-Light Theme, true- Dark Theme
+
+   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
+    iconRegistry.addSvgIcon(
+      'data-picker-gray',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/customicons/calendar-dark.svg'));
+    iconRegistry.addSvgIcon(
+      'data-picker-white',
+      sanitizer.bypassSecurityTrustResourceUrl('../assets/customicons/calendar-white.svg'));
+  }
+
+  ngOnInit() {}
+}

@@ -1,0 +1,60 @@
+<div class="InvRecon-Bulk-Import">
+    <div class="InvRecon-Bulk">
+        <div class="actionOptions">
+            <div class="border-line"></div>
+            <div class="actionLink">
+                <span class="text">Bulk Import Template</span>
+                <span class="icon"></span>
+            </div>
+            <div class="actionButton">
+                <button class="mid-blue-button mini h-25" [disabled]="isDisable" (click)="Import()">Import</button>
+            </div>
+        </div>
+        <div class="import-file">
+            <div class="drag-drop-upload-v2">
+                <div class="drag-drop-upload">
+                    <div class="title">Bulk Import
+                        <span class="toggle-grid-arrow" style="margin-bottom: -3px; margin-left: 10px;" (click)="toggleCollapse()"
+                        [ngClass]="{'rotate180':!isCollapsed}"></span>
+                    </div>
+                    <div appDragNDrop *ngIf="!isCollapsed" class="file-drop-container" (fileDropped)="onFileDropped($event)">
+                        <div class="upload-options" style="pointer-events: all;">
+                            <div class="text">Drag and Drop files here</div>
+                            <div class="light-text">or</div>
+                            <label class="add-doc" for="getFile"><span class="add-doc-plus">+</span>Add
+                                doc</label>
+                            <input type="file" id="getFile" class="get-file" multiple
+                                (change)="fileBrowseHandler($event.target.files)" />
+                        </div>
+                        <div class="uploadFileDetails">
+                            <div>File chosen to be upload:</div>
+                            <div class="uploadFileName">{{filename}}</div>
+                            <div class="delete" *ngIf="fileuploaded"  [matMenuTriggerFor]="delete" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-menu #delete="matMenu" class="dark-menu small" xPosition="after" yPosition="above">
+            <div class="delete-icon red"></div>
+            Delete
+        </mat-menu>
+    
+    </div>
+    <div class="import-grid without_pad">
+    <div class="header">
+        <div class="title">Log</div>
+        <!-- <div class="actionLink">
+            <span class="text">Download Excel</span>
+            <span class="icon"></span>
+        </div> -->
+    </div>
+    <div class="agGrid-v2" style="margin:0;float:left;width:100%">
+        <div style="width:100%;height: calc(100vh - 500px);min-height: 220px;">
+            <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_data"
+                class="ag-theme-material ag-grid-v2 header-white angular-v9 "></ag-grid-angular>
+        </div>
+    </div>
+    </div>
+</div>
+<app-footer-v2 [id]="'bulk-report'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>

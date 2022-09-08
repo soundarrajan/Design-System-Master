@@ -1,0 +1,30 @@
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-labels',
+  templateUrl: './labels.component.html',
+  styleUrls: ['./labels.component.css']
+})
+export class LabelsComponent implements OnInit {
+
+  contentMap1 = [
+    {
+      "title": "Out Movement",
+      "titleClass": "readonly-split-fields",
+      "dataKeyClass": "value",
+      "dataKey": "-",
+    },
+    {
+      "title": "Status",
+      "titleClass": "readonly-split-fields",
+      "dataKeyClass": "status status-empty",
+      "dataKey": "-",
+    }
+  ]
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

@@ -1,0 +1,5 @@
+{
+    "dest": "./dist/assets/themes.scss",
+    "mask": ["./src/assets/**/*.css", "./src/themes/**/*.css"],
+    "sort": ["first-priority", "second-priority", "mixin"]
+  }

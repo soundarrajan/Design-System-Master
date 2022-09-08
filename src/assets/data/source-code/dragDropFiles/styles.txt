@@ -1,0 +1,60 @@
+    .drag-drop-upload-v2{
+      .drag-drop-upload{
+        .title{
+          font-weight: 500;
+          font-size: 14px;
+          color: #252A32;
+          padding: 0px 0 5px 0;
+        }
+        .container{
+          height: 164px;
+          background: #F1F1F2;
+          border: 2px dashed #364150;
+          box-sizing: border-box;
+          border-radius: 2px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .upload-options{
+          width: 165px;
+          text-align: center;
+          font-size: 14px;
+          color: #1D2A45;
+          font-weight: normal;
+          opacity: 0.7;
+          pointer-events: none;
+          &.active{
+            opacity: 1;
+            pointer-events: all;
+          }
+          .text{
+            font-weight: 500;
+          }
+          .add-doc{
+            width: 121px;
+            height: 27px;
+            background: #364150;
+            border-radius: 2px;
+            font-size: 12px;
+            color: #FFFFFF;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          }
+        }
+        
+        .light-text{
+          margin: 8px 0px;
+        }
+        .add-doc-plus{
+          font-size: 16px;
+          margin: 0px 9px 0px 0px;
+        }
+        .get-file{
+          display: none;
+        }
+      }
+    }

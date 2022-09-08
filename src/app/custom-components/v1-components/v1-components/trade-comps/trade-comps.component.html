@@ -1,0 +1,498 @@
+<div class="container">
+  <section class="pt-3" style="margin-bottom: 20px">
+    <h4>Progress BAR</h4>
+    <div>
+      <mat-progress-bar mode="determinate" value={{sec}}></mat-progress-bar>
+    </div>
+  </section>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="pt-3">
+            <h4>ALL LOGO's</h4>
+            <div class="site-logos">
+                <img alt="BunkerTech Logo" class="img-fluid" src="assets/customimages/bunkertech-logo.svg" style="padding-top: 7px;width: 115px;height:auto;">
+            </div>
+            <div class="site-logos">
+                <img alt="Techoil Logo" class="img-fluid" src="assets/customimages/techoil-logo.svg" style="padding-top: 7px;width: 95px;height:auto;">
+            </div>
+            <div class="site-logos">
+                <img alt="Shiptech Logo" class="img-fluid" src="assets/customimages/shiptech-logo.svg" style="padding-top: 7px;width: 115px;height:auto;">
+            </div>
+      </div>
+
+      <div class="pt-3">
+        <h4>Green Table Title</h4>
+        <div class="green-tbl-title">
+          Trade List
+        </div>
+      </div>
+
+      <div class="pt-3">
+        <h4>Trade Type Popup</h4>
+        <div>
+          <button mat-button class="blue-button" (click)="openNewTradeDialog()">Trade Type</button>
+        </div>
+      </div>
+
+      <div class="pt-3">
+        <h4>Save Filter Preferences</h4>
+        <div>
+            <button mat-button class="blue-button" (click)="openSaveFilterPref()">Save Filter Prefs</button>
+          </div>
+      </div>
+
+      <div class="pt-3">
+        <h4>Delete Filter</h4>
+        <button mat-button class="blue-button" (click)="openDeleteFilter()">Delete Filter</button>
+      </div>
+
+      <div class="pt-3">
+        <h4>Available Filters</h4>
+        <button mat-button class="blue-button" (click)="openAvailableFilter()">Available Filters</button>
+      </div>
+    </div>
+
+    <div class="col-md-6 pt-3">
+      <h4>Table Context Popup</h4>
+      <div class="tbl-context">
+        <!-- <div class="b-bottom p-tb-10">
+          <span>
+            <img class="p-r-10" src="../../../assets/customicons/context-new-trade.svg" alt="new Trade icon">
+          </span>
+          <span>Add New Trade</span>
+        </div> -->
+        <div class="p-tb-10">
+          <span>
+            <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+          </span>
+          <span>Update Preference</span>
+        </div>
+        <div class="p-tb-10">
+          <span>
+            <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+          </span>
+          <span>Save Preference As</span>
+        </div>
+        <!-- <div class="b-bottom p-tb-10">
+          <span>
+            <img class="p-r-10" src="../../../assets/customicons/context-export-excel.svg" alt="export to excel icon">
+          </span>
+          <span>Export To Excel</span>
+        </div> -->
+        <div class="p-tb-10">
+          <span>
+            <img class="p-r-10" src="../../../assets/customicons/context-hide-show.svg" alt="hide/show icon">
+          </span>
+          <span>Hide or Show Column</span>
+        </div>
+      </div>
+
+      <section class="pt-5">
+          <h5>Loading Spinners</h5>
+          <div id="spinner">
+            <div class="spinner-dark"></div>
+            <div class="spinner-white"></div>          
+          </div>
+      </section>
+
+      <section class="pt-5">
+        <h5>Autocomplete (Lookup Control)</h5>
+        <form class="example-form" >
+            <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" class="dark-autocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </section>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 pt-3">
+      <h5 class="pt-5">Show/Hide Columns</h5>
+      <div id="show-hide-columns">
+        <div id="popup-title" class="text-center">Hide or Show Column</div>
+        <hr>
+        <div id="popup-content">
+          <div class="row m-0">
+
+            <!-- Loop start -->
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Select All</mat-checkbox>
+            </div>
+            <!-- Loop end -->
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">ETA</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Name</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Schedule</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Type</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Status</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">HSFO</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Enquiry Status</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">USFO</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Last Action</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">DOGO</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Comment</mat-checkbox>
+            </div>
+            <div class="col-6">
+              <mat-checkbox class="dark-checkbox noborder">Location</mat-checkbox>
+            </div>
+          </div>
+
+        </div>
+        <div class="row m-0">
+          <div class="col-12">
+            <div class="float-right">
+              <button mat-button class="blue-button" style="width: 100px;">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 pt-3">
+      <section id="custom-status-chips">
+          <h4>Custom Status Chips</h4>
+          <a href="https://www.figma.com/file/XDORhiKrAyRijESlxe2i2NAU/Status-Matrix?node-id=0%3A1" target="_blank">(Colour Link)</a>
+
+          <div class="custom-chip darkblue" matTooltip="New" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              New long text text
+            </div>
+          </div>
+
+          <div class="custom-chip mediumblue" matTooltip="Delivered" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Delivered
+            </div>
+          </div>
+
+          <div class="custom-chip skyblue" matTooltip="Partially Delivered" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Partially Delivered
+            </div>
+          </div>
+
+          <div class="custom-chip blue" matTooltip="Realised" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Realised
+            </div>
+          </div> 
+    
+          <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Confirmed
+            </div>
+          </div>
+
+          <div class="custom-chip lightgreen" matTooltip="Settled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Settled
+            </div>
+          </div>   
+          
+          <div class="custom-chip teal" matTooltip="Partially Settled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Partially Settled
+            </div>
+          </div>
+    
+          <div class="custom-chip red" matTooltip="Deleted" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Deleted
+            </div>
+          </div>
+
+          <div class="custom-chip mediumred" matTooltip="Unposted" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Unposted
+            </div>
+          </div>          
+
+          <div class="custom-chip purple" matTooltip="Scheduled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Scheduled
+            </div>
+          </div>
+
+          <div class="custom-chip mediumpurple" matTooltip="Cancelled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Cancelled
+            </div>
+          </div>                    
+
+          <div class="custom-chip amber" matTooltip="Unconfirmed" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Unconfirmed
+            </div>
+          </div>
+
+          <div class="custom-chip yellow" matTooltip="Lost" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Lost
+            </div>
+          </div>                             
+
+          <div class="custom-chip grey" matTooltip="Inactive" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Inactive
+            </div>
+          </div>
+
+          <div class="custom-chip teal" matTooltip="Verified" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Verified
+            </div>
+          </div>
+
+          <div class="custom-chip wisteria" matTooltip="Planned" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Planned
+            </div>
+          </div>
+
+      </section>
+
+      <section class="pt-3">
+        <h4>Table Button</h4>
+        <div id="tableContextBtn">
+          <mat-icon>list</mat-icon>
+        </div>
+        <!--check mat-icons,bootstrap,roboto fonts-->
+        <!--
+         <div>Material Icons</div>
+        <i class="material-icons close-button">close</i>
+          <span class="material-icons">arrow_circle_up</span>
+          <span class="material-icons">face</span>
+          <mat-icon>play_arrow</mat-icon>  
+          <span class="material-icons">
+            arrow_circle_down
+            </span>
+            <span class="material-icons">
+              arrow_right_alt
+              </span>
+          <span class="material-icons">
+            3d_rotation
+            </span>
+          <i class="material-icons">notification_important</i>
+          <mat-icon class="error mat-icon material-icons" role="img">error_outline</mat-icon>
+          <mat-icon>computer</mat-icon>
+          <mat-icon class="error">error_outline</mat-icon>
+          <mat-icon class="error mat-icon material-icons" role="img">error_outline</mat-icon>             
+          <br>
+          <div>font awesome</div>
+          <i class="icofont icofont-home"></i>
+          <i class="fas fa-chevron-left"></i>
+          <i class="fas fa-check"></i>
+          <i class="fa fa-bars"></i>
+          <i class="fa fa-gear"></i>
+          <i class="far fa-square"></i>
+          <i class="fa fa-caret-down"></i>
+          <i class="far fa-caret-down"></i>
+          <i class="fas fa-caret-down"></i>
+          <i class="fal fa-caret-down"></i>
+          <i class="fab fa-caret-down"></i>
+          <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          <i class="fa fa-undo-alt"></i>
+          <div>bootstrap</div>
+          <div class="container">
+            <div class="jumbotron">
+              <h1>Welcome</h1>
+              <h2>Angular & Bootstrap demo</h2>
+            </div>
+          
+            
+            <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+          
+          </div>
+          <div>themify-icons</div>
+          <i class="ti ti-arrow-up"></i>
+          <i class="ti ti-eye"></i>
+          <i class="ti ti-eye"></i>
+          -->
+      </section>
+     
+
+    </div>
+
+    <div class="col-md-3 pt-3">
+      <section id="custom-status-chips">
+          <h4>Custom Status Chips</h4>
+          <a href="https://www.figma.com/file/XDORhiKrAyRijESlxe2i2NAU/Status-Matrix?node-id=0%3A1" target="_blank">(Colour Link)</a>
+
+          <div class="custom-chip darkblue" matTooltip="Manually Unmatched" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Manually Unmatched
+            </div>
+          </div>
+
+          <!-- <div class="custom-chip mediumblue" matTooltip="Delivered" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Delivered
+            </div>
+          </div> -->
+
+          <div class="custom-chip skyblue" matTooltip="Master Validation Pending" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Master Validation Pending
+            </div>
+          </div>
+
+          <!-- <div class="custom-chip blue" matTooltip="Realised" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Realised
+            </div>
+          </div>  -->
+    
+          <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Confirmed
+            </div>
+          </div>
+
+          <div class="custom-chip lightgreen" matTooltip="Movement Verified" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Movement Verified
+            </div>
+          </div>   
+          
+          <!-- <div class="custom-chip teal" matTooltip="Partially Settled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Partially Settled
+            </div>
+          </div> -->
+    
+          <div class="custom-chip red" matTooltip="Deleted" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Deleted
+            </div>
+          </div>
+
+          <!-- <div class="custom-chip mediumred" matTooltip="Unposted" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Unposted
+            </div>
+          </div>           -->
+
+          <!-- <div class="custom-chip purple" matTooltip="Scheduled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Scheduled
+            </div>
+          </div>
+
+          <div class="custom-chip mediumpurple" matTooltip="Cancelled" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Cancelled
+            </div>
+          </div>                     -->
+
+          <div class="custom-chip amber" matTooltip="BL Broken" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              BL Broken
+            </div>
+          </div>
+
+          <div class="custom-chip peach" matTooltip="BL Reversed" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              BL Reversed
+            </div>
+          </div>
+
+          <div class="custom-chip yellow" matTooltip="Pending for Auto Match" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Pending for Auto Match
+            </div>
+          </div>                             
+
+          <!-- <div class="custom-chip grey" matTooltip="Inactive" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Inactive
+            </div>
+          </div>
+
+          <div class="custom-chip teal" matTooltip="Verified" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Verified
+            </div>
+          </div>
+
+          <div class="custom-chip wisteria" matTooltip="Planned" matTooltipShowDelay="500">
+            <div class="truncate-100">
+              Planned
+            </div>
+          </div> -->
+
+      </section>
+
+     
+     
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+<div id="overlay" class="inactive"></div>

@@ -1,0 +1,118 @@
+<div class="email-preview-popup">
+    <div class="header">
+        <div class="title">Email Preview</div>
+        <div style="display: flex;align-items: center;">
+            <span style="color: #c4c4c4;">Template:</span>
+            <div id="custom-form-field" style="width: 100px !important; margin: 5px 7px 0px 7px;">
+                <mat-form-field class="without-search" appearance="none">
+                    <mat-select [(value)]="selected" disableOptionCentering>
+                        <mat-option value="Amend RFQ" selected="selected">Amend RFQ</mat-option>
+                        <mat-option value="Amend RFQ1">Amend RFQ1</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="header-btn">
+
+                <span class="seperator-line"></span>
+                <button class="blue-button h-25" [mat-dialog-close]="true">Revert Changes</button>
+                <button class="blue-button h-25" [mat-dialog-close]="true">Save</button>
+                <button class="blue-button h-25" [mat-dialog-close]="true">Save & Send</button>
+                <span class="seperator-line"></span>
+                <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-content>
+        <div class="email-container">
+            <div class="section1">
+                <span class="text">Contact Details</span>
+                <div style="display: flex; margin: 10px 0px;">
+                    <div style="flex: 0 0 5%;margin:5px 0px">
+                        <span class="text">To:</span>
+                    </div>
+                    <div style="display: flex; flex: 0 0 95%;align-items: center;flex-wrap: wrap;">
+                        <div style="margin: 5px;" *ngFor="let item of to" class="recipientClass">
+                            <div class="cust-input-field" [matTooltip]="item.name" >{{item.name}}</div>
+                            <div class="close-icon" (click)="removeRecipient(item)"></div>
+                        </div>
+                        <div class="add-new" [style.width.px]="widthTo">
+                            <input matInput #addNewAdd placeholder="+Add New" [formControl]="toEmail"
+                                [matAutocomplete]="auto" (keyup.enter)="addTo(addNewAdd.value,false)" (input)="changeFieldWidthTo(addNewAdd.value)">
+                            <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete" class="" (optionSelected)="addTo($event.option.value,true)" class="emailAddressPanelClass">
+                                <mat-option *ngFor="let option of filteredOptionsTo | async" [value]="option.id">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <span #hiddenTextTo style="visibility: hidden; white-space: pre;">{{addNewAdd.value}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; margin: 10px 0px;">
+                    <div style="flex: 0 0 5%;margin:5px 0px">
+                        <span class="text">Cc:</span>
+                    </div>
+                    <div style="display: flex; flex: 0 0 95%;align-items: center;flex-wrap: wrap;">
+                        <div style="margin: 5px;" *ngFor="let item of cc" class="ccClass">
+                            <div class="cust-input-field" [matTooltip]="item.name" >{{item.name}}</div>
+                            <div class="close-icon" (click)="removeCC(item)"></div>
+                        </div>
+                        <div class="add-new" [style.width.px]="widthCC">
+                            <input #addNewCcAdd matInput placeholder="+Add New"  [formControl]="ccEmail"  
+                            [matAutocomplete]="auto1" (keyup.enter)="addCc(addNewCcAdd.value)" (input)="changeFieldWidthCC(addNewAdd.value)">
+                            <mat-autocomplete  autoActiveFirstOption #auto1="matAutocomplete" class="" (optionSelected)="addCc($event.option.value)" class="emailAddressPanelClass">
+                                <mat-option *ngFor="let option of filteredOptionsCc | async" [value]="option.id">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <span #hiddenTextCC style="visibility: hidden; white-space: pre;">{{addNewCcAdd.value}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; margin: 10px 0px;">
+                    <div style="flex: 0 0 5%">
+                        <span class="text">Subject:</span>
+                    </div>
+                    <div style="display: flex; flex: 0 0 95%">
+                        <span class="subject">AMENDMENT CHANGES: REQ226533 - ACHIEVER in AARHUS on Wed 30/06/2021
+                            00:00:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section2">
+                <div style="display: flex; margin: 15px; align-items: center;">
+                    <span class="text">Attachments:</span>
+                    <label class="add-doc" for="getFile">
+                        <span class="add-doc-plus"></span>
+                    </label>
+                    <input type="file" id="getFile" class="get-file" multiple
+                        (change)="fileBrowseHandler($event.target.files)" />
+                    <div class="file-list" *ngFor="let item of filesList">
+                        <!-- <span class="attachment-icon"></span>
+                        <span>{{item}}</span> -->
+                        <div class="attachment-icon"></div>
+                        <div class="attachment-name">{{item.name}}</div>
+                        <div class="close-icon" (click)="removeFile(item)"></div>
+                    </div>
+                </div>
+                <div class="email-draft">
+                    <div>
+                        <span class="email-editor"></span>
+                    </div>
+                    <div style="padding: 18px;">
+                        <p>Good day dear Captain and Chief,</p>
+                        <p>Please kindly let me know your bunker requirement for the following</p>
+                        <p>Option 1. - BOSTON, MA on 28062020 00:00:00</p>
+                        <p>1. Bunker ROB on arrival 28062020 00:00:00</p>
+                        <p>2. Minimum quantity you need to bunker in BOSTON, MA to safely reach Barbados ?</p>
+                        <p>3. Maximum quantity you can lift without mixing?</p>
+                        <p>4. Best for your vessels stability if relevant?</p>
+                        <br>
+                        <p>Please justify your request with figures and calculations.</p>
+                        <p>Thanks in advance for your prompt reply!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

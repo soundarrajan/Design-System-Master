@@ -1,0 +1,25 @@
+<div id="set-price" class="p-l-3 p-t-7 accrual" style="border-bottom: 1px solid #E5E5E5;">
+  <div class="pandltable">
+    <div class="row panltableheader">
+      
+        <div class="text-left col-4"> Description </div>
+        <div class="text-right col-4"> Value Amount </div>
+        <div class="text-right col-4"> Sub Total </div>
+      
+    </div>
+  
+      <div class="tree_table"> 
+      <div *ngFor="let node of myTreeData;let i = index" class="treeRow">
+        <app-pandltree [node]="node"  [levelIndex]="0" [activeRowIndex]="i"></app-pandltree>
+      </div>
+    </div>
+    <div>
+    <div class="row panltablefooter">
+      <div class="col-4 left-ribbon-Gray">Gross P&L</div>
+      <div class="col-4"></div>
+      <div class="col-4 text-right">216,000 USD</div>
+    </div>
+    </div>
+   
+  </div>
+</div>

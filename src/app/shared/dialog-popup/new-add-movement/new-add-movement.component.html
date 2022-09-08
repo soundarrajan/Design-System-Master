@@ -1,0 +1,491 @@
+<div class="add-movement-popup new-add-movement-popup">
+  <div class="row">
+    <div class="col-12">
+      <span class="add-movement-header">Add Movement</span>
+      <mat-icon id="dialogCloseButton" matSuffix class="float-right close-icon" (click)="closeDialog()">close</mat-icon>
+      <hr class="m-t-5">
+    </div>
+  </div>
+  <div class="row">
+    <div class="m-b-30 col-12">
+      <span class="m-r-70">Type:</span>
+      <mat-radio-group aria-label="Select an option" class="radio-toolbar">
+        <mat-radio-button name="options" type="radio" [value]="1" (click)="showInventry()" class="radio-font" checked>
+          Inventory Movement
+        </mat-radio-button>
+        <mat-radio-button name="options" class="m-l-15" type="radio" [value]="2" (click)="shoowB2B()"
+          class="radio-font">
+          B2B Movement</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div *ngIf="showinvetory" class="inventory-movenment-block add-movement-primary-font">
+    <div class="product-container">
+
+      <div class="row">
+        <div class="col-12">
+    
+      <div style="float:left" class="new-popup-subheader">Trade Details</div>
+  
+          <div style="float:right"><span class="inactive-font">Planned Qty:</span> <span class="new-popup-primaryheader">1250 BBL</span> | <span class="inactive-font">Utilised Qty:</span> <span class="new-popup-primaryheader">1250 BBL</span></div>
+
+          <hr _ngcontent-c30="" class="" style="margin-top:25px;">
+        </div>
+
+      </div>
+      <div class="row" style="height: 35px;">
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select  class="popup-label" placeholder="Trade ID">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Delivery Number">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Movement Type">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="row" style="height: 35px;">
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Tank">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="In Tank Product">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="new-popup-primaryheader" >Quantity Details</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-checkbox class="float-left"></mat-checkbox>
+          <div class="float-left m-l-20">Enable Manual Conversion</div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Mass Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Volume Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Gross Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div *ngIf="showb2b" class="b2b-movenment-block add-movement-primary-font">
+    <div class="product-container">
+
+      <div class="row">
+        <div class="col-12">
+    
+      <div style="float:left" class="new-popup-subheader">Sell Details</div>
+  
+          <div style="float:right"><span class="inactive-font">Planned Qty:</span> <span class="new-popup-primaryheader">1250 BBL</span> | <span class="inactive-font">Utilised Qty:</span> <span class="new-popup-primaryheader">1250 BBL</span></div>
+
+          <hr _ngcontent-c30="" class="" style="margin-top:25px;">
+        </div>
+
+      </div>
+      <div class="row" style="height: 35px;">
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select  class="popup-label" placeholder="Sell Trade ID">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Delivery Number">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Movement Type">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+          <div class="new-popup-primaryheader" >Quantity Details</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-checkbox class="float-left"></mat-checkbox>
+          <div class="float-left m-l-20">Enable Manual Conversion</div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Gross Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Mass Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Volume Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+    
+      <div style="float:left" class="new-popup-subheader">Sell Details</div>
+  
+          <div style="float:right"><span class="inactive-font">Planned Qty:</span> <span class="new-popup-primaryheader">1250 BBL</span> | <span class="inactive-font">Utilised Qty:</span> <span class="new-popup-primaryheader">1250 BBL</span></div>
+
+          <hr _ngcontent-c30="" class="" style="margin-top:25px;">
+        </div>
+
+      </div>
+      <div class="row" style="height: 35px;">
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select  class="popup-label" placeholder="Sell Trade ID">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Delivery Number">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-select placeholder="Movement Type">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-12">
+          <div class="new-popup-primaryheader" >Quantity Details</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <mat-checkbox class="float-left"></mat-checkbox>
+          <div class="float-left m-l-20">Allow Same Quantity</div>
+
+        </div>
+        <div class="col-4">
+          <mat-checkbox class="float-left"></mat-checkbox>
+          <div class="float-left m-l-20">Enable Manual Conversion</div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Gross Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Mass Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8 p-lr-0">
+              <mat-form-field>
+                <mat-select placeholder="Volume Quantity">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4 p-r-0">
+              <mat-form-field>
+                <mat-select placeholder="UOM">
+                  <mat-option value="Product">Product</mat-option>
+                  <mat-option value="Quantity">Quantity</mat-option>
+                  <mat-option value="Seller">Seller</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    
+
+  </div>
+  <!-- Support Details -->
+  <div class="row">
+    <div class="col-12">
+      <div class="new-popup-subheader">Support Details</div>
+
+      <hr class="m-t-5">
+    </div>
+  </div>
+  <div class="src-details-block add-movement-primary-font">
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field>
+          <mat-select placeholder="Movement Date">
+            <mat-option value="Product">Product</mat-option>
+            <mat-option value="Quantity">Quantity</mat-option>
+            <mat-option value="Seller">Seller</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-select placeholder="Reference Number">
+            <mat-option value="Product">Product</mat-option>
+            <mat-option value="Quantity">Quantity</mat-option>
+            <mat-option value="Seller">Seller</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <mat-select placeholder="Source Document">
+            <mat-option value="Product">Product</mat-option>
+            <mat-option value="Quantity">Quantity</mat-option>
+            <mat-option value="Seller">Seller</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- </mat-dialog-content> -->
+  <mat-dialog-actions class="float-right m-t-m10">
+    <button class="new-cancel-btn" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button class="new-proceed-btn" mat-button [mat-dialog-close]="true">Proceed</button>
+  </mat-dialog-actions>
+</div>

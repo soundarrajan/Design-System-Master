@@ -1,0 +1,50 @@
+<div class="spot-popup-header-container">
+  <div class="spot-nego-title">Available Term Contracts</div>
+  <div class="spot-dialog-title-right">
+    <div><span class="field-name">Location:</span><span class="field-value">{{tabledata?.info.location}}</span> </div>
+    <div><span class="field-name">Product:</span><span class="field-value">{{tabledata?.info.product}}</span> </div>
+    <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+    <!-- <div class="close-circle">
+    <mat-icon id="dialogCloseButton" matSuffix class="" (click)="closeDialog() " style="font-size: 14px; display: inline; position:relative; top:-1px; ">close</mat-icon>
+      </div> -->
+    </div>
+    
+</div>
+  <hr class="hr-line">
+  
+  <div class="product-terms p-b-5 p-r-15 p-l-15">
+    <div class="operations-details-block" style="height: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th class=" text-left w-100">Contract ID</th>
+            <th class=" text-left w-100">Seller</th>
+            <th class="text-left w-180">Contract Name</th>
+            <th class=" text-left w-400">Formula</th>
+            <th class=" text-left w-100">Schedule</th>
+            <th class=" text-left w-100">Contract Qty</th>
+            <th class=" text-left w-100">Available Qty</th>
+            <th class=" text-left w-100">Price</th>
+          </tr>
+        </thead>
+        </table>
+        <div >
+        <table>
+        <tbody #scrollMe1 [scrollTop]="scrollMe1.scrollHeight">     
+        
+            <tr id="commentList" *ngFor="let tabledata of tabledata.gridData;let i = index">
+             <td class="border-bottom-1 w-100"><a class="hyperlink-value">{{tabledata.contractid}}</a></td>
+             <td class="border-bottom-1 w-100">{{tabledata.seller}}</td>
+             <td class="border-bottom-1 w-180">{{tabledata.contractname}}</td>
+             <td class="border-bottom-1 w-400">{{tabledata.formula}}</td>
+             <td class="border-bottom-1 w-100">{{tabledata.schedule}}</td>
+             <td class="border-bottom-1 w-100">{{tabledata.contractqty}}</td>
+             <td class="border-bottom-1 w-100">{{tabledata.availableqty}}</td>
+             <td class="border-bottom-1 text-left w-100">{{tabledata.price}}</td>
+            </tr>
+         
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,362 @@
+<div class="container">
+
+    <mat-slide-toggle id="dark-theme" (change)="this.ChangeFLColor($event)">Switch Theme</mat-slide-toggle>
+
+  <!-- #region FILTER POPUP -->
+  <div id="filter-popup" class="dark-filter-popup-wrapper">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="filter-title">Filter Options</div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- #region Left Column -->
+        <div class="col-sm-6 br-black pl-0">
+
+          <!-- #region Vessel Selection -->
+          <div class="row">
+            <div class="col-sm-12 p-0">
+              <div class="section-title">Vessel Selection</div>
+
+              <section id="vessel-selection">
+                <mat-form-field appearance="outline" class="pt-3">
+                  <mat-label>Search & Select Vessels</mat-label>
+                  <input matInput placeholder="Enter Search Query">
+                  <mat-icon matPrefix>search</mat-icon>
+                </mat-form-field>
+
+                <div id="vesselTypeWrapper">
+                  <!-- Single Vessel Start -->
+                  <div class="grey-border-box" matTooltip="All Vessels" [matTooltipShowDelay]="700">
+                    <div class="vessel-count disabled float-left">70</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="true">
+                        <div class="truncate-120 text-right pr-3">All Vessels</div>
+                      </mat-checkbox>                      
+                    </div>
+                  </div>
+                  <!-- Single Vessel End -->
+
+                  <div class="grey-border-box" matTooltip="MR Vessels" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">40</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">MR Vessels</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="Handy Vessels" [matTooltipShowDelay]="700">
+                    <div class="vessel-count disabled float-left">10</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="true">
+                        <div class="truncate-120 text-right pr-3">Handy Vessels</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="LR1 Vessels" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">10</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">LR1 Vessels</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="LR2 Vessels" [matTooltipShowDelay]="700">
+                    <div class="vessel-count disabled float-left">15</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="true">
+                        <div class="truncate-120 text-right pr-3">LR2 Vessels</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div id="vesselListWrapper" class="pt-3 mb-3">
+
+                  <!-- #region Iterate Loop - Vessel List -->
+                  <div class="col-sm-12 pb-1" matTooltip="Torm Emilie (LR1)" [matTooltipShowDelay]="500">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Emilie (LR1)</div>
+                    </mat-checkbox>
+                  </div>
+                  <!-- #endregion Iterate Loop - Vessel List -->
+
+                  <div class="col-sm-12 pb-1" matTooltip="Torm Ohio (MS) Expanded Text" [matTooltipShowDelay]="500">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Ohio (MS) Expanded Text</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1" matTooltip="Torm Thor (MR) Disabled Expanded Text" [matTooltipShowDelay]="500">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Thor (MR) Disabled Expanded Text</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Gudrun (LR2)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Lily (MR)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Emilie (LR1)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Ohio (MS)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Thor (MR)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Gudrun (LR2)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Lily (MR)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Ohio (MS)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Thor (MR)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Gudrun (LR2)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Lily (MR)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Ohio (MS)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Thor (MR)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12 pb-1">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="false">
+                      <div class="truncate-160">Torm Gudrun (LR2)</div>
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-sm-12">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="after" [disabled]="true">
+                      <div class="truncate-160">Torm Lily (MR)</div>
+                    </mat-checkbox>
+                  </div>
+
+                </div>
+              </section>
+            </div>
+          </div>
+          <!-- #endregion Vessel Selection -->
+
+        </div>
+        <!-- #endregion Left Column -->
+
+        <!-- #region Right Column -->
+        <div class="col-sm-6 pr-0">
+
+          <!-- #region Fuel Status -->
+          <div class="row">
+            <div class="col-sm-12 p-0">
+
+              <section id="fuel-status">
+                <div class="section-title pb-3">Fuel Status</div>
+
+                <div id="fuel-status-wrapper">
+
+                  <mat-form-field appearance="outline">
+                    <mat-select placeholder="Threshold Limit"  style="position:relative; top:-5px;">
+                      <mat-option value="ROB + Ordered Quantity">ROB + Ordered Quantity</mat-option>
+                      <mat-option value="ROB + Req. Quantity">ROB + Req. Quantity</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!-- #region Iterate Loop - Fuel Status -->
+                  <div class="grey-border-box brl-red">
+                    <div class="float-right">
+                      <div class="float-left">
+                        <div class="vessel-count pr-3">120</div>
+                      </div>
+                      <div class="float-right">
+                        <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                          <div class="text-right pr-3">Vessels</div>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- #endregion Iterate Loop - Fuel Status -->
+
+                  <div class="grey-border-box brl-orange">
+                    <div class="float-right">
+                      <div class="float-left">
+                        <div class="vessel-count pr-3">78</div>
+                      </div>
+                      <div class="float-right">
+                        <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                          <div class="text-right pr-3">Vessels</div>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box disabled brl-blue">
+                    <div class="float-right">
+                      <div class="float-left">
+                        <div class="vessel-count pr-3">100</div>
+                      </div>
+                      <div class="float-right">
+                        <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="true">
+                          <div class="text-right pr-3">Vessels</div>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="grey-border-box" matTooltip="No Destination" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">50</div>
+                    <div class="float-right pl-3">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">No Destination</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+          </div>
+          <!-- #endregion Fuel Status -->
+
+          <!-- #region Request Status -->
+          <div class="row pt-2">
+            <div class="col-sm-12 p-0">
+              <section id="request-status">
+                <div class="section-title pb-3">Bunker Request Status</div>
+                <div id="request-status-wrapper">
+
+                  <!-- #region Iterate Loop - Request Status -->
+                  <div class="grey-border-box" matTooltip="No Request" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">15</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">No Request</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <!-- #endregion Iterate Loop - Request Status -->
+
+                  <div class="grey-border-box" matTooltip="Created" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">50</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">Created</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="Validated" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">10</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">Validated</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box disabled" matTooltip="Delivered" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">10</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="true">
+                        <div class="truncate-120 text-right pr-3">Delivered</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="Enquired" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">16</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">Enquired</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="Quoted" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">10</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">Quoted</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="grey-border-box" matTooltip="Stemmed" [matTooltipShowDelay]="700">
+                    <div class="vessel-count float-left">6</div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="truncate-120 text-right pr-3">Stemmed</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <!-- #endregion Request Status -->
+
+        </div>
+        <!-- #endregion Right Column -->
+      </div>
+    </div>
+
+    <!-- #region Bottom Action Bar -->
+    <div class="row filter-bottom-bar">
+      <div class="col-sm-12 p-0 mx-auto">
+        <div class="action-area d-flex justify-content-between">
+          <button class="blue-button" mat-button matTooltip="Apply Filters" [matTooltipShowDelay]="500">Apply Filter</button>
+          <button class="blue-button" mat-button matTooltip="Reset Filters" [matTooltipShowDelay]="500">Reset Filter</button>
+          <button class="blue-button" mat-button matTooltip="Save Selected Filters as a Preference"
+            [matTooltipShowDelay]="500">Save Preference As</button>
+        </div>
+      </div>
+    </div>
+    <!-- #endregion Bottom Action Bar -->
+
+  </div>
+  <!-- #endregion FILTER POPUP -->
+
+</div>

@@ -1,0 +1,127 @@
+<div id="wrapper">
+  <!-- <div id="mapContainer" #gmap style="width:100%;height: calc(100vh - 56px);position:fixed !important;"></div> -->
+  <div id="mapContainer" #olmap style="width:100%;height:100vh;position:fixed !important;"></div>
+
+  <!-- vessel-hoverpopup -->
+  <div #vessel_hover class="popup">
+    <div class="vessel-tooltip yellow m-r-10" [ngClass]="hoverVesselColor"> {{hoverVesselName}} </div>
+    <!-- <img src="../../../assets/customicons/vessel/vessel-hover-circle.svg" alt="Arrow right"> -->
+  </div>
+
+  <!-- vessel-round-hoverpopup -->
+  <div #hover_circle>
+    <img src="../../../assets/customicons/vessel/vessel-hover-circle.svg" alt="Arrow right">
+  </div>
+
+   <!-- port-hoverpopup -->
+   <div #port_hover class="major-port">
+      <div class="pr-2 d-flex align-items-center" matTooltip="Jacksonville" matTooltipShowDelay="500">
+        <div class="d-flex align-items-center" style="position: relative; top: -1px;">
+          <img class="major-port-icon" src="../../../assets/customicons/port/major-port2-blue.svg" alt="Port Icon">
+        </div>
+        <div class="portname fs12 float-left">
+          <div class="truncate-f80">Jacksonville</div>
+        </div>
+      </div>
+
+      <div class="float-left text-center">
+        <div class="fuel-type">
+          <div class="truncate-40">VLSFO</div>
+        </div>
+        <div class="fuel-value">
+          <div class="truncate-40">$496.00</div>
+        </div>
+      </div>
+      <div id="block2" class="float-left text-center pl-3">
+        <div class="fuel-type">
+          <div class="truncate-40">HSFO</div>
+        </div>
+        <div class="fuel-value">
+          <div class="truncate-40">$423.00</div>
+        </div>
+      </div>
+      <div id="block3" class="float-left text-center pl-3">
+        <div class="fuel-type">
+          <div class="truncate-40">ULSFO</div>
+        </div>
+        <div class="fuel-value">
+          <div class="truncate-40">$702.00</div>
+        </div>
+      </div>
+      <div id="block4" class="float-left text-center pl-3">
+        <div class="fuel-type">
+          <div class="truncate-40">DOGO</div>
+        </div>
+        <div class="fuel-value">
+          <div class="truncate-40">$732.00</div>
+        </div>
+      </div>
+  </div>
+
+  <div id="over_map">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-9" style="z-index: 10 !important;">
+        <smart-trader-map-panel [isShowPanel]="false" (zoomInEvent)="mapZoom(true)" (zoomOutEvent)="mapZoom(false)"></smart-trader-map-panel>
+      </div>
+    </div>
+  </div>  
+  <div class="side-btn"  *ngIf="selectedFillterTag" (click)="filterChipClick(null)">Clear filter</div>
+  <div id="table_img">     
+    <button mat-button class="dark-iconbutton"
+      style="min-width: 50px !important;width:50px !important; margin:0 !important; border-radius: 0 !important; box-shadow: 2px 2px 6px -0.5px #292929;"
+      matTooltip="Table View" matTooltipShowDelay="700">
+      <img src="../../assets/customicons/table.svg" alt="Table View" style="width: 20px; height: auto;">
+    </button>
+  </div>
+  <div id="vessel_filter">
+    <div class="float-left">
+      <!-- <app-search-vessel [vesselList]="this.vesselList" [isFilterSearchEnabled]="true"></app-search-vessel> -->
+    </div>
+  </div>
+  <div class="fillterchip-container" >
+    <ng-container *ngIf="showFillterChips">
+      <div *ngFor="let item of tagfillterData; let i = index">
+          <div class="status-badge" (click)="filterChipClick(item)" [ngStyle]="{'opacity': selectedFillterTag ==null ? '1': selectedFillterTag==item.name ? '1':'0.4' }">
+            {{item.name}}
+            <div class="status-indicator">
+              <div class="count">{{item.count}}</div>
+              <div class="bar" [ngStyle]="{'background-color':item.color}"></div>
+            </div>
+          </div>   
+      </div> 
+    </ng-container>
+    <div id="last_updated" style="z-index: 0;"> 
+      <span>Vessel Last Updated :</span> <span id="datetime">{{this.lastUpdatedOn}}</span> </div>
+  </div>
+</div>
+
+<div style="left: 4px; top: 135px; position: fixed;" *ngIf="showVesselPop" cdkDrag>
+  <app-vessellocationpopup [vesselData]="vesselPopData" (click)="animate(); showFullLocationInfo=false; menuState= 'closed'" style="cursor:pointer"></app-vessellocationpopup>
+</div>
+
+<div style="right: -10px; top: 95px; position: fixed;" *ngIf="showLocationPop" cdkDrag>
+  <app-vesseldetailspopup [vesselData]="vesselPopData" (click)="animate(); showFullVesselInfo=false;menuState= 'closed'" style="cursor:pointer"></app-vesseldetailspopup>
+</div>
+
+<div class="map-overlay" (click) = "closeOverlayPopup()"style="background: rgba(55,65,79,.6)!important;height: 100vh;width: 100%;position: absolute;" *ngIf="showFullLocationInfo || showFullVesselInfo"></div>
+<!--<div class="map-overlay" style="background: rgba(55,65,79,.6)!important;height: 100vh;width: 100%;position: absolute;" *ngIf="showFullVesselInfo"></div>-->
+<app-port2-tabs *ngIf="showFullLocationInfo" [ngClass]="showFullLocationInfo1?'enableAnimate':'disableAnimate'"></app-port2-tabs>
+<vessel2-tabs *ngIf="showFullVesselInfo" [ngClass]="showFullVesselInfo1?'enableAnimate':'disableAnimate'"></vessel2-tabs>
+
+
+
+<div id="overlay"class="map-overlay" onclick="off()" *ngIf="isLoading">
+  <div id="text"></div>
+  <div class="lds-dual-ring"></div>
+</div>
+
+<!-- <div [ngClass]="[showLoading ? 'active' : 'inactive']" id="overlay">
+  <div id="overlay-content">    
+  <div id="spinner">
+      <div class="spinner-white"></div>
+  </div>
+  <h4>Loading...</h4> 
+</div>
+</div> -->

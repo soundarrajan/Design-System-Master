@@ -1,0 +1,6 @@
+<div class="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+	<mat-form-field class="without-search" appearance="legacy">
+		<mat-label>Input Field</mat-label>
+		<input matInput>
+    </mat-form-field>
+</div>

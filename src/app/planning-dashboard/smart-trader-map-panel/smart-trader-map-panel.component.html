@@ -1,0 +1,135 @@
+<div id="map-panel" class="" *ngIf="isShowPanel">
+
+  <!-- Filters row -->
+  <div class="row">
+    <div class="col-12 align-items-center d-flex justify-content-end">
+
+      <!-- #region Filter Chips -->
+      <mat-chip-list class="pr15">
+
+        <mat-chip class="active-chip text-center" matTooltip="Default" [matTooltipShowDelay]="500">
+          <div class="truncate-f85 text-center">
+            Default
+          </div>
+          <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+
+        <mat-chip class="inactive-chip text-center" matTooltip="ROBHandyAgent" [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            ROBHandyAgent
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+
+        <!-- <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+          [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            This Filter Chip has Truncated Content
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+        <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+          [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            This Filter Chip has Truncated Content
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+        <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+          [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            This Filter Chip has Truncated Content
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip> -->
+
+        <mat-chip class="icon-chip text-center" matTooltip="Expand Filters" [matTooltipShowDelay]="500">
+          <div class="mx-auto d-block">
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
+        </mat-chip>
+
+      </mat-chip-list>
+      <!-- #endregion Filter Chips -->
+
+      <!-- #region Table Buttons -->
+      <div id="tableViewBtnArea">
+        <button mat-button class="dark2-button" matTooltip="Table View" matTooltipShowDelay="700">
+          <div class="float-left pl-1">
+            <img src="../../../assets/customicons/table.svg" alt="Table Icon" style="width: 18px; height: auto;">
+          </div>
+          <div class="float-left truncate-70 pl-2">Table View</div>
+        </button>
+      </div>
+      <!-- #endregion Table Buttons -->
+
+    </div>
+  </div>
+
+  <!-- Checkbox row -->
+  <!-- <div id="checkbox-row" class="row">
+    <div class="col-12">
+      <div class="float-left">
+        <span class="fw600">ALLOW:</span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>Panama</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>Suez</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>Kiel</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>NW</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>NE</mat-checkbox>
+        </span>
+      </div>
+
+      <div class="float-right">
+        <span class="fw600">AVOID:</span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>SECA</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>JWC</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>ter.waters</mat-checkbox>
+        </span>
+      </div>
+    </div>
+
+  </div> -->
+
+</div>
+
+<!-- #region Panel Light Switch -->
+<button id="lightSwitch" mat-button (click)="toggleDisplay()">
+  <img src="../../../assets/customicons/brightness.svg" alt="Brightness Icon">
+</button>
+<!-- #endregion Panel Light Switch -->
+
+<!-- #region zoom button -->
+<div id="zoomButton">
+<div id="zoomIn" (click)="this.zoomInEvent.emit()">
+  <mat-icon>add</mat-icon>
+</div>
+<div id="zoomOut" (click)="this.zoomOutEvent.emit()">
+  <mat-icon>minimize</mat-icon>
+</div>
+</div>
+<!-- #endregion zoom button -->

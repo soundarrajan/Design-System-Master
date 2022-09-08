@@ -1,0 +1,50 @@
+.legend1-component-v2 {
+  .legend-values {
+    width: 249px;
+    background: #fcfcfc;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(37, 42, 50, 0.2);
+    border-radius: 4px;
+    height: 42px;
+    padding: 7px 0;
+    div {
+      width: 33%;
+      float: left;
+      font-weight: 500;
+      color: #a5a5a5;
+      font-size: 14px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .color-circle {
+        width: 9px;
+        height: 9px;
+        border-radius: 9px;
+        float: left;
+        margin-right: 10px;
+        &.green {
+          background: #27ae60;
+        }
+        &.red {
+          background: #eb5757;
+        }
+        &.blue {
+          background: #1d9fff;
+        }
+      }
+      &:not(:last-child) {
+        border-right: 1px solid #e9e9ed;
+      }
+    }
+
+    &.darkTheme {
+      background: #37414f;
+      div {
+        &:not(:last-child) {
+          border-right: 1px solid#545D6A;
+        }
+      }
+    }
+  }
+}

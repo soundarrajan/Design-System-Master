@@ -1,0 +1,15 @@
+{
+    "request-id": 12321,
+    "locations": [
+        {
+            "location-name": "ROTTERDAM",
+            "location-id": "001",
+            "port-id": "1"
+        },
+        {
+            "location-name": "AMSTERDAM",
+            "location-id": "002",
+            "port-id": "2"
+        }
+    ]
+}

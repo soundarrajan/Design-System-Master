@@ -1,0 +1,11 @@
+<div class="badge-header-withpopup-v2">
+	<div *ngFor="let content of labellist;let i = index" class="border_line title">
+		{{content.title}}
+		<div class="value">{{content.data}}
+		</div>
+	</div>
+	<div class="popup-holder">
+		<div class="popup-icon" [ngClass]="{'popup-icon-active':popupOpen}" (click)="popupOpen = !popupOpen;"></div>
+		<div class="popup-label">Spec Parameter</div>
+	</div>
+</div>

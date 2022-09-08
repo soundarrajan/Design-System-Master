@@ -1,0 +1,47 @@
+<mat-sidenav-container class="component-viewer-sidenav-container">
+    <div class="component-sidenav-content">
+        <div class="component-sidenav-inner-content">
+            <!-- <div class="component-header">
+                <div style="padding: 0px 25px;"> UI Components</div>
+                <ng-container>
+                    <mat-icon *ngIf="hideSideNav" (click)="hideSideNav = !hideSideNav" matTooltip="Show Menu">
+                        keyboard_arrow_down</mat-icon>
+                    <mat-icon *ngIf="!hideSideNav" (click)="hideSideNav = !hideSideNav" matTooltip="Hide Menu">
+                        keyboard_arrow_up</mat-icon>
+                </ng-container>
+            </div> -->
+            <main class="component-sidenav-body-content">
+                <div class="component-viewer-nav" *ngIf="!hideSideNav">
+                    <div class="component-viewer-nav-content">
+                        <mat-selection-list #componentType [multiple]="false"
+                            (selectionChange)="onSelectionChange(componentType.selectedOptions)">
+                            <ng-container *ngFor="let type of itemList">
+                                <mat-divider></mat-divider>
+                                <div class="nav-header" (click)="type.collapseList=!type.collapseList;"> {{type.name}}
+                                    <mat-icon *ngIf="type.collapseList" class="header-icon">
+                                        keyboard_arrow_down</mat-icon>
+                                    <mat-icon *ngIf="!type.collapseList" class="header-icon">
+                                        keyboard_arrow_up</mat-icon>
+                                </div>
+                                <mat-list-option *ngFor="let item of type.list" [value]="item.key"
+                                    [ngStyle]="{'display':type.collapseList?'none':'block'}"
+                                    [selected]="item.key=='fields'?true:false">
+                                    <a>
+                                        {{item.name}}
+                                    </a>
+                                </mat-list-option>
+                            </ng-container>
+                        </mat-selection-list>
+
+                    </div>
+                </div>
+                <div class="component-viewer-container">
+                    <app-ui-components *ngFor="let comp of itemDetails?.items" [componentSelected]="itemSelected"
+                        [componentDetails]="comp">
+                    </app-ui-components>
+                </div>
+            </main>
+            <!-- <app-footer></app-footer> -->
+        </div>
+    </div>
+</mat-sidenav-container>

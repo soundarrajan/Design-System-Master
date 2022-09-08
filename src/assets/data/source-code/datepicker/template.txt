@@ -1,0 +1,11 @@
+<div id="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+   <mat-form-field class="without-search" appearance="legacy">
+            <mat-label>Datepicker</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon [svgIcon]="!switchTheme?'data-picker-gray':'data-picker-white'">
+                </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker [panelClass]="switchTheme?'datepicker-darktheme':''"></mat-datepicker>
+        </mat-form-field>
+</div>

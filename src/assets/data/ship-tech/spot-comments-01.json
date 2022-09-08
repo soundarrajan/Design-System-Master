@@ -1,0 +1,34 @@
+[
+    {
+        "title": "General",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "LPB not sent- Quantity to order directly calculated and instructed by Ops. BO calculated around 400MT below quantity validated. BO calculated around 400MT below quantity validate.",
+        "type": "IC",
+        "id": 110
+    },
+    {
+        "title": "Performance",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "LPB not sent- Quantity to order directly calculated and instructed by Ops. BO calculated around 400MT below quantity validated. BO calculated around 400MT below quantity validate.",
+        "type": "IC",
+        "id": 111
+    },
+    {
+        "title": "Supplier",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "",
+        "type": "EC",
+        "id": 112
+    },
+    {
+        "title": "Vessel & Agents",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "LPB not sent- Quantity to order directly calculated and instructed by Ops. BO calculated around 400MT below quantity validated. BO calculated around 400MT below quantity validate.",
+        "type": "EC",
+        "id": 113
+    }
+]

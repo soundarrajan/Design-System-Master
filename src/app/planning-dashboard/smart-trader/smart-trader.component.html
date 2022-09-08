@@ -1,0 +1,168 @@
+<section id="planning-header" class="smart-trader-header">
+  <nav class="navbar navbar-light bg-white p-0">
+
+    <div class="row d-flex align-items-center" style="width:100%;">
+
+      <div id="filterButtons">
+        <!-- #region Search Box -->
+      <div id="search-box" class="d-flex justify-content-between align-items-center">
+        <!-- If button is not required, remove it and keep only <mat-icon> -->
+        <button mat-icon-button>
+          <mat-icon id="searchIcon" matPrefix>search</mat-icon>
+        </button>
+        <div class="br">
+          <input id="vesselSearch" type="text" placeholder="Search">
+        </div>
+        <button mat-icon-button>
+          <!-- <mat-icon id="sortIcon" matSuffix>sort</mat-icon> -->
+          <img id="filter-icon" src="../../../assets/customicons/filter.svg" alt="Filter Icon">
+        </button>
+      </div>
+      <!-- #endregion Search Box -->
+
+      </div>
+
+      
+        <div id="chip-wrapper" class="p10">
+          <mat-chip-list>
+
+           <!-- Single Chip Start -->
+            <mat-chip class="active-chip" matTooltip="Default" [matTooltipShowDelay]="500">
+              <div class="truncate-f85 mx-auto text-center">
+                Default
+              </div>
+              <div matSuffix class="chip-circle">
+                <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+              </div>
+            </mat-chip>
+            <!-- Single Chip End -->        
+
+            <!-- Single Chip Start -->
+            <mat-chip class="inactive-chip" matTooltip="North America" [matTooltipShowDelay]="500">
+              <div class="truncate-f85 mx-auto text-center">
+                North America
+              </div>
+              <div matSuffix class="chip-circle">
+                <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+              </div>
+            </mat-chip>
+            <!-- Single Chip End -->
+
+            <!-- Single Chip Start -->
+            <mat-chip class="inactive-chip" matTooltip="South America" [matTooltipShowDelay]="500">
+              <div class="truncate-f85 mx-auto text-center">
+                BP Marine Fuels
+              </div>
+              <div matSuffix class="chip-circle">
+                <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+              </div>
+            </mat-chip>
+            <!-- Single Chip End -->
+
+            <!-- More Icon Chip Start -->
+            <mat-chip class="icon-chip text-center" matTooltip="Expand Filters" [matTooltipShowDelay]="500">
+              <div class="mx-auto d-block">
+                <!-- <i class="fas fa-ellipsis-h"></i> -->
+                <div class="more-white"></div>
+              </div>
+            </mat-chip>
+            <!-- More Icon Chip End -->
+
+          </mat-chip-list>
+        </div>
+      
+
+      <div id="rightButtons">        
+          <button mat-button (click)="this.showTableViewEmit.emit()">Map View</button>
+          <button class="blue-button" mat-button style="width:100px;">Table View</button>        
+      </div>
+
+    </div>
+
+  </nav>
+</section>
+
+
+<section id="smart-trader-grid">
+  <div class="smart-trader-content" style="position: relative;">
+    <ag-grid-angular style="width: 100%; height:calc( 100vh - 178px )" [gridOptions]="gridOptions" class="ag-theme-material pl3" [enableColResize]="true" [colResizeDefault]="colResizeDefault"></ag-grid-angular>
+  </div>
+</section>
+
+
+
+<section id="bottom-pagination" class="smart-trader-footer">
+
+  <div class="float-left pl-4" id="last-updated">
+    Last Updated: <span id="last-updated-time">13-07-2018 12:24 PM</span>
+  </div>
+
+  <div class="mx-auto" id="pages">
+    <div style="display: flex; justify-content: center;">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">2</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">3</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">4</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="float-right" id="right-column">
+
+    <div id="goto-page" class="float-right pr-4">
+      Go to page
+      <mat-form-field style="width: 50px; margin: 0 5px; padding-right: 10px;">
+        <input matInput>
+      </mat-form-field>
+      <button mat-button class="page-button">Go</button>
+    </div>
+
+    <div id="show-rows" class="float-right pr-4">
+      <span>Show</span>
+      <span>
+        <mat-form-field style="width: 70px; margin: 0 10px;">
+          <mat-select>
+            <mat-option [value]="10">
+              10
+            </mat-option>
+            <mat-option [value]="20">
+              20
+            </mat-option>
+            <mat-option [value]="30">
+              30
+            </mat-option>
+            <mat-option [value]="40">
+              40
+            </mat-option>
+            <mat-option [value]="50">
+              50
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+      <span>Rows</span>
+    </div>
+
+  </div>
+
+
+</section>

@@ -1,0 +1,65 @@
+<div class="movements-manualMatch">
+    <div class="preSelect-withLabel">
+        <mat-form-field class="without-search">
+          <mat-label>UOM</mat-label>
+          <mat-select disableOptionCentering panelClass='darkPanel' value="mt">
+            <mat-option value="mt">MT</mat-option>
+            <mat-option value="gal">GAL</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="preSelect-withLabel">
+        <mat-form-field class="without-search">
+          <mat-label>Currency</mat-label>
+          <mat-select disableOptionCentering panelClass='darkPanel' value="usd">
+            <mat-option value="usd">USD</mat-option>
+            <mat-option value="inr">INR</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <!-- <div class="grey-label">
+      <div class="text">Difference Qty</div>
+      <div class="value">0000.0000 GAL</div>
+    </div> -->
+    <div class="button-onHover"><span class="img convert"></span>Convert</div>
+</div>
+<div class="match-grid" style="border-bottom: 4px solid #e5e5e5;">
+  <div class="title">Matched Movements</div>
+  <div class="agGrid-v2" style="margin: 0">
+      <div style="width:100%;height: 245px;">
+          <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_data"
+              class="ag-theme-material ag-grid-v2 angular-v9 with-total float-bottom"></ag-grid-angular>
+      </div>
+  </div>
+</div>
+<div class="match-grid" style="padding-top: 10px">
+  <div class="grid-header" style="display: flex;align-items: center;justify-content: space-between;margin-bottom: 15px;">
+  <div class="title" style="width: 50%; float:left;margin:0">
+    <!-- <button mat-button class="mid-blue-button small" style="margin-left: 45px;" (click)="toggleCollapse()">{{ isOpen ? 'Open': 'Close'}}
+      <span class="toggle-arrow" [ngClass]="{'rotate180':isCollapsed}"></span>
+    </button> -->
+    <span style="margin-right: 30px;">Browse Movements for Matching</span>
+    <span class="toggle-grid-arrow" style="margin-bottom: -2px;" (click)="toggleCollapse()"
+                    [ngClass]="{'rotate180':isCollapsed}">{{ isOpen ? 'Open': 'Close'}}</span>
+  </div>
+  <div class="multi-label" *ngIf="isCollapsed">
+    <div class="batch">
+      <div class="text">Total Allocated Qty</div>
+      <div class="value">1,000.000 GAL</div>
+    </div>
+    <div class="separator"></div>
+    <div class="batch">
+        <div class="text">Total Allocated Qty in COGS UOM</div>
+        <div class="value">1,000.000 GAL</div>
+    </div>
+  </div>
+</div>
+    <div class="agGrid-v2" style="margin: 0">
+        <div style="width:100%;height: 245px;">
+            <ag-grid-angular *ngIf="isCollapsed"style="width: 100%;height: 100%;" [gridOptions]="gridOptions_add_movements" (rowSelected)="onRowSelected($event)"
+                class="ag-theme-material ag-grid-v2 angular-v9 with-total"></ag-grid-angular>
+        </div>
+    </div>
+     <button mat-button class="mid-grey-button" [disabled]="!isChecked" [ngClass]="{'enable-blue-btn' : isChecked}" style="float: right;margin-top: 15px;margin-bottom: 40px;" *ngIf="isCollapsed" (click)="onAddSelected()">Add Selected Movements</button>
+  </div>
+  

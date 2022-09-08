@@ -1,0 +1,78 @@
+<!-- Add Product -->
+<div class="row add-delete-details m-b-4" style="padding-bottom: 15px;">
+  <div class="col-12">
+    <div class="col-md-12 row delivery-products-group">
+      <div class="col-md-12" style="padding-left: 0;">
+        <!-- <div class="product-details-header" style="">
+            Product details
+        </div> -->
+        <a class="add-product-dropdown-icon" (click)="addNewProduct()"></a>
+        <div class="product-tabs" *ngIf="productName && productName.length">
+          <div class="addded-product" *ngFor="let productNames of productName;; let i = index" style="display: inline-flex; margin-right: 10px;">
+            <div *ngIf="productName.length > 1" class="remove-icon" (click)="deleteDeliveryProduct(i)"></div>
+           <div class="product-tab">
+                 <div class="bootstrap-tagsinput"> 
+                     <span class="tag label border-default">
+                       {{productNames}}
+                     </span>
+                 </div>
+             </div>
+             <div class="divider" *ngIf=" i != productName.length - 1"></div>
+           </div>
+       </div>
+        <div class="select-product" *ngIf="!hideDropdown">
+          <mat-form-field  class="custom-select" appearance="fill" 
+          (click)="openAddProductSelect()">
+            <mat-label>Add product</mat-label>
+            <mat-select [disableOptionCentering]="true" 
+                        #mySelect
+                        [(ngModel)]="selectedProductToAddInDelivery"
+                        (selectionChange)="addSelectedProductInDelivery(selectedProductToAddInDelivery)"
+                        panelClass="shiptech-select-product-container">
+                       
+            <div class="col-md-12 header-container-product">
+                <div class="search-product-container col-md-10">
+                  <span class="search-product-lookup">
+                  </span>
+                  <input matInput 
+                        placeholder="Search all and select a product"
+                        class="search-product-input">
+                  </div>
+                  
+                  <div class="col-md-2">
+                    <img  alt="Shiptech"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=">
+                </div>
+              </div>
+              <table class="delivery-products-pop-up col-md-12 no-padding" mat-table [dataSource]="dataSource">
+                
+                <ng-container matColumnDef="product">
+                  <th mat-header-cell *matHeaderCellDef> Products in order </th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-option [value]="element.product" style="padding-left:0">
+                    <mat-radio-button [value]="element.product"> 
+                    {{element.product}} 
+                  </mat-radio-button>
+                </mat-option>
+                  </td>
+                </ng-container>
+      
+                
+                <ng-container matColumnDef="type">
+                  <th mat-header-cell *matHeaderCellDef> Type </th>
+                  <td mat-cell *matCellDef="let element"> 
+                    <mat-option>
+                      {{element.type}}
+                    </mat-option>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+           
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.badge-header-withpopup-v2 {
+  flex: 1;
+  height: 40px;
+  background: #ffffff;
+  border: 5px solid #f1f1f2;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #252a32;
+  padding: 2px 5px;
+  display: flex;
+  & > div {
+    &:not(:last-child) {
+      flex: 0 1 130px;
+      padding: 0px 5px 0px 5px;
+    }
+  }
+  .value {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .border_line {
+    border-right: 1px solid #37414f;
+  }
+  .border_line_left {
+    border-left: 1px solid #37414f;
+  }
+  .popup-holder {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    .popup-icon {
+      cursor: pointer;
+      margin-right: 10px;
+      content: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7.75' fill='white' stroke='%23BDBDBD' stroke-width='0.5'/%3E%3Ccircle cx='11.9537' cy='8.04619' r='1.18462' fill='%23828282'/%3E%3Ccircle cx='8.18449' cy='8.04619' r='1.18462' fill='%23828282'/%3E%3Ccircle cx='4.41533' cy='8.04619' r='1.18462' fill='%23828282'/%3E%3C/svg%3E%0A");
+      &:hover {
+        content: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23BDBDBD'/%3E%3Ccircle cx='11.877' cy='7.89238' r='1.18462' fill='%23828282'/%3E%3Ccircle cx='8.10783' cy='7.89238' r='1.18462' fill='%23828282'/%3E%3Ccircle cx='4.33867' cy='7.89238' r='1.18462' fill='%23828282'/%3E%3C/svg%3E%0A");
+      }
+      &.popup-icon-active {
+        content: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2374CDEA'/%3E%3Ccircle cx='11.877' cy='7.89238' r='1.18462' fill='white'/%3E%3Ccircle cx='8.10795' cy='7.89238' r='1.18462' fill='white'/%3E%3Ccircle cx='4.33867' cy='7.89238' r='1.18462' fill='white'/%3E%3C/svg%3E%0A");
+      }
+    }
+    .popup-label {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 14px;
+      color: #252a32;
+    }
+  }
+}

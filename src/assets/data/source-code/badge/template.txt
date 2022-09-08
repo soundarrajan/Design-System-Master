@@ -1,0 +1,12 @@
+<!-- normal -->
+  <div class="col-md-6">
+   <app-dynamic-badge [category]="componentDetails.key" [type]="'single'"></app-dynamic-badge>
+  </div>
+<!-- multi with subtext,dot and divider -->
+  <div class="col-md-6">
+      <app-dynamic-badge [category]="componentDetails.key" [dropdown]="false" [items]="badgeitems" [type]="'multi'" [dot]="true" [divider]="true"></app-dynamic-badge>
+  </div>
+<!-- multi without subtext,dot and divider -->
+  <div class="col-md-6">
+      <app-dynamic-badge [category]="componentDetails.key" [dropdown]="false" [items]="badgeitems" [type]="'multi'" [dot]="false" [divider]="false"></app-dynamic-badge>
+  </div>

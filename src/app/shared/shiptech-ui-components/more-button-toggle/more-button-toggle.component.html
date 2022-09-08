@@ -1,0 +1,22 @@
+<div id="more-btn-toggle-component" class="row">
+    <div class="col-md-6">
+        <div id="custom-btn-toggle-v2">
+            <mat-button-toggle-group #btnToggle (change)="activeBtn = $event.value" style="padding-right: 45px; background-color: #e0e1e4;">
+                <mat-button-toggle *ngFor="let items of invoice_types" [value]="items.displayName" [checked]="activeBtn == items.displayName" [ngClass]="{'more-btn-toggle': items.displayName==''}">
+                    <span class="toggle-icon" *ngIf="activeBtn == btn"></span> {{items.displayName}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            <div class="more-dots" (click)="openMoreButtons($event)"></div>
+        </div>
+        <div class="more-button-options" *ngIf="showMoreButtons">
+            <span>Invoice Type</span>
+            <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group">
+                <mat-radio-button class="example-radio-button" *ngFor="let inv of more_invoice_types" [value]="inv">
+                    {{inv}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>

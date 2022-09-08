@@ -1,0 +1,159 @@
+<div id="add-delivery-movements">
+    <mat-tab-group>
+        <mat-tab [label]="tab_label">
+            <ng-template mat-tab-label>
+                <span>{{tab_label}}</span>
+            </ng-template>
+            <div id="custom-tabs-v2">
+                <mat-tab-group id="second-row-tabs" [ngClass]="{'collapseHeader':isCollapsed}" #tabs
+                    mat-align-tabs="end" [selectedIndex]="selected"
+                    (selectedIndexChange)="selected = tabs.selectedIndex">
+                    <mat-tab label="Details">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">Details</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngTemplateOutlet="details"></ng-container>
+                    </mat-tab>
+                    <mat-tab label="Manual Match">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">Manual Match</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngIf="selected==1">
+                            <app-movements-manual-match (onAddMovemntClick)="enableSave()"></app-movements-manual-match>
+                        </ng-container>
+                    </mat-tab>
+                    <mat-tab label="Ops Summary">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">Ops Summary</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngIf="selected==2">
+                            <app-ops-summary></app-ops-summary>
+                        </ng-container>
+                    </mat-tab>
+                    <mat-tab label="Allocation Details">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">Allocation Details</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngIf="selected==3">
+                            <app-allocation-details (navigateToLink)="changeSelectedTab($event);">
+                            </app-allocation-details>
+                        </ng-container>
+                    </mat-tab>
+                    <mat-tab label="View Costing">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">View Costing</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngIf="selected==4">
+                            <app-viewcosting-transfer-movements></app-viewcosting-transfer-movements>
+                        </ng-container>
+                    </mat-tab>
+                    <mat-tab label="Documents" [disabled]="!showDocumentsTab">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">Documents</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngIf="selected==5">
+                            <app-drag-drop-upload></app-drag-drop-upload>
+                        </ng-container>
+                    </mat-tab>
+                    <mat-tab label="Audit Log">
+                        <ng-template mat-tab-label>
+                            <div class="custom-label-holder">
+                                <div class="custom-tab-ui"></div>
+                                <div class="custom-label">Audit Log</div>
+                            </div>
+                        </ng-template>
+                        <ng-container *ngIf="selected==6">
+                            <app-movements-auditlog></app-movements-auditlog>
+                        </ng-container>
+                    </mat-tab>
+
+                </mat-tab-group>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <div class="header-buttons" style="display: flex; z-index: 1000;">
+        <div matTooltip="Verify" matTooltipShowDelay="500" style="display: flex;align-items: center;">
+            <button mat-raised-button class="blue-button" disabled>
+                <span style="top: -1px;position: relative;">Verify</span>
+            </button>
+        </div>
+        <div matTooltip="Save" matTooltipShowDelay="500" style="display: flex;align-items: center;">
+            <div matTooltip="Save" matTooltipShowDelay="500">
+                <button mat-button class="blue-button" 
+                    (click)="saveClicked()">Save</button>
+            </div>
+        </div>
+
+        <div class="more-btn" (click)="openMoreOptions($event)" [matMenuTriggerFor]="clickmenu"
+            #menuTrigger="matMenuTrigger"></div>
+
+        <mat-menu #clickmenu="matMenu" class="more-options-menu-panel" xPosition="after"
+            style="position: relative;bottom: 15px;left: 66px;">
+            <div (click)="menuTrigger.closeMenu()">
+                <app-more-options-popup [optionsList]="menuOptions"></app-more-options-popup>
+            </div>
+        </mat-menu>
+
+        <mat-divider vertical=true></mat-divider>
+        <div class="refresh-btn-icon"></div>
+        <mat-divider vertical=true></mat-divider>
+        <div class="expand-collapse-btn" (click)="toggleCollapse()" [ngClass]="{'rotate180':isCollapsed}">
+        </div>
+    </div>
+    <div class="details-footer">
+        <div matTooltip="Return to list" matTooltipShowDelay="500">
+            <button mat-raised-button class="footer-button" (click)="goBack()">
+                <span style="top: -1px;position: relative;">Return to list</span>
+            </button>
+        </div>
+    </div>
+</div>
+<ng-template #details>
+    <div class="details-container" style="margin-bottom: 40px;">
+        <div class="details-row" style="flex-direction: column;">
+            <div class="row-container" style="padding-bottom: 0px;">
+                <div class="title">Movement Details</div>
+                <div class="row" style="padding-top: 0px;">
+                    <div class="col-md-3 pd-0">
+                        <div id="custom-btn-toggle-v2" style="margin: 0px;">
+                            <mat-button-toggle-group #btnToggle (change)="toggleTransfer($event);">
+                                <mat-button-toggle *ngFor="let btn of toggleBtnData?.names" [value]="btn"
+                                    [checked]="defaultToggle == btn">
+                                    <span class="toggle-icon" *ngIf="defaultToggle == btn"></span> {{btn}}
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!isLoading" id="config-ui-container" class="add-movement-primary-font">
+            <json-schema-form
+                *ngIf="this.bindData !== null && this.bindData !== undefined && this.testform !== undefined && this.testform !== null"
+                (isValid)="validCheck($event)" [options]="this.jsonFormOptions"
+                (jsonFormcontrolValues)="jsonFormcontrolValues($event)" [resetForm]="resetForm"
+                (validationErrors)="validationErrors($event)" [(form)]="this.testform"
+                [required]="this.schematest?.required" [(ngModel)]="this.bindData" [widgets]="this.yourNewWidgets"
+                loadExternalAssets="true">
+            </json-schema-form>
+        </div>
+    </div>
+</ng-template>

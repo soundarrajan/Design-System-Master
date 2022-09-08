@@ -1,0 +1,62 @@
+
+<div id="journal-details-component">
+    <div>
+        
+        <mat-tab-group>
+            <mat-tab label="Journal Details">
+                <ng-template mat-tab-label>
+                    <span>Journal Details</span>
+                </ng-template>
+                <div class="custom-tab">
+                    <mat-tab-group id="second-row-tabs" [ngClass]="{'collapseHeader':isCollapsed}"
+                    (selectedTabChange)="selectedTabChange($event)">
+                        <mat-tab label="Details">
+                            <ng-template mat-tab-label>
+                                <div class="custom-tab-ui"></div>
+                                <span class="custom-label">Details</span>
+                            </ng-template>
+                            <ng-container *ngTemplateOutlet="details"></ng-container>
+                        </mat-tab>
+                        <mat-tab label="Related Journals" [disabled]='tabActive'>
+                            <ng-template mat-tab-label>
+                                <div class="custom-tab-ui"></div>
+                                <span class="custom-label">Related Journals</span>
+                            </ng-template>
+                            <ng-container>
+                                <app-related-journals></app-related-journals>
+                            </ng-container>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+        <div class="header-buttons">
+            <div class="actionOptions" style="padding:0">
+                <div class="actionButton" style="margin-right: 8px;">
+            <div matTooltip="Delete Journal" matTooltipShowDelay="500" style="margin-right:5px;display: flex;align-items: center;">
+                <button class="mid-red-button" [disabled]="disableDeleteBtn" (click)="deleteJournal()">
+                    <span style="top: -1px;position: relative;">Delete Journal</span>
+                </button>
+            </div>
+        </div>
+        <div class="actionButton">
+            <div matTooltip="+Reversal Journal" matTooltipShowDelay="500" style="display: flex;align-items: center;">
+                <button class="mid-blue-button" [disabled]="disableReversalBtn" (click)="reverseJournal()">
+                    <span style="top: -1px;position: relative;">+Reversal Journal</span>
+                </button>
+            </div>
+        </div>
+        </div>
+            <div class="more-btn"></div>
+
+            <mat-divider vertical=true></mat-divider>
+            <div class="refresh-btn-icon"></div>
+            <mat-divider vertical=true></mat-divider>
+            <div class="expand-collapse-btn" (click)="toggleCollapse()" [ngClass]="{'rotate180':isCollapsed}">
+            </div>
+        </div>
+    </div>
+    <ng-template #details>
+        <app-details-journals></app-details-journals>
+    </ng-template>
+</div>

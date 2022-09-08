@@ -1,0 +1,15 @@
+<div class="chip-group" id="custom-btn-toggle-v2" style="width: 620px;padding:0;margin:0">
+    <div class="chip-container">
+         <div *ngFor="let cData of chipData">
+            <div class="mchip-container">
+                <div [ngClass]="{'dashed-border-chip': cData.Title === 'Deductions'}" >         
+                    <div class="title">
+                      <span class="chipCircle" [ngClass]="{'dark': cData.status === 'Saved'}"></span>
+                      <span>{{cData.Title}}</span>
+                    </div>
+                    <div class="data" [ngClass]="{'light': cData.status === 'Draft', 'tile-2': cData.Title === 'Status', 'tile-4-5' : cData.Title === 'Estimated Total' || cData.Title === 'Total Difference' || cData.Title === 'Net Payable', 'tile-8' : cData.Title === 'Deductions' }" >{{cData.Data}}</div>
+                  </div>
+              </div>
+         </div>
+    </div>
+  </div>

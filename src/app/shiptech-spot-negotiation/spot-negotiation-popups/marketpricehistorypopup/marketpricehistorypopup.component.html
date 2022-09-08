@@ -1,0 +1,68 @@
+<div class="market-price-history-popup">
+  <div class="spot-popup-header-container">
+    <div class="spot-nego-title">Market Price History</div>
+    <div class="spot-dialog-title-right">
+      <button mat-button class="mid-blue-button h-25" style="color:#FFFFFF !important;margin-right: 5px;"
+        (click)="showGraph=!showGraph;">{{!showGraph?'Show':'Hide'}}
+        Graph</button>
+      <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+    </div>
+  </div>
+  <hr class="hr-line">
+
+  <div class="row">
+    <div class="col-3">
+      <div class="row">
+        <div class="p-l-15">
+          <span class="location-main-heading">Tabular Represenation</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div [ngStyle]="showGraph ? { 'justify-content': 'space-between' } : {'justify-content': 'flex-end' }" style="display: flex;">
+        <div *ngIf="showGraph" class="" style="margin-left: -15px;">
+          <span class="location-main-heading">Graphical Representation</span>
+        </div>
+        <div class="">
+          <span class="location-title-marketprice">Index:</span>
+          <span class="location-value-marketprice m-r-5"> {{data.tableData.info.index}}</span>
+          <span class="location-title-marketprice">Location:</span>
+          <span class="location-value-marketprice m-r-5"> {{data.tableData.info.location}} </span>
+          <span class="location-title-marketprice"> Product:</span>
+          <span class="location-value-marketprice m-r-5">{{data.tableData.info.product}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div [ngClass]="{'col-3':showGraph,'col-12':!showGraph}"> 
+      <div class="product-terms p-b-5 p-r-15 p-l-15" style="margin-top: 10px;">
+        <div class="operations-details-block market-history" style="height:auto">
+          <table>
+            <thead>
+              <tr>
+                <th class=" text-left ">Date</th>
+                <th class=" text-left w-95">Price(in USD)</th>
+              </tr>
+            </thead>
+          </table>
+          <div style="background-color: #ffffff;">
+            <table>
+              <tbody style="height: 62vh !important; overflow-y: scroll;">
+                <tr id="commentList" *ngFor="let tabledata of tabledata;let i = index">
+                  <td class="border-bottom-1 fz-13">{{tabledata.date}}</td>
+                  <td class="border-bottom-1 text-left fz-13 w-95">{{tabledata.price}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9" style="margin-left: -15px;">
+      <div *ngIf="showGraph" class="market-graph" style="margin-top: 10px;">
+        <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"></highcharts-chart>
+      </div>
+    </div>
+  </div>
+</div>

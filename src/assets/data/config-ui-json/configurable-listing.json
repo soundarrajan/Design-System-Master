@@ -1,0 +1,22 @@
+[
+    {
+        "id": "123",
+        "name": "Transfer Movements - Transfer Tab"
+    },
+    {
+        "id": "124",
+        "name": "Transfer Movements - Inter Transfer Tab"
+    },
+    {
+        "id": "125",
+        "name": "Delivery Movements - Inventory Tab"
+    },
+    {
+        "id": "126",
+        "name": "Delivery Movements - B2B Tab"
+    },
+    {
+        "id": "127",
+        "name": "Movements - Full Screen"
+    }
+]

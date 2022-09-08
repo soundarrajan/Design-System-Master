@@ -1,0 +1,33 @@
+<div class="supplier-comments-popup">
+    <div class="spot-popup-header-container">
+        <div class="spot-nego-title">Counterparty comments</div>
+        <div class="spot-dialog-title-right">
+            <button class="blue-button proceed-btn" [mat-dialog-close]="true">Save</button>
+            <div class="title-divider">|</div>
+            <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+            <!-- <div class="close-circle">
+                <mat-icon id="dialogCloseButton" matSuffix class="" [mat-dialog-close]="true"
+                    style="font-size: 14px; display: inline; position:relative; top: -1px;right: 5px;">close</mat-icon>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="seperator-line"></div>
+    <mat-dialog-content>
+        <div class="spot-seller-comments-section">
+            <div class="spot-comments-container">
+                <div class="spot-seller-comments">
+                    <div>
+                        <span class="circle internal"></span>
+                        <span class="label">{{data.name.name}}</span>
+                    </div>
+                    <!-- <div class="comments-div"> -->
+                    <textarea placeholder="Type notes here." class="comments-text">LPB not sent- Quantity to order directly calculated and instructed by Ops. BO calculated around 400MT below quantity validated.
+                    </textarea>
+                    <!-- </div> -->
+                    <!-- <div>{{data.name.name | json}}</div> -->
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

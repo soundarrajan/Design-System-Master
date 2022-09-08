@@ -1,0 +1,217 @@
+<div id="map-panel" [className]="isPanelActive? 'active':'inactive'">
+
+  <!-- Filters row -->
+  <div class="row w100p">
+    <div class="col-12 d-flex align-items-center justify-content-end pl-0">
+
+
+      <button id="tutorialBtn" mat-raised-button class="mr-auto" (click)="isInfoActive = !isInfoActive">Quick
+        Tutorial</button>
+
+      <!-- #region Filter Chips -->
+      <mat-chip-list class="pr15 pl25">
+
+        <mat-chip class="active-chip text-center" matTooltip="Active Filter Chip" [matTooltipShowDelay]="500">
+          <div class="truncate-f85 text-center">
+            Active Filter Chip
+          </div>
+          <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+
+        <mat-chip class="inactive-chip text-center" matTooltip="Inactive Filter Chip" [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            Inactive Filter Chip
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+
+        <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+          [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            This Filter Chip has Truncated Content
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+        <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+          [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            This Filter Chip has Truncated Content
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+        <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+          [matTooltipShowDelay]="500">
+          <div class="truncate-f85">
+            This Filter Chip has Truncated Content
+          </div>
+          <div matSuffix class="chip-circle">
+            <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+          </div>
+        </mat-chip>
+
+        <mat-chip class="icon-chip text-center" matTooltip="Expand Filters" [matTooltipShowDelay]="500">
+          <div class="mx-auto d-block">
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
+        </mat-chip>
+
+      </mat-chip-list>
+      <!-- #endregion Filter Chips -->
+
+      <!-- #region Table Buttons -->
+      <div id="tableViewBtnArea">
+        <button mat-button class="dark2-button" matTooltip="Table View" matTooltipShowDelay="700">
+          <div class="float-left pl-1">
+            <img src="../../../assets/customicons/table.svg" alt="Table Icon" style="width: 18px; height: auto;">
+          </div>
+          <div class="float-left truncate-70 pl-2">Table View</div>
+        </button>
+      </div>
+      <!-- #endregion Table Buttons -->
+
+
+    </div>
+  </div>
+
+  <!-- Checkbox row -->
+  <!-- <div id="checkbox-row" class="row">
+    <div class="col-12">
+      <div class="float-left">
+        <span class="fw600">ALLOW:</span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>Panama</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>Suez</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>Kiel</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>NW</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>NE</mat-checkbox>
+        </span>
+      </div>
+
+      <div class="float-right">
+        <span class="fw600">AVOID:</span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>SECA</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>JWC</mat-checkbox>
+        </span>
+        <span class="ml-2 mr20">
+          <mat-checkbox>ter.waters</mat-checkbox>
+        </span>
+      </div>
+    </div>
+
+  </div> -->
+
+</div>
+
+<!-- #region Panel Light Switch -->
+<!-- <button id="lightSwitch" mat-button (click)="togglePanel()">
+  <img src="../../../assets/customicons/brightness.svg" alt="Brightness Icon">
+</button> -->
+<!-- #endregion Panel Light Switch -->
+
+<!-- Toggle Panel -->
+<button id="panelSwitch" mat-raised-button (click)="isPanelActive = !isPanelActive"
+  [className]="isPanelActive? 'active':'inactive'">
+  <img src="../../../assets/customicons/double-up-arrow_w.svg" alt="Double Up arrow">
+  <span>{{isPanelActive ? 'Hide Info' : 'More Info'}}</span>
+</button>
+<!-- Toggle Panel -->
+
+<!-- #region zoom button -->
+<div id="zoomButton">
+  <div id="zoomIn">
+    <mat-icon>add</mat-icon>
+  </div>
+  <div id="zoomOut" class="disabled">
+    <mat-icon>minimize</mat-icon>
+  </div>
+</div>
+<!-- #endregion zoom button -->
+
+
+<!-- #region info-overlay -->
+<div id="infoOverlay" [className]="isInfoActive? 'active':'inactive'">
+
+
+  <div id="infoContainer" class="container">
+
+    <i class="material-icons close-button" (click)="isInfoActive = !isInfoActive">close</i>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h5>Get Started</h5>                
+      </div>
+    </div>
+
+
+
+    <!-- Stepper Start -->
+    <mat-horizontal-stepper #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Vessel Routes</ng-template>
+
+        <div class="container-fluid">
+          <div class="row" style="padding-top: 2em; padding-bottom: 4em;">
+            <div class="col-md-12 text-center">
+              <p>The three different line types for different stages in vessel voyages</p>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-4">
+              <p>A filled line represents the completed route</p>     
+              <img src="../../../assets/customimages/completed-path.svg" alt="completed-path">         
+            </div>
+            <div class="col-md-4">Next Route</div>
+            <div class="col-md-4">Remaining Route</div>
+          </div>
+        </div>
+        
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <!-- <ng-template matStepLabel></ng-template> -->
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+      </mat-step>
+
+      <mat-step>
+        <!-- <ng-template matStepLabel></ng-template> -->
+        You are now done.
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+
+    <!-- Stepper End -->
+  </div>
+
+</div>
+<!-- #endregion info-overlay -->

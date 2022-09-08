@@ -1,0 +1,60 @@
+.summaryLabel-component-v2 {
+  background: #ffffff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #252a32;
+  width: 100%;
+  .badge-header {
+    width: 520px !important;
+    background: #f1f1f2;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #252a32;
+    padding: 6px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+    .value {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    .label {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 12px;
+    }
+    .border_line {
+      border-right: 1px solid #252a32;
+    }
+  }
+  .total-exposure {
+    width: 116px !important;
+    background: #364150;
+    border-radius: 4px;
+    padding: 6px;
+    font-size: 10px;
+    line-height: 12px;
+    .value {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: #ffffff;
+    }
+    .label {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 10px;
+      line-height: 12px;
+      color: #ffffff;
+    }
+  }
+}

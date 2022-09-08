@@ -1,0 +1,484 @@
+<div id="set-price" class="p-l-3 p-b-5 eomdetails eom-closure-details" style="border-bottom: 1px solid #E5E5E5;"
+  *ngIf="headerCollapse" [ngClass]="{ 'disable-eom-closure': pagedisabled==true }">
+  <div class="price-dataset bg-white p-l-11">
+    <div class="price-dataset-row1" style="z-index: 10;">
+      <div id="menu-button" [matMenuTriggerFor]="togglecolumn1" style="float:left;margin-right: 5px;">
+        <div id="menu-button-dots">
+          <div id="dot1" class="dot"></div>
+          <div id="dot2" class="dot"></div>
+          <div id="dot3" class="dot"></div>
+          <div id="dot4" class="dot"></div>
+          <div id="dot5" class="dot"></div>
+          <div id="dot6" class="dot"></div>
+          <div id="dot7" class="dot"></div>
+          <div id="dot8" class="dot"></div>
+          <div id="dot9" class="dot"></div>
+        </div>
+
+
+      </div>
+      <mat-menu class="table-context contract-action" #togglecolumn1="matMenu" yPosition="below" xPosition="before"
+        [overlapTrigger]="false">
+        <div class="tbl-contract" style="width: 190px;">
+          <div class="p-tb-10">
+            <span class="">
+              <img class="p-r-10" src="../../../assets/customicons/copy2.svg" alt="duplicate contract">
+            </span>
+            <span>Duplicate Dataset</span>
+          </div>
+          <div class="b-top p-0 m-b-5"></div>
+          <div class="p-tb-10" (click)="change_rowdensity()">
+            <span>
+              <img class="p-r-10"
+                src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}"
+                alt="export to excel icon">
+            </span>
+            <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display
+              Density Low':'Display Density High'}}</span>
+          </div>
+        </div>
+      </mat-menu>
+      <div class="headerText" *ngIf="showHeadText && !showHeadTextFinal"
+        style="padding-top: 3px;width: 200px;font-weight: 300;font-size:16px">{{pnlTab? 'Profit AND Loss -
+        Draft':'Jounal - Draft'}}</div>
+      <div class="headerText" *ngIf="showHeadTextFinal"
+        style="padding-top: 3px;width: 200px;font-weight: 300;font-size:16px">{{pnlTab? 'Profit AND Loss -
+        Final':'Jounal - Final'}}</div>
+      <div class="subText" *ngIf="showHeadText"
+        style="display:flex; position:relative;bottom: 3px;left:5px;width: 200px;font-size: 11px;">For the period of Oct
+        2020</div>
+
+    </div>
+    <div class="price-dataset-row2 p-r-12" style="z-index: 10;">
+      <div class="dateset" *ngIf="!showHeadText" style="font-size: 11px;margin-bottom: 18px;">Closure Period Upto Oct
+        2020</div>
+      <!--State Changes-->
+      <app-progress-stepper [steps]=stepLevel></app-progress-stepper>
+
+    </div>
+  </div>
+</div>
+<mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+<div class="EOM-tabs">
+  <div id="custom-tabs-v2">
+    <mat-tab-group #alltabs (selectedTabChange)="tabClick($event)"
+      (selectedIndexChange)="activeTabChange(alltabs,alltabs.selectedIndex)" [selectedIndex]="selectedTab"
+      mat-align-tabs="end">
+      <mat-tab #tab [disabled]= !enableTabs>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Summary</div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <div class="grid-in-accordion" style="border-top: 2px solid #E5E5E5;" [ngClass]="{ 'disable-eom-closure': pagedisabled==true }">
+            <div [ngClass]="{'p-b-5':showBorder}" *ngIf="showAccReceivable">
+              <mat-expansion-panel  [disabled]="panel_inactive" (closed)="panelClosed('accReceivable')" (opened)="panelOpened('accReceivable')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle red">
+                      <span class="circle"></span>
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">Accounts Receivable</span>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                  <div class="right-status">
+                    <span>
+                      <span class="circle eom-danger"></span>
+                      <span> Error: <span *ngIf="!pagedisabled">{{count}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                      <span class="divider"></span>
+                      <span class="circle eom-warning"></span>
+                      <span> Warning: <span *ngIf="!pagedisabled">{{count}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                    </span>
+                  </div>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div id="menu-button" *ngIf="showGridMenu" style="position:absolute;z-index: 1;top:31px;left:15px;">
+                    <div id="menu-button-dots">
+                      <div id="dot1" class="dot"></div>
+                      <div id="dot2" class="dot"></div>
+                      <div id="dot3" class="dot"></div>
+                      <div id="dot4" class="dot"></div>
+                      <div id="dot5" class="dot"></div>
+                      <div id="dot6" class="dot"></div>
+                      <div id="dot7" class="dot"></div>
+                      <div id="dot8" class="dot"></div>
+                      <div id="dot9" class="dot"></div>
+                    </div>
+                  </div>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+            <div [ngClass]="{'p-b-5':showBorder}" *ngIf="showAccPayable">
+              <mat-expansion-panel  [disabled]="panel_inactive" (closed)="panelClosed('accPayable')" (opened)="panelOpened('accPayable')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle green">
+                      <span class="circle"></span>
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">Accounts Payable</span>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                  <div class="right-status">
+                    <span>
+                      <span class="circle"></span>
+                      <span> Error: <span *ngIf="!pagedisabled">{{warning}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                      <span class="divider"></span>
+                      <span class="circle"></span>
+                      <span> Warning: <span *ngIf="!pagedisabled">{{warning}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                    </span>
+                  </div>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div id="menu-button" *ngIf="showGridMenu" style="position:absolute;z-index: 1;top:31px;left:15px;">
+                    <div id="menu-button-dots">
+                      <div id="dot1" class="dot"></div>
+                      <div id="dot2" class="dot"></div>
+                      <div id="dot3" class="dot"></div>
+                      <div id="dot4" class="dot"></div>
+                      <div id="dot5" class="dot"></div>
+                      <div id="dot6" class="dot"></div>
+                      <div id="dot7" class="dot"></div>
+                      <div id="dot8" class="dot"></div>
+                      <div id="dot9" class="dot"></div>
+                    </div>
+                  </div>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+            <div [ngClass]="{'p-b-5':showBorder}" *ngIf="showInventory">
+              <mat-expansion-panel  [disabled]="panel_inactive" (closed)="panelClosed('inventory')" (opened)="panelOpened('inventory')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle yellow">
+                      <span class="circle"></span>
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">Inventory</span>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                  <div class="right-status">
+                    <span>
+                      <span class="circle eom-warning"></span>
+                      <span> Error: <span *ngIf="!pagedisabled">{{count}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                      <span class="divider"></span>
+                      <span class="circle eom-warning"></span>
+                      <span> Warning: <span *ngIf="!pagedisabled">{{count}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                    </span>
+                  </div>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div id="menu-button" *ngIf="showGridMenu" style="position:absolute;z-index: 1;top:31px;left:15px;">
+                    <div id="menu-button-dots">
+                      <div id="dot1" class="dot"></div>
+                      <div id="dot2" class="dot"></div>
+                      <div id="dot3" class="dot"></div>
+                      <div id="dot4" class="dot"></div>
+                      <div id="dot5" class="dot"></div>
+                      <div id="dot6" class="dot"></div>
+                      <div id="dot7" class="dot"></div>
+                      <div id="dot8" class="dot"></div>
+                      <div id="dot9" class="dot"></div>
+                    </div>
+                  </div>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+            <div [ngClass]="{'p-b-5':showBorder}" *ngIf="showDerivatives">
+              <mat-expansion-panel  [disabled]="panel_inactive" (closed)="panelClosed('derivatives')" (opened)="panelOpened('derivatives')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle yellow">
+                      <span class="circle"></span>
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">Derivatives</span>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                  <div class="right-status">
+                    <span>
+                      <span class="circle eom-warning"></span>
+                      <span> Error: <span *ngIf="!pagedisabled">{{count}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                      <span class="divider"></span>
+                      <span class="circle eom-warning"></span>
+                      <span> Warning: <span *ngIf="!pagedisabled">{{count}}</span><span
+                          *ngIf="pagedisabled">0</span></span>
+                    </span>
+                  </div>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div id="menu-button" *ngIf="showGridMenu" style="position:absolute;z-index: 1;top:31px;left:15px;">
+                    <div id="menu-button-dots">
+                      <div id="dot1" class="dot"></div>
+                      <div id="dot2" class="dot"></div>
+                      <div id="dot3" class="dot"></div>
+                      <div id="dot4" class="dot"></div>
+                      <div id="dot5" class="dot"></div>
+                      <div id="dot6" class="dot"></div>
+                      <div id="dot7" class="dot"></div>
+                      <div id="dot8" class="dot"></div>
+                      <div id="dot9" class="dot"></div>
+                    </div>
+                  </div>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+          </div>
+        </ng-container>
+        <app-footer-v2 *ngIf="showFooter" [id]="'eomClosure-details-footer'" [footerPosition] = "'40px'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+      </mat-tab>
+      <mat-tab #tab [disabled]=enableTabs>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">P&L</div>
+          </div>
+        </ng-template>
+        <ng-container *ngIf="loadPNL">
+          <app-pl-details></app-pl-details>
+        </ng-container>
+      </mat-tab>
+      <mat-tab #tab [disabled]=enableTabs>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Journals</div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <div class="grid-in-accordion" [ngClass]="{ 'disable-eom-closure': pagedisabled==true }">
+            <div [ngClass]="{'p-b-5':showJournalBorder}" *ngIf="showDerivativeJournals">
+              <mat-expansion-panel [disabled]="panel_inactive" (closed)="journalPanelClosed('derivativeJournals')" (opened)="journalPanelOpened('derivativeJournals')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle slim grey">
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">Derivative Journals</span>
+                      </div>
+                    </div>
+                    <div class="accordion-detail-right">
+                      <div class="text">
+                        <div class="light">Credit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                      <div class="divider"></div>
+                      <div class="text">
+                        <div class="light">Debit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions_journals" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+            <div [ngClass]="{'p-b-5':showJournalBorder}" *ngIf="showInvJournals">
+              <mat-expansion-panel [disabled]="panel_inactive" (closed)="journalPanelClosed('invJournals')" (opened)="journalPanelOpened('invJournals')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle slim grey">
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">Inventory Journals</span>
+                      </div>
+                    </div>
+                    <div class="accordion-detail-right">
+                      <div class="text">
+                        <div class="light">Credit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                      <div class="divider"></div>
+                      <div class="text">
+                        <div class="light">Debit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions_journals" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+            <div [ngClass]="{'p-b-5':showJournalBorder}" *ngIf="showArJournals">
+              <mat-expansion-panel [disabled]="panel_inactive" (closed)="journalPanelClosed('arJournals')" (opened)="journalPanelOpened('arJournals')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle slim grey">
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">AR Journals</span>
+                      </div>
+                    </div>
+                    <div class="accordion-detail-right">
+                      <div class="text">
+                        <div class="light">Credit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                      <div class="divider"></div>
+                      <div class="text">
+                        <div class="light">Debit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions_journals" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+            <div [ngClass]="{'p-b-5':showJournalBorder}" *ngIf="showApJournals">
+              <mat-expansion-panel [disabled]="panel_inactive" (closed)="journalPanelClosed('apJournals')" (opened)="journalPanelOpened('apJournals')">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight" class=" ">
+                  <mat-panel-title>
+                    <div class="panel-indicator-with-circle slim grey">
+                    </div>
+                    <div class="accordion-detail">
+                      <div class="content">
+                        <div class="open-close-arrow">
+                          <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                        </div>
+                        <span class="panel-title m-l-9">AP Journals</span>
+                      </div>
+                    </div>
+                    <div class="accordion-detail-right">
+                      <div class="text">
+                        <div class="light">Credit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                      <div class="divider"></div>
+                      <div class="text">
+                        <div class="light">Debit Total : </div>
+                        <div class="bold">1,050,000 USD</div>
+                      </div>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                  <div style="position:relative;background-color: #EAECEE; ">
+                    <div class="row m-0" style="width:100%;height: calc(100vh - 256px);">
+                      <ag-grid-angular domLayout='normal' style="width: 100%;height:100% ;border-top:none;"
+                        [gridOptions]="gridOptions_journals" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                        class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+                    </div>
+                  </div>
+                </ng-template>
+              </mat-expansion-panel>
+            </div>
+          </div>
+        </ng-container>
+        <app-footer-v2 *ngIf="showJournalFooter" [id]="'eomClosure-details-journals-footer'" [footerPosition] = "'40px'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<div *ngIf="showProgressBar"
+  style="position: fixed;bottom:100px;width:100%;font-size: 16px;height: 100px;display: flex;align-items: center;justify-content: center;">
+  {{ summaryloadingText? 'EOM Process initiated':'P&L is currently being generated.'}}</div>
+<div class="details-footer">
+  <div matTooltip="Return to list" matTooltipShowDelay="500">
+    <button mat-raised-button class="footer-button" (click)="goBack()">
+      <span style="top: -1px;position: relative;">Return to list</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,141 @@
+[
+    {
+        "type": "component",
+        "name": "Components",
+        "collapseList": false,
+        "list": [
+            {
+                "Id": 1,
+                "key": "autocomplete",
+                "name": "Auto-complete with Search",
+                "items": [
+                    {
+                        "key": "autocomplete",
+                        "title": "Auto-complete with Search Popup",
+                        "displayName": "Auto-complete with Search Popup",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 2,
+                "key": "buttonToggle",
+                "name": "Button Toggle",
+                "items": [
+                    {
+                        "key": "buttonToggle",
+                        "title": "Button Toggles are on/off toggles with the appearance of a button.",
+                        "displayName": "Button Toggle with more option",
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 3,
+                "key": "chips-group",
+                "name": "Chips Group",
+                "items": [
+                    {
+                        "key": "chips-group",
+                        "title": "This component displays chips group used within the product.",
+                        "displayName": "Chips Group",
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 4,
+                "key": "expansion-popup",
+                "name": "Expansion Popup",
+                "items": [
+                    {
+                        "key": "expansion-popup",
+                        "title": "This component displays expansion popup used within the ag-grid.",
+                        "displayName": "Expansion Popup",
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 5,
+                "key": "add-delete-info",
+                "name": "Add/Delete Information",
+                "items": [
+                    {
+                        "key": "add-delete-info",
+                        "title": "This component allows to Add/Delete Information.",
+                        "displayName": "Add/Delete Information",
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "add-delete-details",
+                        "title": "This component allows to Add/Delete Details.",
+                        "displayName": "Add/Delete Details",
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 6,
+                "key": "select-radio",
+                "name": "Select with Radio",
+                "items": [
+                    {
+                        "key": "select-radio",
+                        "title": "Select with Radio",
+                        "displayName": "Select with Radio",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 7,
+                "key": "badge",
+                "name": "Badges",
+                "items": [
+                    {
+                        "key": "badge",
+                        "title": "Badges",
+                        "displayName": "Badges",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "badge-dropdown",
+                        "title": "Badges with Dropdown",
+                        "displayName": "Badges with Dropdown",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 8,
+                "key": "modal",
+                "name": "Pop-up Modal",
+                "items": [
+                    {
+                        "key": "modal",
+                        "title": "Pop-up Modal",
+                        "displayName": "Pop-up Modal",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            }
+           
+        ]
+    }
+]

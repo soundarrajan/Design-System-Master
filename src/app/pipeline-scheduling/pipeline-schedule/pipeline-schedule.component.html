@@ -1,0 +1,216 @@
+<mat-progress-bar mode="determinate" class="progress-positon" [value]="progressbarValue" *ngIf="!showProgressBar" ></mat-progress-bar>
+<div class="pipeline-scheduling-home price-list-page" [ngClass]="{'aggrid-loading':isLoading==false}">
+  <div class="price-list-header p-l-15 p-r-15">
+     <!-- New Menu Button -->
+     <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+        <div id="menu-button-dots" [ngClass]="{'refresh-loading':isRefresh==false}">
+            <div id="dot1" class="dot"></div>
+            <div id="dot2" class="dot"></div>
+            <div id="dot3" class="dot"></div>
+            <div id="dot4" class="dot"></div>
+            <div id="dot5" class="dot"></div>
+            <div id="dot6" class="dot"></div>
+            <div id="dot7" class="dot"></div>
+            <div id="dot8" class="dot"></div>
+            <div id="dot9" class="dot"></div>
+        </div>            
+    </div>
+    <!-- New Menu Button: End -->
+    <!-- <span style="height: 25px;" >
+      <app-headerchip [chipStatus]="'active-chip'" [heading]="'Default'" [ngClass]="{'refresh-loading':isRefresh==false}"></app-headerchip>
+      <app-headerchip  [heading]="' Physical an Vitol'" [ngClass]="{'refresh-loading':isRefresh==false}"></app-headerchip>
+      <app-headerchip  [heading]="'BP Marine Fuels'" [ngClass]="{'refresh-loading':isRefresh==false}"></app-headerchip>
+      <app-morefilterchip  [ngClass]="{'refresh-loading':isRefresh==false}"></app-morefilterchip>
+      </span> -->
+      <!-- Fix for fixing resolution change issue -->
+      <div #headerChip (window:resize)="onResize()" class="header-chip-container">
+        <span  style="height: 25px;overflow: hidden;">
+          <app-headerchip *ngFor="let chip of showChips;let i=index" [chipStatus]="i==0?'active-chip':'inactive-chip'" [heading]="chip" [ngClass]="{'refresh-loading':isRefresh==false}"></app-headerchip>
+      <!-- <app-headerchip  [heading]="' Physical an Vitol'" [ngClass]="{'refresh-loading':isRefresh==false}"></app-headerchip>
+      <app-headerchip  [heading]="'BP Marine Fuels'" [ngClass]="{'refresh-loading':isRefresh==false}"></app-headerchip> -->
+        </span>
+        <div style="height: 25px;">
+          <app-morefilterchip  [ngClass]="{'refresh-loading':isRefresh==false}"></app-morefilterchip>
+        </div>
+      </div>
+  
+  <!-- <span style="margin-left:8px " class="header-chip">
+    <mat-chip-list [ngClass]="{'refresh-loading':isRefresh==false}">
+      <mat-chip class="active-chip text-center" matTooltip="Shell D14 Physical" [matTooltipShowDelay]="500">
+        <div class="truncate-f100 text-center title-divider">
+          Default
+        </div>
+        <div class="pin-icon">
+          <div class="img"></div>
+         </div>
+      </mat-chip>
+  
+      <mat-chip class="inactive-chip text-center" matTooltip="Physical an Vitol" [matTooltipShowDelay]="500">
+        <div class="truncate-f100 text-center title-divider">
+          Physical an Vitol
+        </div>
+        <div class="pin-icon">
+          <div class="img"></div>
+         </div>
+      </mat-chip>
+  
+      <mat-chip class="inactive-chip text-center" matTooltip="BP Marine Fuels" [matTooltipShowDelay]="500">
+        <div class="truncate-f100 text-center title-divider">
+          BP Marine Fuels
+        </div>
+        <div class="pin-icon">
+          <div class="img"></div>
+         </div>
+      </mat-chip>
+  
+  
+      <div class="expand-filters"  (click)="openAvailableFilter()" matTooltip="Expand Filters">
+        <img src="../../../assets/customicons/dot-group.svg" alt="More Filters">
+      </div>
+  
+    </mat-chip-list>
+</span> -->
+<div class="header-right">
+<div class="add-button-block">
+    <div class="add-button">
+      <button class="blue-button h-25 w-28" (click)=" changeRoute(); startTimer(); refresh();">
+          <img id="refresh-icon" src="../../../assets/customicons/refresh_w.svg" alt="refresh">
+      </button>
+    </div>
+<div class="add-button long-btn" matTooltip="Add to inventory" matTooltipShowDelay="500">
+  <button mat-raised-button class="green-button h-25"><span class="button-ellipsis">Add to inventory</span></button>
+</div>
+<div class="add-button long-btn" matTooltip="Add to Book Out" matTooltipShowDelay="500">
+  <button mat-raised-button class="green-button h-25" disabled><span class="button-ellipsis">Add to Book Out</span></button>
+</div>
+<div class="add-button long-btn" matTooltip="Add to Dropship" matTooltipShowDelay="500">
+  <button mat-raised-button class="green-button h-25" disabled><span class="button-ellipsis">Add to Dropship</span></button>
+</div>
+<div class="add-button long-btn" matTooltip="Add to Net Out" matTooltipShowDelay="500">
+  <button mat-raised-button class="green-button h-25" disabled><span class="button-ellipsis">Add to Net Out</span></button>
+</div>
+</div>
+<!-- <div class="refresh-toggle">
+  <div class="refresh-icon">
+    <img class="p-r-10" src="../../../assets/customicons/refresh_blue.svg" alt="refresh">
+  </div>
+  <div class="slide-toggle" (click)="headerToggle();">
+    <img class="p-r-10" src="../../../assets/customicons/toggle-arrow.svg" class="header-slide" alt="header-slide">
+  </div>
+</div> -->
+</div>
+  </div>
+  <!--Dropdown menu-->
+    <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+        <div class="tbl-context no-border">
+            <!-- <div class="b-bottom p-tb-10">
+              <span>
+                <img class="p-r-10" src="../../../assets/customicons/context-new-trade.svg" alt="new Trade icon">
+              </span>
+              <span>Add New Price</span>
+            </div> -->
+            <div class="p-tb-10">
+              <span>
+                <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+              </span>
+              <span>Save Preference As</span>
+            </div>
+            <!-- <div class="p-tb-10">
+              <span>
+                <img class="p-r-10" src="../../../assets/customicons/context-export-excel.svg" alt="export to excel icon">
+              </span>
+              <span>Export To Excel</span>
+            </div> -->
+            <div class="b-top p-0 m-b-5"></div>
+            <div class="p-tb-10" (click)="change_rowdensity()">
+              <span>
+                <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+              </span>
+              <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+            </div>
+          </div>
+    </mat-menu>
+    <div style="height: 100%;width: 100%; padding-top: 2px;" class="aggrid-container"
+    [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}">
+    <div [ngStyle]="grid1Width" appResizable (onDrag)="onWidthChange()">
+      <div id="grid1" style="height: 35px;margin-right: 6px;" > 
+      <!-- <div id="grid1" [ngStyle]="grid1Width" style="height: 100%;padding-right:6px;">  -->
+        <div id="expandId1" >
+          <div class="aggrid-headercontenet">
+            <div class="left-item" [ngClass]="{'hide':hidePurchaseBadge}">
+              <app-badge [badgeColor]="'amber'" [value]="'8,000'" [unit]="'GAL'"></app-badge>
+            </div>
+            <div class="right-item" style="display: flex;margin-right: 10px;">
+              <app-badge [badgeColor]="''" [heading]="'Total Quantity'" [value]="'80,0000'" [unit]="'GAL'"
+                class="headerWidth" [ngClass]="{'hide':hidePurchaseBadge}"></app-badge>
+              <div  (click)="resizeTable(!isExpandable1,false)"
+                style="cursor:pointer;z-index: 1;padding:4px 0px;margin-right: -10px;" class="resizeIcon">
+                <span *ngIf="!isExpandable1; else reverseArrow1">
+                  <img src="../../../assets/customicons/expandRight.svg" alt="Expand"></span>
+                <ng-template #reverseArrow1>
+                  <span>
+                    <img src="../../../assets/customicons/expandLeft.svg" alt="Collapse"></span>
+                </ng-template>
+              </div>
+            </div>
+            <div class="center-item text-ellipsis">Purchase</div>
+          </div>
+        </div>
+        <ag-grid-angular domLayout='normal' style="width: 100%;" [ngStyle]="isCollapsed?{'height': 'calc( 100vh - 116px )'} : {'height': 'calc( 100vh - 206px'}"
+          [gridOptions]="gridOptions_purchase" class="ag-theme-material aggrid-narrow-table aggrid-pinned-shadow ps-purchase-grid-height-v2 angular-v9" (rowSelected)="onRowSelected(true)">
+        </ag-grid-angular>
+        <!-- <div style="font-size: 12px;font-weight:500;background-color: white; height: 35px;color: #828282; padding: 0px 10px;">
+            <p class="aggrid-totalResults" style="width: 50%; float:left;margin:10px 0px;">
+              <span>Total Results :</span><span class="aggrid-rowCount">{{rowCount_purchase}}</span>
+            </p>
+            <div class="export-excel" style="width: 130px;float:right;height: 100%;border-left: 1px solid #EAECEE;padding-left: 10px;">
+              Export to Excel
+              <div class="export-excel-icon"></div>
+            </div>
+           
+          </div> -->
+          <app-footer-v2 id="pagination1" [footerWidth] = "footerWidth" [ngClass]="expandgrid1 ? 'expanded' : 'collapsed'" class="dual-footer" [singleGrid]="false" [dualfooter]="true" [doublePagination]="false" [maxSize]="5" [rowCount]="rowCount_purchase"></app-footer-v2>
+      </div>
+      <div class="vector"><img  class="scroll" style="margin-right: -13px;" src="../../../assets/customicons/scroll.svg" alt="Scroll"></div>
+  </div>
+    <div id="grid2" [ngStyle]="grid2Width" style="height: 100%;flex:2">
+      <div id="expandId2">
+        <div class="aggrid-headercontenet" style="position: absolute;z-index: 1;background: transparent;" [style.width.px]="salesHeaderWidth">
+          <div class="left-item" style="display: flex;">
+            <div (click)="resizeTable(false,!isExpandable2)"
+              style="cursor: pointer;z-index: 1;padding:4px 10px 4px 8px;margin-left: -20px;" class="resizeIcon">
+              <span *ngIf="!isExpandable2; else reverseArrow2">
+                <img src="../../../assets/customicons/expandLeft.svg" alt="Expand"></span>
+              <ng-template #reverseArrow2>
+                <span>
+                  <img src="../../../assets/customicons/expandRight.svg" alt="Collapse"></span>
+              </ng-template>
+            </div>
+            <app-badge [badgeColor]="'teal'" [value]="'50,000'" [unit]="'BBL'"
+              class="headerWidth" [ngClass]="{'hide':hideSalesBadge}"></app-badge>
+          </div>
+          <div class="right-item" [ngClass]="{'hide':hideSalesBadge}">
+            <app-badge [badgeColor]="''" [heading]="'Total Quantity'" [value]="'80,0000'" [unit]="'GAL'"
+              class="headerWidth"></app-badge>
+          </div>
+          <div class="center-item text-ellipsis">Sales</div>
+        </div>
+      </div>
+      <ag-grid-angular [getMainMenuItems]="getMainMenuItems" domLayout='normal'
+        style="width: 100%;" [ngStyle]="isCollapsed?{'height': 'calc( 100vh - 79px )'} : {'height': 'calc( 100vh - 169px'}" [gridOptions]="gridOptions_sales"
+        class="ag-theme-material aggrid-pinned-shadow ps-sale-grid-height-v2 angular-v9" (rowSelected)="onRowSelected(false)"></ag-grid-angular>
+        <!-- <div style="font-size: 12px;font-weight:500;background-color: white; height: 35px;color: #828282; padding: 0px 10px;">
+          <p class="aggrid-totalResults" style="width: 50%; float:left;margin:10px 0px;">
+            <span>Total Results :</span><span class="aggrid-rowCount">{{rowCount_sales}}</span>
+          </p>
+          <div class="export-excel" style="width: 130px;float:right;height: 100%;border-left: 1px solid #EAECEE;padding-left: 10px;">
+            Export to Excel
+            <div class="export-excel-icon"></div>
+          </div>
+         
+        </div> -->
+        <app-footer-v2 id="pagination2" [footerWidth] = "footerWidth" [ngClass]="expandgrid2 ? 'expanded' : 'collapsed'" class="dual-footer" [singleGrid]="false" [maxSize]="5" [dualfooter]="true" [doublePagination]="true" [rowCount]="rowCount_sales"></app-footer-v2>
+    </div>
+  </div>
+</div>
+        

@@ -1,0 +1,196 @@
+
+<!-- #region FILTER POPUP -->
+<div class="dark-filter-popup-wrapper" style="height: 100vh !important;">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="filter-title pt-2">Filter Options</div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- #region Left Column -->
+      <div class="col-sm-6 br-black pl-0">
+
+        <!-- #region Vessel Selection -->
+        <div class="row">
+          <div class="col-sm-12 p-0">
+            <div class="section-title">Vessel Selection</div>
+
+            <section id="vessel-selection">
+
+                <mat-form-field appearance="outline" class="pt-3">
+                    <mat-label>Search &amp; Select Vessels</mat-label>
+                    <input #acVessel matInput id="vesselSearch" type="text" placeholder="Search For Vessels" aria-label="Number" value=""
+                      [formControl]="serachVesselControl" [matAutocomplete]="auto" [autofocus]="false" (click)="searchVesselList()">
+                  
+                    <mat-icon matPrefix>search</mat-icon>
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let vessel of this.searchVesselsList" [value]="vessel.VesselIMONO">
+                        {{vessel.VesselName}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+
+              <!-- #region Iterate Loop - Vessel Types List -->
+              <div id="vesselTypeWrapper">
+                <!-- {{this.vesselTypes}} -->
+               
+                <div class="grey-border-box" *ngFor="let vesselByType of this.vesselTypes;let i=index;">
+                  <div class="vessel-count float-left">{{vesselByType.count}}</div>
+                  <div class="float-right">
+                    <mat-checkbox class="dark-checkbox noborder" labelPosition="before" name="vesselType" [(ngModel)]="vesselByType.IsSelected"
+                      (click)="this.vesselTypeSelection(vesselByType.name,vesselByType.IsSelected)" [disabled]="false">
+                      <div class="truncate-120 text-right pr-3">{{vesselByType.name}}</div>                      
+                    </mat-checkbox>                     
+                  </div>
+                </div>
+              </div>
+              <!-- #endregion Iterate Loop - Vessel Types List -->
+              <div id="vesselListWrapper" class="vessel-list-wrapper pt-3 mb-3" style="height: 42vh;">
+
+                <!-- #region Iterate Loop - Vessel List -->
+                <div class="col-sm-12 pb-1" *ngFor="let vessel of this.vesselTypeSelected;let k=index;" matTooltip="{{vessel.VesselName}}" [matTooltipShowDelay]="500">
+                  <mat-checkbox class="dark-checkbox noborder" labelPosition="after" name="vessels" [(ngModel)]="vessel.IsSelected" [disabled]="false">
+                    <div class="truncate-160">{{vessel.VesselName}}&nbsp;</div>
+                  </mat-checkbox>
+                </div>
+                <!-- #endregion Iterate Loop - Vessel List -->
+
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- #endregion Vessel Selection -->
+
+      </div>
+      <!-- #endregion Left Column -->
+
+      <!-- #region Right Column -->
+      <div class="col-sm-6 pr-0">
+
+        <!-- #region Fuel Status -->
+        <div class="row">
+          <div class="col-sm-12 p-0">
+
+            <section id="fuel-status">
+              <div class="section-title pb-3">Fuel Status</div>
+
+              <div id="fuel-status-wrapper">
+
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="Threshold Limit" [(ngModel)]="this.lastSelectedROB">
+                    <mat-option *ngFor="let item of ddlThresholdLimit" [value]="item">{{item}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+
+                <!-- #region Iterate Loop - Fuel Status -->
+                <div *ngFor="let fuelStatus of this.data.fuelStatus" [matTooltip]="fuelStatus.FuelStatusCount" [matTooltipShowDelay]="700"
+                  [ngClass]="[fuelStatus.Color==='red' ? 'grey-border-box brl-red'  :fuelStatus.Color==='orange' ? 'grey-border-box brl-orange' 
+                  : 'grey-border-box brl-blue']">
+                  <!-- <div class="vessel-count float-left">{{fuelStatus.Count}}</div> -->
+                  <div class="float-right">                      
+
+                    <mat-checkbox class="dark-checkbox noborder" [(ngModel)]="fuelStatus.IsSelected" (click)="this.selectVesselByFuelStatus(fuelStatus.Color,fuelStatus.IsSelected)"
+                      labelPosition="before" [disabled]="false">
+                      <div class="truncate-120 pr-3">{{fuelStatus.FuelStatusCount}} Vessels</div>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div *ngIf="this.data.fuelStatus ===undefined 
+                || this.data.fuelStatus.length==0"
+                >
+                  <!-- <div class="vessel-count float-left">{{fuelStatus.Count}}</div> -->
+                  Loading....
+                </div>
+                <!-- #endregion Iterate Loop - Fuel Status -->
+
+                <!-- ACTUAL HTML, UPDATE AFTER DATA IS SUITABLE  -->
+                <!-- #region Iterate Loop - Fuel Status -->
+                <!-- <div class="grey-border-box brl-red">
+                  <div class="float-right">
+                    <div class="float-left">
+                      <div class="vessel-count pr-3">120</div>
+                    </div>
+                    <div class="float-right">
+                      <mat-checkbox class="dark-checkbox noborder" labelPosition="before" [disabled]="false">
+                        <div class="text-right pr-3">Vessels</div>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- #endregion Iterate Loop - Fuel Status -->
+
+
+
+                <div class="grey-border-box" matTooltip="No Destination" [matTooltipShowDelay]="700">
+                  <div class="vessel-count float-left">0</div>
+                  <div class="float-right">
+                    <mat-checkbox class="dark-checkbox noborder" name="NoDestinationSelected" [(ngModel)]="this.NoDestinationSelected" labelPosition="before"
+                      [disabled]="false">
+                      <div class="truncate-120 pr-3">No Destination</div>
+                    </mat-checkbox>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+          </div>
+        </div>
+        <!-- #endregion Fuel Status -->
+
+        <!-- #region Request Status -->
+        <div class="row pt-2">
+          <div class="col-sm-12 p-0">
+            <section id="request-status">
+              <div class="section-title pb-3">Bunker Request Status</div>
+              <div id="request-status-wrapper" style="height: 42vh !important;">
+
+                <!-- #region Iterate Loop - Request Status -->
+                
+                <div class="grey-border-box" *ngFor="let bunkerStatus of bunkerRequestStatusObj | keyvalue;let k=index" matTooltip="{{bunkerStatus.StatusName}}"
+                  [matTooltipShowDelay]="700">
+                  <div class="vessel-count float-left">{{bunkerStatus.value}}</div>
+                  <div class="float-right">
+                    <mat-checkbox class="dark-checkbox noborder" name="bunkerStatus" #myCheckbox   (change)="this.selectVesselByRequestStatus(bunkerStatus.key,$event)"
+                    labelPosition="before" [disabled]="false">
+                      <div class="truncate-120 text-right pr-3">{{bunkerStatus.key}}</div>
+                    </mat-checkbox>
+                  </div>
+                </div>
+
+                
+
+                <!-- #endregion Iterate Loop - Request Status -->
+
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- #endregion Request Status -->
+
+      </div>
+      <!-- #endregion Right Column -->
+    </div>
+  </div>
+
+  <!-- #region Bottom Action Bar -->
+  <div class="row filter-bottom-bar">
+    <div class="col-sm-12 p-0 mx-auto">
+      <div class="action-area d-flex justify-content-between">
+        <button class="blue-button" mat-button matTooltip="Apply Filters" (click)="this.ApplyFilters($event)" [matTooltipShowDelay]="500">Apply Filter</button>
+        <button class="blue-button" mat-button matTooltip="Reset Filters" [matTooltipShowDelay]="500">Reset Filter</button>
+        <button class="blue-button" mat-button matTooltip="Save Selected Filters as a Preference"
+          [matTooltipShowDelay]="500">Save Preference As</button>
+      </div>
+    </div>
+  </div>
+  <!-- #endregion Bottom Action Bar -->
+
+</div>
+<!-- #endregion FILTER POPUP -->
+
+<!-- </div> -->

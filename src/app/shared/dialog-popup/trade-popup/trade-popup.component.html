@@ -1,0 +1,26 @@
+<div id="addNewTradePopup">
+<h2 mat-dialog-title>Choose the Type of Trade
+    <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+</h2>
+
+<hr>
+
+<mat-dialog-content>
+  <!-- NEW TRADE POPUP -->
+  <div id="newTradePopupContent">
+    <mat-radio-group>
+      <!-- Iterate radio button loop here -->
+      <mat-radio-button value="1">Physical</mat-radio-button>
+      <mat-radio-button value="2">Futures</mat-radio-button>
+      <mat-radio-button value="3">Swaps</mat-radio-button>
+      <mat-radio-button value="4">EFP</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions class="float-right">
+  <button mat-button [mat-dialog-close]="true">CANCEL</button>
+  <button class="blue-button" mat-button [mat-dialog-close]="true">PROCEED</button>
+</mat-dialog-actions>
+</div>

@@ -1,0 +1,387 @@
+[
+    {
+        "type": "component",
+        "name": "Components",
+        "collapseList": false,
+        "list": [
+            {
+                "Id": 1,
+                "key": "input",
+                "name": "Input",
+                "items": [
+                    {
+                        "key": "input",
+                        "title": "Basic input field for user to type in data.",
+                        "displayName": "Basic Input Field",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "inputwithautocomplete",
+                        "title": "Input with autocomplete functionality",
+                        "displayName": "Input with Autocomplete",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "inputwithselect",
+                        "title": "A combination of input field and dropdown field within the same component.",
+                        "displayName": "Input with Dropdown",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "inputwithlabels",
+                        "title": "Input field with readonly labels on the side",
+                        "displayName": "Input with Labels",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "inputwithnavigationandsearch",
+                        "title": "Input field with (1) Navigation icon which enables user to navigate to another page. (2) Search icon which opens a pop up screen.",
+                        "displayName": "Input with Navigation and Search Icon",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 2,
+                "key": "select",
+                "name": "Select",
+                "items": [
+                    {
+                        "key": "select",
+                        "title": "Basic dropdown list from which user can choose the data.",
+                        "displayName": "Basic Select Field",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 3,
+                "key": "datepicker",
+                "name": "Datepicker",
+                "items": [
+                    {
+                        "key": "datepicker",
+                        "title": "Datepicker",
+                        "displayName": "Datepicker",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 4,
+                "key": "tabs",
+                "name": "Tabs",
+                "items": [
+                    {
+                        "key": "tabs",
+                        "title": "Tabs organize content into separate views where only one view can be visible at a time.",
+                        "displayName": "Tabs",
+                        "descriptionList": [
+                            {
+                                "subTitle": "Active Tab",
+                                "subDesc": "Active tab is the one which is currently open and whose container is displayed. Only one tab can be active at a time."
+                            },
+                            {
+                                "subTitle": "Inactive Tabs",
+                                "subDesc": "Inactive tabs are the ones which is currently closed."
+                            },
+                            {
+                                "subTitle": "Disabled Tabs",
+                                "subDesc": "User wont be able to access the disabled tabs as the content is not yet available for display."
+                            }
+                        ],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "tabs_header",
+                        "title": "List screen header tabs and this layout is followed if there is more than one tab.",
+                        "displayName": "Tabs",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 6,
+                "key": "labels",
+                "name": "Labels",
+                "items": [
+                    {
+                        "key": "legend1",
+                        "title": "",
+                        "displayName": "Legend",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "legend2",
+                        "title": "",
+                        "displayName": "Legend",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "summaryLabel",
+                        "title": "",
+                        "displayName": "Summary",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "readonlyInfoLabel",
+                        "title": "",
+                        "displayName": "Read-only information",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "conversionLabel",
+                        "title": "",
+                        "displayName": "Read-only conversion information",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "conversionEditable",
+                        "title": "",
+                        "displayName": "Editable Conversion",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "summarywithPopup",
+                        "title": "",
+                        "displayName": "Summary with Popup",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "datawithStatus",
+                        "title": "",
+                        "displayName": "Movement Id with different status",
+                        "descriptionList": [
+                            {
+                                "subTitle": "Empty Status",
+                                "subDesc": "Use data key class 'status status-empty' to get the required styles."
+                            },
+                            {
+                                "subTitle": "Planned Status",
+                                "subDesc": "Use data key class 'status status-planned' to get the required styles."
+                            },
+                            {
+                                "subTitle": "Verified Status",
+                                "subDesc": "Use data key class 'status status-verified' to get the required styles."
+                            }
+                        ],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 8,
+                "key": "button",
+                "name": "Button",
+                "items": [
+                    {
+                        "key": "button",
+                        "title": "Button",
+                        "displayName": "Button",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    },
+                    {
+                        "key": "moleculebutton",
+                        "title": "Molecule Button",
+                        "displayName": "Molecule Button",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 8,
+                "key": "buttonToggle",
+                "name": "Button Toggle",
+                "items": [
+                    {
+                        "key": "buttonToggle",
+                        "title": "Button Toggles are on/off toggles with the appearance of a button.",
+                        "displayName": "Button Toggle",
+                        "descriptionList": [
+                            {
+                                "subTitle": "",
+                                "subDesc": "This component takes in an array of button names as input. Based on this array values the button count and names varies."
+                            }
+                        ],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 7,
+                "key": "chips",
+                "name": "Chips",
+                "items": [
+                    {
+                        "key": "chips",
+                        "title": "This component displays the different types of chips used within the product.",
+                        "displayName": "Basic Chips",
+                        "descriptionList": [
+                            {
+                                "subTitle": "Active chips",
+                                "subDesc": "Use class='custom-chip-type1 active' to get the required styles."
+                            },
+                            {
+                                "subTitle": "Inactive chips",
+                                "subDesc": "Use class='custom-chip-type1 inactive' to get the required styles."
+                            },
+                            {
+                                "subTitle": "New status chips",
+                                "subDesc": "Use class='custom-chip-type2 blue' to get the required styles."
+                            },
+                            {
+                                "subTitle": "Confirmed status chips",
+                                "subDesc": "Use class='custom-chip-type2 green' to get the required styles."
+                            },
+                            {
+                                "subTitle": "Settled status chips",
+                                "subDesc": "Use class='custom-chip-type2 settled darkgreen' to get the required styles."
+                            }
+                        ],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 7,
+                "key": "progress_stepper",
+                "name": "Progress Stepper",
+                "items": [
+                    {
+                        "key": "progress_stepper",
+                        "title": "Progress Stepper",
+                        "displayName": "Progress Stepper",
+                        "descriptionList": [
+                            {
+                                "subTitle": "",
+                                "subDesc": "This component takes in an array of objects which specifies the index, name, status and classes to be used. Based on the input data the respective progress bar stepper is displayed."
+                            }
+                        ],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 7,
+                "key": "smart_filter",
+                "name": "Smart Filter",
+                "items": [
+                    {
+                        "key": "smart_filter",
+                        "title": "Smart Filter",
+                        "displayName": "Smart Filter",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 7,
+                "key": "header_filter_chips",
+                "name": "Header Filter Chips",
+                "items": [
+                    {
+                        "key": "filter_list",
+                        "title": "Filter List",
+                        "displayName": "Filter List",
+                        "descriptionList": [],
+                        "enableThemeSwitch": true,
+                        "enableCodeView": true
+                    }
+                ]
+            },
+            {
+                "Id": 9,
+                "key": "dragDropFiles",
+                "name": "File Upload - Drag and Drop",
+                "items": [
+                    {
+                        "key": "dragDropFiles",
+                        "title": "File upload by drag and drop.",
+                        "displayName": "File Upload - Drag and Drop",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "techoil-elements",
+        "name": "UI Elements",
+        "collapseList": false,
+        "list": [
+            {
+                "Id": 10,
+                "key": "forecast",
+                "name": "Pricing Forecast",
+                "items": [
+                    {
+                        "key": "forecast",
+                        "title": "Pricing Forecast",
+                        "displayName": "Pricing Forecast",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": false
+                    }
+                ]
+            },
+            {
+                "Id": 12,
+                "key": "aggrid",
+                "name": "Ag-Grid",
+                "items": [
+                    {
+                        "key": "aggrid",
+                        "title": "Ag-Grid",
+                        "displayName": "Ag-Grid with editable cells",
+                        "descriptionList": [],
+                        "enableThemeSwitch": false,
+                        "enableCodeView": false
+                    }
+                ]
+            }
+        ]
+    }
+]

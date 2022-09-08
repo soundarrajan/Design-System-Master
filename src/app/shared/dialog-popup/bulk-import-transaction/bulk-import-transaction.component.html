@@ -1,0 +1,17 @@
+<div class="bulk-import-transaction">
+  <p>Bulk Import LCFS Transactions</p>
+  <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+  <hr>
+  <div class="browse-file m-t-25">
+    <span class="text">Choose  file to import</span>
+    <input type="text" id="file-name" [value]="selectedFile"/>
+    <label for="file-upload" class="custom-file-upload">
+      Browse
+   </label>
+   <input id="file-upload" type="file" (change)="fileEvent($event)"/>
+  </div>
+  <mat-dialog-actions class="float-right">
+    <button mat-button [mat-dialog-close]="true">CANCEL</button>
+    <button class="blue-button" mat-button [mat-dialog-close]="true" (click)="bulkImportStatus();">PROCEED</button>
+  </mat-dialog-actions>
+</div>

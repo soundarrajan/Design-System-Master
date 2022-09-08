@@ -1,0 +1,9 @@
+<div class="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+        <mat-form-field class="without-search" appearance="legacy">
+            <mat-label>Select Field</mat-label>
+            <mat-select disableOptionCentering [panelClass]="{'darkPanel':switchTheme}">
+                <mat-option>Option1</mat-option>
+                <mat-option>Option2</mat-option>
+            </mat-select>
+        </mat-form-field>
+</div>

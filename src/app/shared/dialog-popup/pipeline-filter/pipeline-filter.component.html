@@ -1,0 +1,298 @@
+<section id="adv-filter">
+
+  <h2 mat-dialog-title>Filter Options</h2>
+  <hr>
+
+  <mat-dialog-content class="m-0">
+
+    <!-- #region new popup design: START LOOP HERE -->
+    <div class="row">
+      <ul class="list-inline p-l-15">
+        <li class="list-inline-item mr-0">
+          <button id="addFilterBtn" mat-icon-button matTooltip="Add new filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="green">add</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button id="removeFilterBtn" mat-icon-button matTooltip="Delete this filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="red">close</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="columnField">
+            <mat-select placeholder="Column">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="conditionField">
+            <mat-select placeholder="Condition">
+              <mat-option value="Equals">Equals</mat-option>
+              <mat-option value="Not Equals">Not Equals</mat-option>
+              <mat-option value="Contains">Contains</mat-option>
+              <mat-option value="Lesser Than">Lesser Than</mat-option>
+              <mat-option value="Greater Than">Greater Than</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item">
+          <mat-form-field id="valueField" style="width:185%">
+            <input matInput placeholder="Value">
+          </mat-form-field>
+        </li>
+      </ul>
+    </div>
+    <!-- #endregion new popup design: END LOOP HERE -->
+
+    <!-- #region new popup design -->
+    <div class="row">
+      <ul class="list-inline p-l-15">
+        <li class="list-inline-item mr-0">
+          <button id="addFilterBtn" mat-icon-button matTooltip="Add new filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="green">add</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button id="removeFilterBtn" mat-icon-button matTooltip="Delete this filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="red">close</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="columnField">
+            <mat-select placeholder="Column">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="conditionField">
+            <mat-select placeholder="Condition">
+              <mat-option value="Equals">Equals</mat-option>
+              <mat-option value="Not Equals">Not Equals</mat-option>
+              <mat-option value="Contains">Contains</mat-option>
+              <mat-option value="Lesser Than">Lesser Than</mat-option>
+              <mat-option value="Greater Than">Greater Than</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item">
+          <mat-form-field id="datePicker" style="width:155%">
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </li>
+      </ul>
+    </div>
+    <!-- #endregion new popup design -->
+
+    <div class="row">
+      <ul class="list-inline p-l-15">
+        <li class="list-inline-item mr-0">
+          <button id="addFilterBtn" mat-icon-button matTooltip="Add new filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="green">add</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button id="removeFilterBtn" mat-icon-button matTooltip="Delete this filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="red">close</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="columnField">
+            <mat-select placeholder="Column">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="conditionField">
+            <mat-select placeholder="Condition">
+              <mat-option value="Equals">Equals</mat-option>
+              <mat-option value="Not Equals">Not Equals</mat-option>
+              <mat-option value="Contains">Contains</mat-option>
+              <mat-option value="Lesser Than">Lesser Than</mat-option>
+              <mat-option value="Greater Than">Greater Than</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item">
+          <mat-form-field id="multiSelect" style="width:185%">
+            <mat-select placeholder="Multiselect" multiple>
+              <mat-option value="Value 1">Value 1</mat-option>
+              <mat-option value="Value 2">Value 2</mat-option>
+              <mat-option value="Value 3">Value 3</mat-option>
+              <mat-option value="Value 4">Value 4</mat-option>
+              <mat-option value="Value 5">Value 5</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <ul class="list-inline p-l-15">
+        <li class="list-inline-item mr-0">
+          <button id="addFilterBtn" mat-icon-button matTooltip="Add new filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="green">add</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button id="removeFilterBtn" mat-icon-button matTooltip="Delete this filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="red">close</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="columnField">
+            <mat-select placeholder="Column">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="conditionField">
+            <mat-select placeholder="Condition">
+              <mat-option value="Equals">Equals</mat-option>
+              <mat-option value="Not Equals">Not Equals</mat-option>
+              <mat-option value="Contains">Contains</mat-option>
+              <mat-option value="Lesser Than">Lesser Than</mat-option>
+              <mat-option value="Greater Than">Greater Than</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item">
+          <mat-form-field id="valueField" style="width:185%" >
+            <input matInput placeholder="Values" [disabled]="true">
+          </mat-form-field>
+        </li>
+      </ul>
+    </div>
+
+    <!-- #region Row for Quanity + UOM -->
+    <div class="row">
+      <ul class="list-inline p-l-15">
+        <li class="list-inline-item mr-0">
+          <button id="addFilterBtn" mat-icon-button matTooltip="Add new filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="green">add</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button id="removeFilterBtn" mat-icon-button matTooltip="Delete this filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="red">close</mat-icon>
+          </button>
+        </li>
+
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="columnField">
+            <mat-select placeholder="Column">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="conditionField">
+            <mat-select placeholder="Condition">
+              <mat-option value="Equals">Equals</mat-option>
+              <mat-option value="Not Equals">Not Equals</mat-option>
+              <mat-option value="Contains">Contains</mat-option>
+              <mat-option value="Lesser Than">Lesser Than</mat-option>
+              <mat-option value="Greater Than">Greater Than</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+
+        <li class="list-inline-item" style="width:21%;">
+          <mat-form-field id="valueField">
+            <input matInput placeholder="Quantity">
+          </mat-form-field>
+        </li>
+
+        <li class="list-inline-item" style="width:18%;">
+          <mat-form-field id="uomField">
+            <mat-select placeholder="UOM">
+              <mat-option value="GAL">GAL</mat-option>
+              <mat-option value="BBL">BBL</mat-option>
+              <mat-option value="MT">MT</mat-option>
+              <mat-option value="Litre">Litre</mat-option>
+              <mat-option value="Custom_123">Custom_123</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+
+      </ul>
+    </div>
+    <!-- #endregion Row for Quanity + UOM -->
+
+    <div class="row">
+      <ul class="list-inline p-l-15">
+        <li class="list-inline-item mr-0">
+          <button id="addFilterBtn" mat-icon-button matTooltip="Add new filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="green">add</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item">
+          <button id="removeFilterBtn" mat-icon-button matTooltip="Delete this filter condition" [matTooltipShowDelay]="500">
+            <mat-icon class="red">close</mat-icon>
+          </button>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="columnField">
+            <mat-select placeholder="Column">
+              <mat-option value="Product">Product</mat-option>
+              <mat-option value="Quantity">Quantity</mat-option>
+              <mat-option value="Seller">Seller</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item p-lr-10">
+          <mat-form-field id="conditionField">
+            <mat-select placeholder="Condition">
+              <mat-option value="Equals">Equals</mat-option>
+              <mat-option value="Not Equals">Not Equals</mat-option>
+              <mat-option value="Contains">Contains</mat-option>
+              <mat-option value="Lesser Than">Lesser Than</mat-option>
+              <mat-option value="Greater Than">Greater Than</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li class="list-inline-item">
+          <mat-form-field id="valueField" style="width:185%">
+            <input matInput placeholder="Value">
+          </mat-form-field>
+        </li>
+      </ul>
+    </div>
+
+  </mat-dialog-content>
+
+</section>
+
+<mat-dialog-actions style="border-top: 1px solid #e9eaec">
+  <div class="row" style="width:100%">
+      <div id="deleteFilter">
+          <button class="red-button" mat-button [mat-dialog-close]="true" matTooltip="Apply selected filters"
+          [matTooltipShowDelay]="500" matTooltipPosition="above">Delete Filter</button>
+      </div>
+    
+      <div class="ml-auto">
+          <button mat-button mat-dialog-close matTooltip="Remove all Filters" [matTooltipShowDelay]="500" matTooltipPosition="above">RESET</button>
+          <button class="blue-button" mat-button [mat-dialog-close]="true" cdkFocusInitial matTooltip="Apply selected filters"
+            [matTooltipShowDelay]="500" matTooltipPosition="above">APPLY</button>
+          <button class="blue-button" mat-button [mat-dialog-close]="true" matTooltip="Save the selected filters as a preference"
+            [matTooltipShowDelay]="500" matTooltipPosition="above">Save Preference As</button>
+      </div>
+  </div>
+
+</mat-dialog-actions>

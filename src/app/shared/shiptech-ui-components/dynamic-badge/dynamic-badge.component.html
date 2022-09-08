@@ -1,0 +1,41 @@
+<div class="dynamic-badge" [ngClass]="{'with-dropdown':dropdown}">
+    <!-- single line-->
+      <div class="col-md-12" *ngIf="type==='single'">
+          <div class="badge-header-v2" style="max-width: 385px;justify-content: initial;">
+              <span class="label_text" matTooltip="" style="flex: 0 0 50%;margin-left: 10px;">Created by: <b>{{label.by}}</b></span>
+              <span class="border_line"></span>
+              <span class="label_text" matTooltip="" style="flex: 0 0 50%;margin-left: 15px;">On: <b>{{label.on}}</b></span>
+          </div>
+      </div>
+    <!--- multi line with sub-label-->
+      <div [ngClass]="{'col-md-12':!dropdown}" *ngIf="type === 'multi'">
+      <div class="summaryLabel-component-v2">
+         <div>
+              <div style="display: flex;justify-content: flex-start;">
+                  <div class="badge-header" [ngClass]="{'with-dropdown':dropdown}">
+                      <ng-container *ngFor="let item of items,let i =index">
+                        <div class="items" [ngClass]="{'light':item.value.length>1, 'dark':item.value.length==1,'col-md-3':items.length==4,'col-md-6':items.length==2}" style="line-height: 12px">
+                          <span class="label">
+                              <span class="dot-image" *ngIf="dot"></span>
+                              {{item.label}}</span>
+                          <div *ngIf="item.value.length == 1" class="value">{{item.value}}</div>
+                          <div *ngIf="item.value.length > 1" class="inline-dropdown">
+                            <mat-form-field appearance="none">
+                                <mat-select 
+                                    [(ngModel)]="listQuantityOption"
+                                    disableOptionCentering
+                                    panelClass="inline-dropdown-select-container">
+                                    <mat-option *ngFor="let list of item.value"
+                                        [value]="list">{{list}} Qty</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        </div>
+                        <div class="border_line" *ngIf=" i < items.length-1 && divider"></div>
+                      </ng-container>
+                  </div>
+              </div>
+          </div>
+      </div> 
+      </div>
+    </div>

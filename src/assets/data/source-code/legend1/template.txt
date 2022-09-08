@@ -1,0 +1,16 @@
+<div class="legend1-component-v2">
+	<div class="legend-values" [ngClass]="{'darkTheme':switchTheme}">
+		<div>
+			<div class="color-circle green"></div>
+			<span>ITM</span>
+		</div>
+		<div>
+			<div class="color-circle blue"></div>
+			<span>ATM</span>
+		</div>
+		<div>
+			<div class="color-circle red"></div>
+			<span>OTM</span>
+		</div>
+	</div>
+</div>

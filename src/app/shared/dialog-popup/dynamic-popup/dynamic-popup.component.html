@@ -1,0 +1,55 @@
+<div>
+    <!-- Header Starts -->
+    <div class="popup-header">
+      <div class="title">Approval Information</div>
+      <div class="action-btns">
+        <ng-container>
+          <button class="mid-red-button pop-up m-r-10" [disabled]="disableBtn" (click)="statusChanged('Rejected')">Reject</button>
+          <button class="mid-blue-button pop-up m-r-10" [disabled]="disableBtn" (click)="statusChanged('Approved')">Approve</button>
+        </ng-container>
+        <span class="seperator-line"></span>
+        <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+      </div>
+    </div>
+    <!-- Header Ends -->
+  
+    <mat-divider></mat-divider>
+  
+    <mat-dialog-content>
+      <div class="modal-content-container" *ngFor="let item of data;let i = index">
+        <!-- Your modal template component starts here -->
+        <div class="title-info"><span>Trade Info</span><span class="seperator-line"></span><span class="link">{{item.tradeid}}</span></div>
+        <div class="title-data">
+        <div><div class="sub-text">Counterparty</div><div class="sub-data">{{item.counterparty}}</div></div>
+        <div><div class="sub-text">Trade Type</div><div class="sub-data">{{item.counterparty}}</div></div>
+        <div><div class="sub-text">Trader</div><div class="sub-data">{{item.traderName}}</div></div>
+        <div><div class="sub-text">Trade Date</div><div class="sub-data">{{item.tradeDate}}</div></div>
+        <div><div class="sub-text">Trade Status</div><div class="sub-data">{{item.status}}</div></div>
+        </div>
+        <div class="m-t-25"></div>
+        <div class="title-info"><span>Vessel Info</span><span class="seperator-line"></span><span class="">{{item.name}}</span></div>
+        <div class="title-data">
+        <div><div class="sub-text">Vessel IMO</div><div class="sub-data">{{item.imo}}</div></div>
+        <div><div class="sub-text">Type</div><div class="sub-data">{{item.vesselType}}</div></div>
+        <div><div class="sub-text">Location</div><div class="sub-data">{{item.location}}</div></div>
+        <div><div class="sub-text">ETA</div><div class="sub-data">{{item.eta}}</div></div>
+        <div><div class="sub-text">ETD</div><div class="sub-data">{{item.etd}}</div></div>
+        </div>
+        <div class="title-data m-t-25" style="justify-content: flex-start;">
+          <div style="margin-left:0;"><span class="sub-text m-r-5">Approval request from:</span><span class="sub-data">{{item.requestedBy}}</span></div>
+          <div><span class="sub-text m-r-5">Requested on:</span><span class="sub-data">{{item.etd}}</span></div>
+        </div>
+        <!-- Your modal template component ends here -->
+     
+      <mat-divider class="m-t-10 m-b-15"></mat-divider>
+      <div class="bold m-b-5">Compliance comments</div>
+    </div>
+    </mat-dialog-content>
+    
+    <div class="col-md-12 m-b-15">
+      <mat-form-field class="text-area">
+        <mat-label>Comment*</mat-label>
+        <textarea matInput (keypress)="enterComments($event)" placeholder="Enter the comments for approval/rejection "></textarea>
+      </mat-form-field>
+  </div>
+  </div>

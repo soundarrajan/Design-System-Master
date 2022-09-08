@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-add-delete-info',
+  templateUrl: './add-delete-info.component.html',
+  styleUrls: ['./add-delete-info.component.css']
+})
+export class AddDeleteInfoComponent implements OnInit {
+
+ hideDropdown:boolean = false;
+  dataSource=[
+    {product: 'RMG 380 3.5%', type: 'HSFO 3.5%'},
+    {product: 'DMA 3.5%"', type: 'DOGO'}
+  ];
+  public productName:any[]=[];
+  displayedColumns: string[] = ['product', 'type'];
+  selectedProductToAddInDelivery: any;
+  @ViewChild('mySelect') mySelect: MatSelect;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+ addNewProduct(){
+    this.hideDropdown = false;
+    this.selectedProductToAddInDelivery = '';
+  }
+  deleteDeliveryProduct(index){
+    this.productName.splice(index, 1);
+  }
+  openAddProductSelect(){
+    this.mySelect.open();
+   }
+   addSelectedProductInDelivery(selectedProductToAddInDelivery) {
+    this.hideDropdown = true;
+    this.productName.push(selectedProductToAddInDelivery);
+    
+  }
+
+}

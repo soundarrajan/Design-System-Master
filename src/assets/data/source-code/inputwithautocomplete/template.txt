@@ -1,0 +1,11 @@
+<div class="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+	<mat-form-field class="without-search" appearance="legacy">
+		<mat-label>Trade Category</mat-label>
+		<input class="free-text-field" matInput [formControl]="myControl" [matAutocomplete]="autodyield" required>
+		<mat-autocomplete #autodyield="matAutocomplete" class="darkPanelAuto">
+			<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+				{{option}}
+			</mat-option>
+		</mat-autocomplete>
+	</mat-form-field>
+</div>

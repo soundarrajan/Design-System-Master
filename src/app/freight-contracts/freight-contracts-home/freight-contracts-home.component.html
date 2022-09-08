@@ -1,0 +1,20 @@
+<mat-tab-group class="rack-pricing">
+  <!--<mat-tab label="SET PRICE">
+    <app-set-price></app-set-price>
+  </mat-tab>-->
+  <mat-tab label="FREIGHT CONTRACT">
+    <app-freight-contracts-masters #contractsmasters (createNewEvent)="newFreightContractMasters()"></app-freight-contracts-masters>
+  </mat-tab>
+  <!-- <mat-tab class="new-tab">
+      <ng-template�mat-tab-label>
+          {{tab}} <span class="close-icon" (click)="removeTab(index)"><i class="fas fa-times close-img"></i></span>
+      </ng-template>
+      <app-freight-contracts-masters></app-freight-contracts-masters>
+  </mat-tab> -->
+</mat-tab-group>
+<div class="create-new" matTooltip="Create New" matTooltipShowDelay="500">
+  <button mat-raised-button class="light-blue-button" (click)="newFreightContractMasters()">    
+    <img id="plus-icon" style="top: -2px;position: relative;" src="../../../assets/customicons/plus_w.svg" alt="plus">
+    <span style="top: -1px;position: relative;">Create New</span>
+  </button>
+</div>

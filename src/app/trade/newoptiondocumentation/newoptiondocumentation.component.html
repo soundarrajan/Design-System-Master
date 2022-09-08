@@ -1,0 +1,67 @@
+<div id="documentsDetails">
+  <div class="row row2" style="margin: 0px 15px !important">
+    <div class="col-md-3 pd-0">
+      <div class="row" style="margin: 10px !important;">
+        <div class="col-md-12 pd-0">
+          Add New Document
+        </div>
+        <div class="col-md-12 pd-0 addDoc">
+          <div>Drag and Drop files here</div>
+          <div>or</div>
+          <div><button class="add-doc-btn">+ Add doc</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 pd-0">
+      <div class="row" style="margin: 10px !important;">
+        <div class="col-md-12 pd-0">
+          Documents List
+        </div>
+        <div class="col-md-12 pd-0" style="width:100%;height:100%;margin-top:15px;">
+          <ag-grid-angular domLayout='normal' style="width: 100%;height:200px" [gridOptions]="gridOptions_doclist"
+            class="ag-theme-material  document-list-table angular-v9"></ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row3" style="border-bottom: none;margin: 15px;">
+    <div class="details-section">
+      <div class="title">Document Generation</div>
+      <div class="doc-generation">
+        <table>
+          <tr>
+            <th style="width: 200px;">Document Template</th>
+            <th style="width: 200x;">Document Type</th>
+            <th style="width: 200px;">Document Format</th>
+            <th style="display:flex;justify-content: center;">Download</th>
+          </tr>
+          <tr>
+            <td>Trade recap</td>
+            <td>Trade</td>
+            <td>PDF</td>
+            <td style="justify-content: center;display: flex;">
+              <div class="download-icon"></div>
+            </td>
+          </tr>
+          <tr>
+            <td>Trade contract</td>
+            <td>Contract document</td>
+            <td>Excel</td>
+            <td style="justify-content: center;display: flex;">
+              <div class="download-icon"></div>
+            </td>
+          </tr>
+          <tr>
+            <td>Trade contract</td>
+            <td>Guidelined</td>
+            <td>Doc</td>
+            <td style="justify-content: center;display: flex;">
+              <div class="download-icon"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-filter-list',
+  templateUrl: './filter-list.component.html',
+  styleUrls: ['./filter-list.component.css']
+})
+export class FilterListComponent implements OnInit {
+  @Input('filterList') filterList;
+  selectedFilterList = [];
+  constructor() { }
+
+  ngOnInit(): void {
+    this.selectedFilterList = this.filterList.filters.filter((element) => element.selected == true || element.pinned == true);
+  }
+  toggleChip(filter) {
+    if (filter.pinned) {//we are unpinning
+      filter.pinned = !filter.pinned;
+    }
+    else//we are pinning, so check if multiselect is set to true
+    {
+      if (this.filterList.multiSelect)//if multiselect possible, just pin the selected chip
+        filter.pinned = !filter.pinned;
+      else {//if multiselect not possible, pin the selected chip and unpin the remaining chips
+        this.filterList.filters.forEach(element => {
+          if (element.name == filter.name) {
+            element.pinned = true;
+          }
+          else
+            element.pinned = false;
+        });
+      }
+    }
+
+  }
+  updateFilterList(filter) {
+    if (filter) {
+      this.filterList.filters = filter;
+      this.selectedFilterList = this.filterList.filters.filter((element) => element.selected == true || element.pinned == true);
+    }
+  }
+}

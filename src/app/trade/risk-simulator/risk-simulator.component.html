@@ -1,0 +1,263 @@
+<mat-tab-group class="tab-bar-blue dark-theme" [ngClass]="{'lightTheme-On':lightTheme}">
+  <mat-tab label="OPTIONS SIMULATOR">
+  <div class="pipeline-scheduling-home price-list-page grid-theme">
+    <div class="toggle-header" [ngClass]="close ? 'close' : ''">
+        <form [formGroup]="item">
+    <div class="options-selectors flex-grid">
+      <div class="options">
+        <mat-form-field class="with-search" style="width: 180px;padding-right: 10px;">
+          <mat-label>Underlying Index*</mat-label>
+          <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item" (selectionChange)="dropChange($event,0)" (opened)="dropdownTheme()">
+            <mat-option class="dark" *ngFor="let item of underlyingIndexOptions | async" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <!-- <input class="free-text-field" matInput required formControlName="uindex" [matAutocomplete]="autouindex">
+            <mat-autocomplete #autouindex="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,0)">
+              <mat-option *ngFor="let item of underlyingIndexOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>-->
+        </mat-form-field> 
+        <!-- <div class="search-icon"><div></div></div> -->
+      </div>
+      <div class="options">
+        <mat-form-field class="with-search" style="width: 180px;padding-right: 10px;">
+          <mat-label>Period*</mat-label>
+          <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item" (selectionChange)="dropChange($event,8)" (opened)="dropdownTheme()">
+            <mat-option class="dark" *ngFor="let item of periodOptions | async" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+          <!-- <input class="free-text-field" matInput required formControlName="uindex" [matAutocomplete]="autouindex">
+            <mat-autocomplete #autouindex="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,0)">
+              <mat-option *ngFor="let item of underlyingIndexOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>-->
+        </mat-form-field> 
+        <!-- <div class="search-icon"><div></div></div> -->
+      </div>
+      <div class="options">
+        <mat-form-field class="datepicker" *ngIf="!lightTheme">
+          <mat-label>Price Date*</mat-label>
+          <input matInput required [matDatepicker]="pricedatepicker" (focus)="pricedatepicker.open()" [formControl]="priceDate" (dateChange)="dateSelected($event,1)">
+          <mat-datepicker-toggle matSuffix [for]="pricedatepicker">
+            <mat-icon matDatepickerToggleIcon svgIcon="data-picker-white" *ngIf="!lightTheme"></mat-icon>
+            <mat-icon matDatepickerToggleIcon svgIcon="data-picker-dark" *ngIf="lightTheme"></mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #pricedatepicker panelClass="datepicker-darktheme"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="datepicker" *ngIf="lightTheme">
+          <mat-label>Price Date*</mat-label>
+          <input matInput required [matDatepicker]="pricedatepicker1" (focus)="pricedatepicker1.open()" [formControl]="priceDate" (dateChange)="dateSelected($event,1)">
+          <mat-datepicker-toggle matSuffix [for]="pricedatepicker1">
+            <mat-icon matDatepickerToggleIcon svgIcon="data-picker-white" *ngIf="!lightTheme"></mat-icon>
+            <mat-icon matDatepickerToggleIcon svgIcon="data-picker-dark" *ngIf="lightTheme"></mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #pricedatepicker1 panelClass="datepicker"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="options">
+        <mat-form-field class="without-search">
+          <mat-label>Underlying Price (USD)*</mat-label>
+          <input class="free-text-field" matInput required formControlName="uprice" [matAutocomplete]="autouprice">
+            <mat-autocomplete #autouprice="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,2)">
+              <mat-option *ngFor="let item of underlyingPriceOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="options">
+        <mat-form-field class="datepicker" *ngIf="!lightTheme">
+          <mat-label>Expiry Date*</mat-label>
+          <input matInput required [matDatepicker]="expirydatepicker" [formControl]="expiryDate" (focus)="expirydatepicker.open()" (dateChange)="dateSelected($event,3)">
+          <mat-datepicker-toggle matSuffix [for]="expirydatepicker">
+              <mat-icon matDatepickerToggleIcon svgIcon="data-picker-white" *ngIf="!lightTheme"></mat-icon>
+              <mat-icon matDatepickerToggleIcon svgIcon="data-picker-dark" *ngIf="lightTheme"></mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #expirydatepicker panelClass="datepicker-darktheme"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="datepicker" *ngIf="lightTheme">
+          <mat-label>Expiry Date*</mat-label>
+          <input matInput required [matDatepicker]="expirydatepicker" [formControl]="expiryDate" (focus)="expirydatepicker.open()"  (dateChange)="dateSelected($event,3)">
+          <mat-datepicker-toggle matSuffix [for]="expirydatepicker">
+              <mat-icon matDatepickerToggleIcon svgIcon="data-picker-white" *ngIf="!lightTheme"></mat-icon>
+              <mat-icon matDatepickerToggleIcon svgIcon="data-picker-dark" *ngIf="lightTheme"></mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #expirydatepicker panelClass="datepicker"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="options">
+        <mat-form-field class="without-search">
+          <mat-label>Historical Volatality*</mat-label>
+          <input class="free-text-field" matInput required formControlName="hvolatality" [matAutocomplete]="autohvolatality">
+            <mat-autocomplete #autohvolatality="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,4)">
+              <mat-option *ngFor="let item of hVolatalityOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="options">
+        <mat-form-field class="without-search">
+          <mat-label>Riskfree Rate (%)*</mat-label>
+          <input class="free-text-field" matInput required formControlName="riskfreerate" [matAutocomplete]="autoriskfreerate">
+            <mat-autocomplete #autoriskfreerate="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,5)">
+              <mat-option *ngFor="let item of riskFreerateOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="options">
+        <mat-form-field class="without-search">
+          <mat-label>Divident Yield (%)*</mat-label>
+          <input class="free-text-field" matInput required formControlName="dyield" [matAutocomplete]="autodyield">
+            <mat-autocomplete #autodyield="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,6)">
+              <mat-option *ngFor="let item of dYieldOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="options">
+        <mat-form-field class="without-search small-resolution" style="width: 53%">
+          <mat-label>Increments*</mat-label>
+          <input class="free-text-field" matInput required formControlName="increments" [matAutocomplete]="autoincrements">
+            <mat-autocomplete #autoincrements="matAutocomplete" class="darkPanelAuto" (opened)="autoOpened()" (optionSelected)="autoChange($event,7)">
+              <mat-option *ngFor="let item of incrementsOptions | async" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="small-text small-resolution" style="width: 44%">
+          <mat-select class="selected range" [(value)]="selectednos" disableRipple (opened)="dropdownTheme()">
+              <mat-option value="15" class="dark">15 records</mat-option>
+              <mat-option value="30" class="dark">30 records</mat-option>
+              <mat-option value="45" class="dark">45 records</mat-option>
+          </mat-select>
+         </mat-form-field>
+      </div>
+    
+    <div class="options-selectors flex-grid2" style="padding-top: 0px;bottom: 9px;right: 0;padding: 0px;">
+      
+      <div class="status" style="width: 100%;float: left">
+          <div class="status-options">
+              <div class="each" style="border-right: 1px solid #545D6A;">
+                <div class="color-circle green"></div>
+                <span>ITM</span>
+              </div>
+              <div class="each" style="border-right: 1px solid #545D6A;">
+                  <div class="color-circle blue"></div>
+                  <span>ATM</span>
+                </div>
+                <div class="each">
+                    <div class="color-circle red"></div>
+                    <span>OTM</span>
+                </div>
+            </div>
+            <div class="days-years" style="">
+                <div class="each" style="border-right: 1px solid #37414F;">
+                    <div class="text">DTE (Days)</div>
+                    <div class="value">25</div>
+                </div>
+                <div class="each" style="padding-left: 13px;border-right: 1px solid #37414F;">
+                    <div class="text">DTE (Years)</div>
+                    <div class="value">0.07</div>
+                </div>
+                <div class="each dropdown" style="padding-left: 19px;">
+                    <div class="text">Currency</div>
+                    <mat-form-field>
+                        <mat-select [(value)]="selected" disableRipple (opened)="dropdownTheme()">
+                            <mat-option value="usd" class="dark">USD</mat-option>
+                            <mat-option value="eur" class="dark">EUR</mat-option>
+                            <mat-option value="inr" class="dark">INR</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                </div>
+            </div>
+      </div>
+      
+    </div>
+  </div>
+    </form>
+  </div>
+  
+   <div style="height: 100%;width: 100%;background: #37414F;" class="aggrid-container"
+      [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}">
+      <div [ngStyle]="grid1Width" appResizable (onDrag)="onWidthChange()" style="position: relative;">
+        <div id="grid1" style="height: 24px;margin-right: 6px;" > 
+        <!-- <div id="grid1" [ngStyle]="grid1Width" style="height: 100%;padding-right:6px;">  -->
+          <div id="expandId1" >
+            <div class="aggrid-headercontenet">
+             
+              <div class="right-item" style="display: flex;margin-right: 10px;">
+               <div  (click)="resizeTable(!isExpandable1,false)"
+                  style="cursor:pointer;z-index: 1;margin-right: -10px;" *ngIf="hideresizeIcon" class="resizeIcon">
+                </div>
+              </div>
+              <div class="center-item text-ellipsis">Call Options</div>
+            </div>
+          </div>
+          <!-- <div id="spinner" *ngIf="spinner" style="z-index:10000;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">
+            <div class="spinner-white" *ngIf="!lightTheme"></div>
+            <div class="spinner-dark" *ngIf="lightTheme"></div>
+          </div> -->
+          <mat-progress-bar *ngIf="loadingBar" mode="indeterminate" [ngClass]="lightTheme ? 'light':'dark'" style="position: absolute;z-index: 1000;width: 99%;top: 70px;"></mat-progress-bar>
+          <ag-grid-angular domLayout='normal' style="width: 100%;border: none;"  [ngStyle]="isoptionsCollapsed?{'height': 'calc( 100vh - 119px )'} : {'height': 'calc( 100vh - 229px'}"
+            [gridOptions]="gridOptions_CallOptions" [ngClass]="{'darkTheme':!lightTheme}" class="ag-theme-material aggrid-narrow-table aggrid-pinned-shadow angular-v9" [rowSelection]="rowSelection" [suppressRowClickSelection]="true" (rowSelected)="onRowSelected(true,$event)" (rowClicked)="onrowClicked(true)" [overlayNoRowsTemplate]="noRowsTemplate">
+          </ag-grid-angular>
+         </div>
+        <div class="vector"><img  class="scroll" style="margin-right: -13px;" src="../../../assets/customicons/scroll.svg" alt="Scroll"></div>
+    </div>
+      <div id="grid2" [ngStyle]="grid2Width" style="height: 100%;flex:2;position: relative;">
+        <div id="expandId2">
+          <div class="aggrid-headercontenet">
+             
+            <div class="left-item" style="display: flex;margin-right: 10px;">
+             <div  (click)="resizeTable(false,!isExpandable2)"
+                style="cursor:pointer;z-index: 1;" class="resizeIcon">
+            </div>
+            </div>
+            <div class="center-item text-ellipsis">Put Options</div>
+          </div>
+        </div>
+        <!-- <div id="spinner" *ngIf="spinner" style="z-index:10000;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">
+          <div class="spinner-white" *ngIf="!lightTheme"></div>
+          <div class="spinner-dark" *ngIf="lightTheme"></div>
+        </div> -->
+        <mat-progress-bar *ngIf="loadingBar" mode="indeterminate" [ngClass]="lightTheme ? 'light':'dark'" style="position: absolute;z-index: 1000;width: 99%;top: 70px;"></mat-progress-bar>
+        <ag-grid-angular [getMainMenuItems]="getMainMenuItems" domLayout='normal'
+          style="width: 100%;border: none;" [ngStyle]="isoptionsCollapsed?{'height': 'calc( 100vh - 119px )'} : {'height': 'calc( 100vh - 229px'}" [gridOptions]="gridOptions_putOptions"
+          [ngClass]="{'darkTheme':!lightTheme}" class="ag-theme-material aggrid-pinned-shadow angular-v9" [rowSelection]="rowSelection" [suppressRowClickSelection]="true" (rowSelected)="onRowSelected(false,$event)" (rowClicked)="onrowClicked(false)" [overlayNoRowsTemplate]="noRowsTemplate"></ag-grid-angular>
+      </div>
+    </div>
+  </div>
+  
+  </mat-tab>
+  </mat-tab-group>
+  
+  <div class="create-new small-button" [ngClass]="{'lightTheme-On':lightTheme}">
+    <button mat-raised-button class="medium-blue-button" [disabled]="disableAddTrade" (click)="navigateTo()">    
+     <span>Add to Trade</span>
+    </button>
+    <button mat-raised-button class="medium-blue-button" [disabled]="disablesimulation" (click)="loadData()">    
+     <span>Run simulation</span>
+    </button>
+    <div class="divider"></div>
+  <div class="toggle-elements">
+    <div class="theme-toggle" [matMenuTriggerFor]="themeToggle" (menuOpened)="sliderMenuOpened();"(menuClosed)="sliderMenuClosed();"></div>
+    <div class="header-toggle" (click)="headerOptionsToggle();"  [ngClass]="close ? 'close' : ''">  ></div>
+  
+  <mat-menu #themeToggle="matMenu" class="dark theme-slider">
+    <div class="slider-toggle">
+      <div class="content">
+        <span>Turn {{slideChecked? 'on':'off'}} Light Mode</span>
+        <mat-slide-toggle (change)="changeTheme($event)"></mat-slide-toggle>
+      </div>
+    </div>
+  </mat-menu>
+  </div>
+  </div>

@@ -1,0 +1,102 @@
+<div class="container-fluid" style="padding-top: 1rem; margin-left: 5rem;">
+
+  <!-- TOP TOGGLE BAR START -->
+  <div class="vessel2-wrapper" style="top: 0px;">
+    <div id="popupCloser">
+      <img src="../../../assets/customicons/arrow-right.svg" alt="Arrow right">
+    </div>
+    <div class="tab-wrapper">
+      <div class="grey-tab">
+        <mat-tab-group [(selectedIndex)]="index">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <img id="" src="../../../assets/customicons/port/major-port2.svg" alt="icon"
+                style="width: 15px; margin-right: 7px;">Amsterdam
+            </ng-template>
+            <port2-info></port2-info>
+          </mat-tab>
+          <mat-tab label="Supplier">
+              <div class="dark-wrapper">
+                <div class="tab-spacer"></div>
+                
+                  <!-- Popup Body Content -->
+                  <div class="popup-body">
+                
+                    <div class="row">
+                      <div class="col-12 pl10 pr0">
+                        <section class="darkGridTab" style="position:relative;">
+                          <div class="dark-card pr10 pl10">
+                            <div style="padding-bottom: 0.3em; display: flex; align-items: flex-end; justify-content: space-between;">
+                              <div class="dark-card-title pl0">
+                                Supplier Analyser
+                              </div>
+                             </div>
+                            <div class="dark-card-body px-0 ptb0">
+                                  <mat-tab-group id="transactionlist_tab1">
+                                    <mat-tab label="Supplier List">
+                                        <app-supplier-info></app-supplier-info>
+                                    </mat-tab>
+                                  </mat-tab-group>
+                            </div>
+                            <!-- <div class="mp-provider">
+                              <div class="mp-block">
+                                <div class="mp-text fw700">Market Price <br><span class="fw300">Provided by</span></div>
+                                <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="logo">
+                              </div>
+                            </div>                         -->
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </mat-tab>
+          <mat-tab label="Contracts">
+            <div class="dark-wrapper">
+              <div class="tab-spacer"></div>
+              
+                <!-- Popup Body Content -->
+                <div class="popup-body">
+              
+                  <div class="row">
+                    <div class="col-12 pl10 pr0">
+                      <section class="darkGridTab" style="position:relative;">
+                        <div class="dark-card pr10 pl10">
+                          <div style="padding-bottom: 0.3em; display: flex; align-items: flex-end; justify-content: space-between;">
+                            <div class="dark-card-title pl0">
+                              Contracts Benchmark
+                            </div>
+                           </div>
+                          <div class="dark-card-body px-0 ptb0">
+                                <mat-tab-group id="transactionlist_tab1">
+                                  <mat-tab label="Contract List" >
+                                      <app-contracts-benchmark></app-contracts-benchmark>
+                                  </mat-tab>
+                                </mat-tab-group>
+                          </div>
+                          <!-- <div class="mp-provider">
+                            <div class="mp-block">
+                              <div class="mp-text fw700">Market Price <br><span class="fw300">Provided by</span></div>
+                              <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="logo">
+                            </div>
+                          </div>                         -->
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </mat-tab>
+          <mat-tab label="Alerts">
+            <vessel-alerts></vessel-alerts>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP TOGGLE BAR END -->
+
+
+
+</div>

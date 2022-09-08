@@ -1,0 +1,183 @@
+<div class="eom-list-component">
+    <div>
+        <mat-tab-group class="tab-bar-blue tab-label">
+            <mat-tab label="EOM List" >
+                <ng-template mat-tab-label>
+                    <div class="custom-tab-ui"></div>
+                      <span class="custom-label">{{tabLabel}}</span>
+                </ng-template>
+                <ng-container *ngTemplateOutlet="eomList"></ng-container>
+            </mat-tab>
+        </mat-tab-group>
+        <div class="header-right-block right-block header-buttons">
+            <span>Closure Period Upto: </span>
+            <mat-form-field *ngIf="!displayRowData" class="col-sm pd-0 closure-period-select">
+              <mat-select [disableOptionCentering]="true" matNativeControl value="oct2020" panelClass="dropDownMargin">
+                  <mat-option value="oct2020">Oct 2020</mat-option>
+                </mat-select>
+            </mat-form-field> 
+            <span *ngIf="displayRowData">Oct 2020</span>           
+            <div *ngIf="!displayRowData" class="rack-match " matTooltip="Start Closure" matTooltipShowDelay="500">
+              <button class="blue-button h-25" (click)="startClosure()">Start Closure</button>
+            </div>
+            <div *ngIf="displayRowData" class="rack-match " matTooltip="Cancel Closure" matTooltipShowDelay="500">
+                <button class="red-button h-25" (click)="cancelClosure()">Cancel Closure</button>
+            </div>
+            <div *ngIf="enableSnapshot" class="rack-match " matTooltip="Create Snapshot" matTooltipShowDelay="500">
+              <button class="blue-button h-25" (click)="createSnapshot()">Create Snapshot</button>
+            </div>
+            <button class="refresh_btn">
+                <img alt="refresh" src="../../../assets/customicons/refresh-blue.svg">
+            </button>        
+            <button class="expand_collapse_btn" (click)="toggleCollapse()">
+                <img alt="up-arrow" src="../../../assets/customicons/up-arrow-blue.svg" [ngClass]="{'rotate180':headerCollapse}">
+            </button> 
+        </div> 
+    </div>  
+    <ng-template #eomList>
+          <div class="price-list-page" *ngIf="!headerCollapse">
+            <div class="price-list-header p-l-15">
+          
+              <!-- New Menu Button -->
+              <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+                <div id="menu-button-dots">
+                  <div id="dot1" class="dot"></div>
+                  <div id="dot2" class="dot"></div>
+                  <div id="dot3" class="dot"></div>
+                  <div id="dot4" class="dot"></div>
+                  <div id="dot5" class="dot"></div>
+                  <div id="dot6" class="dot"></div>
+                  <div id="dot7" class="dot"></div>
+                  <div id="dot8" class="dot"></div>
+                  <div id="dot9" class="dot"></div>
+                </div>
+              </div>
+              <!-- New Menu Button: End -->
+          
+              <!-- <p>Trade List</p> -->
+              <span style="height: 25px;">
+                <app-headerchip [chipStatus]="'active-chip'" [heading]="'Default View'"></app-headerchip>
+                </span>   
+            </div>
+            <!--Hide or Show Column Start-->
+            <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+              <div class="tbl-context no-border">
+                <div class="p-tb-10">
+                  <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                  </span>
+                  <span>Update Preference</span>
+                </div>
+                <div class="p-tb-10">
+                  <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                  </span>
+                  <span>Save Preference As</span>
+                </div>
+                <!-- <div class="p-tb-10">
+                  <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-export-excel.svg" alt="export to excel icon">
+                  </span>
+                  <span>Export To Excel</span>
+                </div> -->
+                <div class="b-top p-0 m-b-5"></div>
+                <div class="p-tb-10" (click)="change_rowdensity()">
+                  <span>
+                    <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+                  </span>
+                  <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+                </div>
+              </div>
+            </mat-menu>
+          </div>
+          
+          <div class="container-fluid p-0" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" style="background: #ffffff;" [ngStyle]="headerCollapse ?{'height': 'calc( 100vh - 92px )'} : {'height': 'calc( 100vh - 132px'}">
+            <span class="aggrid-whitebox"></span>
+            <ag-grid-angular id="tradelistgrid" style="width: 100%;" [ngStyle]="!displayRowData ? {'height' : '38px'} : headerCollapse ?{'height': 'calc( 100vh - 92px )'} : {'height': 'calc( 100vh - 132px)'}" [gridOptions]="gridOptions" class="ag-theme-material aggrid-pinned-shadow angular-v9">
+            </ag-grid-angular>
+            <mat-progress-bar *ngIf="!displayRowData && showProgressBar" mode="indeterminate"></mat-progress-bar>
+          </div>
+                  
+          <!-- <section id="bottom-pagination" *ngIf="displayRowData">
+          
+              <div id="show-rows" class="float-right pr-4">
+                <span>Show</span>
+                <span>
+                  <mat-form-field style="width: 70px; margin: 0 10px;">
+                    <mat-select>
+                      <mat-option [value]="10">
+                        10
+                      </mat-option>
+                      <mat-option [value]="20">
+                        20
+                      </mat-option>
+                      <mat-option [value]="30">
+                        30
+                      </mat-option>
+                      <mat-option [value]="40">
+                        40
+                      </mat-option>
+                      <mat-option [value]="50">
+                        50
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </span>
+                <span>Rows</span>
+              </div>
+            
+              <div class="mx-auto" id="pages">
+                <div style="display: flex; justify-content: center;">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        <i class="fas fa-chevron-left"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">1</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">2</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">3</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">4</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            
+              <div class="float-right" id="right-column">
+                <div class="float-left pl-4" id="left-column">
+                  Total Results:
+                  <span style="margin-left: 2px;">{{rowCount}}</span>
+                </div>
+                <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+                <div class="export-excel">
+                  Export to Excel
+                  <div class="export-excel-icon"></div>
+                </div>
+                <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+                <div id="goto-page" class="float-right" style="display: flex;align-items: center;">
+                  Go to page
+                  <mat-form-field style="width: 50px; margin: 0 5px; padding-left: 10px;">
+                    <input matInput>
+                  </mat-form-field>
+                  <button mat-button class="page-button">Go</button>
+                </div>
+                
+              </div>
+            
+            </section> -->
+            <app-footer-v2 *ngIf="displayRowData" [id]="'eom-closure-footer'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+          </ng-template>
+</div>
+

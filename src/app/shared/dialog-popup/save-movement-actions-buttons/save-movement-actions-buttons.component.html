@@ -1,0 +1,46 @@
+<!-- <mat-dialog-content> -->
+  <div class="dialog-table-popup">
+    <div class="dialog-icon warning-icon-red"></div>
+  <h2 mat-dialog-title class="dialog-title">
+    Attention
+    <mat-icon matSuffix class="dialogCloseButton float-right">close</mat-icon>
+  </h2>
+  <hr>
+ 
+
+  <div class="dialog-table-title">
+    <span class="circle yellow"></span>
+    <span class="text">Low priority warnings present during the save action</span>
+   </div>
+ <div class="dialog-table-block">
+   <table>
+     <thead>
+         <tr>
+             <th>Movement ID</th>
+             <th>Delivery ID</th>
+             <th>Message</th>
+             <th>Severity</th>
+         </tr>
+       </thead>
+     <tbody>
+       
+       <tr>
+         <td>MOV17234</td>
+         <td><a href="#" class="text-link">PHB10283-1</a></td>
+         <td>Book access validation</td>
+         <td>High</td>
+       </tr>
+      
+ 
+       
+     </tbody>
+   </table>
+   </div>
+   <div class="dialog-actions-text">If you would like to continue with the save action, please click proceed.</div>
+  
+  <!-- </mat-dialog-content> -->
+  
+  <mat-dialog-actions class="float-right">
+    <button class="blue-button" style="width:120px;margin-right: 10px !important;"  mat-button [mat-dialog-close]="true">CANCEL</button>
+    <button class="red-button" style="width:120px;" mat-button [mat-dialog-close]="true">PROCEED</button>
+  </mat-dialog-actions>

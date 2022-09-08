@@ -1,0 +1,261 @@
+<div class="freight-page">
+<div class="freight-new">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white m-b-5">
+        <button class="btn btn-outline-secondary light-button" type="submit">
+          <div>
+            <img src="../../../assets/customicons/filter.svg" alt="Filter" style="width: 20px; height: auto;"> &nbsp; Filters
+            &nbsp;
+            <img src="../../../assets/customicons/plus.svg" alt="Plus" style="width: 15px; height: auto;">
+            <i class="fas fa-plus"></i>
+          </div>
+        </button>
+      
+        <div class="space-20"></div>
+      
+        <button mat-icon-button class="grey-circle-icon">
+          <div width="25px">
+            <img src="../../../assets/customicons/search.svg" alt="Search Icon" style="width: 15px;">
+          </div>
+        </button>
+      
+        <div class="space-20"></div>
+        <div class="create-new" matTooltip="Create New" matTooltipShowDelay="500">
+            <button mat-raised-button class="light-blue-button hover">    
+              <img id="plus-icon" src="../../../assets/customicons/plus_w.svg" alt="plus">
+              <span>Create New</span>
+            </button>
+        </div>
+    </nav> -->
+  <!--Freight Contract - New  (Start)-->
+  <div class="freight-new-audit m-t-10">
+    <mat-expansion-panel class="freight-panel m-t-5" [expanded]="true">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeightFreight"
+        class="accordion-header p-l-17 p-0 p-r-15">
+        <mat-panel-title>
+          <div class="open-close-arrow-new">
+            <!--<i class="fas fa-caret-down"></i>
+                    <i class="fas fa-caret-up"></i>-->
+            <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+            <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+          </div>
+          <span class="panel-title m-l-9 green-tbl-title">Freight Contract : New</span>
+        </mat-panel-title>
+
+        <!-- New Menu Button -->
+        <div id="menu-button" [matMenuTriggerFor]="contract" (click)="$event.stopPropagation();">
+          <div id="menu-button-dots">
+            <div id="dot1" class="dot"></div>
+            <div id="dot2" class="dot"></div>
+            <div id="dot3" class="dot"></div>
+            <div id="dot4" class="dot"></div>
+            <div id="dot5" class="dot"></div>
+            <div id="dot6" class="dot"></div>
+            <div id="dot7" class="dot"></div>
+            <div id="dot8" class="dot"></div>
+            <div id="dot9" class="dot"></div>
+          </div>
+        </div>
+        <!-- New Menu Button: End -->
+
+        <mat-menu class="table-context contract-action" #contract="matMenu" yPosition="below" xPosition="before"
+          [overlapTrigger]="false">
+          <div class="tbl-contract">
+            <div class="b-bottom p-tb-20">
+              <span class="m-r-19">
+                <img class="p-r-10" src="../../../assets/customicons/copy2.svg" alt="duplicate contract">
+              </span>
+              <span>Duplicate Contract</span>
+            </div>
+            <div class="p-tb-20">
+              <mat-slide-toggle id="dark-theme" (click)="$event.stopPropagation();">Active</mat-slide-toggle>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+              <div class="p-tb-10" (click)="change_rowdensity()">
+                <span>
+                  <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+                </span>
+                <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+              </div>
+          </div>
+        </mat-menu>
+      </mat-expansion-panel-header>
+      <div class="product-container">
+        <div class="freight-new-components p-l-24 bl-green p-r-15 p-t-15">
+          <div class="row">
+            <ul class="list-inline p-0">
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <mat-select placeholder="Product">
+                    <mat-option value="Product">Product</mat-option>
+                    <mat-option value="Quantity">Quantity</mat-option>
+                    <mat-option value="Seller">Seller</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <mat-select placeholder="Counterparty">
+                    <mat-option value="Equals">Equals</mat-option>
+                    <mat-option value="Not Equals">Not Equals</mat-option>
+                    <mat-option value="Contains">Contains</mat-option>
+                    <mat-option value="Lesser Than">Lesser Than</mat-option>
+                    <mat-option value="Greater Than">Greater Than</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <mat-select placeholder="Counterparty Type">
+                    <mat-option value="Product">Product</mat-option>
+                    <mat-option value="Quantity">Quantity</mat-option>
+                    <mat-option value="Seller">Seller</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <input matInput placeholder="Contract Name">
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <mat-select placeholder="Load Location">
+                    <mat-option value="Product">Product</mat-option>
+                    <mat-option value="Quantity">Quantity</mat-option>
+                    <mat-option value="Seller">Seller</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <mat-select placeholder="Delivery Location">
+                    <mat-option value="Equals">Equals</mat-option>
+                    <mat-option value="Not Equals">Not Equals</mat-option>
+                    <mat-option value="Contains">Contains</mat-option>
+                    <mat-option value="Lesser Than">Lesser Than</mat-option>
+                    <mat-option value="Greater Than">Greater Than</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field>
+                  <input matInput placeholder="Cost/Price Type">
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 price-value col-md-6 col-sm-12 col-12">
+                <mat-form-field class="currency">
+                  <mat-select placeholder="USD">
+                    <mat-option value="USD">USD</mat-option>
+                    <mat-option value="Pounds">Pounds</mat-option>
+                    <mat-option value="Euro">Euro</mat-option>
+                    <mat-option value="Rupees">Rupees</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="price">
+                  <input matInput placeholder="Base Price">
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 price-value variable col-md-6 col-sm-12 col-12">
+                <mat-form-field class="currency">
+                  <mat-select placeholder="USD">
+                    <mat-option value="USD">USD</mat-option>
+                    <mat-option value="Pounds">Pounds</mat-option>
+                    <mat-option value="Euro">Euro</mat-option>
+                    <mat-option value="Rupees">Rupees</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="price">
+                  <input matInput placeholder="Variable Price">
+                </mat-form-field>
+                <mat-form-field class="currency per-unit">
+                  <mat-select placeholder="per-unit">
+                    <mat-option value="per-unit">per-unit</mat-option>
+                    <mat-option value="per-unit">per-unit</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field id="validTo">
+                  <input matInput [matDatepicker]="validto" placeholder="Valid To">
+                  <mat-datepicker-toggle matSuffix [for]="validto"></mat-datepicker-toggle>
+                  <mat-datepicker #validto></mat-datepicker>
+                </mat-form-field>
+              </li>
+              <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                <mat-form-field id="validFrom">
+                  <input matInput [matDatepicker]="validfrom" placeholder="Valid From">
+                  <mat-datepicker-toggle matSuffix [for]="validfrom"></mat-datepicker-toggle>
+                  <mat-datepicker #validfrom></mat-datepicker>
+                </mat-form-field>
+              </li>
+            </ul>
+            <div class="custom-buttons">
+              <div class="custom-field">
+                <button mat-button class="custom-field-button">
+                  <img style="position: relative;top:-2" id="plus-icon" src="../../../assets/customicons/plus_b.svg"
+                    alt="plus">
+                  <span style="position: relative;top:-3" class="p-l-10">Custom Field</span>
+                </button>
+              </div>
+              <div class="reset-save p-r-5">
+                <button mat-button class="reset" [mat-dialog-close]="true">Reset</button>
+                <button mat-button class="save-button hover">
+                  <span class="save">Save</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <mat-action-row class="">
+                    <div class="float-right" class="show-rows" id="right-column">
+                      <div id="goto-page" class="float-right pr-4">
+                         <button mat-button class="collapse-button">
+                           Return to list
+                         </button>
+                      </div>
+                    </div>
+                        
+                </mat-action-row> -->
+      </div>
+    </mat-expansion-panel>
+  </div>
+  <!--Freight Contract - New  (Start)-->
+</div>
+
+<div class="freight-new m-b-70">
+  <!--Audit Log Start-->
+  <div class="freight-new-audit">
+    <!--AG-NEW-->
+    <mat-expansion-panel class="audit-log-panel m-t-5" [expanded]="auditlog_isopen === true" (opened)="auditlog_isopen=true">
+        <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" class="p-l-17">
+          <mat-panel-title>
+            <div class="open-close-arrow">
+                <!--<i class="fas fa-caret-down"></i>
+                <i class="fas fa-caret-up"></i>-->
+                <img class= "fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+            </div>
+            <span class="panel-title m-l-9">Audit Log</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="product-container" style="background-color: #EAECEE; ">
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                
+                <span [ngStyle]="isdisplaydensityhigh==false && {'height':'48px'}||isdisplaydensityhigh==true && {'height':'48px'} " style="width: 20px; margin-top: 0px; background-color: white;display: inline-block; float: left;"></span>
+                <ag-grid-angular domLayout='normal' style="width: 100%;height:350px ;border-top:none;" [gridOptions]="gridOptions_auditLog" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+              </div>
+           </div>
+        </div>
+    </mat-expansion-panel>
+  </div>
+  <!--Audit Log End-->
+</div>
+<div class="return-list m-t-20">
+  <div id="goto-page" class="float-right pr-4">
+    <button mat-button class="return-button hover" (click)="returnToList();">
+      Return to list
+    </button>
+  </div>
+</div>
+</div>

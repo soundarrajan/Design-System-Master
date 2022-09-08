@@ -1,0 +1,58 @@
+<!--Rack Price List-->
+<div class="p-l-38">
+<section class="pt-5">
+    <h5>Rack - Price List</h5>
+<!--Large chip set-->
+<mat-chip-list>
+    <mat-chip class="text-center custom-lg-chip darkgrey">
+      <div class="chip-label"><span>27-Apr-2018</span><span>11:34</span></div>
+    </mat-chip>
+</mat-chip-list>
+</section>
+
+<section class="pt-5">
+<!--Round buttons-->
+<div class="creator-bg" matTooltip="Gajalakshmi G">GG</div>
+</section>
+
+<!--Publised chip set-->
+<section class="pt-5">
+<mat-chip-list>
+    <mat-chip class="text-center custom-chip darkgreen">
+      <div class="chip-label">Published</div>
+    </mat-chip>
+</mat-chip-list>
+<mat-chip-list>
+        <mat-chip class="text-center custom-chip lightgreen">
+          <div class="chip-label">Saved</div>
+        </mat-chip>
+</mat-chip-list>
+<mat-chip-list>
+        <mat-chip class="text-center custom-chip mediumgreen">
+          <div class="chip-label">Confirmed</div>
+        </mat-chip>
+</mat-chip-list>
+<mat-chip-list>
+        <mat-chip class="text-center custom-chip red">
+          <div class="chip-label">Dismissed</div>
+        </mat-chip>
+</mat-chip-list>
+</section>
+
+<!--Remove Terminal-->
+
+<section class="pt-5">
+    <div class="remove-terminal p-r-9" (click)="this.openPublishDialog()"><span class="remove-btn m-r-9"><i class="fas fa-minus"></i></span> <p>Remove Terminal</p></div>
+</section>
+
+<!--Toast-Popup-->
+<section class="pt-5"><!--toastGreen toastAmber toastRed toastGrey-->
+  <h5>Toaster - Popup Alerts</h5>
+    <div class="remove-terminal p-r-9" (click)="this.toastGreen()"><p>Toaster - Green</p></div><br/>
+    <div class="remove-terminal p-r-9" (click)="this.toastAmber()"><p>Toaster - Amber</p></div><br/>
+    <div class="remove-terminal p-r-9" (click)="this.toastRed()"><p>Toaster - Red</p></div><br/>
+    <div class="remove-terminal p-r-9" (click)="this.toastGrey()"><p>Toaster - Grey</p></div><br/>
+</section>
+
+
+</div>

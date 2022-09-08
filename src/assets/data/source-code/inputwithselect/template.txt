@@ -1,0 +1,15 @@
+<div class="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+	<div class="split-field">
+		<mat-form-field class="without-search long-label-field" style="width: 64%;border: none;" appearance="legacy">
+			<mat-label>Input with Dropdown</mat-label>
+			<input matInput class="text-ellipsis" value="100">
+            </mat-form-field>
+			<mat-form-field style="width: 36%" appearance="legacy">
+				<mat-select disableRipple value="1">
+					<mat-option value="1">1unit</mat-option>
+					<mat-option value="3">3unit</mat-option>
+					<mat-option value="4">4unit</mat-option>
+				</mat-select>
+			</mat-form-field>
+	</div>
+</div>

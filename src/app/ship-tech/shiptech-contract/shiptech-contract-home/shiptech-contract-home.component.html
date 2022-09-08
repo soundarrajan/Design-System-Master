@@ -1,0 +1,1515 @@
+<div class="contract-shiptech">
+  <!-- <div class="shiptech-layout-content">
+    <div class="page-bar">
+      <div class="col-md-4">
+        <div class="breadcrumbs-container">
+          <div class="ui-breadcrumb">
+            <ul>
+              <li class="home"></li>
+              <li class="link">Contract List</li>
+              <li class="arrow">></li>
+              <li class="link">Contract Entity Edit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="st-breadcrumbs-progress-bar col-md-8">
+        <ul class="page-breadcrumb">
+          <li class="btn btn-fit-height {{navItem.indexStatus}}" title="{{navItem.entityId}}"
+            *ngFor="let navItem of navigationItems">
+            <a href="{{navItem.url}}" class="breadcrumb-a">
+              {{navItem.displayName}}
+            </a>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="w-100 st-main-content-menu no-print" id="wunderbar" style="height:40px;margin-bottom: 0 !important;">
+      <div class="row" style="margin: 5px 0;">
+        <div class="col-8" style="height:40px">
+          <div class="shiptech-tab ui-tabmenu ui-widget ui-widget-content ui-corner-all">
+            <ul class="ui-tabmenu-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+              <li role="tab" class="{{menuItem.status}}" class="ui-tabmenuitem ui-state-default ui-corner-top"
+                *ngFor="let menuItem of menuItems">
+                <a class="ui-menuitem-link ui-corner-all" href="{{menuItem.url}}">
+                  <span class="ui-menuitem-text">{{menuItem.label}}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div style="float:right;position: relative; top: 7px;">
+
+            <button class="cust-btn small" type="button"><span class="btn-text">Save</span></button>
+            <button class="cust-menu-btn small" mat-icon-button>
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="shiptech-page-content">
+    <div class="container-fluid-contract contract-container"
+      style="border-bottom: 5px solid #E0E1E4; padding-bottom: 10px;">
+      <div class="col-12 m-b-4" style="padding: 0px !important;">
+        <div class="">
+          <div class="col-md-12 d-flex contract-section">
+            <div class="col-md-3" style="padding-left: 10px; padding-top:12px;">
+              <div id="custom-contract-toggle-v2">
+                <mat-button-toggle-group [value]="selectedVal" #group="matButtonToggleGroup"
+                  (change)="onValChange(group.value)">
+                  <mat-button-toggle value="dateSpecific">
+                    <span *ngIf="selectedVal == 'dateSpecific'" class="toggle-icon"></span>
+                    Date specific
+                  </mat-button-toggle>
+                  <mat-button-toggle value="evergreen">
+                    <span *ngIf="selectedVal == 'evergreen'" class="toggle-icon"></span>
+                    Evergreen
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+              </div>
+            </div>
+            <div class="col-md-3" style="padding: 12px 0px 10px 0px !important;">
+              <div class="contract-created-container">
+                <div class="contract-created-information">
+                  <div class="">
+                    <div class="value">Created by:
+                      <span class="created-by-field">
+                        Yusuf Hassan
+                      </span>
+                    </div>
+                  </div>
+                  <span class="border_line">|</span>
+                  <div class="">
+                    <div class="value ">On:
+                      <span class="created-on-field">
+                        17/06/2020
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="contract-qty-section" style="display: flex;justify-content: flex-start;">
+                <div class="contract-qty-container">
+                  <div>
+                    <div class="label" matTooltip="Status" matTooltipClass="lightTooltip">
+                      <span class="delivery-number-dot">
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="4.90561" cy="4" rx="4.22642" ry="4" fill="#9E9E9E" />
+                        </svg>
+                      </span>
+                      Status
+                    </div>
+
+                    <div class="value status-entity" Style="color: #9E9E9E">
+                      Draft
+                    </div>
+                  </div>
+                </div>
+                <div class="contract-qty-container">
+                  <div>
+                    <div class="label" matTooltip="Total Qty" matTooltipClass="lightTooltip">
+
+                      <span>
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="4.90561" cy="4" rx="4.22642" ry="4" [ngStyle]="{'fill': 'white' }" />
+                        </svg>
+                      </span>
+                      Total Qty
+                    </div>
+
+                    <div class="value" Style="color:white">
+                      0.000
+                    </div>
+                  </div>
+                </div>
+                <div class="contract-qty-container">
+                  <div>
+                    <div class="label" matTooltip="Planned Qty" matTooltipClass="lightTooltip">
+
+                      <span>
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="4.90561" cy="4" rx="4.22642" ry="4" [ngStyle]="{'fill': 'white' }" />
+                        </svg>
+                      </span>
+                      Planned Qty
+                    </div>
+                    <div class="value" Style="color: white">
+                      0.000
+                    </div>
+                  </div>
+                </div>
+                <div class="contract-qty-container">
+                  <div>
+                    <div class="label" matTooltip="Utilised Qty" matTooltipClass="lightTooltip">
+
+                      <span>
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="4.90561" cy="4" rx="4.22642" ry="4" [ngStyle]="{'fill': 'white' }" />
+                        </svg>
+                      </span>
+                      Utilised Qty
+                    </div>
+
+                    <div class="value" Style="color: white">
+                      0.000
+                    </div>
+                  </div>
+                </div>
+                <div class="contract-qty-container">
+                  <div>
+                    <div class="label" matTooltip="Available Qty" matTooltipClass="lightTooltip">
+
+                      <span>
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="4.90561" cy="4" rx="4.22642" ry="4" [ngStyle]="{'fill': 'white' }" />
+                        </svg>
+                      </span>
+                      Available Qty
+                    </div>
+                    <div class="value" Style="color: white">
+                      0.000
+                    </div>
+                  </div>
+                </div>
+                <div class="contract-qty-container">
+                  <div>
+                    <div class="label" matTooltip="Expiry Count down" matTooltipClass="lightTooltip">
+
+                      <span>
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <ellipse cx="4.90561" cy="4" rx="4.22642" ry="4" [ngStyle]="{'fill': 'white' }" />
+                        </svg>
+                      </span>
+                      Expiry Count down
+                    </div>
+
+                    <div class="value" Style="color: white">
+                      0 Days
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 d-flex contract-section p-top">
+            <div class="col-md-6 no-padding no-flex">
+              <div style="float: left;">
+                <div
+                  class="custom-form-field custom-field-general lightTheme darkBorder custom-form-field-margin-contract">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Contract name</mat-label>
+                    <input matInput placeholder="Contract name" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class="custom-form-field lookup-delivery-container custom-form-field-margin-contract custom-field-general-lookup lightTheme">
+                  <div class="d-flex">
+                    <mat-form-field class="with-search" appearance="legacy">
+                      <mat-label>Seller name</mat-label>
+                      <input class="free-text-field" type="text" matInput placeholder="Seller name" required>
+                    </mat-form-field>
+                    <div class="search-icon">
+                      <div class="img"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class="custom-form-field lookup-delivery-container custom-form-field-margin-contract custom-field-general-lookup lightTheme">
+                  <div class="d-flex">
+                    <mat-form-field class="with-search" appearance="legacy">
+                      <mat-label>Company name</mat-label>
+                      <input class="free-text-field" type="text" matInput placeholder="Company name" required>
+                    </mat-form-field>
+                    <div class="search-icon">
+                      <div class="img"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class=" custom-form-field custom-field-general custom-form-field-margin-contract lightTheme darkBorder">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Agreement Type</mat-label>
+                    <mat-select panelClass="general-info-select-container" placeholder="Agreement Type" required>
+                      <mat-option> Agreement Type 1 </mat-option>
+                      <mat-option> Agreement Type 2 </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class="custom-form-field custom-field-general custom-form-field-margin-contract lightTheme darkBorder ">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Payment Term</mat-label>
+                    <mat-select panelClass="general-info-select-container" placeholder="Payment Term">
+                      <mat-option>
+                        Payment Term 1
+                      </mat-option>
+                      <mat-option>
+                        Payment Term 1
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class="custom-form-field custom-field-general custom-form-field-margin-contract lightTheme darkBorder ">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Delivery Term</mat-label>
+                    <mat-select panelClass="general-info-select-container" placeholder="Delivery Term" required>
+                      <mat-option>
+                        Delivery Term 1
+                      </mat-option>
+                      <mat-option>
+                        Delivery Term 2
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class="custom-form-field custom-field-general custom-form-field-margin-contract lightTheme darkBorder ">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Trade Book</mat-label>
+                    <mat-select panelClass="general-info-select-container" placeholder="Trade Book" required>
+                      <mat-option>
+                        Trade 1
+                      </mat-option>
+                      <mat-option>
+                        Trade 2
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div
+                  class="lightTheme darkBorder custom-form-field-margin-contract custom-field-general custom-form-field ">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Start date</mat-label>
+                    <input required name="startDate" matInput [matDatepicker]="startDate" (focus)="startDate.open()"
+                      autocomplete="off" placeholder="Start Date">
+                    <mat-datepicker-toggle matSuffix [for]="startDate">
+                      <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                      </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #startDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div *ngIf="!selectedVal2"
+                  class="lightTheme custom-form-field-margin-contract darkBorder custom-form-field ">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>End date</mat-label>
+                    <input required name="endDate" matInput [matDatepicker]="endDate" (focus)="endDate.open()"
+                      autocomplete="off" placeholder="End Date">
+                    <mat-datepicker-toggle matSuffix [for]="endDate">
+                      <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                      </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #endDate></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div class="custom-form-field lightTheme custom-form-field-margin-contract ">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Date apply on</mat-label>
+                    <mat-select panelClass="general-info-select-container" placeholder="Date apply on">
+                      <mat-option>
+                        10/09/2021
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div style="float: left;">
+                <div *ngIf="!selectedVal2" class="inital-end-date-readonly custom-form-field-margin-contract "
+                  style="width: 212px !important;">
+                  <div class="label">Initial End Date :</div>
+                  <div class="value">--/--/----</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="" style="margin-top:10px; margin-bottom: -4px;">
+                <div
+                  [ngClass]="{'allowed-companies-container': !expandAllowCompanies, 'allowed-companies-container-expand': expandAllowCompanies}">
+                  <div class="allowed-container col-md-12 d-flex">
+                    <div class="allowed-list-modal-container">
+                      Allowed Companies
+                    </div>
+                    <div [matMenuTriggerFor]="menu1" class="edit-allow-companies">
+                    </div>
+
+                    <mat-menu #menu1="matMenu" class="add-new-request-menu">
+                      <div class="expansion-popup" style="margin: 20px 0px;">
+                        <div class="select-product-container">
+                          <div class="col-md-12 header-container-product"
+                            (click)="$event.stopPropagation(); $event.preventDefault()">
+                            <div class="search-product-container col-md-10">
+                              <span class="search-product-lookup">
+                              </span>
+                              <input matInput placeholder="Search and select counterparty" class="search-product-input">
+                            </div>
+                            <div class="col-md-2">
+                              <span class="expand-img"></span>
+                            </div>
+                          </div>
+                          <table class="delivery-products-pop-up col-md-12 no-padding" mat-table
+                            (click)="$event.stopPropagation()" [dataSource]="companyList">
+
+                            <ng-container matColumnDef="name">
+                              <th mat-header-cell *matHeaderCellDef> Allowed Companies </th>
+                              <td mat-cell *matCellDef="let element">
+                                <mat-option [value]="element">
+                                  <mat-checkbox [value]="element" [(ngModel)]="element.isSelected">
+                                    {{element.name}}
+                                  </mat-checkbox>
+                                </mat-option>
+                              </td>
+                            </ng-container>
+                            <ng-container matColumnDef="blank">
+                              <th mat-header-cell *matHeaderCellDef></th>
+                              <td mat-cell *matCellDef="let element">
+                              </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="companyListColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: companyListColumns;"></tr>
+                          </table>
+                          <div class="proceed-div">
+                            <button mat-button class="mid-blue-button proceed-btn"
+                              (click)="saveAllowedCompanies()">Save</button>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-menu>
+                    <!-- <mat-menu #menu1="matMenu" class="general-allowed-company-modal">
+                        <div style="height: 293px;"
+                          [ngClass]="{'expand-allowed-company-container': expandAllowedCompanylistPopUp}">
+                          <div class="col-md-12 header-allowed-company">
+                            <div class="allowed-company-header col-md-10 contract-no-padding">
+                              Allowed Companiess
+                            </div>
+                            <div class="col-md-2 contract-no-padding expand-allowed-companies"
+                              (click)="$event.stopPropagation();$event.preventDefault();">
+                              <img [ngClass]="{'expand-company-img': expandAllowedCompanylistPopUp}"
+                                (click)="expandAllowedCompanylistPopUp = !expandAllowedCompanylistPopUp;" alt="Shiptech"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=">
+                            </div>
+                          </div>
+                          <div (click)="$event.stopPropagation();"
+                            class="col-md-12 contract-no-padding allowed-company-line" *ngFor="let company of companyList">
+                            <mat-checkbox [(ngModel)]="company.isSelected">
+                              {{company.name}}
+                            </mat-checkbox>
+                          </div>
+                        </div>
+                        <div class="saveAllowedCompanies"
+                          [ngClass]="{ 'expand-save-button': expandAllowedCompanylistPopUp }">
+                          <button class="ui-button-info mr-1 btn-i-blue-color" label="Save" pButton
+                            (click)="saveAllowedCompanies()" style="float:right" type="button">Save</button>
+                        </div>
+                      </mat-menu> -->
+
+                  </div>
+                  <div class="allowed-container col-md-12 d-flex">
+                    <div class="allowed-list">
+                      <ng-container *ngFor="let allowedCompany of allowedCompanies">
+                        <span class="allow-company">
+                          <span class="dot-allow-company">
+                          </span>
+                          {{allowedCompany.name}}
+                        </span>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding-top: 18px;">
+                <div
+                  [ngClass]="{'allowed-companies-container': !expandAllowCustomer, 'allowed-companies-container-expand': expandAllowCustomer}">
+                  <div class="allowed-container col-md-12 d-flex">
+                    <div class="allowed-list-modal-container">
+                      Customer
+                    </div>
+                    <div [matMenuTriggerFor]="menu3" class="edit-allow-companies">
+                    </div>
+                    <mat-menu #menu3="matMenu" class="add-new-request-menu">
+                      <div class="expansion-popup" style="margin: 20px 0px;">
+                        <div class="select-product-container">
+                          <div class="col-md-12 header-container-product"
+                            (click)="$event.stopPropagation(); $event.preventDefault()">
+                            <div class="search-product-container col-md-10">
+                              <span class="search-product-lookup">
+                              </span>
+                              <input matInput placeholder="Search and select counterparty" class="search-product-input">
+                            </div>
+                            <div class="col-md-2">
+                              <span class="expand-img"></span>
+                            </div>
+                          </div>
+                          <table class="delivery-products-pop-up col-md-12 no-padding" mat-table
+                            (click)="$event.stopPropagation()" [dataSource]="customerList">
+
+                            <ng-container matColumnDef="name">
+                              <th mat-header-cell *matHeaderCellDef> Customer </th>
+                              <td mat-cell *matCellDef="let element">
+                                <mat-option [value]="element">
+                                  <mat-checkbox [value]="element" [(ngModel)]="element.isSelected">
+                                    {{element.name}}
+                                  </mat-checkbox>
+                                </mat-option>
+                              </td>
+                            </ng-container>
+                            <ng-container matColumnDef="blank">
+                              <th mat-header-cell *matHeaderCellDef></th>
+                              <td mat-cell *matCellDef="let element">
+                              </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="customerListColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: customerListColumns;"></tr>
+                          </table>
+                          <div class="proceed-div">
+                            <button mat-button class="mid-blue-button proceed-btn"
+                              (click)="saveCustomer()">Save</button>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-menu>
+
+                    <!-- <mat-menu #menu3="matMenu" class="general-allowed-company-modal">
+                        <div style="height: 280px;"
+                          [ngClass]="{'expand-allowed-company-container': expandCustomerListPopUp}">
+                          <div class="col-md-12 header-allowed-company">
+                            <div class="allowed-company-header col-md-10 contract-no-padding">
+                              Customer
+                            </div>
+                            <div class="col-md-2 contract-no-padding expand-allowed-companies"
+                              (click)="$event.stopPropagation();$event.preventDefault();">
+                              <img [ngClass]="{'expand-company-img': expandCustomerListPopUp}"
+                                (click)="expandCustomerListPopUp = !expandCustomerListPopUp;" alt="Shiptech"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=">
+                            </div>
+                          </div>
+                          <div (click)="$event.stopPropagation()" class="col-md-12 contract-no-padding allowed-company-line"
+                          *ngFor="let customer of customerList">
+                            <mat-checkbox [(ngModel)]="customer.isSelected">
+                              {{ customer.name }}
+                            </mat-checkbox>
+                          </div>
+                        </div>
+                        <div class="saveCustomer" [ngClass]="{ 'expand-cust-save-button': expandCustomerListPopUp }">
+                          <button class="ui-button-info mr-1 btn-i-blue-color" label="Save" pButton (click)="saveCustomer()"
+                            style="float:right" type="button">Save</button>
+                        </div>
+                      </mat-menu> -->
+                  </div>
+                  <div class="allowed-container col-md-12 d-flex">
+                    <div class="allowed-list">
+                      <ng-container *ngFor="let customer of customers">
+                        <span class="allow-company" title="{{ customer.name }}">
+                          <span class="dot-allow-company"> </span>
+                          {{ customer.name }}
+                        </span>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 d-flex contract-section p-top">
+            <div class="col-md-6 no-padding no-flex">
+
+            </div>
+
+          </div>
+          <!-- <div class="col-md-12 d-flex contract-section p-top">
+                
+              </div> -->
+
+          <!-- <div class="col-md-12 d-flex contract-section">
+            <div class="custom-form-field lightTheme">
+              <mat-form-field class="without-search" appearance="legacy">
+                <mat-label>Trade Book </mat-label>
+                <mat-select
+                  panelClass="general-info-select-container" placeholder="Trade Book">
+                  <mat-option >
+                     tradeBook
+                  </mat-option>
+                  <mat-option >
+                    tradeBook
+                 </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div> -->
+
+          <!--  <div class="col-md-12 d-flex contract-section" style="padding-left:8px; padding-top:10px;">
+            <div class="col-md-6 no-padding" style="padding-left: 15px !important">
+              <div
+                [ngClass]="{'allowed-companies-container': !expandAllowCustomer, 'allowed-companies-container-expand': expandAllowCustomer}">
+                <div class="allowed-container col-md-12 d-flex">
+                  <div class="allowed-list-modal-container">
+                    Customer
+                  </div>
+                  <div [matMenuTriggerFor]="menu3" class="edit-allow-companies">
+                  </div>
+                  <mat-menu #menu3="matMenu" class="general-allowed-company-modal">
+                    <div style="height: 280px;"
+                      [ngClass]="{'expand-allowed-company-container': expandCustomerListPopUp}">
+                      <div class="col-md-12 header-allowed-company">
+                        <div class="allowed-company-header col-md-10 contract-no-padding">
+                          Customer
+                        </div>
+                        <div class="col-md-2 contract-no-padding expand-allowed-companies"
+                          (click)="$event.stopPropagation();$event.preventDefault();">
+                          <img [ngClass]="{'expand-company-img': expandCustomerListPopUp}"
+                            (click)="expandCustomerListPopUp = !expandCustomerListPopUp;" alt="Shiptech"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=">
+                        </div>
+                      </div>
+                      <div (click)="$event.stopPropagation()" class="col-md-12 contract-no-padding allowed-company-line"
+                      *ngFor="let customer of customerList">
+                        <mat-checkbox [(ngModel)]="customer.isSelected">
+                          {{ customer.name }}
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <div class="saveCustomer" [ngClass]="{ 'expand-cust-save-button': expandCustomerListPopUp }">
+                      <button class="ui-button-info mr-1 btn-i-blue-color" label="Save" pButton (click)="saveCustomer()"
+                        style="float:right" type="button">Save</button>
+                    </div>
+                  </mat-menu>
+                </div>
+                <div class="allowed-container col-md-12 d-flex">
+                  <div class="allowed-list">
+                    <ng-container *ngFor="let customer of customers">
+                      <span class="allow-company" title="{{ customer.name }}">
+                        <span class="dot-allow-company"> </span>
+                        {{ customer.name }}
+                      </span>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid-contract contract-container"
+      style="border-bottom: 5px solid #E0E1E4; padding-bottom: 0px; margin-top:0px !important;">
+      <div class="row m-b-4">
+        <div class="col-12">
+          <div class="row col-md-12 contract-section" style="padding-left: 0px;">
+            <div (click)="addContractQuantityDetail()" class="add-contract-quantity-section">
+              <a class="add-contract-quantity-icon"></a>
+            </div>
+            <div class="contract-quantity-section row">
+              <ng-container *ngFor="let contractDetail of details">
+                <div class="contract-quantity-container col-md-6"
+                  [ngClass]="{'no-padding-right': contractDetail.key % 2 == 1}">
+                  <a class="remove-contract-quantity-icon"
+                    (click)="removeContractQuantityDetail(contractDetail.key)"></a>
+                  <div class="quantity-header">
+                    <div class="label-content col-md-2">
+                      Quantity:
+                    </div>
+                    <div style="display: flex; align-items: center;max-width: 150px" class="col-md-2">
+                      <!-- <div class="select-contract-quantity-container value">
+                        <div class="dropdown">
+                          <mat-form-field appearance="legacy" class="contract-quantity-select-container">
+                            <mat-select [panelClass]="'contract-quantity-select-container'"
+                              [ngModel]="selectedContractQty">
+                              <mat-option>
+                                <mat-radio-button>
+                                  Option 1
+                                </mat-radio-button>
+                                <mat-radio-button>
+                                  Option 2
+                                </mat-radio-button>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div> -->
+                      <div class="select-contract-quantity-container value">
+                        <div class="dropdown">
+                          <mat-form-field appearance="legacy" class="contract-quantity-select-container">
+                            <mat-select disableOptionCentering [panelClass]="'contract-quantity-select-container'">
+                              <mat-option *ngFor="let option of contractualQuantityOptionList" [value]="option"
+                                [(ngModel)]="selectedContractualQuantity">
+                                <mat-radio-button [value]="option">
+                                  {{ option.name }}
+                                </mat-radio-button>
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="border_line"></div>
+                    <div class="col-md-2 p-lr-5">
+                      <div class="minInputFocus" style="width:100%;padding: 0px 10px 0;">
+                        <span class="label">Min
+                          <span style=" color: orange;position: absolute;font-size: 9px;margin-left: 2px;">*</span>
+                        </span>
+                        <div class="value">
+                          <div class="custom-form-field custom-field-contract-quantity lightTheme">
+                            <mat-form-field class="without-search quantity-container" appearance="legacy">
+                              <input matInput (focus)="focus($event, 'min')" value="{{minQuantity}}"
+                                autocomplete="off" />
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="border_line"></div>
+                    <div class="col-md-2 p-lr-5">
+                      <div class="maxInputFocus" style="width:100%;padding: 0px 10px 0;">
+                        <span class="label">Max
+                          <span style=" color: orange;position: absolute;font-size: 9px;margin-left: 2px;">*</span>
+                        </span>
+                        <div class="value">
+                          <div class="value">
+                            <div class="custom-form-field custom-field-contract-quantity lightTheme">
+                              <mat-form-field class="without-search quantity-container" appearance="legacy">
+                                <input matInput value="{{maxQuantity}}" autocomplete="off" />
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="border_line"></div>
+                    <div class="col-md-2">
+                      <span class="label">Uom</span>
+                      <div class="value">
+                        <div class="custom-form-field custom-field-contract-quantity lightTheme">
+                          <mat-form-field class="without-search" appearance="legacy" style="width:60px">
+                            <mat-select [ngModel]="selectedUom" panelClass="general-info-select-container">
+                              <mat-option value="MT">
+                                MT
+                              </mat-option>
+                              <mat-option value="GAL">
+                                GAL
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="border_line"></div>
+                    <div class="col-md-2 p-lr-5">
+                      <div class="tolInputFocus" style="width:100%;padding: 0px 10px 0;">
+                        <span class="label">Tolerance %</span>
+                        <div class="value">
+                          <div class="value">
+                            <div class="custom-form-field custom-field-contract-quantity lightTheme">
+                              <mat-form-field class="without-search" appearance="legacy">
+                                <input value="{{tolerance}}" matInput required>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid-contract contract-container"
+      style="border-bottom: 5px solid #E0E1E4; padding-bottom: 0px;">
+      <div class="row m-b-4">
+        <div class="col-12">
+          <div class="row col-md-12 contract-section" style="padding-left: 0px; margin-top:5px !important;"
+            id="container-contract">
+            <div class="add-contract-product-section" style="position: relative;
+          top: 0px;">
+              <a class="add-contract-product-icon" (click)="addProductToContract()"></a>
+            </div>
+            <ng-container *ngFor="let contractProduct of contractproducts | keyvalue: originalOrder;
+          let i = index">
+              <ng-container>
+                <div style="margin-left: 15px;">
+                  <div class="contract-addProduct-separator" *ngIf="i > 0"></div>
+                  <div class="hoveraddedProduct">
+                    <div class="hover-remove-icon" *ngIf="contractproducts.length > 1"
+                      (click)="removeProductToContract(i)"></div>
+                    <div *ngIf="contractproducts.length > 1 &&
+                      ((selectedLocindex !=i || selectedProindex!=i)  && (contractProduct.value.name && contractProduct.value.pname))"
+                      class="fieldOverlayClass contract-location-with-product-container d-flex" style="margin-right:0"
+                      (click)="setAllowedLocations(contractProduct.value,i);setAllowedProducts(i)">
+                    </div>
+                    <div class="contract-location-with-product-container d-flex" [ngClass]="{
+                  'container-with-value': productSelected && selectedProindex==i}" style="margin-right:0"
+                  (click)="setAllowedLocations(contractProduct.value,i);setAllowedProducts(i)">
+                      <div class="custom-form-field custom-form-field-location lightTheme" [ngClass]="{
+                    'container-location-with-value': locationSelected && selectedLocindex==i}">
+                        <mat-form-field class="without-search contract-location-product-dropdown" appearance="legacy"
+                          style="width: 100% !important;">
+                          <mat-label>Add Location</mat-label>
+                          <span>
+
+                          </span>
+                          <mat-select [(ngModel)]="contractProduct.value.name" #locSelect disableOptionCentering
+                            [panelClass]="'location-select-container'" (selectionChange)="
+                        setLocationChange(contractProduct.value.name,$event.value,i)">
+                            <div [ngClass]="{
+                            'expand-select-location-container': expandLocation
+                          }">
+                              <div class="select-location-container col-md-12 header-container-location no-padding"
+                                style="display: inline-flex;">
+                                <div class="search-location-container col-md-10 no-padding">
+                                  <span class="search-location-lookup" (click)="
+                                  $event.stopPropagation();
+                                  $event.preventDefault();
+                                 
+                                ">
+                                  </span>
+                                  <div class="search-location-input">
+                                    <mat-option>
+                                      <input matInput style="position: relative;top:5px"
+                                        placeholder="Search all and select a location" class="search-product-input"
+                                        (click)="
+                                  $event.stopPropagation();
+                                  $event.preventDefault();" (input)="search('location',$event.target.value)">
+
+                                    </mat-option>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 no-padding" (click)="
+                                $event.stopPropagation(); $event.preventDefault()
+                              ">
+                                  <img style="float: right;" (click)="expandLocation = !expandLocation" alt="Shiptech"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=" />
+                                </div>
+                              </div>
+                              <table class="location-pop-up col-md-12 no-padding" mat-table
+                                [dataSource]="locationMasterSearchListOptions">
+                                <!-- Location name Column -->
+                                <ng-container matColumnDef="name">
+                                  <th mat-header-cell *matHeaderCellDef style="padding-left:5px">
+                                    Location
+                                  </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    <mat-option [value]="element" class="no-padding">
+                                      <mat-radio-button class="location-container-radio-button" [value]="element">
+                                        {{ element.name }}
+                                      </mat-radio-button>
+                                    </mat-option>
+                                  </td>
+                                </ng-container>
+
+                                <!-- Country Column -->
+                                <!--  <ng-container matColumnDef="country">
+                            <th mat-header-cell *matHeaderCellDef>Country</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.country}}
+                            </td>
+                          </ng-container> -->
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                              </table>
+                            </div>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div [ngClass]="{
+                    'container-with-value': productSelected && selectedProindex==i}">
+                        <a class="remove-product-black-icon remove-product-icon"> </a>
+                      </div>
+                      <div class="custom-form-field custom-form-field-location lightTheme" [ngClass]="{
+                  'container-product-with-value': productSelected && selectedProindex==i}">
+                        <mat-form-field class="without-search contract-location-product-dropdown" appearance="legacy"
+                          style="width: 100% !important;">
+                          <mat-label>Add product</mat-label>
+                          <span>
+
+                          </span>
+                          <mat-select [(ngModel)]="contractProduct.value.pname" #singleSelect disableOptionCentering
+                            [panelClass]="'location-select-container'" (selectionChange)="
+                      setProductChange($event.value,i)">
+                            "
+
+                            >
+                            <div style="margin-top: -20px;" [ngClass]="{
+                          'expand-select-location-container': expandLocation
+                        }">
+                              <div class="select-location-container col-md-12 header-container-location no-padding"
+                                style="display: inline-flex;">
+                                <div class="search-location-container col-md-10 no-padding">
+                                  <span class="search-location-lookup" (click)="
+                                $event.stopPropagation();
+                                $event.preventDefault();
+                               
+                              ">
+                                  </span>
+                                  <div class="search-location-input">
+                                    <mat-option>
+                                      <input matInput style="position: relative;top:5px"
+                                        placeholder="Search all and select a product" class="search-product-input"
+                                        (click)="
+                                $event.stopPropagation();
+                                $event.preventDefault();" (input)="search('product',$event.target.value)">
+
+                                    </mat-option>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 no-padding" (click)="
+                              $event.stopPropagation(); $event.preventDefault()
+                            ">
+                                  <img style="float: right;" (click)="expandLocation = !expandLocation" alt="Shiptech"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=" />
+                                </div>
+                              </div>
+                              <table class="location-pop-up col-md-12 no-padding" mat-table
+                                [dataSource]="productMasterSearchListOptions">
+                                <!-- Location name Column -->
+                                <ng-container matColumnDef="name">
+                                  <th mat-header-cell *matHeaderCellDef style="padding-left:5px">
+                                    Products
+                                  </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    <mat-option [value]="element" class="no-padding">
+                                      <mat-radio-button class="location-container-radio-button" [value]="element">
+                                        {{ element.pname }}
+                                      </mat-radio-button>
+                                    </mat-option>
+                                  </td>
+                                </ng-container>
+
+                                <!-- Country Column -->
+                                <ng-container matColumnDef="type">
+                                  <th mat-header-cell *matHeaderCellDef>Type</th>
+                                  <td mat-cell *matCellDef="let element">
+                                    {{ element.type}}
+                                  </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+                              </table>
+                            </div>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid-contract contract-container"
+      style="border-bottom: 5px solid #E0E1E4; padding-bottom: 0px;">
+      <div class="row m-b-4">
+        <div class="row col-md-12 contract-section" style="padding-left: 0px;padding-top: 0;
+        margin-top: 0 !important;" id="container-contract">
+
+
+          <!--product Details start-->
+          <div class="col-md-6">
+            <div class="col-md-12 contract-section selected-product-container"
+              style="padding-top:0;padding-left:10px;padding-right:15px;margin-left: 0px;margin-bottom:10px;padding-bottom:10px;min-height: 542px;">
+              <div class="col-md-12 no-padding d-flex" style="top: 8px;">
+                <div class="header-product-details col-md-2 no-padding">
+                  Product details
+                </div>
+                <div class="contract-details-info col-md-10 no-padding" style="text-align: right;">
+                  <span>
+                    Main location
+                    <span class="location-contract-info">
+                      : {{selectedLocname}}
+                    </span>
+                  </span>
+                  <span>
+                    Main product
+                    <span class="product-contract-info">
+                      : {{selectedProname}}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-12 allowed-locations-section no-padding">
+                <div>
+                  <div class="" style="margin-top:10px; margin-bottom: -4px;">
+                    <div
+                      [ngClass]="{'allowed-companies-container': !expandAllowCompanies, 'allowed-companies-container-expand': expandAllowCompanies}">
+                      <div class="allowed-container col-md-12 d-flex">
+                        <div class="allowed-list-modal-container">
+                          Allowed Locations
+                        </div>
+                        <div [matMenuTriggerFor]="menu11" class="edit-allow-companies">
+                        </div>
+                        <mat-menu #menu11="matMenu" class="add-new-request-menu">
+                          <div class="expansion-popup" style="margin: 20px 0px;">
+                            <div class="select-product-container">
+                              <div class="col-md-12 header-container-product"
+                                (click)="$event.stopPropagation(); $event.preventDefault()">
+                                <div class="search-product-container col-md-10">
+                                  <span class="search-product-lookup">
+                                  </span>
+                                  <input matInput placeholder="Search and select counterparty"
+                                    class="search-product-input">
+                                </div>
+                                <div class="col-md-2">
+                                  <span class="expand-img"></span>
+                                </div>
+                              </div>
+                              <table class="delivery-products-pop-up col-md-12 no-padding" mat-table
+                                (click)="$event.stopPropagation()" [dataSource]="customerList">
+
+                                <ng-container matColumnDef="name">
+                                  <th mat-header-cell *matHeaderCellDef> Location </th>
+                                  <td mat-cell *matCellDef="let element">
+                                    <mat-option [value]="element">
+                                      <mat-checkbox [value]="element" [(ngModel)]="element.isSelected">
+                                        {{element.name}}
+                                      </mat-checkbox>
+                                    </mat-option>
+                                  </td>
+                                </ng-container>
+                                <ng-container matColumnDef="blank">
+                                  <th mat-header-cell *matHeaderCellDef></th>
+                                  <td mat-cell *matCellDef="let element">
+                                  </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="customerListColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: customerListColumns;"></tr>
+                              </table>
+                              <div class="proceed-div">
+                                <button mat-button class="mid-blue-button proceed-btn"
+                                  (click)="saveCustomer()">Save</button>
+                              </div>
+                            </div>
+                          </div>
+                        </mat-menu>
+                        <!-- <mat-menu #menu11="matMenu" class="general-allowed-company-modal">
+                            <div style="height: 293px;"
+                              [ngClass]="{'expand-allowed-company-container': expandAllowedCompanylistPopUp}">
+                              <div class="col-md-12 header-allowed-company">
+                                <div class="allowed-company-header col-md-10 contract-no-padding">
+                                  Allowed Locations
+                                </div>
+                                <div class="col-md-2 contract-no-padding expand-allowed-companies"
+                                  (click)="$event.stopPropagation();$event.preventDefault();">
+                                  <img [ngClass]="{'expand-company-img': expandAllowedCompanylistPopUp}"
+                                    (click)="expandAllowedCompanylistPopUp = !expandAllowedCompanylistPopUp;" alt="Shiptech"
+                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=">
+                                </div>
+                              </div>
+                              <div (click)="$event.stopPropagation();"
+                                class="col-md-12 contract-no-padding allowed-company-line" *ngFor="let company of companyList">
+                                <mat-checkbox [(ngModel)]="company.isSelected">
+                                  {{company.name}}
+                                </mat-checkbox>
+                              </div>
+                            </div>
+                            <div class="saveAllowedCompanies"
+                              [ngClass]="{ 'expand-save-button': expandAllowedCompanylistPopUp }">
+                              <button class="ui-button-info mr-1 btn-i-blue-color" label="Save" pButton
+                                (click)="saveAllowedCompanies()" style="float:right" type="button">Save</button>
+                            </div>
+                          </mat-menu> -->
+                      </div>
+                      <div class="allowed-container col-md-12 d-flex">
+                        <div class="allowed-list">
+                          <ng-container *ngFor="let allowedCompany of allowedCompanies">
+                            <span class="allow-company">
+                              <span class="dot-allow-company">
+                              </span>
+                              {{allowedCompany.name}}
+                            </span>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 allowed-locations-section no-padding">
+                <div>
+                  <div class="" style="margin-top:10px; margin-bottom: -4px;">
+                    <div
+                      [ngClass]="{'allowed-companies-container': !expandAllowCompanies, 'allowed-companies-container-expand': expandAllowCompanies}">
+                      <div class="allowed-container col-md-12 d-flex">
+                        <div class="allowed-list-modal-container">
+                          Allowed Products
+                        </div>
+                        <div [matMenuTriggerFor]="menu1" class="edit-allow-companies">
+                        </div>
+                        <mat-menu #menu1="matMenu" class="general-allowed-company-modal">
+                          <div style="height: 293px;"
+                            [ngClass]="{'expand-allowed-company-container': expandAllowedCompanylistPopUp}">
+                            <div class="col-md-12 header-allowed-company">
+                              <div class="allowed-company-header col-md-10 contract-no-padding">
+                                Allowed Products
+                              </div>
+                              <div class="col-md-2 contract-no-padding expand-allowed-companies"
+                                (click)="$event.stopPropagation();$event.preventDefault();">
+                                <img [ngClass]="{'expand-company-img': expandAllowedCompanylistPopUp}"
+                                  (click)="expandAllowedCompanylistPopUp = !expandAllowedCompanylistPopUp;"
+                                  alt="Shiptech"
+                                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEmSURBVFhH7ZahCgJBEIZ9KruYxatiF6vBdsWk2WiyXTGJweIjiMEkglHxKVb+MDCOw84ernhhBr7gzr/Dd3vcYqvdKUKTcCELF7JwIYuoUH8wCuNJqaLlCS0PME/Lc6JCq3UVtJotlmqeQF8rzNPynNpClgyhSWUXuj+eodsbqlkJcsjz+skJXa43Uwp95GRlE8Lx81cQk5IyfG8WIQyj31xqtz+8ZQmsU8m9Xwtpp4DBKSfEZXhPrkmiQv/AhSxcyKK2EL6UaTlXewT6KV+URlRIDqZPWt4xHKyj5NWQ8iAgKoSLjAZzGZQlhJJ7s9zUNDhFhpBStDebEC9LhuBSVNmF/O+HBMd+PJ0/qDZbNU+gr+1Led1RoX/gQhYuZOFCFg0TKsILCN4aRzqXaa8AAAAASUVORK5CYII=">
+                              </div>
+                            </div>
+                            <div (click)="$event.stopPropagation();"
+                              class="col-md-12 contract-no-padding allowed-company-line"
+                              *ngFor="let company of companyList">
+                              <mat-checkbox [(ngModel)]="company.isSelected">
+                                {{company.name}}
+                              </mat-checkbox>
+                            </div>
+                          </div>
+                          <div class="saveAllowedCompanies"
+                            [ngClass]="{ 'expand-save-button': expandAllowedCompanylistPopUp }">
+                            <button class="ui-button-info mr-1 btn-i-blue-color" label="Save" pButton
+                              (click)="saveAllowedCompanies()" style="float:right" type="button">Save</button>
+                          </div>
+                        </mat-menu>
+                      </div>
+                      <div class="allowed-container col-md-12 d-flex">
+                        <div class="allowed-list">
+                          <ng-container *ngFor="let allowedCompany of allowedCompanies">
+                            <span class="allow-company">
+                              <span class="dot-allow-company">
+                              </span>
+                              {{allowedCompany.name}}
+                            </span>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 no-padding contract-section d-flex p-t-0">
+                <div class="custom-form-field product-details lightTheme m-t-10">
+                  <div class="d-flex">
+                    <mat-form-field class="with-search" appearance="legacy">
+                      <mat-label>Spec Group</mat-label>
+                      <mat-select placeholder="Spec Group" panelClass="general-info-select-container">
+
+                        <mat-option> Spec 1 </mat-option>
+                        <mat-option> Spec 2 </mat-option>
+
+                      </mat-select>
+                    </mat-form-field>
+                    <div class="search-icon">
+                      <div class="img"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="custom-form-field" class=" lightTheme" style="margin: 10px 20px 0px 0px;">
+                  <div class="split-field" style="width: 178px;height: 38px !important;">
+                    <mat-form-field class="without-search long-label-field" style="width: 64%;height: 32px !important;border: none !important;"
+                      placeholder="Minimum Qty" appearance="legacy">
+                      <mat-label>Minimum Qty</mat-label>
+                      <input matInput class="text-ellipsis" value="100">
+                    </mat-form-field>
+                    <mat-form-field class="long-label-field" style="line-height: 22px;width: 36%;height: 38px !important;border-radius: 4px;" appearance="legacy">
+                      <mat-select disableRipple [ngModel]="selectedUom"  style="background-color: #EBECED !important;">
+                        <mat-option *ngFor="let uom of uoms" [value]="uom">{{uom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div id="custom-form-field" class=" lightTheme" style="margin: 10px 20px 0px 0px;">
+                  <div class="split-field" style="width: 178px;height: 38px !important;">
+                    <mat-form-field class="without-search long-label-field" style="width: 64%;height: 32px !important;border: none !important;"
+                      placeholder="Maximum Qty" appearance="legacy">
+                      <mat-label>Maximum Qty</mat-label>
+                      <input matInput class="text-ellipsis" value="100">
+                    </mat-form-field>
+                    <mat-form-field class="long-label-field" style="line-height: 22px;width: 36%;height: 38px !important;border-radius: 4px;" appearance="legacy">
+                      <mat-select disableRipple [ngModel]="selectedUom" style="background-color: #EBECED !important;">
+                        <mat-option *ngFor="let uom of uoms" [value]="uom">{{uom}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="custom-form-field product-details lightTheme m-t-10">
+                  <div class="d-flex">
+                    <mat-form-field class="with-search" appearance="legacy">
+                      <mat-label>Supplier</mat-label>
+                      <input class="free-text-field" type="text" matInput placeholder="Supplier">
+                      <mat-autocomplete #auto1="matAutocomplete" class="darkPanelAuto">
+                        <mat-option>
+                          PhysicalSupplier 1
+                        </mat-option>
+                        <mat-option>
+                          PhysicalSupplier 2
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                    <button class="search-icon">
+                      <div class="img">
+
+                      </div>
+                    </button>
+                  </div>
+                </div>
+                <div class="custom-form-field product-details lightTheme m-t-10">
+
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Deal date</mat-label>
+                    <input required name="Deal Date" matInput autocomplete="off" placeholder="Deal Date">
+                    <mat-datepicker-toggle matSuffix>
+                      <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                      </mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #dealDate></mat-datepicker>
+                  </mat-form-field>
+
+                </div>
+              </div>
+              <div class="product-additional-section">
+                <div class="row">
+                  <div class="col-12 pd-0" style="padding: 0px">
+                    <div class="header-product-details col-md-12 notes-section pd-0" style="margin-top: 20px;">
+                      <div class="title">
+                        Product conversion factors
+                      </div>
+                    </div>
+                    <div class="col-md-12 pd-0" style="margin: 7px 0px;">
+                      <div class="row">
+                        <div class="col-md-12 pd-0">
+                          <div class="agGrid-v2" style="height: auto;margin:0">
+                            <div style="width:100.2%" #rolloverGridContainer>
+                              <ag-grid-angular style="width: 100%;" [gridOptions]="gridOptions1" domLayout='autoHeight'
+                                [masterDetail]="true" (window:resize)="onResize($event)"
+                                class="ag-theme-material cell-group-bg ag-grid-v2 angular-v9 min-height small">
+                              </ag-grid-angular>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+
+
+              </div>
+            </div>
+          </div>
+          <!--Product details End-->
+
+          <!--Product Pricing Start-->
+
+          <div class="col-md-6 contract-product-pricing-section">
+            <div class="col-md-12 contract-section selected-product-container"
+              style="padding-left:10px;margin-left: 0px; min-height:540px; padding-bottom: 10px;padding-right:15px;">
+              <div class="col-md-12 no-padding d-flex" style="margin-top: 0px;margin-bottom: 10px;">
+                <div class="header-product-details no-padding">
+                  Product pricing
+                </div>
+              </div>
+              <!-- <div class="col-md-12 no-padding d-flex" style="flex-wrap: wrap;">
+                <div class="col-md-4 no-padding d-flex">
+                  <div class="custom-form-field lightTheme price-fixed Price-Precision formula-description">
+                    <mat-form-field class="without-search" appearance="legacy">
+                      <mat-label>Price Precision</mat-label>
+                      <mat-select placeholder="Price Precision" [disableOptionCentering]="true"
+                        panelClass="price-precision-select-container"
+                        (selectionChange)="recomputeProductPricePrecision()">
+                        <mat-option>
+                          1
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div> -->
+              <div class="col-md-12 row no-padding d-flex price-precision-select-container" style="margin-top: 10px;">
+                <div class="row Price-Precision-row">
+                  <div class="col-md-6 no-padding-left p-r-0">
+                    <div id="custom-contract-toggle-v2">
+                      <mat-button-toggle-group #group1="matButtonToggleGroup" [value]="selectedVal3"
+                        (change)="onValChange1(group1.value)">
+                        <mat-button-toggle value="formula">
+                          <span *ngIf="selectedVal3 == 'formula'" class="toggle-icon"></span>
+                          Formula based
+                        </mat-button-toggle>
+                        <mat-button-toggle value="fixed">
+                          <span *ngIf="selectedVal3 == 'fixed'" class="toggle-icon"></span>
+                          Fixed
+                        </mat-button-toggle>
+                      </mat-button-toggle-group>
+
+                    </div>
+
+                  </div>
+                  <!-- <div class="col-md-4">
+                  <div class="custom-form-field lightTheme price-fixed Price-Precision formula-description p-l-10">
+                    <mat-form-field class="without-search" appearance="legacy">
+                      <mat-label>Price Precision</mat-label>
+                      <mat-select placeholder="Price Precision" [disableOptionCentering]="true"
+                        panelClass="price-precision-select-container"
+                        (selectionChange)="recomputeProductPricePrecision()">
+                        <mat-option>
+                          1
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div> -->
+                  <div *ngIf='selectedVal4 && showFormulaNameField' class="col-md-6 p-r-0"
+                    style="display: flex;align-items: center;justify-content: flex-end;height:40px;">
+                    <div class="contract-details-info" (click)="createNewFormulaPopup()"
+                      [ngClass]="{'disabled':showFormulaNameField==false}" style="float:left;padding-right: 0px !important;display: flex;
+            align-items: center;white-space: nowrap;">
+                      <span style="display: flex;align-items: center;">
+                        <a class="create-new-formula-icon"></a>
+                      </span>
+                      <span class="location-contract-info" style="margin-right:0 !important">
+                        Create new formula
+                      </span>
+
+                    </div>
+                    <div class="divider"></div>
+                    <div class="" style="display: flex;align-items: center;">
+                      <div class="formula-history">
+                        <div class="formula-icon"></div>
+                        <div style="float: right;white-space: nowrap;">
+                          <a class="formula-history-name" (click)="openFormulaHistory()">
+                            Formula History
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row" style="display: flex;align-items: center;justify-content: space-between;">
+                <div *ngIf="selectedVal4 && showFormulaNameField" class="no-padding d-flex"
+                  style="width: calc(100% - 200px);margin-top: 10px;margin-bottom: 15px;">
+                  <div class="custom-form-field product-details lightTheme"
+                    style="width: 100% !important; margin: 0px  !important; padding-right:10px;">
+                    <div class="d-flex">
+                      <mat-form-field class="with-search" appearance="legacy" style="width: calc(100% - 30px);">
+                        <mat-label>Type formula name</mat-label>
+                        <input class="free-text-field" type="text" matInput [matAutocomplete]="auto1"
+                          placeholder="Type formula name">
+                        <mat-autocomplete #auto1="matAutocomplete" class="darkPanelAuto" [displayWith]="displayFn"
+                          (optionSelected)="updateConversionFactor($event.option.value)">
+                          <mat-option>
+                            option 1
+                          </mat-option>
+                          <mat-option>
+                            option 2
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                      <button class="search-icon">
+                        <div class="img"> </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!showFormulaNameField && selectedVal4" class="no-padding d-flex"
+                  style="width: calc(100% - 200px);margin-top: 10px;margin-bottom: 15px;">
+                  <div class="formula-container col-md-12 d-flex no-padding">
+                    <div class="formula-header col-md-6">
+                      Formula Name
+                      <div class="formula-value">
+                        Mean average over the month with discount
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 d-flex formula-name no-padding">
+                      <!-- <div class="col-md-6 no-padding"></div> -->
+                      <div class="col-md-12 no-padding">
+                        <div style="display: flex;
+                      align-items: center;justify-content: space-around;min-height:30px">
+                          <span style="margin-right: 0px;">
+                            <a class="remove-formula-icon" (click)="RemoveFormula()">
+                            </a>
+                            <span>
+                              Remove
+                            </span>
+                          </span>
+                          <span>
+                            <a (click)="viewFormula(selectedTabIndex)" class="view-formula-icon"
+                              style="position: relative; top: 0px;">
+                            </a>
+                            <span style="position: relative; bottom: 0px;">
+                              View formula
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="selectedVal4" class="m-b-5 no-padding d-flex custom-form-field product-details lightTheme">
+                  <mat-form-field class="without-search" style="width:181px;" appearance="legacy">
+                    <mat-label>Price Precision</mat-label>
+                    <mat-select placeholder="Price Precision" [disableOptionCentering]="true"
+                      panelClass="price-precision-select-container"
+                      (selectionChange)="recomputeProductPricePrecision()">
+                      <mat-option>
+                        1
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <div *ngIf="!selectedVal4" class="col-md-12 no-padding d-flex" style="flex-wrap: wrap;margin-top: 10px;">
+
+
+                <div class="custom-form-field product-details lightTheme">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Price</mat-label>
+                    <input matInput autocomplete="off" placeholder="Price" required>
+                  </mat-form-field>
+                </div>
+                <div class="custom-form-field product-details lightTheme">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Currency</mat-label>
+                    <mat-select placeholder="Currency" [disableOptionCentering]="true"
+                      panelClass="general-info-select-container">
+                      <mat-option>
+                        option 1
+                      </mat-option>
+                      <mat-option>
+                        option 2
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="custom-form-field product-details lightTheme">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Uom</mat-label>
+                    <mat-select placeholder="Uom" [disableOptionCentering]="true"
+                      panelClass="general-info-select-container">
+                      <mat-option>
+                        option 1
+                      </mat-option>
+                      <mat-option>
+                        option 2
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="custom-form-field product-details lightTheme">
+                  <mat-form-field class="without-search" appearance="legacy">
+                    <mat-label>Price Precision</mat-label>
+                    <mat-select placeholder="Price Precision" [disableOptionCentering]="true"
+                      panelClass="price-precision-select-container"
+                      (selectionChange)="recomputeProductPricePrecision()">
+                      <mat-option value="1">
+                        1
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <!-- <div *ngIf="!showFormulaNameField && selectedVal4" class="col-md-12 no-padding d-flex" style="margin-top: 10px;margin-bottom: 15px;">
+                <div class="formula-container col-md-12 d-flex no-padding">
+                  <div class="formula-header col-md-7">
+                    Formula Name
+                    <div class="formula-value">
+                      Mean average over the month with discount
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-5 d-flex formula-name no-padding">
+                    
+                    <div class="col-md-12 no-padding">
+                      <div style="display: flex;
+                      align-items: center;justify-content: space-around;min-height:40px">
+                        <span style="margin-right: 0px;">
+                          <a class="remove-formula-icon" (click)="somefn()">
+                          </a>
+                          <span>
+                            Remove
+                          </span>
+                        </span>
+                        <span>
+                          <a (click)="viewFormula(selectedTabIndex)" class="view-formula-icon"
+                            style="position: relative; top: 3px;">
+                          </a>
+                          <span  style="position: relative; bottom: 2px;">
+                            View formula
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="product-additional-section">
+                <div class="row">
+                  <div class="col-12 pd-0" style="padding: 0px">
+                    <div class="header-product-details col-md-12 notes-section pd-0" style="margin-top: 20px;">
+                      <div class="title">
+                        Product additional costs
+                      </div>
+                    </div>
+                    <div class="col-md-12 pd-0" style="margin: 7px 0px;">
+                      <div class="row">
+                        <div class="col-md-12 pd-0">
+                          <div class="agGrid-v2" style="height: auto;margin:0">
+                            <div style="width:100.2%;" #rolloverGridContainer>
+                              <ag-grid-angular style="width: 100%;" [gridOptions]="gridOptions" domLayout='autoHeight'
+                                [masterDetail]="true" (window:resize)="onResize($event)"
+                                class="ag-theme-material cell-group-bg ag-grid-v2 angular-v9 min-height">
+                              </ag-grid-angular>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!--Product Pricing End-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

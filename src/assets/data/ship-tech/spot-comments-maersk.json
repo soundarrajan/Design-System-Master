@@ -1,0 +1,34 @@
+[
+    {
+        "title": "General",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "",
+        "type": "IC",
+        "id": 110
+    },
+    {
+        "title": "Performance",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "",
+        "type": "IC",
+        "id": 111
+    },
+    {
+        "title": "Supplier",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "Vessel delay expected by 8 hrs",
+        "type": "EC",
+        "id": 112
+    },
+    {
+        "title": "Vessel & Agents",
+        "selected": false,
+        "currentEdit": false,
+        "comments": "Delay communicated to Seller",
+        "type": "EC",
+        "id": 113
+    }
+]

@@ -1,0 +1,84 @@
+<!-- <mat-dialog-content> -->
+  <div class="dialog-table-popup">
+    <div class="dialog-icon warning-icon-red"></div>
+  <h2 mat-dialog-title class="dialog-title">
+    Attention
+    <mat-icon matSuffix class="dialogCloseButton float-right">close</mat-icon>
+  </h2>
+  <hr>
+  <div class="dialog-table-title">
+   <span class="circle red"></span>
+   <span class="text">Below listed high severity errors are preventing save action.</span>
+  </div>
+<div class="dialog-table-block">
+  <table>
+    <thead>
+        <tr>
+            <th>Movement ID</th>
+            <th>Delivery ID</th>
+            <th>Message</th>
+            <th>Severity</th>
+        </tr>
+      </thead>
+    <tbody>
+      
+      <tr>
+        <td>MOV17234</td>
+        <td><a href="#" class="text-link">PHB10283-1</a></td>
+        <td>Book access validation</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>MOV17234</td>
+        <td><a href="#" class="text-link">PHB10283-1</a></td>
+        <td>Movement Date must be grater than last Book closure Date</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td>MOV17234</td>
+        <td><a href="#" class="text-link">PHB10283-1</a></td>
+        <td>movement Date must be ‘On’ or ‘After’ Trade Date.</td>
+        <td>High</td>
+      </tr>
+
+      
+    </tbody>
+  </table>
+  </div>
+
+  <div class="dialog-table-title">
+    <span class="circle yellow"></span>
+    <span class="text">Other low priority warnings present</span>
+   </div>
+ <div class="dialog-table-block">
+   <table>
+     <thead>
+         <tr>
+             <th>Movement ID</th>
+             <th>Delivery ID</th>
+             <th>Message</th>
+             <th>Severity</th>
+         </tr>
+       </thead>
+     <tbody>
+       
+       <tr>
+         <td>MOV17234</td>
+         <td><a href="#" class="text-link">PHB10283-1</a></td>
+         <td>Book access validation</td>
+         <td>High</td>
+       </tr>
+      
+ 
+       
+     </tbody>
+   </table>
+   </div>
+    
+  
+  <!-- </mat-dialog-content> -->
+  
+  <!-- <mat-dialog-actions class="float-right">
+    <button class="cancel-btn" mat-button>CANCEL</button>
+    <button class="blue-button" mat-button [mat-dialog-close]="true" style="width: 90px;">PROCEED</button>
+  </mat-dialog-actions> -->

@@ -1,0 +1,60 @@
+<div id="wrapper">
+  <div id="mapContainer" #gmap style="width:100%;height: calc(100vh - 56px);position:fixed !important;"></div>
+  <div id="over_map">
+    <div class="row">
+      <div class="col-md-1">
+
+        <!-- <button mat-button class="dark-iconbutton float-right"  (click)="this.expandRegions($event)" matTooltip="Expand Filters" matTooltipShowDelay="700">
+                        <img src="../../assets/customicons/expand.svg" alt="Expand Filters Icon">
+                      </button> -->
+        <!-- <div class="active-chip" id="expand">
+                <img src="../../assets/icon/expand.svg" (click)="this.expandRegions($event)" matTooltip="Expand Regions" [matTooltipShowDelay]="500">
+            </div> -->
+      </div>
+      <div class="col-md-9" style="z-index: 10 !important;">
+        <!-- <app-chips-list [chipLists]="this.chipListForFilters" [showExtraIcon]="true" (openEvent)="this.setFilter($event)">
+            </app-chips-list> -->
+
+        <smart-trader-map-panel [isShowPanel]="false" (zoomInEvent)="this.setZoom('in')" (zoomOutEvent)="this.setZoom('out')"></smart-trader-map-panel>
+        <!-- </app-map-panel> -->
+      </div>
+    </div>
+  </div>  
+  <div class="side-btn"  *ngIf="selectedFillterTag" (click)="filterChipClick(null)">All Vessels</div>
+  <div id="table_img">     
+    <!-- <img src="../../assets/customicons/table.svg" (click)="this.showTableViewEmit.emit()" matTooltip="Table View" [matTooltipShowDelay]="500"> -->
+    <button mat-button class="dark-iconbutton" (click)="this.showTableViewEmit.emit()"
+      style="min-width: 50px !important;width:50px !important; margin:0 !important; border-radius: 0 !important; box-shadow: 2px 2px 6px -0.5px #292929;"
+      matTooltip="Table View" matTooltipShowDelay="700">
+      <img src="../../assets/customicons/table.svg" alt="Table View" style="width: 20px; height: auto;">
+    </button>
+  </div>
+  <div id="vessel_filter">
+    <div class="float-left">
+      <app-search-vessel (searchClick)="SearchVesselClick($event)" [vesselList]="this.vesselList" [isFilterSearchEnabled]="true"></app-search-vessel>
+    </div>
+  </div>
+  <!-- <div id="last_updated"> Vessel Last Updated: <span id="datetime">{{this.lastUpdatedOn}}</span> </div> -->
+  <div class="fillterchip-container">
+    <div *ngFor="let item of tagfillterData; let i = index">
+    <div class="status-badge" (click)="filterChipClick(item)" [ngStyle]="{'opacity': selectedFillterTag==item.name ? '1' : selectedFillterTag==''?'1':'0.4' }">
+      {{item.name}}
+      <div class="status-indicator">
+        <div class="count">{{item.count}}</div>
+        <div class="bar" [ngStyle]="{'background-color':item.color}"></div>
+      </div>
+    </div>   
+    </div> 
+    <div id="last_updated"> 
+      <span>Vessel Last Updated :</span> <span id="datetime">{{this.lastUpdatedOn}}</span> </div>
+  </div>
+</div>
+
+<!-- <div [ngClass]="[showLoading ? 'active' : 'inactive']" id="overlay">
+  <div id="overlay-content">    
+  <div id="spinner">
+      <div class="spinner-white"></div>
+  </div>
+  <h4>Loading...</h4> 
+</div>
+</div> -->

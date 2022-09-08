@@ -1,0 +1,20 @@
+<div class="legend2-component-v2" [ngClass]="{'darkTheme':switchTheme}">
+	<div>
+		<div class="text">DTE (Days)</div>
+		<div class="value">25</div>
+	</div>
+	<div>
+		<div class="text">DTE (Years)</div>
+		<div class="value">0.07</div>
+	</div>
+	<div class="dropdown">
+		<div class="text">Currency</div>
+		<mat-form-field appearance="legacy">
+			<mat-select value="usd" disableOptionCentering [panelClass]="{'darkPanel':darkThemeOn}">
+				<mat-option value="usd">USD</mat-option>
+				<mat-option value="eur">EUR</mat-option>
+				<mat-option value="inr">INR</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<div clss="eom-popup-wrapper">
+  <div class="eom-popup-heading">
+    <span class="exclamation-triangle"></span><span>Attention </span>
+    <mat-icon id="dialogCloseButton" matSuffix class="float-right" (click)="closeDialog()">close</mat-icon>
+  </div>
+  <hr>
+  <div style="text-align: center;">
+    <div>You are about to close month Nov - 2019.</div>
+    <div>Do you wish to proceed?</div>
+  </div>
+  <button mat-dialog-close="true" class="red-button button-popup">CANCEL</button>
+  <button mat-dialog-close="true" class="blue-button button-popup float-right">PROCEED</button>
+</div>

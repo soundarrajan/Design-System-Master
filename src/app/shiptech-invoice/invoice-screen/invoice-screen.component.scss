@@ -1,0 +1,13 @@
+.more-btn{
+    border: 1px solid #364150;
+    border-radius: 3px;
+    height: 28px !important;
+    width: 29px !important;
+    margin-top: 0px;
+
+    mat-icon{
+        transform: rotate(90deg);
+        top: -3px;
+        position: relative;
+    }    
+}

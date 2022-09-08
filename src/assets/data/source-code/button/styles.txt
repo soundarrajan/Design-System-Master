@@ -1,0 +1,44 @@
+/****  Button-V2 - START ****/
+.btnV2{
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 3px;
+  width: 104px;
+  height: 25.69px;;
+  &.primary{
+    border: 1px solid #1d9fff;
+    background: #1d9fff;
+    color: #ffffff;
+    &.hover-btn {
+      background: #ffffff;
+      color: #1d9fff;
+      &:hover {
+        background: #1d9fff;
+        color: #ffffff;
+      }
+    }
+    &:disabled {
+      border-color: #bdbdbd;
+      background: #bdbdbd;
+      pointer-events: none;
+    }
+  }
+  &.warning {
+    background: #e15656;
+    border: 1px solid #e15656;
+    color: #ffffff;
+    &.hover-btn {
+      background: #ffffff;
+      color: #e15656;
+      &:hover {
+        background: #e15656;
+        color: #ffffff;
+      }
+    }
+  }
+}
+/****  Button-V2 - END ****/

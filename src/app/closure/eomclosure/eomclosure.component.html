@@ -1,0 +1,29 @@
+<div class="eom-closure-landing">
+  <div>
+   <mat-tab-group class="EOM-Mat-Tab" (selectedTabChange)="selectTab($event)">
+      <mat-tab label="EOM Closure">
+        <app-eomclosuredetails [eomAction]="eomType" [eomStateAction]="eomState" (generatePL)="genPNL($event)" (onLoad)="runEom()"></app-eomclosuredetails>
+      </mat-tab>
+  </mat-tab-group>
+
+    <div class="header-right-block right-block header-buttons">
+      <div class="text">Closure for <b>XYZ Europe</b></div>
+      <div class="rack-match m-r-5" *ngIf="showcancelEom && !eomDone" matTooltip="Cancel EOM" matTooltipShowDelay="500">
+        <button class="mid-red-button mini h-25" (click)="cancelEom()">Cancel EOM</button>
+      </div>
+      <div class="rack-match" *ngIf="!eomDone">
+        <button class="mid-blue-button mini h-25" (click)="runEom()">{{ btnText == 'runEom' ? 'Run EOM' : (btnText == 'genPL' ? 'Generate P&L' : 'Accept & Close')}}</button>
+      </div>
+      <!-- <div class="header-btn" *ngIf="eomDone">
+        <button class="light-grey-button"><div class="tick-circle"><span></span></div>EOM Closure Done</button>
+      </div> -->
+      <button class="refresh_btn">
+          <img alt="refresh" src="../../../assets/customicons/refresh-blue.svg">
+      </button>        
+      <button class="expand_collapse_btn" (click)="toggleCollapse()">
+          <img alt="up-arrow" src="../../../assets/customicons/up-arrow-blue.svg" [ngClass]="{'rotate180':headerCollapse}">
+      </button> 
+    </div> 
+
+  </div>
+</div>  

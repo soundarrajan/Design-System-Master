@@ -1,0 +1,53 @@
+<div class="futures-settlement">
+    <mat-tab-group #tab animationDuration="1000ms" class="custom-header-tabs-v2"
+        (selectedIndexChange)="onTabChange(tab.selectedIndex)">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <div class="custom-label-holder">
+                    <div class="custom-tab-ui"></div>
+                    <div class="custom-label">Futures List</div>
+                </div>
+            </ng-template>
+            <app-futures-list [headerCollapse]="headerCollapse" [rolloverAction]="rolloverAction"
+                (updateOffsetBtn)="updateOffsetButton($event)" (resetButtons)="rolloverAction = false;"
+                (updateRolloverBtn)="updateRollover($event)">
+            </app-futures-list>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <div class="custom-label-holder">
+                    <div class="custom-tab-ui"></div>
+                    <div class="custom-label">Matched List</div>
+                </div>
+            </ng-template>
+            <app-matched-list [headerCollapse]="headerCollapse"></app-matched-list>
+        </mat-tab>
+    </mat-tab-group>
+    <div class="header-right-block right-block header-buttons">
+        <div *ngIf="toggleSmartFilter && selectedTab==0 && !rolloverAction">
+            <app-smart-filter [enableAddNew]="false" [smartFilterArray]="smartFilterArray"
+                [toggleSmartFilter]="toggleSmartFilter" [enableRemoveFilter]="false"
+                (onSmartFilterChange)="updateSmartFilter($event)">
+            </app-smart-filter>
+        </div>
+        <mat-divider *ngIf="toggleSmartFilter && selectedTab==0 && !rolloverAction" [vertical]="true"></mat-divider>
+        <div matTooltip="Offset" matTooltipShowDelay="500" *ngIf="selectedTab==0 && !rolloverAction">
+            <button class="blue-button " [disabled]="!enableOffsetBtn" (click)="offsetAction()">Offset</button>
+        </div>
+        <div matTooltip="Rollover" matTooltipShowDelay="500" *ngIf="selectedTab==0 && !rolloverAction">
+            <button class="blue-button " [disabled]="!enableRollOverBtn"
+                (click)="rolloverAction = !rolloverAction">Rollover</button>
+        </div>
+        <button class="smart_filter_btn" (click)="toggleSmartFilterAction()" *ngIf="selectedTab==0 && !rolloverAction"
+            [matTooltip]="toggleSmartFilter?'Disable Filter':'Enable Filter'" matTooltipShowDelay="500">
+            <div class="smart_filter_btn_icon" [ngClass]="{'active':toggleSmartFilter}"></div>
+        </button>
+        <button class="refresh_btn" (click)="refreshGrid()">
+            <img alt="refresh" src="../../../assets/customicons/refresh-blue.svg">
+        </button>
+        <button class="expand_collapse_btn" (click)="headerCollapse = !headerCollapse;">
+            <img alt="up-arrow" src="../../../assets/customicons/up-arrow-blue.svg"
+                [ngClass]="{'rotate180':headerCollapse}">
+        </button>
+    </div>
+</div>

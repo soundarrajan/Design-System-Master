@@ -1,0 +1,530 @@
+<div class="dialog-container">
+  <div class="header">
+    <div class="title">{{popupTitle}}</div>
+    <div class="header-btn">
+      <button *ngIf="!hideButtons" class="cancel-button" tabindex="-1" mat-button
+        [mat-dialog-close]="true">Cancel</button>
+      <button *ngIf="!hideButtons" class="blue-button" [disabled]="showProgressBar" (click)="generateInvoice()">Generate
+        Invoice</button>
+      <button *ngIf="invoiceGenerated && hideButtons" (click)="close()" class="blue-button">Close</button>
+      <!-- <span class="seperator-line"></span> -->
+      <mat-divider [vertical]="true"></mat-divider>
+      <span id="dialogCloseButton" class="close" (click)="closeDialog()"></span>
+    </div>
+  </div>
+  <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+  <div class="grid-container">
+    <div *ngIf="data.groupBy=='individual'" class="nested-block">
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83203</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-delivery-no">SB10239</span>
+            <span class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">Shell USA</span>
+          </div>
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD
+              <span>|</span>Invoice Date: 12/06/2019
+            </div>
+            <div class="invoice-date dark"> Invoice Type: AR <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10239</td>
+            <td>Shell USA</td>
+            <td>SH88339</td>
+            <td>Gasoline</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83223</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-delivery-no">SB10231</span>
+            <span class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              Trafigura </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Shell USA</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83213</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-delivery-no">SB10123</span>
+            <span class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              Toyota International </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10123</td>
+            <td>Shell USA</td>
+            <td>SH88339</td>
+            <td>Gasoline</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div *ngIf="data.groupBy!='individual'" class="nested-block">
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83203</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">Shell USA</span>
+          </div>
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD
+              <span>|</span>Invoice Date: 12/06/2019
+            </div>
+            <div class="invoice-date dark"> Invoice Type: AR <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10239</td>
+            <td>Shell USA</td>
+            <td>SH88339</td>
+            <td>Gasoline</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10239</td>
+            <td>Shell USA</td>
+            <td>SH88339</td>
+            <td>Gasoline</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10239</td>
+            <td>Shell USA</td>
+            <td>SH88339</td>
+            <td>Gasoline</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83223</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              Trafigura </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Biodiesel</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83223</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              Maersk </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Biodiesel</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83223</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              British Petroleum </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Biodiesel</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83223</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              Vitol </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Biodiesel</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="nested">
+        <thead class="p-t-0 p-l-0 p-r-0">
+          <div class="invoice-location">
+            <span class="blue-circle"></span>
+            <span *ngIf="invoiceGenerated" class="invoice-no">INS83223</span>
+            <span *ngIf="invoiceGenerated" class="p-r-9 color-grey divider grey"> | </span>
+            <span class="invoice-location-name">
+              Petro Diamond </span>
+          </div>
+
+          <div class="invoice-details">
+            <div class="invoice-amt">Invoice Amt: 12500 USD <span>|</span>Invoice Date: 12/06/2019</div>
+            <div class="invoice-date dark"> Payment Terms: Conditions based <span>|</span>Due Date: 02/09/2019</div>
+          </div>
+          <tr>
+            <th>S.No</th>
+            <th>Trade ID</th>
+            <th>Counterparty</th>
+            <th>Counterp..</th>
+            <th>Product/Cost</th>
+            <th class="mid-col text-right">Quantity</th>
+            <th class="mid-col text-right">Pay Leg/Cost</th>
+            <th class="mid-col text-right">Pay Leg/R..</th>
+            <th class="mid-col text-right">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Local Charges</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>SB10231</td>
+            <td>Trafigura</td>
+            <td>SH88339</td>
+            <td>Biodiesel</td>
+            <td class="mid-col text-right">125000 BBL</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+            <td class="mid-col text-right">125000 USD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="no-records">No more rows to show</div>
+  </div>
+  <!-- <mat-dialog-actions>
+    <button *ngIf="!hideButtons" tabindex="-1" mat-button [mat-dialog-close]="true" style="height:32px">Cancel</button>
+    <button *ngIf="!hideButtons" class="blue-button" [disabled]="showProgressBar" (click)="generateInvoice()"
+      style="width:157px">Generate
+      Invoice</button>
+    <button *ngIf="invoiceGenerated && hideButtons" [mat-dialog-close]="true" class="blue-button">Close</button>
+  </mat-dialog-actions> -->
+</div>

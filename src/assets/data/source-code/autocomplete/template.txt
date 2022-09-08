@@ -1,0 +1,22 @@
+<div class="form-fields" style='padding: 0px 20px;'>
+    <div class="custom-form-field-with-search lightTheme">
+        <form>
+            <div class="custom-form-field lookup-delivery-container d-flex" [ngClass]="{'darkTheme':false,'lightTheme':true}">
+              <mat-form-field class="with-search">
+                <mat-label>Payment Company</mat-label>
+                <input class="free-text-field" type="text" placeholder="{{placeholder}}" aria-label="name" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" class="">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <button [disabled]="false" [ngClass]="{'search-icon-disabled': false}" class="search-icon" (click)="openPopup()">
+                <div class="img">
+                </div>
+              </button>
+            </div>
+          </form>
+    </div>
+</div>  
+    

@@ -1,0 +1,13 @@
+<div class="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+<div class="d-flex">
+	<mat-form-field class="with-search" appearance="legacy">
+		<mat-label>Trader</mat-label>
+		<input matInput required>
+		<div class="navigation-icon" (click)="navigate()"></div>
+	</mat-form-field>
+
+	<div class="search-icon" (click)="openPopup()">
+		<div class="img"></div>
+	</div>
+</div>
+</div>

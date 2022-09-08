@@ -1,0 +1,165 @@
+<div id="allocations">
+  <div class="row">
+    <div class="col-md-12">
+      Costs
+    </div>
+  </div>
+  <div class="row" style="margin: 10px 0px !important;">
+    <div class="col-md-8">
+      <mat-button-toggle-group name="type" [value]="defaultToggle">
+        <mat-button-toggle value="noallocations" #noallocations style="margin-right: -5px;"> <span class="toggle-icon"
+            *ngIf="noallocations.checked"></span>No Allocations
+        </mat-button-toggle>
+        <mat-button-toggle value="strategy" #strategy><span class="toggle-icon" *ngIf="strategy.checked"></span>By
+          strategy
+        </mat-button-toggle>
+        <mat-button-toggle value="delivery" #delivery><span class="toggle-icon" *ngIf="delivery.checked"></span>By
+          delivery
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="col-md-4">
+      <div class="d-flex allocatedQty-details">
+        <div style="padding: 2px 15px;">Total trade qty
+          <div class="value">3,000 BBL</div>
+        </div>
+        <div class="border_line"></div>
+        <div style="padding: 2px 15px;"> Total allocated qty
+          <div class="value">2,000 BBL</div>
+        </div>
+        <div class="border_line"></div>
+        <div style="padding: 2px 15px;"> Total unallocated qty
+          <div class="value">1,000 BBL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin: 10px 0px !important;">
+    <ng-container *ngIf="strategy.checked">
+      <div class="col-md-12" style="width:100%;height:100%;margin-top:15px;">
+        <ag-grid-angular domLayout='autoHeight' style="width: 100%;height:100%"
+          [gridOptions]="gridOptions_strategy" class="ag-theme-material  strategy-table angular-v9"></ag-grid-angular>
+        <!-- <div class="strategy-table">
+          <table>
+            <tr>
+              <th>
+                <div class="add-icon"></div>
+              </th>
+              <th>Strategy</th>
+              <th>Allocated Qty</th>
+              <th>UOM</th>
+              <th>Allocated P&L</th>
+              <th>Currency</th>
+              <th>
+                <div>Allocated P&L</div>
+                <div>(Base Currency)</div>
+              </th>
+              <th>Allocated Exposure</th>
+            </tr>
+            <tr>
+              <td>
+                <div class="remove-icon"></div>
+              </td>
+              <td><input value="AMS Texas August" class="editableCell"><span class="searchIcon"></span></td>
+              <td><input value="1,000" class="editableCell"></td>
+              <td>BBL</td>
+              <td>90,000,000</td>
+              <td>USD</td>
+              <td>90,000,000</td>
+              <td>90,000,000</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="remove-icon"></div>
+              </td>
+              <td><input value="Colonial Test" class="editableCell"><span class="searchIcon"></span></td>
+              <td><input value="1,000" class="editableCell"></td>
+              <td>BBL</td>
+              <td>90,000,000</td>
+              <td>USD</td>
+              <td>90,000,000</td>
+              <td>90,000,000</td>
+            </tr>
+          </table>
+        </div> -->
+      </div>
+    </ng-container>
+    <ng-container *ngIf="delivery.checked">
+      <div class="col-md-12" style="width:100%;height:100%;margin-top:15px;">
+        <ag-grid-angular domLayout='autoHeight' style="width: 100%;height:100%"
+        [gridOptions]="gridOptions_delivery" class="ag-theme-material  delivery-table angular-v9"></ag-grid-angular>
+        <!-- <div class="delivery-table">
+          <table>
+            <tr>
+              <th>
+                <div class="add-icon"></div>
+              </th>
+              <th>Trade ID</th>
+              <th>Delivery</th>
+              <th>Trade Ref No.</th>
+              <th>Strategy</th>
+              <th>Allocated Qty</th>
+              <th>UOM</th>
+              <th>Allocated P&L</th>
+              <th>Currency</th>
+              <th>
+                <div>Allocated P&L</div>
+                <div>(Base currency)</div>
+              </th>
+              <th>Allocated Position</th>
+            </tr>
+            <tr>
+              <td>
+                <div class="remove-icon"></div>
+              </td>
+              <td><input value="PS839232" class="editableCell"><span class="searchIcon"></span></td>
+              <td>
+                <select value="PS839232-1" class="editableCell">
+                  <option value="PS839232-1">PS839232-1</option>
+                </select>
+              </td>
+              <td>REF9348343</td>
+              <td><input value="AMS Texas August" class="editableCell"></td>
+              <td><input value="1,000" class="editableCell"> </td>
+              <td>BBL</td>
+              <td><input value="90,000,000" class="editableCell"></td>
+              <td>USD</td>
+              <td>90,000,000</td>
+              <td>90,000,000</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="remove-icon"></div>
+              </td>
+              <td><input value="PS839238" class="editableCell"><span class="searchIcon"></span></td>
+              <td>
+                <select value="PS839238-2" class="editableCell">
+                  <option value="PS839238-2">PS839238-2</option>
+                </select>
+              </td>
+              <td>REF9348343</td>
+              <td><input value="Colonial Test" class="editableCell"></td>
+              <td><input value="1,000" class="editableCell"> </td>
+              <td>BBL</td>
+              <td><input value="90,000,000" class="editableCell"></td>
+              <td>USD</td>
+              <td>90,000,000</td>
+              <td>90,000,000</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="border-right: solid 1px #FFFFFF;">Unallocated Qty</td>
+              <td colspan="2"></td>
+              <td>Colonial Test</td>
+              <td>1,000</td>
+              <td>BBL</td>
+              <td>90,000,000</td>
+              <td>USD</td>
+              <td>90,000,000</td>
+              <td>90,000,000</td>
+            </tr>
+          </table>
+        </div> -->
+      </div>
+    </ng-container>
+  </div>
+</div>

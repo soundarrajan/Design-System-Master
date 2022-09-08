@@ -1,0 +1,438 @@
+<mat-tab-group class="tab-container vessel-master-tab">
+  <mat-tab label="VESSEL">
+    <ng-template mat-tab-label>
+      <div class="custom-label-holder">
+        <div class="custom-tab-ui"></div>
+        <div class="custom-label">VESSEL</div>
+      </div>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="vessel"></ng-container>
+  </mat-tab>
+</mat-tab-group>
+<!-- New Menu Button -->
+<div id="menu-button" [matMenuTriggerFor]="contract" (click)="$event.stopPropagation();"
+  style="position: absolute; top: 6px; right: 20px; z-index: 999;">
+  <div id="menu-button-dots">
+    <div id="dot1" class="dot"></div>
+    <div id="dot2" class="dot"></div>
+    <div id="dot3" class="dot"></div>
+    <div id="dot4" class="dot"></div>
+    <div id="dot5" class="dot"></div>
+    <div id="dot6" class="dot"></div>
+    <div id="dot7" class="dot"></div>
+    <div id="dot8" class="dot"></div>
+    <div id="dot9" class="dot"></div>
+  </div>
+</div>
+<!-- New Menu Button: End -->
+
+<mat-menu class="table-context contract-action" #contract="matMenu" yPosition="below" xPosition="before"
+  [overlapTrigger]="false">
+  <div class="tbl-contract">
+    <div class="b-bottom p-tb-20">
+      <span class="m-r-19">
+        <img class="p-r-10" src="../../../assets/customicons/copy2.svg" alt="duplicate master">
+      </span>
+      <span>Duplicate Master</span>
+    </div>
+    <div class="p-tb-20">
+      <mat-slide-toggle id="dark-theme" (click)="$event.stopPropagation();">Active</mat-slide-toggle>
+    </div>
+  </div>
+</mat-menu>
+<ng-template #vessel>
+  <div class="vessel-master">
+    <div class="vessel-master-info">
+      <div class="site-masterInfo-panel">
+        <mat-expansion-panel class="site-product-panel site-master-info-accordion">
+          <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customCollapsedHeight"
+            class="accordion-header p-l-17 p-0 p-r-15">
+            <mat-panel-title class="p-t-4">
+              <div class=" accordion-arrow">
+                <!--<i class="fas fa-caret-down"></i>
+                <i class="fas fa-caret-up"></i>-->
+                <img class="fa-caret-up" src="../../../assets/customicons/caret-up-bg.svg" alt="list">
+                <img class="fa-caret-down" src="../../../assets/customicons/caret-down-bg.svg" alt="list">
+              </div>
+              <span class="panel-title panel-titles m-l-9">Vessel Details</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>
+                <button mat-button class="save-button">
+                  Save
+                </button>
+              </mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="product-container child-accordion">
+            <mat-accordion>
+              <!--Basic Info-->
+              <mat-expansion-panel [expanded]="true" class="basic-info child-panel-class">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight">
+                  <mat-panel-title>
+
+                    <span class="panel-title panel-child-title m-l-9">Basic Info</span>
+                    <div>
+                      <!--<i class="fas fa-caret-down"></i>
+                            <i class="fas fa-caret-up"></i>-->
+                      <img class="fa-caret-up child-icon" src="../../../assets/customicons/caret-up-bg.svg" alt="list">
+                      <img class="fa-caret-down child-icon" src="../../../assets/customicons/caret-down-bg.svg"
+                        alt="list">
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="vessel-master-fields">
+                  <div class="row p-l-8">
+                    <ul class="list-inline p-0 m-b-30">
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Vessel Name" required [inputfocus]="vesselname" name="vesselname"
+                            [(ngModel)]="vesselname">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Vessel Code" required [inputfocus]="vesselCode" name="vesselCode"
+                            [(ngModel)]="vesselCode">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Vessel Type" [inputfocus]="type" name="type" [(ngModel)]="type">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="IMO Number" required [inputfocus]="imo" name="imo"
+                            [(ngModel)]="imo">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                        <mat-form-field>
+                          <mat-select placeholder="Vessel Warning Status" required>
+                            <mat-option value="Status1">Status1</mat-option>
+                            <mat-option value="Status2">Status2</mat-option>
+                            <mat-option value="Status3">Status3</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Location" [inputfocus]="location" name="location"
+                            [(ngModel)]="lolcation">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Email" [inputfocus]="email" name="email" [(ngModel)]="email">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel class="technical-info child-panel-class">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight">
+                  <mat-panel-title>
+
+                    <span class="panel-title panel-child-title m-l-9">Technical Details</span>
+                    <div>
+                      <!--<i class="fas fa-caret-down"></i>
+                                <i class="fas fa-caret-up"></i>-->
+                      <img class="fa-caret-up child-icon" src="../../../assets/customicons/caret-up-bg.svg" alt="list">
+                      <img class="fa-caret-down child-icon" src="../../../assets/customicons/caret-down-bg.svg"
+                        alt="list">
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="vessel-master-fields p-b-15">
+                  <div class="row p-l-8">
+                    <ul class="list-inline p-0">
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Average Speed" required [inputfocus]="speed" name="speed"
+                            [(ngModel)]="speed">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Average Daily Consumption" required [inputfocus]="daily"
+                            name="daily" [(ngModel)]="daily">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="TEU Nominal" [inputfocus]="teu" name="teu" [(ngModel)]="teu">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert" #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <mat-select placeholder="Flow Meter">
+                            <mat-option value="Test">Test</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel class="address-info child-panel-class">
+                <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight"
+                  [expandedHeight]="customExpandedHeight">
+                  <mat-panel-title>
+
+                    <span class="panel-title panel-child-title m-l-9">Vessel Ownership</span>
+                    <div>
+                      <!--<i class="fas fa-caret-down"></i>
+                                  <i class="fas fa-caret-up"></i>-->
+                      <img class="fa-caret-up child-icon" src="../../../assets/customicons/caret-up-bg.svg" alt="list">
+                      <img class="fa-caret-down child-icon" src="../../../assets/customicons/caret-down-bg.svg"
+                        alt="list">
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="vessel-master-fields p-b-15">
+                  <div class="row p-l-8">
+                    <ul class="list-inline p-0">
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <mat-select placeholder="Vessel Ownership" required #ownership>
+                            <mat-option value="Owned">Owned</mat-option>
+                            <mat-option value="Chartered">Chartered</mat-option>
+                            <mat-option value="Customer">Customer</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </li>
+                    </ul>
+
+                  </div>
+                  <div class="row p-l-8" *ngIf="ownership.value">
+                    <ul class="list-inline p-0">
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Chartered Name" required>
+                        </mat-form-field>
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Expiry Date" required [matDatepicker]="picker1"
+                            (focus)="picker1.open()">
+                          <mat-datepicker-toggle matSuffix [for]="picker1">
+                            <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                            </mat-icon>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Vessel Delivery Date" [matDatepicker]="picker2"
+                            (focus)="picker2.open()">
+                          <mat-datepicker-toggle matSuffix [for]="picker2">
+                            <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                            </mat-icon>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Earliest Redelivery Date" [matDatepicker]="picker3"
+                            (focus)="picker3.open()">
+                          <mat-datepicker-toggle matSuffix [for]="picker3">
+                            <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                            </mat-icon>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker3></mat-datepicker>
+                        </mat-form-field>
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Latest Redelivery Date" [matDatepicker]="picker4"
+                            (focus)="picker4.open()">
+                          <mat-datepicker-toggle matSuffix [for]="picker4">
+                            <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                            </mat-icon>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker4></mat-datepicker>
+                        </mat-form-field>
+                      </li>
+                      <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 ">
+                        <mat-form-field>
+                          <input matInput placeholder="Estimated Redelivery Date" [matDatepicker]="picker5"
+                            (focus)="picker5.open()">
+                          <mat-datepicker-toggle matSuffix [for]="picker5">
+                            <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                            </mat-icon>
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker5></mat-datepicker>
+                        </mat-form-field>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </div>
+
+    <!---Notes_Start-->
+    <div class="freight-new vessel-master-notes">
+      <!--Audit Log Start-->
+      <div class="freight-new-audit">
+        <mat-expansion-panel class="audit-log-panel m-t-5">
+          <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customCollapsedHeight"
+            class="p-l-17">
+            <mat-panel-title>
+              <div>
+                <!--<i class="fas fa-caret-down"></i>
+                            <i class="fas fa-caret-up"></i>-->
+                <img class="fa-caret-up" src="../../../assets/customicons/caret-up-bg.svg" alt="list">
+                <img class="fa-caret-down" src="../../../assets/customicons/caret-down-bg.svg" alt="list">
+              </div>
+              <span class="panel-title m-l-9">Notes</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-icon>
+                <button mat-button class="save-button">
+                  Save
+                </button>
+              </mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="product-container vessel-notes bl-darkgrey p-b-15">
+            <div class="row m-0">
+              <div class="col-md-12 p-lr-30 p-t-25">
+                <mat-form-field>
+                  <input matInput placeholder="Enter your notes here">
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </div>
+
+    </div>
+    <!---Notes_Stop-->
+
+    <!---Audit Log_Start-->
+    <div class="freight-new">
+      <div class="freight-new-audit">
+        <mat-expansion-panel class="audit-log-panel m-t-5" [expanded]="auditlog_isopen === true"
+          (opened)="auditlog_isopen=true">
+          <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customCollapsedHeight"
+            class="p-l-17">
+            <mat-panel-title>
+              <div>
+                <!--<i class="fas fa-caret-down"></i>
+                  <i class="fas fa-caret-up"></i>-->
+                <img class="fa-caret-up" src="../../../assets/customicons/caret-up-bg.svg" alt="list">
+                <img class="fa-caret-down" src="../../../assets/customicons/caret-down-bg.svg" alt="list">
+              </div>
+              <span class="panel-title m-l-9">Audit Log</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="product-container" style="background-color: #EAECEE; ">
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <span style="width: 20px; margin-top: 0px; background-color: white;display: inline-block; float: left; height: 48px;"></span>
+                <ag-grid-angular domLayout='normal'
+                  style="width: 100%;height:350px ;border-top:none;border-left: none; background-color: #ffffff;"
+                  [gridOptions]="gridOptions_auditLog" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}"
+                  class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </div>
+    </div>
+    <!---Audit Log_Stop-->
+
+    <div class="vessel-master-return-list">
+      <div id="goto-page" class="float-right pr-4">
+        <button mat-button class="return-button hover" (click)="returnToList();">
+          Return to List
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

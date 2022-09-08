@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-add-delete-info',
+  templateUrl: './add-delete-info.component.html',
+  styleUrls: ['./add-delete-info.component.css']
+})
+export class AddDeleteInfoComponent implements OnInit {
+
+  simpleSource = ['Manifold','Unknown'];
+  public source ='Manifold';
+  sampleSources = [{'id': 0, 'sampleSource': {'id': 1,'name': 'Manifold', 'displayName': 'Manifold'} }];
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  addSampleSources(){
+    this.sampleSources.push({'id': 0, 'sampleSource': {'id': 1,'name': 'Manifold', 'displayName': 'Manifold'} });
+  }
+
+  removeSampleSources(index){
+    this.sampleSources.splice(index, 1);
+  }
+
+}

@@ -1,0 +1,27 @@
+
+    <h2 mat-dialog-title class="dialog-title bold-small" style="margin-bottom: 0;position: relative;bottom:10px">Confirmation
+      <mat-icon matSuffix class="dialogCloseButton float-right big-top">close</mat-icon>
+</h2>
+<hr style="margin:0">
+
+<div class="container" style="padding:0">
+  <div class="m-t-16" style="font-size: 14px;color:#333333;">Choose how the deliveries should be created</div>
+  <div class="radio-options">
+    <mat-radio-group class="vertical" style="">
+      <mat-radio-button checked value="1">Separate deliveries for each BL</mat-radio-button>
+      <mat-radio-button value="2">Single delivery for all BL</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div calss="note" style="line-height: 20px;font-size: 12px;margin-bottom: 15px">
+    <span style="font-size:14px;font-weight: 500;">NOTE: </span> 
+    Separate deliveries for each BL will be invoiced separately. 
+    Else a single invoice will be raised for selected BLs.
+  </div>
+</div>
+<!-- </div> -->
+<!-- </mat-dialog-content> -->
+
+<mat-dialog-actions class="float-right" style="padding-bottom: 10px;margin-right: 8px;">
+  <button mat-button [mat-dialog-close]="true" style="width:115px;color: #1CABE0;">CANCEL</button>
+  <button class="blue-button" mat-button [mat-dialog-close]="true" style="margin-right: 0 !important;width: 115px;border-radius: 3px !important;height:32px;line-height: 20px;">PROCEED</button>
+</mat-dialog-actions>

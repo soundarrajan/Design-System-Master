@@ -1,0 +1,40 @@
+<div class="bunkering-range">
+  <div class="chips-block float-left">
+    <div class="title">
+        Bunkering Range for <span>Tom Lilly</span> based on<span>:</span>
+    </div>
+    <div class="chips">
+       <div class="custom-chip small-chip float-left active price-btn" (click)="fuelChipClick($event)">
+           <div class="truncate-100 text">
+             Spot Prices
+           </div>
+       </div>
+       <div class="custom-chip small-chip float-left price-btn" (click)="fuelChipClick($event)">
+           <div class="truncate-100 text">
+             Contract Prices
+           </div>
+       </div>
+       <div class="custom-chip small-chip float-left price-btn" (click)="fuelChipClick($event)">
+           <div class="truncate-100 text">
+             Quoted Prices
+           </div>
+       </div>
+    </div>
+  </div>
+  <div class="fillterchips-container float-left">
+      <div *ngFor="let item of tagfillterData; let i = index">
+      <div class="status-badge" (click)="filterChipClick(item)" [ngStyle]="{'opacity': selectedFillterTag==item.name ? '1' : selectedFillterTag==''?'1':'0.4' }">
+        {{item.name}}
+        <div class="status-indicator">
+          <div class="count">{{item.count}}</div>
+          <div class="bar" [ngStyle]="{'background-color':item.color}"></div>
+        </div>
+      </div>   
+      </div> 
+  </div>
+
+</div>
+
+<div class="close-Ai">
+Close
+</div>

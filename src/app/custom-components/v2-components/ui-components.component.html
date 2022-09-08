@@ -1,0 +1,184 @@
+<div class="component-container uiComponent-v2">
+    <!-- COMPONENT TITLE -->
+    <div class="component-title">
+        {{componentDetails?.title}}
+    </div>
+    <div class="component-viewer">
+        <!-- COMPONENT NAME WITH ACTIONS -->
+        <div class="component-title" [ngClass]="{'darkTheme':switchTheme}">
+            <div class="component-title-spacer">{{componentDetails?.displayName}}</div>
+            <button mat-icon-button="" *ngIf="componentDetails?.enableCodeView" type="button" aria-label="View source"
+                [matTooltip]="!showCode?'View source':'Hide source'"
+                class="mat-focus-indicator mat-icon-button mat-button-base" (click)="viewSourceCode();">
+                <mat-icon [ngClass]="{'darkTheme':switchTheme}">code</mat-icon>
+            </button>
+            <div class="switchThemeIcon"
+                [ngClass]="{'disableSwitch':!componentDetails?.enableThemeSwitch,'darkTheme':componentDetails?.enableThemeSwitch && switchTheme}"
+                [matTooltip]="switchTheme?'Switch to light theme':'Switch to dark theme'"
+                (click)="switchTheme = !switchTheme"></div>
+        </div>
+        <!-- SOURCE CODE -->
+        <div class="component-code-view" *ngIf="showCode" [ngClass]="{'darkTheme':switchTheme}">
+            <mat-tab-group>
+                <mat-tab label="HTML">
+                    <div *ngIf="!sourceFetchError3" class="copy-button">
+                        <button mat-icon-button type="button" (click)="copySource(copyHTMLContent)"
+                            [matTooltip]="'Copy source code'" aria-label="Copy source code to clipboard">
+                            <mat-icon [ngClass]="{'darkTheme':switchTheme}">content_copy</mat-icon>
+                        </button>
+                    </div>
+                    <pre
+                        class="display-content">{{!sourceFetchError3?templateSource:"Failed to load source code"}}</pre>
+                </mat-tab>
+                <mat-tab label="TS">
+                    <div *ngIf="!sourceFetchError1" class="copy-button">
+                        <button mat-icon-button type="button" (click)="copySource(copyTSContent)"
+                            [matTooltip]="'Copy source code'" aria-label="Copy source code to clipboard">
+                            <mat-icon [ngClass]="{'darkTheme':switchTheme}">content_copy</mat-icon>
+                        </button>
+                    </div>
+                    <pre
+                        class="display-content">{{!sourceFetchError1?componentSource:"Failed to load source code"}}</pre>
+                </mat-tab>
+                <mat-tab label="CSS">
+                    <div *ngIf="!sourceFetchError2" class="copy-button">
+                        <button mat-icon-button type="button" (click)="copySource(copyCSSContent)"
+                            [matTooltip]="'Copy source code'" title="Copy source code"
+                            aria-label="Copy source code to clipboard">
+                            <mat-icon [ngClass]="{'darkTheme':switchTheme}">content_copy</mat-icon>
+                        </button>
+                    </div>
+                    <pre class="display-content">{{!sourceFetchError2?stylesSource:"Failed to load source code"}}</pre>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <!-- COMPONENT VIEW -->
+        <div [ngSwitch]="componentSelectedKey" class="component-body" [ngClass]="{'darkTheme':switchTheme}">
+            <!-- CHIPS -->
+            <app-chips *ngSwitchCase="'chips'"></app-chips>
+            <!-- TABS -->
+            <div *ngSwitchCase="'tabs'">
+                <div class="row" style="display: flex;align-items: center;width: 100%;margin-top: -31px !important;">
+                    <div *ngIf="componentDetails.key=='tabs'" style="width: 100%;">
+                        <app-tabs [data]="customTabData"></app-tabs>
+                    </div>
+                    <div *ngIf="componentDetails.key=='tabs_header'" style="width: 100%;">
+                        <app-tabs-header [data]="customTabHeaderData"></app-tabs-header>
+                    </div>
+                </div>
+            </div>
+            <!-- PRICE FORECAST -->
+            <div *ngSwitchCase="'forecast'">
+                <div class="row" style="display: flex;align-items: center;">
+                    <div style="width: 100%;">
+                        <app-pricing-forecast [data]="priceForecastList"></app-pricing-forecast>
+                    </div>
+                </div>
+            </div>
+            <!-- BUTTON -->
+            <div *ngSwitchCase="componentSelectedKey=='button'||componentSelectedKey=='moleculebutton'?componentSelectedKey:''">
+                <app-button [type]="componentDetails.key"></app-button>
+            </div>
+            <!-- BUTTON TOGGLE -->
+            <div *ngSwitchCase="'buttonToggle'">
+                <app-button-toggle [data]="buttonToggleData"></app-button-toggle>
+            </div>
+            <!-- FORM FIELDS -->
+            <div
+                *ngSwitchCase="componentSelectedKey=='input'||componentSelectedKey=='select'||componentSelectedKey=='datepicker'?componentSelectedKey:''">
+                <app-form-field [type]="componentDetails.key" [switchTheme]="switchTheme"></app-form-field>
+            </div>
+            <!-- File Upload - Drag and Drop -->
+            <div *ngSwitchCase="'dragDropFiles'">
+                <div class="p-tb-10" style="width: 100%;">
+                    <app-drag-drop-upload></app-drag-drop-upload>
+                </div>
+            </div>
+            <!-- LABELS -->
+            <div *ngSwitchCase="'labels'">
+                <app-labels [type]="componentDetails.key" [switchTheme]="switchTheme"></app-labels>
+            </div>
+            <!-- AG GRID -->
+            <div *ngSwitchCase="'aggrid'">
+                <app-editable-grid></app-editable-grid>
+            </div>
+            <!-- Progress Stepper -->
+            <div *ngSwitchCase="'progress_stepper'" class="d-flex" style="flex-wrap: wrap;">
+                <app-progress-stepper [steps]="progressStepper1"></app-progress-stepper>
+                <app-progress-stepper [steps]="progressStepper2"></app-progress-stepper>
+                <app-progress-stepper [steps]="progressStepper3"></app-progress-stepper>
+                <app-progress-stepper [steps]="progressStepper4"></app-progress-stepper>
+            </div>
+            <!-- Smart Filter -->
+            <div *ngSwitchCase="'smart_filter'" class="d-flex" style="flex-wrap: wrap;">
+                <app-smart-filter [enableAddNew]="true" [enableRemoveFilter]="true"
+                    [smartFilterArray]="smartFilterArray"></app-smart-filter>
+            </div>
+            <!-- Header Filter Chips-->
+            <div *ngSwitchCase="'header_filter_chips'" class="d-flex" style="flex-wrap: wrap;">
+                <div class="row" style="display: flex;align-items: center;width: 100%;">
+                    <div *ngIf="componentDetails.key=='filter_list'" class="filter-list-containerV2">
+                        <app-filter-list style="height: inherit;" [filterList]="filterList" [switchTheme]="switchTheme"></app-filter-list>
+                    </div>
+                    <!-- <div *ngIf="componentDetails.key=='header_filter_chips'" class="d-flex flex-wrap">
+                        <app-header-filter-chip [chipStatus]="'active-chip'" [heading]="' Default view'">
+                        </app-header-filter-chip>
+                        <app-header-filter-chip [heading]="'Europe Region'"></app-header-filter-chip>
+                        <app-header-filter-chip [heading]="'BP Marine Fuels'"></app-header-filter-chip>
+                    </div>
+                    <div *ngIf="componentDetails.key=='more_filter_chips'">
+                        <app-more-filter-chip></app-more-filter-chip>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- COMPONENT DESCRIPTION -->
+    <div class="component-details"
+        *ngIf="componentDetails?.descriptionList && componentDetails.descriptionList.length > 0;">
+        <div *ngFor="let item of componentDetails.descriptionList">
+            <h5>{{item.subTitle}}</h5>
+            <p>{{item.subDesc}}</p>
+            <br>
+        </div>
+    </div>
+</div>
+<!-- <div class="row">
+  <div id="container">
+    <h4> Editable Grid</h4>
+    <div class="p-tb-10 p-lr-10">
+        <div id="new-options-trade" style="height: auto;">
+          <div class="row4" style="border-bottom: none;">
+            <div class="settlement-info" style="height:220px;max-height: 220px;display:block;">
+              <div class="title" style="font-size: 14px;margin: 0 10px;">Additional Costs:</div>
+              <ag-grid-angular style="width: 100%;" domLayout='autoHeight' [gridOptions]="gridOptions_addcost"
+              class="ag-theme-material  add-cost-grid angular-v9 flexi-grid"></ag-grid-angular>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<!-- ********************************************** -->
+
+<!-- <div *ngIf="!true">
+   <div class="row">
+        <div id="container">
+            <h4> Search Field</h4>
+            <div class="p-tb-10 p-lr-10">
+                <div class="search-block">
+                    <div class="title">Search Trader</div>
+                    <div class="search-bar">
+                        <div class="search-text" spellcheck="false" contentEditable=true data-text="Search trader here">
+                        </div>
+                        <div class="search-img"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

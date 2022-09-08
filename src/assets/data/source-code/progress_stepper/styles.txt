@@ -1,0 +1,101 @@
+.stepper-container-V2 {
+  margin: 10px 10px;
+  .stepper-container {
+    background: #eaecee;
+    box-shadow: inset 0px 4px 4px rgba(68, 68, 68, 0.1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0px 40px;
+    width: 372px;
+  }
+  .stepper-holder {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 0 auto;
+  }
+  .stepper-holder:first-of-type {
+    flex: unset;
+    .link {
+      display: none;
+    }
+
+    .selected-link {
+      display: none;
+    }
+
+    .incomplete-link {
+      display: none;
+    }
+  }
+  .dot {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    z-index: 1;
+    &.complete {
+      &.light-green {
+        background-color: #96cf55;
+      }
+      &.medium-green {
+        background-color: #5eb591;
+      }
+      &.dark-green {
+        background-color: #27ae60;
+      }
+      padding: 1px;
+      border: 2px solid #c4c4c4;
+      content: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.49368 0.256836L9.75 1.51174L3.87311 7.38184L0.25 3.763L1.50632 2.50809L3.87311 4.87206L8.49368 0.256836Z' fill='white'/%3E%3C/svg%3E%0A");
+    }
+    &.incomplete {
+      background-color: #ffffff;
+      border: 2px solid #c4c4c4;
+    }
+  }
+  .link {
+    margin-top: 6px;
+    margin-right: -1px;
+    margin-left: -1px;
+    height: 2px;
+    &.complete {
+      &.light-green {
+        background-image: linear-gradient(to right, #96cf55, #5eb591);
+      }
+      &.medium-green {
+        background-image: linear-gradient(to right, #96cf55, #5eb591);
+      }
+      &.dark-green {
+        background-image: linear-gradient(to right, #5eb591, #27ae60);
+      }
+    }
+    &.incomplete {
+      background-color: #c4c4c4;
+    }
+  }
+  .name {
+    font-weight: normal;
+    font-size: 12px;
+    text-transform: capitalize;
+    &.complete {
+      &.light-green {
+        color: #96cf55;
+      }
+      &.medium-green {
+        color: #5eb591;
+      }
+      &.dark-green {
+        color: #27ae60;
+      }
+    }
+    &.incomplete {
+      color: #c4c4c4;
+    }
+  }
+  .name-container {
+    width: 100px;
+    text-align: center;
+    margin-bottom: -5px;
+  }
+}

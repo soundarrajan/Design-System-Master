@@ -1,0 +1,30 @@
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-labels',
+  templateUrl: './labels.component.html',
+  styleUrls: ['./labels.component.css']
+})
+export class LabelsComponent implements OnInit {
+
+  public popupOpen:boolean;
+  labellist = [
+    {
+      "title": "In-tank Product",
+      "data": "Gasoil DPNMUR",
+    },
+    {
+      "title": "Available Qty",
+      "data": "1000.62 GAL",
+    },
+    {
+      "title": "Utilised Qty",
+      "data": "1000.62 GAL",
+    }
+  ]
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

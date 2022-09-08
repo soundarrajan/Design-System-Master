@@ -1,0 +1,423 @@
+<div class="site-masterInfo">
+  <div class="site-masterInfo-panel  m-t-10">
+    <mat-expansion-panel class="site-product-panel site-master-info-accordion m-t-5">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeightFreight"
+        class="accordion-header p-l-17 p-0 p-r-15">
+        <mat-panel-title class="p-t-4">
+          <div class="open-close-arrow accordion-arrow">
+            <!--<i class="fas fa-caret-down"></i>
+          <i class="fas fa-caret-up"></i>-->
+            <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+            <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+          </div>
+          <span class="panel-title panel-titles m-l-9">Master Info</span>
+        </mat-panel-title>
+
+
+        <!-- New Menu Button -->
+        <div id="menu-button" [matMenuTriggerFor]="contract" (click)="$event.stopPropagation();">
+          <div id="menu-button-dots">
+            <div id="dot1" class="dot"></div>
+            <div id="dot2" class="dot"></div>
+            <div id="dot3" class="dot"></div>
+            <div id="dot4" class="dot"></div>
+            <div id="dot5" class="dot"></div>
+            <div id="dot6" class="dot"></div>
+            <div id="dot7" class="dot"></div>
+            <div id="dot8" class="dot"></div>
+            <div id="dot9" class="dot"></div>
+          </div>
+        </div>
+        <!-- New Menu Button: End -->
+
+        <mat-menu class="table-context contract-action" #contract="matMenu" yPosition="below" xPosition="before"
+          [overlapTrigger]="false">
+          <div class="tbl-contract">
+            <div class="b-bottom p-tb-20">
+              <span class="m-r-19">
+                <img class="p-r-10" src="../../../assets/customicons/copy2.svg" alt="duplicate contract">
+              </span>
+              <span>Duplicate Contract</span>
+            </div>
+            <div class="p-tb-20">
+              <mat-slide-toggle id="dark-theme" (click)="$event.stopPropagation();">Active</mat-slide-toggle>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+                          <div class="p-tb-10" (click)="change_rowdensity()">
+                            <span>
+                              <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+                            </span>
+                            <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+                          </div>
+          </div>
+        </mat-menu>
+      </mat-expansion-panel-header>
+      <div class="product-container bl-green child-accordion">
+        <mat-accordion>
+          <!--Basic Info-->
+          <mat-expansion-panel [expanded]="true" class="basic-info">
+            <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight">
+              <mat-panel-title>
+
+                <span class="panel-title m-l-9">Basic Info</span>
+                <div class="open-close-arrow">
+                  <!--<i class="fas fa-caret-down"></i>
+                      <i class="fas fa-caret-up"></i>-->
+                  <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                  <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="freight-new-components">
+              <div class="row p-l-8">
+                <ul class="list-inline p-0 m-b-30">
+                  <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                    <mat-form-field>
+                      <mat-select placeholder="Site Name*">
+                        <mat-option value="Product">Product</mat-option>
+                        <mat-option value="Quantity">Quantity</mat-option>
+                        <mat-option value="Seller">Seller</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </li>
+                  <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                    <mat-form-field>
+                      <mat-select placeholder="Site Type*">
+                        <mat-option value="Equals">Equals</mat-option>
+                        <mat-option value="Not Equals">Not Equals</mat-option>
+                        <mat-option value="Contains">Contains</mat-option>
+                        <mat-option value="Lesser Than">Lesser Than</mat-option>
+                        <mat-option value="Greater Than">Greater Than</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </li>
+                  <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12">
+                    <mat-form-field>
+                      <mat-select placeholder="Counterparty">
+                        <mat-option value="Product">Product</mat-option>
+                        <mat-option value="Quantity">Quantity</mat-option>
+                        <mat-option value="Seller">Seller</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <!--Address-->
+      <div class="product-container bl-green child-accordion">
+        <mat-accordion>
+          <!--Address Info-->
+          <mat-expansion-panel class="address-info">
+            <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight">
+              <mat-panel-title>
+
+                <span class="panel-title m-l-9">Address</span>
+                <div class="open-close-arrow">
+                  <!--<i class="fas fa-caret-down"></i>
+                          <i class="fas fa-caret-up"></i>-->
+                  <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                  <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="freight-new-components p-b-15">
+              <div class="row p-l-8">
+                 <ul class="list-inline p-0">
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <input matInput placeholder="Address Line1*" [inputfocus]="address1" name="address1" [(ngModel)]="address1">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert"  #maxalert>
+                          <span class="alert-arrow"></span>
+                          <span class="logo"></span>
+                          <span>Maximum character limit : 50</span>
+                        </div>
+                        <!--Max length alert-->
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <input matInput placeholder="Address Line2*" [inputfocus]="address2" name="address2" [(ngModel)]="address2">
+                        </mat-form-field>
+                        <!--Max length alert-->
+                        <div class="max-length-alert"  #maxalert>
+                            <span class="alert-arrow"></span>
+                            <span class="logo"></span>
+                            <span>Maximum character limit : 50</span>
+                          </div>
+                          <!--Max length alert-->
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                      <mat-form-field>
+                        <mat-select placeholder="Location*">
+                          <mat-option value="Product">Product</mat-option>
+                          <mat-option value="Quantity">Quantity</mat-option>
+                          <mat-option value="Seller">Seller</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                      <mat-form-field>
+                        <mat-select placeholder="City*">
+                          <mat-option value="Equals">Equals</mat-option>
+                          <mat-option value="Not Equals">Not Equals</mat-option>
+                          <mat-option value="Contains">Contains</mat-option>
+                          <mat-option value="Lesser Than">Lesser Than</mat-option>
+                          <mat-option value="Greater Than">Greater Than</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <mat-select placeholder="State*">
+                            <mat-option value="Product">Product</mat-option>
+                            <mat-option value="Quantity">Quantity</mat-option>
+                            <mat-option value="Seller">Seller</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <mat-select placeholder="Country*">
+                            <mat-option value="Product">Product</mat-option>
+                            <mat-option value="Quantity">Quantity</mat-option>
+                            <mat-option value="Seller">Seller</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <input matInput placeholder="Postal Code*">
+                        </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <input matInput placeholder="Tax Area Code*">
+                        </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <input matInput placeholder="Tax Liability">
+                        </mat-form-field>
+                    </li>
+                    <li class="list-inline-item p-lr-10 col-md-6 col-sm-12 col-12 p-tb-5">
+                        <mat-form-field>
+                          <input matInput placeholder="Billing Site">
+                        </mat-form-field>
+                    </li>
+                  </ul> 
+                  
+            </div>
+          </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+  </mat-expansion-panel>
+</div>
+</div>
+
+<!---External Reference_Start-->
+<div class="freight-new  external-reference">
+  
+  <div class="freight-new-audit">
+    <mat-expansion-panel class="audit-log-panel m-t-5">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight"
+        class="p-l-17">
+        <mat-panel-title>
+          <div class="open-close-arrow">
+            <!--<i class="fas fa-caret-down"></i>
+                <i class="fas fa-caret-up"></i>-->
+            <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+            <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+          </div>
+          <span class="panel-title m-l-9">External Reference</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="product-container">
+        <div class="row m-0">
+          <div class="col-md-12 p-0">
+            <table class="product-table table scroll alt-stripe bg-white br-tbl light-header">
+              <thead>
+                <tr class="tr-shadow">
+                  <th></th>
+                  <th class="p-l-20">Source</th>
+                  <th class="float-right p-r-20 text-right">Source Reference ID</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Single Row Start -->
+                <tr [ngClass]="{'aggrid-editable-row': onEdit}">
+                  <td></td>
+                  <td class="bl-darkgrey">
+                    <div class="content" [ngClass]="{'aggrid-editable': onEdit}"> <!--aggrid-editable-->
+                      <p class="float-left p-l-10">Counterparty</p>
+                      <div class="hover-buttons">
+                        <div class="hover-btn edit-img" (click)="this.edit();"></div>
+                        <div class="hover-btn delete-img" (click)="this.removeReferenceDialog()"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="content" [ngClass]="{'aggrid-editable': onEdit}"> <!--aggrid-editable-->
+                      <p class="float-right p-r-15 text-right">1</p>
+                    </div>
+                  </td>
+                </tr>
+                <!-- Single Row End -->
+                <!-- Single Row Start -->
+                <tr>
+                  <td></td>
+                  <td class="bl-darkgrey">
+                      <div class="content">
+                          <p class="float-left p-l-10">Counterparty</p>
+                          <div class="hover-buttons">
+                            <div class="hover-btn edit-img"></div>
+                            <div class="hover-btn delete-img" (click)="this.removeReferenceDialog()"></div>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                    <p class="float-right p-r-15 text-right">1</p>
+                  </td>
+                </tr>
+                <!-- Single Row End -->
+                <!-- Single Row Start -->
+                <tr>
+                  <td></td>
+                  <td class="bl-darkgrey">
+                      <div class="content">
+                          <p class="float-left p-l-10">Counterparty</p>
+                          <div class="hover-buttons">
+                            <div class="hover-btn edit-img"></div>
+                            <div class="hover-btn delete-img" (click)="this.removeReferenceDialog()"></div>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                    <p class="float-right p-r-15">1</p>
+                  </td>
+                </tr>
+                <!-- Single Row End -->
+                <!-- Single Row Start -->
+                <tr>
+                  <td></td>
+                  <td class="bl-darkgrey">
+                      <div class="content">
+                          <p class="float-left p-l-10">Counterparty</p>
+                          <div class="hover-buttons">
+                            <div class="hover-btn edit-img"></div>
+                            <div class="hover-btn delete-img" (click)="this.removeReferenceDialog()"></div>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                    <p class="float-right p-r-15">1</p>
+                  </td>
+                </tr>
+                <!-- Single Row End -->
+                <!-- Single Row Start -->
+                <tr class="create-new-row">
+                  <td></td>
+                  <td class="bl-darkgrey new-panel">
+                    <p class="float-left p-l-12">+ Create New</p>
+                  </td>
+                  <td>
+                    <p class="float-right p-r-15"></p>
+                  </td>
+                </tr>
+                <!-- Single Row End -->
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </div>
+
+</div>
+<!---External Reference_Stop-->
+<!---Audit Log_Start-->
+<div class="freight-new">
+   <div class="freight-new-audit">
+<mat-expansion-panel class="audit-log-panel m-t-5" [expanded]="auditlog_isopen === true" (opened)="auditlog_isopen=true">
+    <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" class="p-l-17">
+      <mat-panel-title>
+        <div class="open-close-arrow">
+            <!--<i class="fas fa-caret-down"></i>
+            <i class="fas fa-caret-up"></i>-->
+            <img class= "fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+            <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+        </div>
+        <span class="panel-title m-l-9">Audit Log</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="product-container" style="background-color: #EAECEE; ">
+        <div class="row m-0">
+          <div class="col-md-12 p-0">
+            
+            <span [ngStyle]="isdisplaydensityhigh==false && {'height':'34px'}||isdisplaydensityhigh==true && {'height':'48px'} " style="width: 20px;margin-top: 0px; background-color: white;display: inline-block; float: left;"></span>
+            <ag-grid-angular domLayout='normal' style="width: 100%;height:350px ;border-top:none;" [gridOptions]="gridOptions_auditLog" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+          </div>
+       </div>
+    </div>
+</mat-expansion-panel>
+</div>
+</div>
+<!---Audit Log_Stop-->
+<!---Notes_Start-->
+<div class="freight-new  external-reference site-notes m-b-70">
+  <!--Audit Log Start-->
+  <div class="freight-new-audit">
+    <mat-expansion-panel class="audit-log-panel m-t-5">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeightNotes"
+        class="p-l-17">
+        <mat-panel-title>
+          <div class="open-close-arrow">
+            <!--<i class="fas fa-caret-down"></i>
+                      <i class="fas fa-caret-up"></i>-->
+            <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+            <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+          </div>
+          <span class="panel-title m-l-9">Notes</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="product-container bl-darkgrey p-b-15">
+        <div class="row m-0">
+          <div class="col-md-12 p-lr-30 p-t-25">
+            <mat-form-field>
+              <input matInput placeholder="Enter your notes here">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput>
+            </mat-form-field>
+          </div>
+          <div class="events">
+            <span class="green-text">Save</span><span class="grey-text">(Enter)</span><span class="blue-text">Next Line</span><span
+              class="grey-text">(Shift+Enter)</span>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </div>
+
+</div>
+<!---Notes_Stop-->
+
+
+<div class="return-list site-master-return-list m-t-20">
+  <div id="goto-page" class="float-right pr-4">
+    <button mat-button class="return-button hover" (click)="returnToList();">
+      Return to list
+    </button>
+  </div>
+</div>

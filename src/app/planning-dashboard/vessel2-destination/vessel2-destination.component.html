@@ -1,0 +1,488 @@
+<div class="dark-wrapper">
+
+  <div class="info-bar">
+    <table class="table table-noborder table-responsive tbl-shadow">
+      <tbody>
+        <tr>
+          <td class="vessel-name" colspan="3" matTooltip="Balboa" [matTooltipShowDelay]="500" width="150px">
+            <div class="truncate-150 pl15">Balboa</div>
+          </td>
+          <td class="dark-text">ETA</td>
+          <td class="white-text">13/09/2018</td>
+          <td class="dark-text fs10 w70 text-right">Latest ETA</td>
+          <td class="br-dark white-text fs10">13/09/2018</td>
+          <td class="dark-text">ETB</td>
+          <td class="white-text">13/09/2018</td>
+          <td class="dark-text fs10 w70 text-right">Latest ETB</td>
+          <td class="br-dark white-text fs10">13/09/2018</td>
+          <td class="dark-text">ETD</td>
+          <td class="white-text">18/09/2018</td>
+          <td class="dark-text fs10 w70 text-right">Latest ETD</td>
+          <td class="fs10 white-text">18/09/2018</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Popup Body Content -->
+
+  <div id="vesselDestination" class="popup-body">
+    <div class="row">
+      <div class="col-5 pr-0">
+
+        <!-- Market Prices Section -->
+        <div class="row">
+          <div class="col-12 p-0">
+            <section id="marketPrices">
+              <div class="dark-card">
+                <div class="d-flex justify-content-between">
+                  <div class="dark-card-title">Market Prices</div>
+                  <div class="price-link">
+                    <a href="#">Price History</a>
+                  </div>
+                </div>
+                <div id="marketPriceContent" class="d-flex">
+                  <table id="todayPriceTable" class="table table-noborder">
+                    <thead>
+                      <tr>
+                        <td colspan="3" class="priceday">Today <span class="font-italic">10/09/2018</span></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="title">
+                        <td>Fuel Type</td>
+                        <td>$/mt</td>
+                        <td>+/-</td>
+                      </tr>
+                      <tr>
+                        <td>HSFO</td>
+                        <td class="green-text">$423.00</td>
+                        <td>1.00</td>
+                      </tr>
+                      <tr class="title">
+                        <td>Fuel Type</td>
+                        <td>$/mt</td>
+                        <td>+/-</td>
+                      </tr>
+                      <tr>
+                        <td>ULSFO</td>
+                        <td class="red-text">$476.00</td>
+                        <td>0.50</td>
+                      </tr>
+                      <tr class="title">
+                        <td>Fuel Type</td>
+                        <td>$/mt</td>
+                        <td>+/-</td>
+                      </tr>
+                      <tr>
+                        <td>DOGO</td>
+                        <td class="red-text">$702.00</td>
+                        <td>1.50</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table id="yesterdayPriceTable" class="table table-noborder">
+                    <thead>
+                      <tr>
+                        <td colspan="3" class="priceday">Yesterday <span class="font-italic">(09/09/2018)</span></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="title">
+                        <td>Fuel Type</td>
+                        <td>$/mt</td>
+                        <td>+/-</td>
+                      </tr>
+                      <tr>
+                        <td>HSFO</td>
+                        <td class="green-text">$424.00</td>
+                        <td>0.50</td>
+                      </tr>
+                      <tr class="title">
+                        <td>Fuel Type</td>
+                        <td>$/mt</td>
+                        <td>+/-</td>
+                      </tr>
+                      <tr>
+                        <td>ULSFO</td>
+                        <td class="red-text">$475.00</td>
+                        <td>0.80</td>
+                      </tr>
+                      <tr class="title">
+                        <td>Fuel Type</td>
+                        <td>$/mt</td>
+                        <td>+/-</td>
+                      </tr>
+                      <tr>
+                        <td>DOGO</td>
+                        <td class="green-text">$700.00</td>
+                        <td>1.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <!-- Port Restrictions Section -->
+        <div class="row">
+          <div class="col-12 p-0 pt-3">
+            <section id="portRestrictions">
+              <div class="dark-card">
+                <div class="dark-card-title">Port Restrictions</div>
+                <div class="dark-card-body">
+                  <p>At Docks 16 and 19, you may expect:</p>
+                  <ul class="nomargin">
+                    <li>40ft max draft permitted, under normal weather conditions.</li>
+                    <li>take stores, bunkers and fresh water by launch or barge</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 p-0 pt-3">
+            <section id="locationInfo">
+              <div class="dark-card">
+                <div class="dark-card-title">Location Info</div>
+                <div class="dark-card-body">
+                  <div>
+                      <a href="#">Edit Location Info</a>
+                  </div>                  
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-7">
+        <div class="row">
+          <div class="col-12 p-0">
+            <section id="bunkerSupplier">
+              <div class="dark-card">
+                <div class="dark-card-title">Bunker Suppliers in Balboa</div>
+                <div class="dark-card-body">
+                  <table id="bunkerSupplierTable" class="table table-noborder tbl-dark-header">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th class="text-center">Trader</th>
+                        <th class="text-center">Physical Suppliers</th>
+                        <th class="text-center">Rating</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <!-- Single Row Start -->
+                      <tr>
+                        <td matTooltip="Cepsa Panama S.A" matTooltipShowDelay="500" matTooltipPosition="before">
+                          <a href="#">
+                            <div class="truncate-160">Cepsa Panama S.A</div>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </td>
+                      </tr>
+                      <!-- Single Row End -->
+                      <!-- Single Row Start -->
+                      <tr>
+                        <td matTooltip="Cepsa Panama S.A" matTooltipShowDelay="500" matTooltipPosition="before">
+                          <a href="#">
+                            <div class="truncate-160">Cepsa Panama S.A</div>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </td>
+                      </tr>
+                      <!-- Single Row End -->
+                      <!-- Single Row Start -->
+                      <tr>
+                        <td matTooltip="Cepsa Panama S.A" matTooltipShowDelay="500" matTooltipPosition="before">
+                          <a href="#">
+                            <div class="truncate-160">Cepsa Panama S.A</div>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </td>
+                      </tr>
+                      <!-- Single Row End -->
+                      <!-- Single Row Start -->
+                      <tr>
+                        <td matTooltip="Cepsa Panama S.A" matTooltipShowDelay="500" matTooltipPosition="before">
+                          <a href="#">
+                            <div class="truncate-160">Cepsa Panama S.A</div>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </td>
+                      </tr>
+                      <!-- Single Row End -->
+                      <!-- Single Row Start -->
+                      <tr>
+                        <td matTooltip="Cepsa Panama S.A" matTooltipShowDelay="500" matTooltipPosition="before">
+                          <a href="#">
+                            <div class="truncate-160">Cepsa Panama S.A</div>
+                          </a>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <mat-checkbox></mat-checkbox>
+                        </td>
+                        <td class="text-center">
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star filled-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </td>
+                      </tr>
+                      <!-- Single Row End -->
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 p-0 pt-3">
+            <section id="comments">
+              <div class="dark-card">
+                <div class="dark-card-title">Comments (4)</div>
+                <!-- comments -->
+
+                <div class="comments-section">
+
+                  <!-- Single Comment Start -->
+                  <div class="dark-comment">
+                    <div class="row">
+                      <div class="col-1">
+                        <div class="comment-user">AS</div>
+                      </div>
+                      <div class="col-11">
+                        <div class="row pl5">
+                          <div class="name float-left" matTooltip="Adam Smith" matTooltipShowDelay="700">
+                            <div class="truncate-180">Adam Smith</div>
+                          </div>
+                          <div class="date ml-auto">13 June 2018 09:49
+                            <i class="fas fa-chevron-down"></i>
+                          </div>
+                        </div>
+                        <div class="row pl5">
+                          <div class="comment">
+                            Peninsula advises tight availability for Gasoil
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Single Comment End -->
+
+                  <!-- Single Comment Start -->
+                  <div class="dark-comment">
+                    <div class="row">
+                      <div class="col-1">
+                        <div class="comment-user">JL</div>
+                      </div>
+                      <div class="col-11">
+                        <div class="row pl5">
+                          <div class="name float-left" matTooltip="John Lewis" matTooltipShowDelay="700">
+                            <div class="truncate-150">John Lewis</div>
+                          </div>
+                          <div class="date ml-auto">08 July 2018 17:49
+                            <i class="fas fa-chevron-down"></i>
+                          </div>
+                        </div>
+                        <div class="row pl5">
+                          <div class="comment">
+                            Operator advises air draught restrictions
+                          </div>
+                        </div>
+                        <div class="row pl5 pt10">
+                          <div class="attachment">
+                            <div class="attachment-icon float-left">
+                              <img src="../../../assets/images/attachment.svg" alt="Attachment">
+                            </div>
+                            <div class="attachment-text float-left pl10 pt5">
+                              <a href="#" target="_blank" rel="noopener">Screenshot 2018-06-21 at 10:58am</a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Single Comment End -->
+
+                  <!-- Single Comment Start -->
+                  <div class="dark-comment">
+                    <div class="row">
+                      <div class="col-1">
+                        <div class="comment-user">KM</div>
+                      </div>
+                      <div class="col-11">
+                        <div class="row pl5">
+                          <div class="name float-left" matTooltip="Kevin Miranda" matTooltipShowDelay="700">
+                            <div class="truncate-150">Kevin M</div>
+                          </div>
+                          <div class="date ml-auto">26 August 2018 20:40
+                            <i class="fas fa-chevron-down"></i>
+                          </div>
+                        </div>
+                        <div class="row pl5">
+                          <div class="comment">
+                            PERS comprises a set of guidelines to (self-)assess the individual performance of ports in
+                            the
+                            area of environmental management.
+                          </div>
+                        </div>
+                        <div class="row pl5 pt10">
+                          <div class="attachment">
+                            <div class="attachment-icon float-left">
+                              <img src="../../../assets/images/attachment.svg" alt="Attachment">
+                            </div>
+                            <div class="attachment-text float-left pl10 pt5">
+                              <a href="#" target="_blank" rel="noopener">Screenshot 2018-06-21 at 10:58am</a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Single Comment End -->
+
+                  <!-- Single Comment Start -->
+                  <div class="dark-comment">
+                    <div class="row">
+                      <div class="col-1">
+                        <div class="comment-user">JD</div>
+                      </div>
+                      <div class="col-11">
+                        <div class="row pl5">
+                          <div class="name float-left" matTooltip="John Doe" matTooltipShowDelay="700">
+                            <div class="truncate-150">John Doe</div>
+                          </div>
+                          <div class="date ml-auto">13 June 2018 09:50
+                            <i class="fas fa-chevron-down"></i>
+                          </div>
+                        </div>
+                        <div class="row pl5">
+                          <div class="comment">
+                            PERS comprises a set of guidelines to (self-)assess the individual performance of ports in
+                            the
+                            area of environmental management.
+                          </div>
+                        </div>
+                        <div class="row pl5 pt10">
+                          <div class="attachment">
+                            <div class="attachment-icon float-left">
+                              <img src="../../../assets/images/attachment.svg" alt="Attachment">
+                            </div>
+                            <div class="attachment-text float-left pl10 pt5">
+                              <a href="#" target="_blank" rel="noopener">Screenshot 2018-06-21 at 10:58am</a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Single Comment End -->
+
+                </div>
+
+
+
+                <div class="new-comment-section">
+                  <div class="row">
+                    <div class="col-md-10 p-0">
+                      <div class="new-comment">
+                        <mat-form-field>
+                          <!-- <input matInput type="text" placeholder="Your comments here"> -->
+                          <textarea class="new-comment-field" matInput placeholder="Your comments here"></textarea>
+                          <button mat-button matSuffix mat-icon-button aria-label="Your comments here">
+                            <mat-icon>attach_file</mat-icon>
+                          </button>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <button mat-flat-button class="post-btn">post</button>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- comments -->
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+</div>

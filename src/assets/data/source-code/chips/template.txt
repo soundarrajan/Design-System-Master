@@ -1,0 +1,5 @@
+<div class="custom-chip-type1 active" matTooltip="Active" matTooltipShowDelay="500">
+	<div class="truncate-100p">
+		Active
+	</div>
+</div>

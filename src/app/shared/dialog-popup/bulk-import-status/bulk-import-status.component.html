@@ -1,0 +1,9 @@
+<div class="bulk-import-transaction">
+  <img id="warning-icon" src="../../../assets/customicons/warning_small.svg" alt="list"><p class="m-l-9">Bulk Import Status</p>
+  <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+  <hr>
+  <div class="browse-file m-t-25">
+    <div class="text">Importing LCFS transactions  in progress</div>
+    <div class="text text-center m-t-25">100/125 transactions completed</div>
+    <mat-progress-bar mode="indeterminate" (click)="bulkImportSuccess();"></mat-progress-bar>
+</div>

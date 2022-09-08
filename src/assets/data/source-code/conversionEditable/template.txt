@@ -1,0 +1,30 @@
+    <div class="convertorEditable-component-v2">
+        <div class="block">
+            <div class="title">Mass UOM</div>
+            <div class="inline-dropdown">
+                <mat-form-field>
+                    <mat-select value="mt" disableOptionCentering>
+                        <mat-option value="mt">MT</mat-option>
+                        <mat-option value="gal">GAL</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="convert-img">
+        </div>
+        <div class="block dashed-border">
+            <div class="title">Conversion Rate</div>
+            <div class="value">2500</div>
+        </div>
+        <div class="block m-l-15">
+            <div class="title">Volume UOM</div>
+            <div class="inline-dropdown">
+                <mat-form-field>
+                    <mat-select value="mt" disableOptionCentering>
+                        <mat-option value="mt">MT</mat-option>
+                        <mat-option value="gal">GAL</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>

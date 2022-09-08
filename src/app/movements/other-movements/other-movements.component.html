@@ -1,0 +1,49 @@
+<mat-tab-group animationDuration="1000ms" class="custom-header-tabs-v2" (selectedTabChange)="tabClick($event)">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="custom-label-holder">
+        <div class="custom-tab-ui"></div>
+        <div class="custom-label">Planned Movements</div>
+      </div>
+    </ng-template>
+    <app-planned-other-movements [headerCollapse]="headerCollapse" (saveMovement)="enableSave = $event"
+      (verifyMovement)="enableVerify = $event"></app-planned-other-movements>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="custom-label-holder">
+        <div class="custom-tab-ui"></div>
+        <div class="custom-label">Verified Movements</div>
+      </div>
+    </ng-template>
+    <app-verified-other-movements [headerCollapse]="headerCollapse"></app-verified-other-movements>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="custom-label-holder">
+        <div class="custom-tab-ui"></div>
+        <div class="custom-label">Closed Movements</div>
+      </div>
+    </ng-template>
+    <app-closed-other-movements [headerCollapse]="headerCollapse"></app-closed-other-movements>
+  </mat-tab>
+</mat-tab-group>
+<div class="tab-header-actions-v2">
+  <div matTooltip="Save" matTooltipShowDelay="500" *ngIf="showActionBtns">
+    <button class="save-button" [disabled]="enableSave" (click)="plannedMovComp.save()">Save</button>
+  </div>
+  <div matTooltip="Verify" matTooltipShowDelay="500" *ngIf="showActionBtns">
+    <button class="verify-button" [disabled]="enableVerify" (click)="plannedMovComp.verify()">Verify</button>
+  </div>
+  <div matTooltip="Add Movement" matTooltipShowDelay="500" *ngIf="showActionBtns">
+    <button class="add-button" (click)="addMovement()">
+      <span style="margin-right: 5px;">+</span><span>Add Movement</span>
+    </button>
+  </div>
+  <button class="refresh_btn">
+    <img alt="refresh" src="../../../assets/customicons/refresh-blue.svg">
+  </button>
+  <button class="expand_collapse_btn" (click)="headerCollapse = !headerCollapse;">
+    <img alt="up-arrow" src="../../../assets/customicons/up-arrow-blue.svg" [ngClass]="{'rotate180':headerCollapse}">
+  </button>
+</div>

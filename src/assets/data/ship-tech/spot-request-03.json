@@ -1,0 +1,25 @@
+{
+    "request-id": 12323,
+    "locations": [
+        {
+            "location-name": "SHANGHAI",
+            "location-id": "004",
+            "port-id": "1"
+        },
+        {
+            "location-name": "SHENZHEN",
+            "location-id": "005",
+            "port-id": "1"
+        },
+        {
+            "location-name": "SINGAPORE",
+            "location-id": "006",
+            "port-id": "1"
+        },
+        {
+            "location-name": "BUSAN",
+            "location-id": "007",
+            "port-id": "1"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+<div id="add-transfer-movements" class="tank-summary-section">
+    <div>
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span>Tank Summary - Tank1</span>
+                </ng-template>
+                <ng-container *ngTemplateOutlet="details"></ng-container>
+            </mat-tab>
+        </mat-tab-group>
+        <div class="header-buttons" style="top:56px;">
+            <div class="actionOptions">
+            <div class="actionButton">
+                <button class="mid-blue-button mini h-25" [disabled]="disableExecute" (click)="execute()">Execute</button>
+            </div>
+        </div>
+            <div class="more-btn" [matMenuTriggerFor]="clickmenu"
+                #menuTrigger="matMenuTrigger"></div>
+
+            <mat-menu #clickmenu="matMenu" class="more-options-menu-panel" xPosition="after"
+                style="position: relative;bottom: 15px;left: 66px;">
+                <div (click)="menuTrigger.closeMenu()">
+                    <div class="more-options-menu-inv no-border p-lr-0">
+                        <div *ngFor="let item of menuOptions" style="padding: 10px 20px;">
+                          <span class="item-name" style="color: #ffffff !important;">{{item.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </mat-menu>
+
+            <mat-divider vertical=true></mat-divider>
+            <div class="refresh-btn-icon"></div>
+            <mat-divider vertical=true></mat-divider>
+            <div class="expand-collapse-btn">
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<ng-template #details>
+    <div class="tank-summary-selectors">
+<!--         <div class="title">Counterparty Details:</div>
+ -->        <div id="custom-form-field" class="lightTheme" style="margin: 10px 0;">
+            <div class="d-flex">
+                <mat-form-field class="with-search" appearance="legacy">
+                    <mat-label>Tank</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            
+                <div class="search-icon" (click)="openPopup()">
+                    <div class="img"></div>
+                </div>
+            
+            <mat-form-field style="margin-left:20px;" class="without-search" appearance="legacy">
+                <mat-label>Date From</mat-label>
+                <input matInput [matDatepicker]="picker" (focus)="picker.open()" (dateChange)="dateSelected($event,0)">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray">
+                    </mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker [panelClass]="switchTheme?'datepicker-darktheme':''"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field style="margin-left:20px;" class="without-search" appearance="legacy">
+                <mat-label>Date To</mat-label>
+                <input matInput [matDatepicker]="picker1" (focus)="picker1.open()" (dateChange)="dateSelected($event,1)">
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                    <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray">
+                    </mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1 [panelClass]="switchTheme?'datepicker-darktheme':''"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        </div>
+    </div>
+    <div class="movement-popup">
+        <div class="title">Movement Report</div>
+        <div class="agGrid-v2" style="margin:0;float:left;width:100%;padding-bottom:10px;margin-bottom:15px;">
+            <div style="width:100%;height:400px;max-height: 400px;">
+                <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_data"
+                    class="ag-theme-material ag-grid-v2 angular-v9 "></ag-grid-angular>
+            </div>
+        </div>
+    </div>
+</ng-template>

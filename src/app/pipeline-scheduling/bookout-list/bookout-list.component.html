@@ -1,0 +1,410 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <button class="btn btn-outline-secondary light-button" type="submit">
+    <div (click)="this.openDialog()">
+      <img src="../../../assets/customicons/filter.svg" alt="Filter" style="width: 20px; height: auto;"> &nbsp; Filters
+      &nbsp;
+      <img src="../../../assets/customicons/plus.svg" alt="Plus" style="width: 15px; height: auto;">
+      <!-- <i class="fas fa-plus"></i> -->
+    </div>
+  </button>
+
+  <div class="space-20"></div>
+
+  <button mat-icon-button class="grey-circle-icon">
+    <!-- <i class="fas fa-search"></i> -->
+    <img src="../../../assets/customicons/search.svg" alt="Search Icon" style="width: 15px;">
+  </button>
+
+  <div class="collapse navbar-collapse" id="BookOutpNavBar">
+    <div class="navbar-nav mr-auto"></div>
+    <button mat-raised-button class="green-button">Book Out</button>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12  p-tb-7 p-lr-20">
+      <table id="bookout_list" class="table two-stripe bg-white table-noborder tr-shadow light-header">
+        <thead>
+          <tr class="l-h-48">
+            <th colspan="1" class="br-r">&nbsp;</th>
+            <th colspan="10" class="text-center br-r9">
+              <div class="table-title">Trade Information</div>
+            </th>
+            <th colspan="5" class="text-center br-r9">
+              <div class="table-title">Editable Information</div>
+            </th>
+            <th colspan="1">&nbsp;</th>
+          </tr>
+          <tr class="tr-shadow">
+            <th scope="col" class="br-r"></th>
+            <th scope="col">Price ID
+              <i class="ti ti-arrow-up fs-10"></i>
+            </th>
+            <th scope="col">Counterparty</th>
+            <th scope="col">Location</th>
+            <th scope="col">D. Month</th>
+            <th scope="col">Cycle</th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col" class="br-r9">Pump Date</th>
+            <th scope="col" class="text-center">Tender Number</th>
+            <th scope="col" class="text-center">Effective Date</th>
+            <th scope="col" class="text-center">Supplier</th>
+            <th scope="col" class="text-center">Sequence</th>
+            <th scope="col" class="br-r9 text-center">Email</th>
+            <th scope="col" class="text-center">Unmatch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Single Row Start -->
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">P</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHB012-1</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Diesel</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">PLTW-A1-016</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">05/02/18</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">Shell</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button matTooltip="Sequence: BP/VLO/PDI/BP" matTooltipPosition="above" class="icon-eye">
+                <i class="ti ti-eye"></i>
+              </button>
+            </td>
+            <td rowspan="2" class="br-r9 text-center">
+              <mat-checkbox></mat-checkbox>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button class="orange-circle-icon">
+                <!-- <i class="fas fa-undo-alt"></i> -->
+                <img src="../../../assets/customicons/undo.svg" alt="Undo" style="width: 18px; padding-bottom: 2px;">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">S</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHS010-6</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Diesel</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+          </tr>
+          <!-- Single Row End -->
+
+          <!-- Single Row Start -->
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">P</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHB017-2</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Gasoline</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+            <td rowspan="2" class="text-muted text-center">
+              <span class="dotted-o">Add Tender No</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">05/02/18</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">Shell</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button matTooltip="Sequence: BP/VLO/PDI/BP" matTooltipPosition="above" class="icon-eye">
+                <i class="ti ti-eye"></i>
+              </button>
+            </td>
+            <td rowspan="2" class="br-r9 text-center">
+              <mat-checkbox></mat-checkbox>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button class="orange-circle-icon">
+                <!-- <i class="fas fa-undo-alt"></i> -->
+                <img src="../../../assets/customicons/undo.svg" alt="Undo" style="width: 18px; padding-bottom: 2px;">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">S</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHS018-3</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Gasoline</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+          </tr>
+          <!-- Single Row End -->
+
+          <!-- Single Row Start -->
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">P</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHB018-4</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Diesel</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+            <td rowspan="2" class="text-muted text-center">
+              <span class="dotted-o">Add Tender No</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">05/02/18</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">Shell</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button matTooltip="Sequence: BP/VLO/PDI/BP" matTooltipPosition="above" class="icon-eye">
+                <i class="ti ti-eye"></i>
+              </button>
+            </td>
+            <td rowspan="2" class="br-r9 text-center">
+              <mat-checkbox></mat-checkbox>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button class="orange-circle-icon">
+                <!-- <i class="fas fa-undo-alt"></i> -->
+                <img src="../../../assets/customicons/undo.svg" alt="Undo" style="width: 18px; padding-bottom: 2px;">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">S</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHS014-4</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Diesel</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+          </tr>
+          <!-- Single Row End -->
+
+          <!-- Single Row Start -->
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">P</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHB016-6</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Gasoline</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">PLTW-A1-016</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">05/02/18</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">Shell</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button matTooltip="Sequence: BP/VLO/PDI/BP" matTooltipPosition="above" class="icon-eye">
+                <i class="ti ti-eye"></i>
+              </button>
+            </td>
+            <td rowspan="2" class="br-r9 text-center">
+              <mat-checkbox checked></mat-checkbox>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button class="orange-circle-icon">
+                <!-- <i class="fas fa-undo-alt"></i> -->
+                <img src="../../../assets/customicons/undo.svg" alt="Undo" style="width: 18px; padding-bottom: 2px;">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">S</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHS014-5</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Gasoline</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+          </tr>
+          <!-- Single Row End -->
+
+          <!-- Single Row Start -->
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">P</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHB012-3</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Diesel</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">PLTW-A1-016</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">05/02/18</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <span class="dotted-o">Shell</span>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button matTooltip="Sequence: BP/VLO/PDI/BP" matTooltipPosition="above" class="icon-eye">
+                <i class="ti ti-eye"></i>
+              </button>
+            </td>
+            <td rowspan="2" class="br-r9 text-center">
+              <mat-checkbox></mat-checkbox>
+            </td>
+            <td rowspan="2" class="text-center">
+              <button mat-icon-button class="orange-circle-icon">
+                <!-- <i class="fas fa-undo-alt"></i> -->
+                <img src="../../../assets/customicons/undo.svg" alt="Undo" style="width: 18px; padding-bottom: 2px;">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td scope="row" class="text-center br-r">
+              <div class="inset-shadow-circle text-center">S</div>
+            </td>
+            <td>
+              <a href="#" class="table-link">PHS014-4</a>
+            </td>
+            <td>
+              <a href="#" class="table-link">Shell</a>
+            </td>
+            <td>Los Angeles</td>
+            <td>Apr</td>
+            <td>C 1</td>
+            <td>
+              <a href="#" class="table-link">Diesel</a>
+            </td>
+            <td>50,000 BBL</td>
+            <td>$ 0.775</td>
+            <td>$ 350,000</td>
+            <td class="br-r9">03/14/18</td>
+          </tr>
+          <!-- Single Row End -->
+
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

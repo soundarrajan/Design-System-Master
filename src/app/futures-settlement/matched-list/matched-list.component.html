@@ -1,0 +1,67 @@
+<div class="price-list-page">
+    <div class="price-list-header p-l-15" *ngIf="!headerCollapse">
+        <!-- New Menu Button -->
+        <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+            <div id="menu-button-dots">
+                <div id="dot1" class="dot"></div>
+                <div id="dot2" class="dot"></div>
+                <div id="dot3" class="dot"></div>
+                <div id="dot4" class="dot"></div>
+                <div id="dot5" class="dot"></div>
+                <div id="dot6" class="dot"></div>
+                <div id="dot7" class="dot"></div>
+                <div id="dot8" class="dot"></div>
+                <div id="dot9" class="dot"></div>
+            </div>
+        </div>
+        <!-- New Menu Button: End -->
+        <span style="height: 25px;">
+            <app-headerchip [chipStatus]="'active-chip'" [heading]="'Default'"></app-headerchip>
+        </span>
+    </div>
+    <!--Dropdown menu-->
+    <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+        <div class="tbl-context no-border">
+            <div class="p-tb-10">
+                <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                </span>
+                <span>Update Preference</span>
+            </div>
+            <div class="p-tb-10">
+                <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                </span>
+                <span>Save Preference As</span>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+            <div class="p-tb-10" (click)="change_rowdensity()">
+                <span>
+                    <img class="p-r-10"
+                        src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}"
+                        alt="export to excel icon">
+                </span>
+                <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display
+                    Density Low':'Display Density High'}}</span>
+            </div>
+        </div>
+    </mat-menu>
+    <ag-grid-angular domLayout='normal' [rowDeselection]="true" style="width: 100%;"
+        [ngStyle]="headerCollapse?{'height': 'calc( 100vh - 124px )'} : {'height': 'calc( 100vh - 165px'}"
+        [gridOptions]="gridOptions" [ngClass]="{'aggrid-dd-low-v2':isdisplaydensityhigh==false}"
+        class="ag-theme-material aggrid-narrow-table  aggrid-pinned-shadow aggrid-dual-row-v2 angular-v9">
+    </ag-grid-angular>
+    <!-- <div
+        style="font-size: 12px;font-weight:500;background-color: white; height: 35px;color: #828282; padding: 0px 10px;">
+        <p class="aggrid-totalResults" style="width: 50%; float:left;margin:10px 0px;">
+            <span>Total Results :</span><span class="aggrid-rowCount">{{rowCount}}</span>
+        </p>
+        <div class="export-excel"
+            style="width: 130px;float:right;height: 100%;border-left: 1px solid #EAECEE;padding-left: 10px;">
+            Export to Excel
+            <div class="export-excel-icon"></div>
+        </div>
+
+    </div> -->
+</div>
+<app-footer-v2 [id]="'future-match'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>

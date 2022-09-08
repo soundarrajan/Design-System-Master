@@ -1,0 +1,1034 @@
+<div class="accordion-dialog" [@.disabled]="disableAnimation">
+  <div class="dialog-title">
+      <p>Email preview</p>
+      <mat-icon  matSuffix class="float-right" (click)="closeDialog()">close</mat-icon>
+  </div>
+  <div class="minimise-view"><div class="min-block" *ngIf="minimiseShow">Minimise preview<span class="expand-collapse-icon" (click)="minimiseView()"></span></div></div>
+  
+  <div class="accordion-block  m-b-15" [@.disabled]="disableAnimation">
+<div class="accordion-container" [@.disabled]="disableAnimation">
+  
+  <div class="accordion-panel" [@.disabled]="disableAnimation">
+    <!--Accordion -start-->
+    <mat-expansion-panel class="m-t-5" [expanded]="false" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+      <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" *ngIf="expandedview"
+        class="p-l-17 p-t-0">
+        <mat-panel-title>
+          <div class="open-close-arrow blue">
+            <!--<i class="fas fa-caret-down"></i>
+                      <i class="fas fa-caret-up"></i>-->
+            <!-- <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list"> -->
+            <!-- <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list"> -->
+            <div class="fa-caret-down"></div>
+          </div>
+          <span class="panel-title blue m-l-9 m-t-5">ABC Trucks</span>
+        </mat-panel-title>
+        <!-- <div class="panel-details-right"><span>Delivery ID</span>
+          <div class="level-two">PHB123948</div>
+        </div> -->
+      </mat-expansion-panel-header>
+      <div class="product-container bl-blue p-b-15" *ngIf="expandedview">
+        <div class="contacts">
+          <div class="title">Email Header</div>
+          <div class="contacts-list" style="height: auto">
+            <div class="email-block">
+              <div class="title">To</div>
+              <mat-form-field class="mail-chip-list">
+                  <div class="chip-lists">
+                  <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                    
+                    <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                    <div class="truncate-f85">
+                        {{fruit}}
+                    </div>
+                    <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                      <i id="pin" class="fas fa-times"></i>
+                    </div>
+                    <div class="chip-tooltip">
+                        BobKennedy@chevron.com
+                    </div>
+                  </mat-chip>
+                  
+                  <div class="add-new-button" *ngIf="showAddItem">
+                      <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                          (click)="hideAddItemBtn()">
+                        <div class="truncate-f85">
+                            + Add New
+                        </div>
+                        
+                      </mat-chip>
+                    </div>
+                    <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+                        <input
+                            placeholder=""
+                            #fruitInput
+                            [formControl]="fruitCtrl"
+                            [matAutocomplete]="auto"
+                            [matAutocompleteConnectedTo]="origin"
+                            [matChipInputFor]="chipList"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            [matChipInputAddOnBlur]="addOnBlur"
+                            (matChipInputTokenEnd)="add($event)" class="autocomplete-input">
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                          <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                            {{fruit}}
+                          </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                   
+                  </mat-chip-list>
+                </div>
+              </mat-form-field>
+              <div class="title blue" (click)="showBcc();" *ngIf="showBccBtn">Bcc</div>
+            </div>
+            <!---->
+            <div class="email-block">
+                <div class="title">Cc</div>
+                <mat-form-field class="mail-chip-list">
+                    <div class="chip-lists">
+                    <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                      
+                        <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                            <div class="truncate-f85">
+                                {{fruit}}
+                            </div>
+                            <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                              <i id="pin" class="fas fa-times"></i>
+                            </div>
+                            <div class="chip-tooltip">
+                                BobKennedy@chevron.com
+                            </div>
+                          </mat-chip>
+                    <div class="add-new-button" *ngIf="showAddItem">
+                        <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                            (click)="hideAddItemBtn()">
+                          <div class="truncate-f85">
+                              + Add New
+                          </div>
+                          
+                        </mat-chip>
+                      </div>
+                      <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                          <input
+                              placeholder=""
+                              #fruitInput
+                              [formControl]="fruitCtrl"
+                              [matAutocomplete]="auto"
+                              [matAutocompleteConnectedTo]="origin"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                              {{fruit}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </div>
+                     
+                    </mat-chip-list>
+                  </div>
+                </mat-form-field>
+              </div>
+              <!---->
+              <div class="email-block"  *ngIf="showBccBlock">
+                  <div class="title">Bcc</div>
+                  <mat-form-field class="mail-chip-list">
+                      <div class="chip-lists">
+                      <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                        
+                          <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                              <div class="truncate-f85">
+                                  {{fruit}}
+                              </div>
+                              <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                <i id="pin" class="fas fa-times"></i>
+                              </div>
+                              <div class="chip-tooltip">
+                                  BobKennedy@chevron.com
+                              </div>
+                            </mat-chip>
+                      <div class="add-new-button" *ngIf="showAddItem">
+                          <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                              (click)="hideAddItemBtn()">
+                            <div class="truncate-f85">
+                                + Add New
+                            </div>
+                            
+                          </mat-chip>
+                        </div>
+                        <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                            <input
+                                placeholder=""
+                                #fruitInput
+                                [formControl]="fruitCtrl"
+                                [matAutocomplete]="auto"
+                                [matAutocompleteConnectedTo]="origin"
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                {{fruit}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </div>
+                       
+                      </mat-chip-list>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <!---->
+                <div class="email-block">
+                  <div class="plain-title">Subject:</div>
+                  <div class="subject">Delivery information Delivery ID - 12321</div>
+                </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="product-container bl-blue pt15" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+          <div class="contacts email-content">
+            <div class="title" *ngIf="expandedview">Email Content - <span style="color: #74CDEA;font-weight: 500;">Delivery ID 12321</span></div>
+            <div class="expand-view" *ngIf="expandedview">Expand View<span class="expand-collapse-icon" (click)="expandView($event)"></span></div>
+           <div class="email-preview" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+             <p>
+                1Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+             </p>
+
+           </div>
+           <div class="title p-tb-10" *ngIf="expandedview">Attachments</div>
+           <div class="attachments" *ngIf="expandedview">
+              <div class="bulk-import-transaction attachment-file">
+              <div class="browse-file m-t-5">
+                  <div class="attached-file"[ngClass]="uploaded ? 'active' : 'inactive'">
+                    
+                    <!-- <input type="text" id="file-name" [value]="selectedFile"> -->
+                    <div id="file-name" class=""><div class="paper-clip"></div><span>{{selectedFile}}</span>
+                    <div class="close-button"></div>
+                  </div>
+                    
+                  </div>
+                  <label for="file-upload" class="custom-file-upload">
+                    +Add More
+                 </label>
+                 <input id="file-upload" type="file" (change)="fileEvent($event)"/>
+              </div>
+              </div>
+           </div>
+           <div class="title p-tb-5" *ngIf="expandedview">Comments</div>
+           <div class="comments-block" contentEditable=true data-text="Type your comments here" *ngIf="expandedview">
+
+           </div>
+  
+          </div>
+        </div>
+    </mat-expansion-panel>
+    <!--Accordion End-->
+    <!--Accordion -start-->
+    <mat-expansion-panel class="m-t-5" [expanded]="false" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+        <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" *ngIf="expandedview"
+          class="p-l-17 p-t-0">
+          <mat-panel-title>
+            <div class="open-close-arrow blue">
+              <!--<i class="fas fa-caret-down"></i>
+                        <i class="fas fa-caret-up"></i>-->
+              <!-- <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list"> -->
+              <!-- <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list"> -->
+              <div class="fa-caret-down"></div>
+            </div>
+            <span class="panel-title blue m-l-9 m-t-5">ABC Trucks</span>
+          </mat-panel-title>
+          <!-- <div class="panel-details-right"><span>Delivery ID</span>
+            <div class="level-two">PHB123948</div>
+          </div> -->
+        </mat-expansion-panel-header>
+        <div class="product-container bl-blue p-b-15" *ngIf="expandedview">
+          <div class="contacts">
+            <div class="title">Email Header</div>
+            <div class="contacts-list" style="height: auto">
+              <div class="email-block">
+                <div class="title">To</div>
+                <mat-form-field class="mail-chip-list">
+                    <div class="chip-lists">
+                    <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                      
+                      <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                      <div class="truncate-f85">
+                          {{fruit}}
+                      </div>
+                      <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                        <i id="pin" class="fas fa-times"></i>
+                      </div>
+                      <div class="chip-tooltip">
+                          BobKennedy@chevron.com
+                      </div>
+                    </mat-chip>
+                    
+                    <div class="add-new-button" *ngIf="showAddItem">
+                        <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                            (click)="hideAddItemBtn()">
+                          <div class="truncate-f85">
+                              + Add New
+                          </div>
+                          
+                        </mat-chip>
+                      </div>
+                      <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                          <input
+                              placeholder=""
+                              #fruitInput
+                              [formControl]="fruitCtrl"
+                              [matAutocomplete]="auto"
+                              [matAutocompleteConnectedTo]="origin"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)" class="autocomplete-input">
+                          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                              {{fruit}}
+                            </mat-option>
+                          </mat-autocomplete>
+                      </div>
+                     
+                    </mat-chip-list>
+                  </div>
+                </mat-form-field>
+                <div class="title blue" (click)="showBcc();" *ngIf="showBccBtn">Bcc</div>
+              </div>
+              <!---->
+              <div class="email-block">
+                  <div class="title">Cc</div>
+                  <mat-form-field class="mail-chip-list">
+                      <div class="chip-lists">
+                      <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                        
+                          <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                              <div class="truncate-f85">
+                                  {{fruit}}
+                              </div>
+                              <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                <i id="pin" class="fas fa-times"></i>
+                              </div>
+                              <div class="chip-tooltip">
+                                  BobKennedy@chevron.com
+                              </div>
+                            </mat-chip>
+                      <div class="add-new-button" *ngIf="showAddItem">
+                          <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                              (click)="hideAddItemBtn()">
+                            <div class="truncate-f85">
+                                + Add New
+                            </div>
+                            
+                          </mat-chip>
+                        </div>
+                        <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                            <input
+                                placeholder=""
+                                #fruitInput
+                                [formControl]="fruitCtrl"
+                                [matAutocomplete]="auto"
+                                [matAutocompleteConnectedTo]="origin"
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                {{fruit}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </div>
+                       
+                      </mat-chip-list>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <!---->
+                <div class="email-block"  *ngIf="showBccBlock">
+                    <div class="title">Bcc</div>
+                    <mat-form-field class="mail-chip-list">
+                        <div class="chip-lists">
+                        <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                          
+                            <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                                <div class="truncate-f85">
+                                    {{fruit}}
+                                </div>
+                                <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                  <i id="pin" class="fas fa-times"></i>
+                                </div>
+                                <div class="chip-tooltip">
+                                    BobKennedy@chevron.com
+                                </div>
+                              </mat-chip>
+                        <div class="add-new-button" *ngIf="showAddItem">
+                            <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                                (click)="hideAddItemBtn()">
+                              <div class="truncate-f85">
+                                  + Add New
+                              </div>
+                              
+                            </mat-chip>
+                          </div>
+                          <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                              <input
+                                  placeholder=""
+                                  #fruitInput
+                                  [formControl]="fruitCtrl"
+                                  [matAutocomplete]="auto"
+                                  [matAutocompleteConnectedTo]="origin"
+                                  [matChipInputFor]="chipList"
+                                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                  [matChipInputAddOnBlur]="addOnBlur"
+                                  (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                  {{fruit}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </div>
+                         
+                        </mat-chip-list>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                  <!---->
+                  <div class="email-block">
+                    <div class="plain-title">Subject:</div>
+                    <div class="subject">Delivery information Delivery ID - 12321</div>
+                  </div>
+  
+            </div>
+  
+          </div>
+        </div>
+        <div class="product-container bl-blue pt15" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+            <div class="contacts email-content">
+              <div class="title" *ngIf="expandedview">Email Content - <span style="color: #74CDEA;font-weight: 500;">Delivery ID 12321</span></div>
+              <div class="expand-view" *ngIf="expandedview">Expand View<span class="expand-collapse-icon" (click)="expandView($event)"></span></div>
+             <div class="email-preview" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+               <p>
+                  2Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+               </p>
+  
+             </div>
+             <div class="title p-tb-10" *ngIf="expandedview">Attachments</div>
+             <div class="attachments" *ngIf="expandedview">
+                <div class="bulk-import-transaction attachment-file">
+                <div class="browse-file m-t-5">
+                    <div class="attached-file"[ngClass]="uploaded ? 'active' : 'inactive'">
+                      
+                      <!-- <input type="text" id="file-name" [value]="selectedFile"> -->
+                      <div id="file-name" class=""><div class="paper-clip"></div><span>{{selectedFile}}</span>
+                      <div class="close-button"></div>
+                    </div>
+                      
+                    </div>
+                    <label for="file-upload" class="custom-file-upload">
+                      +Add More
+                   </label>
+                   <input id="file-upload" type="file" (change)="fileEvent($event)"/>
+                </div>
+                </div>
+             </div>
+             <div class="title p-tb-5" *ngIf="expandedview">Comments</div>
+             <div class="comments-block" contentEditable=true data-text="Type your comments here" *ngIf="expandedview">
+  
+             </div>
+    
+            </div>
+          </div>
+      </mat-expansion-panel>
+    <!--Accordion End-->
+    <!--Accordion -start-->
+    <mat-expansion-panel class="m-t-5" [expanded]="false" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+        <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" *ngIf="expandedview"
+          class="p-l-17 p-t-0">
+          <mat-panel-title>
+            <div class="open-close-arrow blue">
+              <!--<i class="fas fa-caret-down"></i>
+                        <i class="fas fa-caret-up"></i>-->
+              <!-- <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list"> -->
+              <!-- <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list"> -->
+              <div class="fa-caret-down"></div>
+            </div>
+            <span class="panel-title blue m-l-9 m-t-5">ABC Trucks</span>
+          </mat-panel-title>
+          <!-- <div class="panel-details-right"><span>Delivery ID</span>
+            <div class="level-two">PHB123948</div>
+          </div> -->
+        </mat-expansion-panel-header>
+        <div class="product-container bl-blue p-b-15" *ngIf="expandedview">
+          <div class="contacts">
+            <div class="title">Email Header</div>
+            <div class="contacts-list" style="height: auto">
+              <div class="email-block">
+                <div class="title">To</div>
+                <mat-form-field class="mail-chip-list">
+                    <div class="chip-lists">
+                    <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                      
+                      <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                      <div class="truncate-f85">
+                          {{fruit}}
+                      </div>
+                      <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                        <i id="pin" class="fas fa-times"></i>
+                      </div>
+                      <div class="chip-tooltip">
+                          BobKennedy@chevron.com
+                      </div>
+                    </mat-chip>
+                    
+                    <div class="add-new-button" *ngIf="showAddItem">
+                        <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                            (click)="hideAddItemBtn()">
+                          <div class="truncate-f85">
+                              + Add New
+                          </div>
+                          
+                        </mat-chip>
+                      </div>
+                      <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                          <input
+                              placeholder=""
+                              #fruitInput
+                              [formControl]="fruitCtrl"
+                              [matAutocomplete]="auto"
+                              [matAutocompleteConnectedTo]="origin"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)" class="autocomplete-input">
+                          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                              {{fruit}}
+                            </mat-option>
+                          </mat-autocomplete>
+                      </div>
+                     
+                    </mat-chip-list>
+                  </div>
+                </mat-form-field>
+                <div class="title blue" (click)="showBcc();" *ngIf="showBccBtn">Bcc</div>
+              </div>
+              <!---->
+              <div class="email-block">
+                  <div class="title">Cc</div>
+                  <mat-form-field class="mail-chip-list">
+                      <div class="chip-lists">
+                      <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                        
+                          <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                              <div class="truncate-f85">
+                                  {{fruit}}
+                              </div>
+                              <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                <i id="pin" class="fas fa-times"></i>
+                              </div>
+                              <div class="chip-tooltip">
+                                  BobKennedy@chevron.com
+                              </div>
+                            </mat-chip>
+                      <div class="add-new-button" *ngIf="showAddItem">
+                          <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                              (click)="hideAddItemBtn()">
+                            <div class="truncate-f85">
+                                + Add New
+                            </div>
+                            
+                          </mat-chip>
+                        </div>
+                        <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                            <input
+                                placeholder=""
+                                #fruitInput
+                                [formControl]="fruitCtrl"
+                                [matAutocomplete]="auto"
+                                [matAutocompleteConnectedTo]="origin"
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                {{fruit}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </div>
+                       
+                      </mat-chip-list>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <!---->
+                <div class="email-block"  *ngIf="showBccBlock">
+                    <div class="title">Bcc</div>
+                    <mat-form-field class="mail-chip-list">
+                        <div class="chip-lists">
+                        <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                          
+                            <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                                <div class="truncate-f85">
+                                    {{fruit}}
+                                </div>
+                                <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                  <i id="pin" class="fas fa-times"></i>
+                                </div>
+                                <div class="chip-tooltip">
+                                    BobKennedy@chevron.com
+                                </div>
+                              </mat-chip>
+                        <div class="add-new-button" *ngIf="showAddItem">
+                            <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                                (click)="hideAddItemBtn()">
+                              <div class="truncate-f85">
+                                  + Add New
+                              </div>
+                              
+                            </mat-chip>
+                          </div>
+                          <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                              <input
+                                  placeholder=""
+                                  #fruitInput
+                                  [formControl]="fruitCtrl"
+                                  [matAutocomplete]="auto"
+                                  [matAutocompleteConnectedTo]="origin"
+                                  [matChipInputFor]="chipList"
+                                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                  [matChipInputAddOnBlur]="addOnBlur"
+                                  (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                  {{fruit}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </div>
+                         
+                        </mat-chip-list>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                  <!---->
+                  <div class="email-block">
+                    <div class="plain-title">Subject:</div>
+                    <div class="subject">Delivery information Delivery ID - 12321</div>
+                  </div>
+  
+            </div>
+  
+          </div>
+        </div>
+        <div class="product-container bl-blue pt15" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+            <div class="contacts email-content">
+              <div class="title" *ngIf="expandedview">Email Content - <span style="color: #74CDEA;font-weight: 500;">Delivery ID 12321</span></div>
+              <div class="expand-view" *ngIf="expandedview">Expand View<span class="expand-collapse-icon" (click)="expandView($event)"></span></div>
+             <div class="email-preview" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+               <p>
+                  3Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+               </p>
+  
+             </div>
+             <div class="title p-tb-10" *ngIf="expandedview">Attachments</div>
+             <div class="attachments" *ngIf="expandedview">
+                <div class="bulk-import-transaction attachment-file">
+                <div class="browse-file m-t-5">
+                    <div class="attached-file"[ngClass]="uploaded ? 'active' : 'inactive'">
+                      
+                      <!-- <input type="text" id="file-name" [value]="selectedFile"> -->
+                      <div id="file-name" class=""><div class="paper-clip"></div><span>{{selectedFile}}</span>
+                      <div class="close-button"></div>
+                    </div>
+                      
+                    </div>
+                    <label for="file-upload" class="custom-file-upload">
+                      +Add More
+                   </label>
+                   <input id="file-upload" type="file" (change)="fileEvent($event)"/>
+                </div>
+                </div>
+             </div>
+             <div class="title p-tb-5" *ngIf="expandedview">Comments</div>
+             <div class="comments-block" contentEditable=true data-text="Type your comments here" *ngIf="expandedview">
+  
+             </div>
+    
+            </div>
+          </div>
+      </mat-expansion-panel>
+    <!--Accordion End-->
+    <!--Accordion -start-->
+    <mat-expansion-panel class="m-t-5" [expanded]="false" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+        <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight" *ngIf="expandedview"
+          class="p-l-17 p-t-0">
+          <mat-panel-title>
+            <div class="open-close-arrow blue">
+              <!--<i class="fas fa-caret-down"></i>
+                        <i class="fas fa-caret-up"></i>-->
+              <!-- <img class="fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list"> -->
+              <!-- <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list"> -->
+              <div class="fa-caret-down"></div>
+            </div>
+            <span class="panel-title blue m-l-9 m-t-5">ABC Trucks</span>
+          </mat-panel-title>
+          <!-- <div class="panel-details-right"><span>Delivery ID</span>
+            <div class="level-two">PHB123948</div>
+          </div> -->
+        </mat-expansion-panel-header>
+        <div class="product-container bl-blue p-b-15" *ngIf="expandedview">
+          <div class="contacts">
+            <div class="title">Email Header</div>
+            <div class="contacts-list" style="height: auto">
+              <div class="email-block">
+                <div class="title">To</div>
+                <mat-form-field class="mail-chip-list">
+                    <div class="chip-lists">
+                    <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                      
+                      <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                      <div class="truncate-f85">
+                          {{fruit}}
+                      </div>
+                      <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                        <i id="pin" class="fas fa-times"></i>
+                      </div>
+                      <div class="chip-tooltip">
+                          BobKennedy@chevron.com
+                      </div>
+                    </mat-chip>
+                    
+                    <div class="add-new-button" *ngIf="showAddItem">
+                        <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                            (click)="hideAddItemBtn()">
+                          <div class="truncate-f85">
+                              + Add New
+                          </div>
+                          
+                        </mat-chip>
+                      </div>
+                      <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                          <input
+                              placeholder=""
+                              #fruitInput
+                              [formControl]="fruitCtrl"
+                              [matAutocomplete]="auto"
+                              [matAutocompleteConnectedTo]="origin"
+                              [matChipInputFor]="chipList"
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur"
+                              (matChipInputTokenEnd)="add($event)" class="autocomplete-input">
+                          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                              {{fruit}}
+                            </mat-option>
+                          </mat-autocomplete>
+                      </div>
+                     
+                    </mat-chip-list>
+                  </div>
+                </mat-form-field>
+                <div class="title blue" (click)="showBcc();" *ngIf="showBccBtn">Bcc</div>
+              </div>
+              <!---->
+              <div class="email-block">
+                  <div class="title">Cc</div>
+                  <mat-form-field class="mail-chip-list">
+                      <div class="chip-lists">
+                      <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                        
+                          <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                              <div class="truncate-f85">
+                                  {{fruit}}
+                              </div>
+                              <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                <i id="pin" class="fas fa-times"></i>
+                              </div>
+                              <div class="chip-tooltip">
+                                  BobKennedy@chevron.com
+                              </div>
+                            </mat-chip>
+                      <div class="add-new-button" *ngIf="showAddItem">
+                          <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                              (click)="hideAddItemBtn()">
+                            <div class="truncate-f85">
+                                + Add New
+                            </div>
+                            
+                          </mat-chip>
+                        </div>
+                        <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                            <input
+                                placeholder=""
+                                #fruitInput
+                                [formControl]="fruitCtrl"
+                                [matAutocomplete]="auto"
+                                [matAutocompleteConnectedTo]="origin"
+                                [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                              <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                {{fruit}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </div>
+                       
+                      </mat-chip-list>
+                    </div>
+                  </mat-form-field>
+                </div>
+                <!---->
+                <div class="email-block"  *ngIf="showBccBlock">
+                    <div class="title">Bcc</div>
+                    <mat-form-field class="mail-chip-list">
+                        <div class="chip-lists">
+                        <mat-chip-list #chipList aria-label="Fruit selection" style="float:left;">
+                          
+                            <mat-chip class="inactive-chip text-center hover-tooltip"  *ngFor="let fruit of fruits">
+                                <div class="truncate-f85">
+                                    {{fruit}}
+                                </div>
+                                <div matSuffix class="chip-circle" *ngIf="removable" (removed)="remove(fruit)">
+                                  <i id="pin" class="fas fa-times"></i>
+                                </div>
+                                <div class="chip-tooltip">
+                                    BobKennedy@chevron.com
+                                </div>
+                              </mat-chip>
+                        <div class="add-new-button" *ngIf="showAddItem">
+                            <mat-chip class="inactive-chip text-center dashed-chip" matTooltip="Add New"
+                                (click)="hideAddItemBtn()">
+                              <div class="truncate-f85">
+                                  + Add New
+                              </div>
+                              
+                            </mat-chip>
+                          </div>
+                          <div class="auto-input" matAutocompleteOrigin #origin="matAutocompleteOrigin" *ngIf="showAutoInput">
+                              <input
+                                  placeholder=""
+                                  #fruitInput
+                                  [formControl]="fruitCtrl"
+                                  [matAutocomplete]="auto"
+                                  [matAutocompleteConnectedTo]="origin"
+                                  [matChipInputFor]="chipList"
+                                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                  [matChipInputAddOnBlur]="addOnBlur"
+                                  (matChipInputTokenEnd)="add($event)" autofocus  class="autocomplete-input">
+                              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" class="grey-dropdown">
+                                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit" (click)="showAddItemBtn()">
+                                  {{fruit}}
+                                </mat-option>
+                              </mat-autocomplete>
+                            </div>
+                         
+                        </mat-chip-list>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                  <!---->
+                  <div class="email-block">
+                    <div class="plain-title">Subject:</div>
+                    <div class="subject">Delivery information Delivery ID - 12321</div>
+                  </div>
+  
+            </div>
+  
+          </div>
+        </div>
+        <div class="product-container bl-blue pt15" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+            <div class="contacts email-content">
+              <div class="title" *ngIf="expandedview">Email Content - <span style="color: #74CDEA;font-weight: 500;">Delivery ID 12321</span></div>
+              <div class="expand-view" *ngIf="expandedview">Expand View<span class="expand-collapse-icon" (click)="expandView($event)"></span></div>
+             <div class="email-preview" [ngClass]="expandedContent ? 'expanded' : 'collapsed'">
+               <p>
+                  4Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+                  sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+               </p>
+  
+             </div>
+             <div class="title p-tb-10" *ngIf="expandedview">Attachments</div>
+             <div class="attachments" *ngIf="expandedview">
+                <div class="bulk-import-transaction attachment-file">
+                <div class="browse-file m-t-5">
+                    <div class="attached-file"[ngClass]="uploaded ? 'active' : 'inactive'">
+                      
+                      <!-- <input type="text" id="file-name" [value]="selectedFile"> -->
+                      <div id="file-name" class=""><div class="paper-clip"></div><span>{{selectedFile}}</span>
+                      <div class="close-button"></div>
+                    </div>
+                      
+                    </div>
+                    <label for="file-upload" class="custom-file-upload">
+                      +Add More
+                   </label>
+                   <input id="file-upload" type="file" (change)="fileEvent($event)"/>
+                </div>
+                </div>
+             </div>
+             <div class="title p-tb-5" *ngIf="expandedview">Comments</div>
+             <div class="comments-block" contentEditable=true data-text="Type your comments here" *ngIf="expandedview">
+  
+             </div>
+    
+            </div>
+          </div>
+      </mat-expansion-panel>
+    <!--Accordion End-->
+
+    
+   
+  </div>
+</div>
+</div>
+<mat-dialog-actions class="float-right" style="position:relative;bottom: 0; margin-bottom: 2px;right: 0px;min-height: 0;float:right">
+    <button tabindex="-1" mat-button [mat-dialog-close]="true" style="width: 100px" (click)="this.openPublishDialog()">CANCEL</button>
+    <button class="blue-button" mat-button [mat-dialog-close]="true" mat-focused style="width: 100px">PROCEED</button>
+  </mat-dialog-actions>
+</div>

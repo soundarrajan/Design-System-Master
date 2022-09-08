@@ -1,0 +1,983 @@
+<!---PRICE DATASET SECTION-->
+<div id="set-price" class="p-l-3 p-tb-7">
+    <div class="price-dataset bg-white p-l-11 p-r-7">
+      <div class="price-dataset-row1">
+          <div id="menu-button" [matMenuTriggerFor]="togglecolumn1" style="float:left;margin-right: 5px;position: relative;top: 3px;">
+              <div id="menu-button-dots">
+                <div id="dot1" class="dot"></div>
+                <div id="dot2" class="dot"></div>
+                <div id="dot3" class="dot"></div>
+                <div id="dot4" class="dot"></div>
+                <div id="dot5" class="dot"></div>
+                <div id="dot6" class="dot"></div>
+                <div id="dot7" class="dot"></div>
+                <div id="dot8" class="dot"></div>
+                <div id="dot9" class="dot"></div>
+              </div>
+          </div>
+          <mat-menu class="table-context contract-action" #togglecolumn1="matMenu" yPosition="below" xPosition="before"
+          [overlapTrigger]="false">
+          <div class="tbl-contract" style="width: 190px;">
+            <div class="p-tb-10">
+              <span class="">
+                <img class="p-r-10" src="../../../assets/customicons/copy2.svg" alt="duplicate contract">
+              </span>
+              <span>Duplicate Dataset</span>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+             <div class="p-tb-10" (click)="change_rowdensity()">
+               <span>
+                 <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+               </span>
+               <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+             </div>
+          </div>
+        </mat-menu>
+        <div class="title p-t-6">Price Dataset</div>
+        <div class="last-updated p-t-6 p-r-9" style="position: relative;right: 80px;"><span class="p-lr-5">Last Updated:</span><span class="p-lr-5">14/Apr/2018</span><span class="p-lr-5">04:45 PM</span></div>
+      </div>
+      <div class="price-dataset-row2 p-r-7">
+        <div class="valid-from m-t-13">
+          <span class="m-t-5 m-r-19">Valid From:</span>
+          <span>
+            <mat-form-field id="datePicker" style="width:150px" class="aggriddate-picker">
+              <input id="validFrom" class="text-center" style="width:100%" matInput [matDatepicker]="picker" />          
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                  <mat-icon matDatepickerToggleIcon svgIcon="data-picker"></mat-icon>
+                </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+           
+              <mat-form-field id="datePicker" style="width:100%" appearance="outline">
+                  <input id="validFrom" class="text-center" matInput [matDatepicker]="picker"
+                  (focus)="picker.open()"
+                  placeholder="Choose a date">
+                  <mat-datepicker-toggle matSuffix [for]="picker">
+                      <mat-icon matDatepickerToggleIcon svgIcon="data-picker"></mat-icon>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </span>
+          <span class="valid-date">
+              <mat-form-field id="datePicker" style="width:100%" appearance="outline">
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </span>
+          <span>
+              <mat-form-field style="width:90px" class="aggridtime-picker">
+                <input class="text-center time"  matInput maxlength="5" [(ngModel)]="dateTime" [owlDateTime]="time">
+                <mat-icon matDatepickerToggleIcon matSuffix svgIcon="time-picker" [owlDateTimeTrigger]="time" ></mat-icon>
+                <owl-date-time [pickerType]="'timer'" #time class="time-picker"></owl-date-time>
+              </mat-form-field>
+          </span>
+          <!--Time Picker - Start-->
+          <!-- <div class="validTime">
+              <input [owlDateTime]="time" class="text-center time" placeholder="Time" matInput
+                     maxlength="5"
+                     [ngModel]="validFromTime$ | async"
+                     [readonly]="isReadOnly$ | async"
+                     [disabled]="!(canSave$ | async)"
+                     (ngModelChange)="updatePdsValidFromTime($event)"
+                     [owlDateTimeTrigger]="time">
+              <owl-date-time #time [pickerType]="'timer'" [hour12Timer]="false"
+                             [disabled]="!(canSave$ | async) || (isReadOnly$ | async)"></owl-date-time>
+          </div> -->
+          <!-- <input [owlDateTime]="time" class="text-center time" placeholder="Time" matInput
+               maxlength="5"
+               [ngModel]="validFromTime$ | async"
+               [readonly]="isReadOnly$ | async"
+               [disabled]="!(canSave$ | async)"
+               (ngModelChange)="updatePdsValidFromTime($event)"
+               [owlDateTimeTrigger]="time">
+        <owl-date-time #time [pickerType]="'timer'" [hour12Timer]="false"
+                       [disabled]="!(canSave$ | async) || (isReadOnly$ | async)"></owl-date-time> -->
+          <!-- <span>
+          <input placeholder="Time:" class="text-center time" placeholder="Time" matInput
+               maxlength="5"
+               [(ngModel)]="dateTime2"
+               [owlDateTimeTrigger]="time" [owlDateTime]="time">
+          <owl-date-time [pickerType]="'timer'" #time></owl-date-time>
+        </span> -->
+          <!--Time Picker - End-->
+        </div>
+        <!--State Changes-->
+        <div class="state p-t-4">
+          <div class="link-line"></div>
+          <div class="status m-l-12 m-r-88" [ngClass]="{'status-active': current_state=='save'||current_state=='confirm'||current_state=='publish'}"> <!--Add "status-active"-->
+            <div class="status-level">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="status-name">Saved</div>
+          </div>
+          <div class="status m-r-74" [ngClass]="{'confirm-active': current_state=='confirm'||current_state=='publish'}"> <!--Add "confirm-active"-->
+              <div class="status-level">
+                  <i class="fas fa-check"></i>
+              </div>
+              <div class="status-name">Confirmed</div>
+          </div>
+          <div class="status" [ngClass]="{'publish-active': current_state=='publish'}"> <!--Add "publish-active"-->
+                <div class="status-level">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="status-name">Published</div>
+          </div>
+        </div>
+        <!-- add 'active' class to enable button--><!--toastGreen toastAmber toastRed toastGrey-->
+        <button *ngIf="current_state=='save'" mat-raised-button class="save-button active" (click)="this.toastGreen()">Save</button> <!--add 'active'-->
+        <button *ngIf="current_state=='confirm'" mat-raised-button class="confirm-button"  (click)="current_state='publish'">Confirm</button> <!--add 'active'-->
+        <div *ngIf="current_state=='publish'" class="confirm-buttons"> <!--add 'active'-->
+          <button mat-raised-button class="publish-button" (click)="this.openPublishDialog()">Publish/Send</button>
+          <button mat-raised-button class="unconfirm-button m-r-9">Unconfirm</button>
+        </div>
+        <button *ngIf="current_state=='send'" mat-raised-button class="send-button" (click)="this.openRepublishDialog()">Send</button> <!--add 'active'-->
+        
+        <div class="header-right-block">
+          <div *ngIf="current_state=='dismissed'" class="price-list-dismissed m-r-9" (click)="current_state='save'"><div class="status-level"><i class="fas fa-check"></i></div><p>Price List Dismissed</p></div> <!--add 'active'-->
+          <!-- <div class="refresh-toggle">
+            <div class="refresh-icon">
+              <img class="p-r-10" src="../../../assets/customicons/refresh_blue.svg" alt="refresh">
+            </div>
+            <div class="slide-toggle" (click)="headerToggle();">
+              <img class="p-r-10" src="../../../assets/customicons/toggle-arrow.svg" class="header-slide" alt="header-slide">
+            </div>
+          </div> -->
+        </div>
+      </div>
+     
+    </div>
+    <!---PRODUCT EXPAND AND COLLAPSE--->
+    <div class="product-section m-t-16">
+      <mat-expansion-panel>
+          <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+            <mat-panel-title>
+              <div class="open-close-arrow">
+                  <!--<i class="fas fa-caret-down"></i>
+                  <i class="fas fa-caret-up"></i>-->
+                  <img class= "fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                  <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+              </div>
+              <span class="panel-title m-l-9">Tesoro</span>
+            </mat-panel-title>
+            <div class="panel-location p-r-7"><span>Location: Carson</span>
+              <div class="uom">Currency: USD <span>|</span> UOM: GAL</div>
+            </div>
+          </mat-expansion-panel-header>
+          <div class="product-container" style="background-color: #EAECEE; ">
+              <div class="row m-0">
+                <div class="col-md-12 p-0">
+                  <!-- <table class="product-table table scroll alt-stripe bg-white br-tbl light-header">
+                    <thead>
+                      <tr class="tr-shadow">
+                        <th (click)="toggleColumn();" [matMenuTriggerFor]="togglecolumn"><img id="list-icon" src="../../../assets/customicons/list.svg" alt="list"></th>
+                        <th class="p-l-11">Product</th>
+                        <th>OPIS price</th>
+                        <th>Blended Avg Cost</th>
+                        <th>Base Price</th>
+                        <th>LCFS</th>
+                        <th>C&T</th>
+                        <th>premium/Discount</th>
+                        <th>Final Price</th>
+                        <th>Variance to last price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-Hide or Show Column Start-->
+                      <!-- <mat-menu class="hideshow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+                        <div class="hide-show-column">
+                          <div class="hideshow-title m-lr-6 p-b-10">Hide or Show Column</div>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Select All</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>OPIS Price</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Blended Avg Cost</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Base Price</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>LCFS</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>C&T</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Premium/Discount</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Final Price</p>
+                          <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Variance to Last Price</p>
+                          <button mat-raised-button class="blue-button">    
+                              <span>Apply</span>
+                          </button>
+                        </div>
+                        
+                      </mat-menu> -->
+                      <!--Hide or Show Column End-->
+                      <!-- Single Row Start -->
+                      <!-- <tr class="inactive">
+                        <td></td>
+                        <td class="p-l-11"><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                          <mat-menu #status="matMenu">
+                              <button mat-menu-item>Activate</button>
+                              <button mat-menu-item>Deactivate</button>
+                              <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </td>
+                        <td><p>3.3216 USD</p></td>
+                        <td><p>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true" (focus)="editablefocus(priceInput);" #priceInput>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td class="final-price final-price-gr" matTooltip="Final Price > 10% &#13; of OPIS Price"  matTooltipClass="multiline-tooltip"><p>3.3216 USD</p><mat-icon class="error">error_outline</mat-icon></td>
+                        <td><mat-icon class="red-arrow">arrow_drop_down</mat-icon><p class="variance">3.3216 USD</p></td>
+                      </tr> -->
+                      <!-- Single Row End -->
+                      <!-- Single Row Start -->
+                      <!-- <tr class="active">
+                        <td></td>
+                        <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                          <mat-menu #status="matMenu">
+                              <button mat-menu-item>Activate</button>
+                              <button mat-menu-item>Deactivate</button>
+                              <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </td>
+                        <td>3.3216 USD</td>
+                        <td>3.3216 USD</td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td class="final-price"><p>3.3216 USD</p></td>
+                        <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                      </tr> -->
+                         <!-- Single Row End -->
+                         <!-- Single Row Start -->
+                      <!-- <tr class="active">
+                        <td></td>
+                        <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                          <mat-menu #status="matMenu">
+                              <button mat-menu-item>Activate</button>
+                              <button mat-menu-item>Deactivate</button>
+                              <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </td>
+                        <td>3.3216 USD</td>
+                        <td>3.3216 USD</td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td class="final-price"><p>3.3216 USD</p></td>
+                        <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                      </tr> -->
+                         <!-- Single Row End -->
+                         <!-- Single Row Start -->
+                      <!-- <tr class="active">
+                        <td></td>
+                        <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                          <mat-menu #status="matMenu">
+                              <button mat-menu-item>Activate</button>
+                              <button mat-menu-item>Deactivate</button>
+                              <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </td>
+                        <td>3.3216 USD</td>
+                        <td>3.3216 USD</td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                        <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                        <td class="final-price"><p>3.3216 USD</p></td>
+                        <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                      </tr> -->
+                         <!-- Single Row End -->
+                         <!-- Add New Product Row Start-->
+                         <!-- <tr class="new-product">
+                          <td></td>
+                          <td [matMenuTriggerFor]="addProduct"><span></span><p class="select-title"><i class="fas fa-plus p-r-5"></i>Type and Select Product</p><i class="fas fa-caret-down"></i>
+                            <div class="select-product-section">
+                                 <mat-select placeholder="Type and Select Product">
+                                      <mat-option value="RED CARB DIESEL">RED CARB DIESEL</mat-option>
+                                      <mat-option value="87 CARFG - ETH">87 CARFG - ETH</mat-option>
+                                      <mat-option value="89 CARFG - ETH">89 CARFG - ETH</mat-option>
+                                      <mat-option value="CARB DIESEL">CARB DIESEL</mat-option>
+                                      <mat-option value="RED CARB DIESEL">RED CARB DIESEL</mat-option>
+                                </mat-select> -->
+                                <!-- <mat-menu #addProduct="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+                                    <button mat-menu-item>RED CARB DIESEL</button>
+                                    <button mat-menu-item>87 CARFG - ETH</button>
+                                    <button mat-menu-item>89 CARFG - ETH</button>
+                                    <button mat-menu-item>CARB DIESEL</button>
+                                    <button mat-menu-item>RED CARB DIESEL</button>
+                                </mat-menu>
+                                
+                            </div>
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td><p contenteditable="true"></p></td>
+                          <td><p contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox></p></td>
+                          <td><p contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox></p></td>
+                          <td><p contenteditable="true"></p></td>
+                          <td></td>
+                          <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance"></p></td>
+                        </tr> -->
+                         <!-- Add New Product Row End-->
+                    <!-- </tbody>
+                  </table> -->
+                  <!-- <div style="display: inline"> -->
+                    <!-- <div (click)="toggleColumn();" [matMenuTriggerFor]="togglecolumn" style="display: inline;float: left;margin: 19px 1px 10px 5px;"><img id="list-icon" src="../../../assets/customicons/list.svg" alt="list">
+                    </div> -->
+                    <span [ngStyle]="isdisplaydensityhigh==false && {'height':'48px'}||isdisplaydensityhigh==true && {'height':'48px'} " style="width: 20px;margin-top: 0px; background-color: white;display: inline-block; float: left;"></span>
+                    <ag-grid-angular domLayout='autoHeight' style="width: 100%;border-top:none;" [gridOptions]="gridOptions_pricedataset" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-material aggrid-pinned-shadow dynamic-height angular-v9"></ag-grid-angular>
+                  <!-- </div> -->
+                </div>
+             </div>
+             
+          </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel class="m-t-5" >
+          <mat-expansion-panel-header  [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+              <mat-panel-title>
+                <div class="open-close-arrow">
+                    <!--<i class="fas fa-caret-down"></i>
+                    <i class="fas fa-caret-up"></i>-->
+                    <img class= "fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                    <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+                </div>
+                <span class="panel-title m-l-9">Valero</span>
+              </mat-panel-title>
+              <div class="panel-location p-r-7"><span>Location: Colton</span>
+                <div class="uom">Currency: USD <span>|</span> UOM: GAL</div>
+              </div>
+            </mat-expansion-panel-header>
+            <div class="product-container" style="background-color: #EAECEE; ">
+                <div class="row m-0">
+                  <div class="col-md-12 p-0">
+                    <!-- <table class="product-table table scroll alt-stripe bg-white br-tbl light-header">
+                      <thead>
+                        <tr class="tr-shadow">
+                          <th (click)="toggleColumn();" [matMenuTriggerFor]="togglecolumn"><img id="list-icon" src="../../../assets/customicons/list.svg" alt="list"></th>
+                          <th class="p-l-11">Product</th>
+                          <th>OPIS price</th>
+                          <th>Blended Avg Cost</th>
+                          <th>Base Price</th>
+                          <th>LCFS</th>
+                          <th>C&T</th>
+                          <th>premium/Discount</th>
+                          <th>Final Price</th>
+                          <th>Variance to last price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        Hide or Show Column Start
+                        <mat-menu class="hideshow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+                          <div class="hide-show-column">
+                            <div class="hideshow-title m-lr-6 p-b-10">Hide or Show Column</div>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Select All</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>OPIS Price</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Blended Avg Cost</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Base Price</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>LCFS</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>C&T</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Premium/Discount</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Final Price</p>
+                            <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Variance to Last Price</p>
+                            <button mat-raised-button class="blue-button">    
+                                <span>Apply</span>
+                            </button>
+                          </div>
+                          
+                        </mat-menu>
+                        Hide or Show Column End
+                        Single Row Start
+                        <tr class="inactive">
+                          <td></td>
+                          <td class="p-l-11"><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                            <mat-menu #status="matMenu">
+                                <button mat-menu-item>Activate</button>
+                                <button mat-menu-item>Deactivate</button>
+                                <button mat-menu-item>Remove</button>
+                            </mat-menu>
+                          </td>
+                          <td><p>3.3216 USD</p></td>
+                          <td><p>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td class="final-price final-price-gr" matTooltip="Final Price > 10% &#13; of OPIS Price"  matTooltipClass="multiline-tooltip"><p>3.3216 USD</p><mat-icon class="error">error_outline</mat-icon></td>
+                          <td><mat-icon class="red-arrow">arrow_drop_down</mat-icon><p class="variance">3.3216 USD</p></td>
+                        </tr>
+                        Single Row End
+                        Single Row Start
+                        <tr class="active">
+                          <td></td>
+                          <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                            <mat-menu #status="matMenu">
+                                <button mat-menu-item>Activate</button>
+                                <button mat-menu-item>Deactivate</button>
+                                <button mat-menu-item>Remove</button>
+                            </mat-menu>
+                          </td>
+                          <td>3.3216 USD</td>
+                          <td>3.3216 USD</td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td class="final-price"><p>3.3216 USD</p></td>
+                          <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                        </tr>
+                           Single Row End
+                           Single Row Start
+                        <tr class="active">
+                          <td></td>
+                          <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                            <mat-menu #status="matMenu">
+                                <button mat-menu-item>Activate</button>
+                                <button mat-menu-item>Deactivate</button>
+                                <button mat-menu-item>Remove</button>
+                            </mat-menu>
+                          </td>
+                          <td>3.3216 USD</td>
+                          <td>3.3216 USD</td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td class="final-price"><p>3.3216 USD</p></td>
+                          <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                        </tr>
+                           Single Row End
+                           Single Row Start
+                        <tr class="active">
+                          <td></td>
+                          <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                            <mat-menu #status="matMenu">
+                                <button mat-menu-item>Activate</button>
+                                <button mat-menu-item>Deactivate</button>
+                                <button mat-menu-item>Remove</button>
+                            </mat-menu>
+                          </td>
+                          <td>3.3216 USD</td>
+                          <td>3.3216 USD</td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                          <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                          <td class="final-price"><p>3.3216 USD</p></td>
+                          <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                        </tr>
+                           Single Row End
+                           Add New Product Row Start
+                           <tr class="new-product">
+                            <td></td>
+                            <td [matMenuTriggerFor]="addProduct"><span></span><p class="select-title"><i class="fas fa-plus p-r-5"></i>Type and Select Product</p><i class="fas fa-caret-down"></i>
+                              <div class="select-product-section">
+                                  <mat-select placeholder="Type and Select Product">
+                                        <mat-option value="RED CARB DIESEL">RED CARB DIESEL</mat-option>
+                                        <mat-option value="87 CARFG - ETH">87 CARFG - ETH</mat-option>
+                                        <mat-option value="89 CARFG - ETH">89 CARFG - ETH</mat-option>
+                                        <mat-option value="CARB DIESEL">CARB DIESEL</mat-option>
+                                        <mat-option value="RED CARB DIESEL">RED CARB DIESEL</mat-option>
+                                  </mat-select>
+                                  <mat-menu #addProduct="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+                                      <button mat-menu-item>RED CARB DIESEL</button>
+                                      <button mat-menu-item>87 CARFG - ETH</button>
+                                      <button mat-menu-item>89 CARFG - ETH</button>
+                                      <button mat-menu-item>CARB DIESEL</button>
+                                      <button mat-menu-item>RED CARB DIESEL</button>
+                                  </mat-menu>
+                                  
+                              </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td><p contenteditable="true"></p></td>
+                            <td><p contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox></p></td>
+                            <td><p contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox></p></td>
+                            <td><p contenteditable="true"></p></td>
+                            <td></td>
+                            <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance"></p></td>
+                          </tr>
+                           Add New Product Row End
+                      </tbody>
+                    </table> -->
+                    <span [ngStyle]="isdisplaydensityhigh==false && {'height':'48px'}||isdisplaydensityhigh==true && {'height':'48px'} " style="width: 20px;margin-top: 0px; background-color: white;display: inline-block; float: left;"></span>
+                    <ag-grid-angular domLayout='autoHeight' style="width: 100%;border-top:none;" [gridOptions]="gridOptions_valero" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-material aggrid-pinned-shadow dynamic-height angular-v9"></ag-grid-angular>
+                  </div>
+               </div>
+               
+            </div>
+       </mat-expansion-panel>
+       <!---Add New Terminal-->
+      <div class="add-terminal m-t-5">
+        <!--<div class="add-terminal-content">
+          <i class="fas fa-plus-circle m-lr-8"></i>
+          <span>Add New Terminal</span>
+        </div>-->
+        <mat-expansion-panel class="m-t-5" [disabled]="isDisabled" (click)="changeTitle()">  <!--  [disabled]="isDisabled"-->
+            <mat-expansion-panel-header [matMenuTriggerFor]="addTerminal" contenteditable="true" [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+                <mat-panel-title class="add-terminal-panel" [ngStyle]="{'opacity':opacity === true ? '0.3' : '1' }">
+                  <div class="open-close-arrows m-t-3">
+                      <!--<i class="fas fa-caret-down"></i>
+                      <i class="fas fa-caret-up"></i>-->
+                      <i class="fas fa-plus-circle m-lr-8"></i>
+                  </div>
+                  <span class="panel-title"><p contenteditable="true" class="add-terminal-title">Add New Terminal</p></span>
+                </mat-panel-title>
+                <div class="panel-location"><span></span></div>
+              </mat-expansion-panel-header>
+              <div class="product-container">
+                  <div class="row m-0">
+                    <div class="col-md-12 p-r-15 p-l-15 scroll-div">
+                      <table class="product-table table scroll alt-stripe bg-white br-tbl light-header">
+                        <thead>
+                          <tr class="tr-shadow">
+                            <th (click)="toggleColumn();" [matMenuTriggerFor]="togglecolumn"><img id="list-icon" src="../../../assets/customicons/list.svg" alt="list"></th>
+                            <th class="p-l-11">Product</th>
+                            <th>OPIS price</th>
+                            <th>Blended Avg Cost</th>
+                            <th>Base Price</th>
+                            <th>LCFS</th>
+                            <th>C&T</th>
+                            <th>premium/Discount</th>
+                            <th>Final Price</th>
+                            <th>Variance to last price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!--Hide or Show Column Start-->
+                          <mat-menu class="hideshow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+                            <div class="hide-show-column">
+                              <div class="hideshow-title m-lr-6 p-b-10">Hide or Show Column</div>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Select All</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>OPIS Price</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Blended Avg Cost</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Base Price</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>LCFS</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>C&T</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Premium/Discount</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Final Price</p>
+                              <p class="m-t-10"><mat-checkbox class="dark-checkbox noborder" (click)="$event.stopPropagation();"></mat-checkbox>Variance to Last Price</p>
+                              <button mat-raised-button class="blue-button">    
+                                  <span>Apply</span>
+                              </button>
+                            </div>
+                            
+                          </mat-menu>
+                          <!--Hide or Show Column End-->
+                          <!-- Single Row Start -->
+                          <tr class="inactive">
+                            <td></td>
+                            <td class="p-l-11"><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                              <mat-menu #status="matMenu">
+                                  <button mat-menu-item>Activate</button>
+                                  <button mat-menu-item>Deactivate</button>
+                                  <button mat-menu-item>Remove</button>
+                              </mat-menu>
+                            </td>
+                            <td><p>3.3216 USD</p></td>
+                            <td><p>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td class="final-price final-price-gr" matTooltip="Final Price > 10% of OPIS Price"><p>3.3216 USD</p><mat-icon class="error">error_outline</mat-icon></td>
+                            <td><mat-icon class="red-arrow">arrow_drop_down</mat-icon><p class="variance">3.3216 USD</p></td>
+                          </tr>
+                          <!-- Single Row End -->
+                          <!-- Single Row Start -->
+                          <tr class="active">
+                            <td></td>
+                            <td><span></span><a href="">87 CARFG - ETHs </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                              <mat-menu #status="matMenu">
+                                  <button mat-menu-item>Activate</button>
+                                  <button mat-menu-item>Deactivate</button>
+                                  <button mat-menu-item>Remove</button>
+                              </mat-menu>
+                            </td>
+                            <td>3.3216 USD</td>
+                            <td>3.3216 USD</td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td class="final-price"><p>3.3216 USD</p></td>
+                            <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                          </tr>
+                             <!-- Single Row End -->
+                             <!-- Single Row Start -->
+                          <tr class="active">
+                            <td></td>
+                            <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                              <mat-menu #status="matMenu">
+                                  <button mat-menu-item>Activate</button>
+                                  <button mat-menu-item>Deactivate</button>
+                                  <button mat-menu-item>Remove</button>
+                              </mat-menu>
+                            </td>
+                            <td>3.3216 USD</td>
+                            <td>3.3216 USD</td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td class="final-price"><p>3.3216 USD</p></td>
+                            <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                          </tr>
+                             <!-- Single Row End -->
+                             <!-- Single Row Start -->
+                          <tr class="active">
+                            <td></td>
+                            <td><span></span><a href="">87 CARFG - ETH </a><i class="fas fa-caret-down" [matMenuTriggerFor]="status"></i>
+                              <mat-menu #status="matMenu">
+                                  <button mat-menu-item>Activate</button>
+                                  <button mat-menu-item>Deactivate</button>
+                                  <button mat-menu-item>Remove</button>
+                              </mat-menu>
+                            </td>
+                            <td>3.3216 USD</td>
+                            <td>3.3216 USD</td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox>3.3216 USD</p></td>
+                            <td><p class="editable"  spellcheck="false" contenteditable="true">3.3216 USD</p></td>
+                            <td class="final-price"><p>3.3216 USD</p></td>
+                            <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance">3.3216 USD</p></td>
+                          </tr>
+                             <!-- Single Row End -->
+                             <!-- Add New Product Row Start-->
+                             <tr class="new-product">
+                              <td></td>
+                              <td [matMenuTriggerFor]="addProduct"><span></span><p class="select-title"><i class="fas fa-plus p-r-5"></i>Type and Select Product</p><i class="fas fa-caret-down"></i>
+                                <div class="select-product-section">
+                                    <!-- <mat-select placeholder="Type and Select Product">
+                                          <mat-option value="RED CARB DIESEL">RED CARB DIESEL</mat-option>
+                                          <mat-option value="87 CARFG - ETH">87 CARFG - ETH</mat-option>
+                                          <mat-option value="89 CARFG - ETH">89 CARFG - ETH</mat-option>
+                                          <mat-option value="CARB DIESEL">CARB DIESEL</mat-option>
+                                          <mat-option value="RED CARB DIESEL">RED CARB DIESEL</mat-option>
+                                    </mat-select> -->
+                                    <mat-menu #addProduct="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+                                        <button mat-menu-item>RED CARB DIESEL</button>
+                                        <button mat-menu-item>87 CARFG - ETH</button>
+                                        <button mat-menu-item>89 CARFG - ETH</button>
+                                        <button mat-menu-item>CARB DIESEL</button>
+                                        <button mat-menu-item>RED CARB DIESEL</button>
+                                    </mat-menu>
+                                    
+                                </div>
+                              </td>
+                              <td></td>
+                              <td></td>
+                              <td><p contenteditable="true"></p></td>
+                              <td><p contenteditable="true"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox></p></td>
+                              <td><p contenteditable="true" class="no-strike"><mat-checkbox class="dark-checkbox noborder"></mat-checkbox></p></td>
+                              <td><p contenteditable="true"></p></td>
+                              <td></td>
+                              <td><mat-icon class="green-arrow">arrow_drop_up</mat-icon><p class="variance"></p></td>
+                            </tr>
+                             <!-- Add New Product Row End-->
+                        </tbody>
+                      </table>
+                    </div>
+                 </div>
+                 
+              </div>
+         </mat-expansion-panel>
+         <mat-menu #addTerminal="matMenu" class="custom-addterminal" yPosition="below" xPosition="after" [overlapTrigger]="false" width="500">
+          <button mat-menu-item>Philips 66</button>
+          <button mat-menu-item>Paramount</button>
+          <button mat-menu-item>Kinder Morgan</button>
+          <button mat-menu-item>PBF</button>
+          <button mat-menu-item>Alon</button>
+        </mat-menu>
+      </div>
+      <!--Email Log Start-->
+      <mat-expansion-panel class="email-log-panel" [expanded]="emaillog_isopen === true" (opened)="emaillog_isopen=true">
+        <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+          <mat-panel-title>
+            <div class="open-close-arrow">
+                <!--<i class="fas fa-caret-down"></i>
+                <i class="fas fa-caret-up"></i>-->
+                <img class= "fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+            </div>
+            <span class="panel-title m-l-9">Email Log</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="product-container" style="background-color: #EAECEE; ">
+            <div class="row m-0">
+              <div class="col-md-12 p-0">
+                <!-- <table class="product-table table scroll alt-stripe bg-white br-tbl light-header">
+                  <thead>
+                    <tr class="tr-shadow">
+                        <th></th>
+                      <th class="p-l-0">Mail Sent To</th>
+                      <th>Status</th>
+                      <th>Sender</th>
+                      <th>Subject</th>
+                      <th>Mail Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    Single Row Start
+                    <tr>
+                      <td></td>
+                      <td class="bl-green"><p>Ajayan.K@inatech.com</p></td>
+                      <td>
+                        <mat-chip-list>
+                          <mat-chip class="text-center custom-chip darkgreen">
+                            <div class="chip-label">Success</div>
+                          </mat-chip>
+                        </mat-chip-list>
+                      </td>
+                      <td><p>uat5@twentyfoursoftwareoutlook.onmicrosoft.com</p></td>
+                      <td><p>Rack Prices</p></td>
+                      <td><p>11/07/2018 12:28 PM</p></td>
+                    </tr>
+                    Single Row End
+                    Single Row Start
+                    <tr>
+                        <td></td>
+                        <td class="bl-red"><p>Ajayan.K@inatech.com</p></td>
+                        <td>
+                            <mat-chip-list>
+                              <mat-chip class="text-center custom-chip red">
+                                <div class="chip-label">Failed</div>
+                              </mat-chip>
+                            </mat-chip-list>
+                        </td>
+                        <td><p>uat5@twentyfoursoftwareoutlook.onmicrosoft.com</p></td>
+                        <td><p>Rack Prices</p></td>
+                        <td><p>11/07/2018 12:28 PM</p></td>
+                    </tr>
+                       Single Row End
+                       Single Row Start
+                    <tr>
+                        <td></td>
+                        <td class="bl-green"><p>Ajayan.K@inatech.com</p></td>
+                        <td>
+                            <mat-chip-list>
+                              <mat-chip class="text-center custom-chip darkgreen">
+                                <div class="chip-label">Success</div>
+                              </mat-chip>
+                            </mat-chip-list>
+                        </td>
+                        <td><p>uat5@twentyfoursoftwareoutlook.onmicrosoft.com</p></td>
+                        <td><p>Rack Prices</p></td>
+                        <td><p>11/07/2018 12:28 PM</p></td>
+                    </tr>
+                       Single Row End
+                       Single Row Start
+                    <tr>
+                        <td></td>
+                        <td class="bl-green"><p>Ajayan.K@inatech.com</p></td>
+                        <td>
+                            <mat-chip-list>
+                              <mat-chip class="text-center custom-chip darkgreen">
+                                <div class="chip-label">Success</div>
+                              </mat-chip>
+                            </mat-chip-list>
+                        </td>
+                        <td><p>uat5@twentyfoursoftwareoutlook.onmicrosoft.com</p></td>
+                        <td><p>Rack Prices</p></td>
+                        <td><p>11/07/2018 12:28 PM</p></td>
+                    </tr>
+                       Single Row End
+  
+                  </tbody>
+                </table> -->
+                <span [ngStyle]="isdisplaydensityhigh==false && {'height':'48px'}||isdisplaydensityhigh==true && {'height':'48px'} " style="width: 20px; margin-top: 0px; background-color: white;display: inline-block; float: left;"></span>
+                <ag-grid-angular domLayout='autoHeight' style="width: 100%;border-top:none;" [gridOptions]="gridOptions_emailLog" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-material aggrid-pinned-shadow dynamic-height angular-v9"></ag-grid-angular>
+              </div>
+           </div>
+        </div>
+        <mat-action-row class="p-tb-5">
+            
+                <div class="float-right" class="show-rows" id="right-column">
+                    <div id="goto-page" class="float-right pr-4">
+                       <button mat-button class="collapse-button" (click)="emaillog_isopen=false">
+                         <div class="collapse-icons">
+                          <img src="../../../assets/customicons/collapse-down.svg" alt="list">
+                          <img src="../../../assets/customicons/collapse-up.svg" alt="list">
+                        </div>
+                         Collapse Table
+                        </button>
+                    </div>
+                    <div id="show-rows" class="float-right pr-4">
+                      <span>Show</span>
+                      <span>
+                        <mat-form-field style="width: 70px; margin: 0 10px;">
+                          <mat-select>
+                            <mat-option [value]="10">
+                              10
+                            </mat-option>
+                            <mat-option [value]="20">
+                              20
+                            </mat-option>
+                            <mat-option [value]="30">
+                              30
+                            </mat-option>
+                            <mat-option [value]="40">
+                              40
+                            </mat-option>
+                            <mat-option [value]="50">
+                              50
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </span>
+                      <span>Rows</span>
+                    </div>
+                  </div>
+              
+        </mat-action-row>
+      </mat-expansion-panel>
+      <!--Email Log End-->
+      <!--Audit Log Start-->
+      <mat-expansion-panel class="audit-log-panel m-t-5" [expanded]="auditlog_isopen === true" (opened)="auditlog_isopen=true">
+          <mat-expansion-panel-header [collapsedHeight]="customCollapsedHeight" [expandedHeight]="customExpandedHeight">
+            <mat-panel-title>
+              <div class="open-close-arrow">
+                  <!--<i class="fas fa-caret-down"></i>
+                  <i class="fas fa-caret-up"></i>-->
+                  <img class= "fa-caret-up" src="../../../assets/customicons/caret-up.svg" alt="list">
+                  <img class="fa-caret-down" src="../../../assets/customicons/caret-down.svg" alt="list">
+              </div>
+              <span class="panel-title m-l-9">Audit Log</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="product-container" style="background-color: #EAECEE; ">
+              <div class="row m-0">
+                <div class="col-md-12 p-0">
+                  <!-- <table class="product-table table scroll alt-stripe bg-white br-tbl light-header">
+                    <thead>
+                      <tr class="tr-shadow">
+                          <th></th>
+                        <th class="p-l-0">Entity Name</th>
+                        <th>Event Type</th>
+                        <th>Location</th>
+                        <th>Terminal</th>
+                        <th>Product</th>
+                        <th>Field Name</th>
+                        <th>New Value</th>
+                        <th>Old Value</th>
+                        <th>User Name</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      Single Row Start
+                      <tr>
+                        <td></td>
+                        <td><p>Rack Price</p></td>
+                        <td><p>Add</p></td>
+                        <td><p>Colton</p></td>
+                        <td><p>Valero</p></td>
+                        <td><p>87 CARFG - ETH</p></td>
+                        <td><p>Base Price</p></td>
+                        <td><p>18</p></td>
+                        <td><p>18</p></td>
+                        <td><p>vaishnavi.n@inatech.com</p></td>
+                        <td><p>11/07/2018 12:28 PM</p></td>
+                      </tr>
+                      Single Row End
+                      Single Row Start
+                      <tr>
+                          <td></td>
+                          <td><p>Rack Price</p></td>
+                          <td><p>Add</p></td>
+                          <td><p>Colton</p></td>
+                          <td><p>Valero</p></td>
+                          <td><p>87 CARFG - ETH</p></td>
+                          <td><p>Base Price</p></td>
+                          <td><p>18</p></td>
+                          <td><p>18</p></td>
+                          <td><p>vaishnavi.n@inatech.com</p></td>
+                          <td><p>11/07/2018 12:28 PM</p></td>
+                      </tr>
+                      Single Row End
+                      Single Row Start
+                      <tr>
+                          <td></td>
+                          <td><p>Rack Price</p></td>
+                          <td><p>Add</p></td>
+                          <td><p>Colton</p></td>
+                          <td><p>Valero</p></td>
+                          <td><p>87 CARFG - ETH</p></td>
+                          <td><p>Base Price</p></td>
+                          <td><p>18</p></td>
+                          <td><p>18</p></td>
+                          <td><p>vaishnavi.n@inatech.com</p></td>
+                          <td><p>11/07/2018 12:28 PM</p></td>
+                      </tr>
+                      Single Row End
+                      Single Row Start
+                      <tr>
+                          <td></td>
+                          <td><p>Rack Price</p></td>
+                          <td><p>Add</p></td>
+                          <td><p>Colton</p></td>
+                          <td><p>Valero</p></td>
+                          <td><p>87 CARFG - ETH</p></td>
+                          <td><p>Base Price</p></td>
+                          <td><p>18</p></td>
+                          <td><p>18</p></td>
+                          <td><p>vaishnavi.n@inatech.com</p></td>
+                          <td><p>11/07/2018 12:28 PM</p></td>
+                      </tr>
+                      Single Row End
+    
+                    </tbody>
+                  </table> -->
+                  <span [ngStyle]="isdisplaydensityhigh==false && {'height':'48px'}||isdisplaydensityhigh==true && {'height':'48px'} "  style="width: 20px;margin-top: 0px; background-color: white;display: inline-block; float: left;"></span>
+                  <ag-grid-angular domLayout='autoHeight' style="width: 100%;border-top:none;" [gridOptions]="gridOptions_auditLog" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-material aggrid-pinned-shadow dynamic-height angular-v9"></ag-grid-angular>
+                </div>
+             </div>
+          </div>
+          <mat-action-row class="" style="border:none;">
+              
+                  <div class="float-right" class="show-rows" id="right-column">
+                      <div id="goto-page" class="float-right pr-4">
+                         <button mat-button class="collapse-button" (click)="auditlog_isopen=false">
+                           <div class="collapse-icons">
+                            <img src="../../../assets/customicons/collapse-down.svg" alt="list">
+                            <img src="../../../assets/customicons/collapse-up.svg" alt="list">
+                          </div>
+                           Collapse Table
+                          </button>
+                      </div>
+                      <div id="show-rows" class="float-right pr-4">
+                        <span>Show</span>
+                        <span>
+                          <mat-form-field style="width: 70px; margin: 0 10px;">
+                            <mat-select>
+                              <mat-option [value]="10">
+                                10
+                              </mat-option>
+                              <mat-option [value]="20">
+                                20
+                              </mat-option>
+                              <mat-option [value]="30">
+                                30
+                              </mat-option>
+                              <mat-option [value]="40">
+                                40
+                              </mat-option>
+                              <mat-option [value]="50">
+                                50
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </span>
+                        <span>Rows</span>
+                      </div>
+                    </div>
+                
+          </mat-action-row>
+        </mat-expansion-panel>
+        <!--Audit Log End-->
+    </div>
+    
+  </div>
+  

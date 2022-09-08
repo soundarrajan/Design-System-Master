@@ -1,0 +1,19 @@
+<div class="login-page">
+    <div class="login-block">
+      <div class="sign-in">Sign In</div>
+      <div class="container">
+        <div>
+        <mat-form-field>
+          <input type="text" matInput name="username" [(ngModel)]="username"  placeholder="username">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput name="password" [(ngModel)]="password"  placeholder="password">
+        </mat-form-field>
+        </div>
+        <button (click)=checkLogin() mat-button class="blue-button" style="width: 100px">
+          Login
+        </button>
+        <span *ngIf="invalidLogin"> <i class="fa fa-exclamation-circle pl-4" aria-hidden="true"></i> Invalid credentials </span>
+      </div>
+    </div>
+  </div>

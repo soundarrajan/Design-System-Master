@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="vessel-popup-container" >
+    <div class="vessel-popup-wrapper-new">
+      <div class="vessel-popup-header" [ngClass]="status">
+        <div class="row align-items-center ">
+          <div class="col-1 highlight-vessel-new">
+            <div class="vessel-icon"></div>
+          </div>
+          <div class="col-6">
+            <span class="vessel-name-popup" matTooltip={{popup_data.name}}>{{popup_data.name}}</span>
+          </div>
+          <div class="col-2 m-l-9 ">
+            <div class="bell-notification">
+              <div class="bell-icon"></div> 
+              <div class="bell-count-position">
+              <div class="bell-count">{{popup_data.notificationsCount}}</div>
+              </div>
+            </div>
+          </div>
+          <span class="icon-seperator">|</span>
+          <div class="col-2 m-l-m13">
+            <div class="commentsection ">
+              <div class="comment-icon"></div>
+              <div class="comment-count-position">
+
+              <div class="comment-count">{{popup_data.messagesCount}}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="vessel-info pd-5 ">
+        <div class="row">
+          <div class="col-2 p-l-6">
+            <div class="pin-icon"></div>
+            <div class="dot-icon"></div>
+          </div>
+          <div class="col-10 pd-0">
+            <div class="caption-header">Destination</div>
+            <div class="caption-details" matTooltip={{popup_data.destination}} >{{popup_data.destination}}</div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+          </div>
+          <div class="col-10 pd-0">
+            <hr class="line1">
+          </div>
+        </div>
+
+        <div class="row m-b-10">
+          <div class="col-2 p-l-6">
+            <div class="dot-icon"></div>
+            <div class="fa fa-clock-o clock-icon"></div>
+          </div>
+          <div class="col-10 pd-0">
+            <div class="caption-header">ETA</div>
+            <div class="caption-details" matTooltip={{popup_data.eta}}>{{popup_data.eta}}</div>
+          </div>
+        </div>
+       
+      </div>
+      <hr class="line2" >
+
+      <div class="status">
+       
+            <div class=" row popup-header-icon">
+              <div class="col-4"><span class="new-loadericon"></span></div>
+            <div class="col-4"><span class="shield-icon"></span></div>
+              <div class="col-4"><span class="tick-icon"></span></div>
+            </div>
+          
+         
+            <div class=" row voyage-details-header">
+              <div class="col-4 pd-0"> Voyage Status</div>
+              <div class="col-4 pd-0">Vessel Type</div>
+              <div class="col-4 pd-0 p-r-5"> Bunkering Status</div>
+            </div>
+            <div class="row caption-details">
+              <div class="col-4" matTooltip={{popup_data.voyageStatus}} > {{popup_data.voyageStatus}}</div>
+              <div class="col-4" matTooltip={{popup_data.vesselType}}> {{popup_data.vesselType}}</div>
+              <div class="col-4" matTooltip={{popup_data.bunkeringStatus}}> {{popup_data.bunkeringStatus}}</div>
+            </div>
+          
+        
+      </div>
+      <div class="row fuel-footer">
+        <div class="row fuel-info-footer" >
+          <div class="col-3" >
+            <div class="value">
+              {{popup_data.hsfo}}
+              <span class="unit">MT</span>
+            </div>
+            <div class="name">
+              HSFO
+            </div>
+          </div>
+          <div class="col-3" >
+            <div class="value">
+              {{popup_data.dogo}}
+              <span class="unit">MT</span>
+            </div>
+            <div class="name">
+              DOGO
+            </div>
+          </div>
+          <div class="col-3" >
+            <div class="value">
+              {{popup_data.ulsfo}}
+              <span class="unit">MT</span>
+            </div>
+            <div class="name">
+              ULSFO
+            </div>
+          </div>
+          <div class="col-3" >
+            <div class="value">
+              {{popup_data.vlsfo}}
+              <span class="unit">MT</span>
+            </div>
+            <div class="name">
+              VLSFO
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

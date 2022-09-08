@@ -1,0 +1,353 @@
+<div id="add-movements">
+  <mat-tab-group>
+    <mat-tab [label]="tab_label">
+      <ng-template mat-tab-label>
+        <span>{{tab_label}}</span>
+      </ng-template>
+      <div class="custom-tab">
+        <mat-tab-group id="second-row-tabs" [ngClass]="{'collapseHeader':isCollapsed}" #tabs
+          (selectedIndexChange)="selected = tabs.selectedIndex">
+          <mat-tab label="Details">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Details</span>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="details"></ng-container>
+          </mat-tab>
+          <mat-tab label="Audit Log">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Audit Log</span>
+            </ng-template>
+            <ng-container *ngIf="selected==1">
+              <app-movements-auditlog></app-movements-auditlog>
+            </ng-container>
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="header-buttons">
+    <div matTooltip="Cancel" matTooltipShowDelay="500">
+      <button mat-raised-button class="red-border-button" [disabled]="!active_cancel">
+        <span style="top: -1px;position: relative;">Cancel</span>
+      </button>
+    </div>
+    <div matTooltip="Save" matTooltipShowDelay="500">
+      <button mat-raised-button class="blue-button" [disabled]="!active_save">
+        <span style="top: -1px;position: relative;">Save</span>
+      </button>
+    </div>
+    <div class="more-btn">
+    </div>
+    <div style="display:flex;border-left: 1px solid #C1C1C1;align-items: center;">
+      <div class="expand-collapse-btn" (click)="toggleCollapse()" [ngClass]="{'rotate180':isCollapsed}">
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #details>
+  <!-- style="height:calc(100vh - 70px);overflow: auto;" -->
+  <div class="details-container" style="margin-bottom: 40px;">
+    <div class="details-row" style="flex-direction: column;">
+      <div class="row-container" style="padding-bottom: 0px;">
+        <div class="title">Movement Details:</div>
+        <div class="row-container row" style="padding-top: 0px;">
+          <div class="col-md-3 pd-0" style="margin: 0px;">
+            <mat-button-toggle-group name="type" [value]="defaultToggle">
+              <mat-button-toggle value="transfer" #transfer style="margin-right: -5px;"> <span class="toggle-icon"
+                  *ngIf="transfer.checked"></span>Transfer
+              </mat-button-toggle>
+              <mat-button-toggle value="intertransfer" #intertransfer><span class="toggle-icon"
+                  *ngIf="intertransfer.checked"></span>
+                Inter-Transfer
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+        <div class="badge-header">
+          <div style="width: 36%;">Out Movement
+            <div class="value">17263</div>
+          </div>
+          <div class="border_line"></div>
+          <div style="width: 50%;padding: 0px 7px;"> Status
+            <div class="status">Not Verified</div>
+          </div>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Movement Type</mat-label>
+            <input matInput value="Intercompany Out" class="text-ellipsis">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Tank</mat-label>
+            <mat-select disableOptionCentering #transferPrice panelClass='add-movements-select-panel' value="pmg">
+              <mat-option *ngFor="let item of tanks" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="badge-header">
+          <div style="width: 40%;">In-tank Product
+            <div class="value">Ethanol</div>
+          </div>
+          <div class="border_line"></div>
+          <div style="width: 50%;padding: 0px 10px;"> Available Qty
+            <div class="value">1000 GAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="row-container" style="padding-top: 0px;padding-bottom: 0px;">
+        <div class="badge-header">
+          <div style="width: 36%;">In Movement
+            <div class="value">17263</div>
+          </div>
+          <div class="border_line"></div>
+          <div style="width: 50%;padding: 0px 7px;"> Status
+            <div class="status">Not Verified</div>
+          </div>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Movement Type</mat-label>
+            <input matInput value="Intercompany In" class="text-ellipsis">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Tank</mat-label>
+            <mat-select disableOptionCentering #transferPrice panelClass='add-movements-select-panel' value="pmg">
+              <mat-option *ngFor="let item of tanks" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="badge-header">
+          <div style="width: 40%;">In-tank Product
+            <div class="value">Ethanol</div>
+          </div>
+          <div class="border_line"></div>
+          <div style="width: 50%;padding: 0px 10px;"> Available Qty
+            <div class="value">1000 GAL</div>
+          </div>
+        </div>
+      </div>
+      <div class="row-container" style="padding-top: 0px;">
+        <!-- <div>
+          <mat-form-field class="without-search">
+            <mat-label>Movement Date</mat-label>
+            <input matInput class="text-ellipsis" [matDatepicker]="movementpicker" (focus)="movementpicker.open()">
+            <mat-datepicker-toggle matSuffix [for]="movementpicker">
+              <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray"></mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #movementpicker panelClass="datepicker-darktheme"></mat-datepicker>
+          </mat-form-field>
+        </div> -->
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Source Document</mat-label>
+            <mat-select disableOptionCentering #transferPrice panelClass='add-movements-select-panel' value="rounding">
+              <mat-option *ngFor="let item of sourceDocument" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Document Number</mat-label>
+            <input matInput class="text-ellipsis">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Document Date</mat-label>
+            <input matInput [matDatepicker]="picker" (focus)="picker.open()" class="text-ellipsis">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray"></mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Product</mat-label>
+            <mat-select disableOptionCentering #transferPrice panelClass='add-movements-select-panel' value="ethanol">
+              <mat-option *ngFor="let item of products" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Delivery Mode</mat-label>
+            <mat-select disableOptionCentering #transferPrice panelClass='add-movements-select-panel' value="pipe">
+              <mat-option *ngFor="let item of modes" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Carrier</mat-label>
+            <mat-select disableOptionCentering #transferPrice panelClass='add-movements-select-panel' value="kinder">
+              <mat-option *ngFor="let item of carriers" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Blend Reference No.</mat-label>
+            <input matInput class="text-ellipsis">
+          </mat-form-field>
+        </div>
+        <div class='col-md-12 pd-0'>
+          <mat-form-field class="notes">
+            <mat-label>Notes</mat-label>
+            <input #notes matInput class="text-ellipsis" [matTooltip]="notes.value">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="details-row">
+      <div class="row-container">
+        <div class="title">Quantity Details</div>
+        <div class="row" style="width: 100%;">
+          <div class="col-md-12 selectBox">
+            <mat-checkbox>Enable Manual Conversion</mat-checkbox>
+          </div>
+        </div>
+        <div class="split-field">
+          <mat-form-field class="without-search" style="width: 66%;border: none;">
+            <mat-label>Mass Qty</mat-label>
+            <input matInput value="100.00" class="text-ellipsis">
+          </mat-form-field>
+          <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;">
+            <mat-select disableOptionCentering value='mt' disableRipple panelClass="unit-box-panel">
+              <mat-option [value]="'mt'">MT</mat-option>
+              <mat-option [value]="'gal'">GAL</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="split-field">
+          <mat-form-field class="without-search" style="width: 66%;border: none;">
+            <mat-label>Volumne Qty</mat-label>
+            <input matInput value="2460.00" class="text-ellipsis">
+          </mat-form-field>
+          <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;">
+            <mat-select disableOptionCentering value='gal' disableRipple panelClass="unit-box-panel">
+              <mat-option [value]="'mt'">MT</mat-option>
+              <mat-option [value]="'gal'">GAL</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="details-row" *ngIf="intertransfer.checked">
+      <div class="row-container">
+        <div class="title">Transfer Price</div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Type</mat-label>
+            <mat-select disableOptionCentering panelClass='add-movements-select-panel' [(value)]="typeSelected">
+              <mat-option *ngFor="let item of types" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div *ngIf="typeSelected=='cost'">
+          <mat-form-field class="without-search">
+            <mat-label>Premium/Discoount</mat-label>
+            <mat-select disableOptionCentering panelClass='add-movements-select-panel' [value]="'discount'">
+              <mat-option *ngFor="let item of list" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div *ngIf="typeSelected=='cost'">
+          <mat-form-field class="without-search long-label-field" style="position: relative;" title="Value">
+            <mat-label>Value</mat-label>
+            <input matInput value="100" class="text-ellipsis">
+            <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;left: 60px;
+            bottom: 28px;
+            z-index: 1;">
+              <mat-select disableOptionCentering value='usd' disableRipple panelClass="unit-box-panel">
+                <mat-option [value]="'usd'">USD</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;    left: 58px;
+            bottom: 28px;
+            z-index: 1;">
+              <mat-select disableOptionCentering value='gal' disableRipple panelClass="unit-box-panel">
+                <mat-option [value]="'mt'">MT</mat-option>
+                <mat-option [value]="'gal'">GAL</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-form-field>
+
+        </div>
+        <!-- <div class="split-field" *ngIf="typeSelected=='cost'">
+          <mat-form-field class="without-search" style="width: 33%;border: none;">
+            <mat-label>Discount/Premium</mat-label>
+            <input matInput value="100" required>
+          </mat-form-field>
+          <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;">
+            <mat-select disableOptionCentering value='usd' disableRipple>
+              <mat-option [value]="'usd'" class="dark">USD</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;">
+            <mat-select disableOptionCentering value='gal' disableRipple>
+              <mat-option [value]="'mt'" class="dark">MT</mat-option>
+              <mat-option [value]="'gal'" class="dark">GAL</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> -->
+
+        <div class="split-field" *ngIf="typeSelected=='transfer'">
+          <mat-form-field class="without-search" style="width: 33%;border: none;">
+            <mat-label>Price</mat-label>
+            <input matInput value="100" class="text-ellipsis">
+          </mat-form-field>
+          <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;">
+            <mat-select disableOptionCentering value='usd' disableRipple panelClass="unit-box-panel">
+              <mat-option [value]="'usd'">USD</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="unit-box-select" style="width: 33%; height: 20px;">
+            <mat-select disableOptionCentering value='gal' disableRipple panelClass="unit-box-panel">
+              <mat-option [value]="'mt'">MT</mat-option>
+              <mat-option [value]="'gal'">GAL</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+    <div class="details-row" style="border-bottom: none;">
+      <div class="row-container">
+        <div class="title">Additional Costs</div>
+        <ag-grid-angular domLayout='normal' style="width: 100%;height:150px;" [gridOptions]="gridOptions_addcost"
+          class="ag-theme-material  add-costs-grid angular-v9"></ag-grid-angular>
+      </div>
+    </div>
+  </div>
+  <div class="details-footer">
+    <div matTooltip="Return to list" matTooltipShowDelay="500">
+      <button mat-raised-button class="footer-button" (click)="goBack()">
+        <span style="top: -1px;position: relative;">Return to list</span>
+      </button>
+    </div>
+  </div>
+</ng-template>

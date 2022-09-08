@@ -1,0 +1,158 @@
+<mat-dialog-content>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Type</div>
+        <div class="col-md-8">
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Type" multiple>
+              <mat-option>All Types</mat-option>
+              <mat-option>Physical</mat-option>
+              <mat-option>Futures</mat-option>
+              <mat-option>Swaps</mat-option>
+              <mat-option>EFP</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Trade ID</div>
+        <div class="col-md-8">
+          <form>
+            <mat-form-field appearance="outline">
+              <input type="text" placeholder="Trade ID" aria-label="Trade ID" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Status</div>
+        <div class="col-md-8">
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Status" multiple>
+              <mat-option>All Status</mat-option>
+              <mat-option>Delivered</mat-option>
+              <mat-option>Scheduled</mat-option>
+              <mat-option>Planned</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Counterparty</div>
+        <div class="col-md-8">
+          <form>
+            <mat-form-field appearance="outline">
+              <input type="text" placeholder="Counterparty" aria-label="Counterparty" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Strategy</div>
+        <div class="col-md-8">
+          <form>
+            <mat-form-field appearance="outline">
+              <input type="text" placeholder="Strategy" aria-label="Strategy" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Products</div>
+        <div class="col-md-8">
+          <form>
+            <mat-form-field appearance="outline">
+              <input type="text" placeholder="Products" aria-label="Products" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">Locations</div>
+        <div class="col-md-8">
+          <form>
+            <mat-form-field appearance="outline">
+              <input type="text" placeholder="Locations" aria-label="Locations" matInput [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="float-right">
+  <button mat-button mat-dialog-close>RESET</button>
+  <button mat-button [mat-dialog-close]="true">APPLY</button>
+  <button class="dark-button" mat-button [mat-dialog-close]="true" (click)="this.openSaveDialog()">Save Preference As</button>
+  <button class="dark-button" mat-button [mat-dialog-close]="true" style="display: none;">UPDATE PREFERENCE</button>
+</mat-dialog-actions>

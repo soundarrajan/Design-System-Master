@@ -1,0 +1,176 @@
+<div class="invoice-main-container">
+  <div>
+    <mat-tab-group class="custom-header-tabs-v2 small" #tabs [selectedIndex]="selectedTab" (selectedTabChange)="selectedParentTabChange($event)"
+      (selectedIndexChange)="selectedTab = tabs.selectedIndex">
+      <mat-tab *ngFor="let item of headerTabData" [disabled]="item.disabled">
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder small">
+            <div class="custom-tab-ui small"></div>
+            <div class="custom-label">{{item.name}}</div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <div *ngIf="item.name=='Request'" class="details"> 1 </div>
+          <div *ngIf="item.name=='Contract'"> <div *ngTemplateOutlet="detailsContract"></div></div>
+          <div *ngIf="item.name=='RFQ'" class="custom-tab-container"> Tab container 3</div>
+          <div *ngIf="item.name=='Order'" class="custom-tab-container"> Tab container 4</div>
+          <div *ngIf="item.name=='Delivery'">  <div *ngTemplateOutlet="detailsDelivery"></div></div>
+          <div *ngIf="item.name=='Labs'" class="custom-tab-container"> Tab container 6</div>
+          <div *ngIf="item.name=='Claims'" class="custom-tab-container"> Tab container 6</div>
+          <div *ngIf="item.name=='Invoices'">
+            <div *ngTemplateOutlet="detailsInvoice"></div>
+          </div>
+          <div *ngIf="item.name=='Recon'" class="custom-tab-container"> Tab container 6</div>
+        </ng-container>
+      </mat-tab>
+      <span>--</span>
+    </mat-tab-group>
+    <div class="header-right-block right-block header-buttons">
+      <div matTooltip="Back Office Report" matTooltipShowDelay="500" style="padding-left: 7px;">
+        <a href="#" class="link-text">Link to Back office report</a>
+      </div>
+      <div matTooltip="Save" matTooltipShowDelay="500" style="padding-left: 7px;" *ngIf="isConfirm">
+        <button class="cust-btn blue-button mat-button-base" (click)="saveDisabled=false" mat-flat-button>
+          <span style="top: -1px;position: relative;">Save</span>
+        </button>
+      </div>
+      <div matTooltip="Confirm Invoice" matTooltipShowDelay="500" style="padding-left: 7px;" *ngIf="isConfirm">
+        <button [disabled]="saveDisabled" class="cust-btn blue-button" mat-flat-button>
+          <span style="top: -1px;position: relative;" (click)="detailsSave()">Confirm</span>
+        </button>
+      </div>
+      <div matTooltip="Save" matTooltipShowDelay="500" style="padding-left: 7px;" *ngIf="!isConfirm">
+        <button class="cust-btn blue-button mat-button-base" [disabled]="saveDisabled" (click)="detailsSave()"
+          mat-flat-button>
+          <span style="top: -1px;position: relative;">Unconfirm</span>
+        </button>
+      </div>
+      <div matTooltip="Confirm Invoice" matTooltipShowDelay="500" style="padding-left: 7px;" *ngIf="!isConfirm">
+        <button class="cust-btn blue-button" [disabled]="saveDisabled" mat-flat-button>
+          <span style="top: -1px;position: relative;">Approve</span>
+        </button>
+      </div>
+      <div style="padding-left: 7px;">
+        <button class="more-btn" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>assignment</mat-icon>
+            <span>Submit for review</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>next_week</mat-icon>
+            <span>Submit for approval</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>backspace</mat-icon>
+            <span>Cancel invoice</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>call made</mat-icon>
+            <span>Accept invoice</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>redo</mat-icon>
+            <span>Revert invoice</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>backspace</mat-icon>
+            <span>Reject invoice</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>playlist_add</mat-icon>
+            <span>Create invoice</span>
+          </button>
+        </mat-menu>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #detailsInvoice>
+  <div id="custom-tabs-v2" style="flex: 1;">
+
+    <mat-tab-group #tabs [selectedIndex]="selectedInnerTab" [ngClass]="{'collapseHeader':headerCollapse}"
+      (selectedTabChange)="selectedTabChange($event)" (selectedIndexChange)="selectedInnerTab = tabs.selectedIndex"
+      mat-align-tabs="end">
+      <mat-tab *ngFor="let item of tabData" [disabled]="item.disabled">
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder small">
+            <div class="custom-tab-ui small"></div>
+            <div class="custom-label">{{item.name}}<span class="count" *ngIf="item.count>0">{{item.count}}</span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <div *ngIf="item.name=='Details'" class="details">
+            <app-invoice-details></app-invoice-details>
+          </div>
+          <div *ngIf="item.name=='Related Invoices'" class="custom-tab-container">
+            <app-related-invoices></app-related-invoices>
+          </div>
+          <div *ngIf="item.name=='Documents'" class="custom-tab-container"> Tab container 3</div>
+          <div *ngIf="item.name=='Email Log'" class="custom-tab-container"> Tab container 4</div>
+          <div *ngIf="item.name=='Seller Rating'" class="custom-tab-container"> Tab container 5</div>
+          <div *ngIf="item.name=='Audit Log'" class="custom-tab-container"> Tab container 6</div>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ng-template>
+<ng-template #detailsDelivery>
+  <div id="custom-tabs-v2" style="flex: 1;">
+
+    <mat-tab-group #tabs [selectedIndex]="selectedInnerTab" [ngClass]="{'collapseHeader':headerCollapse}"
+      (selectedTabChange)="selectedTabChange($event)" (selectedIndexChange)="selectedInnerTab = tabs.selectedIndex"
+      mat-align-tabs="end">
+      <mat-tab *ngFor="let item of tabData" [disabled]="item.disabled">
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder small">
+            <div class="custom-tab-ui small"></div>
+            <div class="custom-label">{{item.name}}<span class="count" *ngIf="item.count>0">{{item.count}}</span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <div *ngIf="item.name=='Details'" class="details">
+            <app-shiptech-delivery></app-shiptech-delivery>
+          </div>
+          <div *ngIf="item.name=='Documents'" class="custom-tab-container"> Tab container 3</div>
+          <div *ngIf="item.name=='Email Log'" class="custom-tab-container"> Tab container 4</div>
+          <div *ngIf="item.name=='Seller Rating'" class="custom-tab-container"> Tab container 5</div>
+          <div *ngIf="item.name=='Audit Log'" class="custom-tab-container"> Tab container 6</div>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ng-template>
+<ng-template #detailsContract>
+  <div id="custom-tabs-v2" style="flex: 1;">
+
+    <mat-tab-group #tabs [selectedIndex]="selectedInnerTab" [ngClass]="{'collapseHeader':headerCollapse}"
+      (selectedTabChange)="selectedTabChange($event)" (selectedIndexChange)="selectedInnerTab = tabs.selectedIndex"
+      mat-align-tabs="end">
+      <mat-tab *ngFor="let item of tabData" [disabled]="item.disabled">
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder small">
+            <div class="custom-tab-ui small"></div>
+            <div class="custom-label">{{item.name}}<span class="count" *ngIf="item.count>0">{{item.count}}</span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <div *ngIf="item.name=='Details'" class="details">
+            <app-shiptech-contract-home></app-shiptech-contract-home>
+          </div>
+          <div *ngIf="item.name=='Documents'" class="custom-tab-container"> Tab container 3</div>
+          <div *ngIf="item.name=='Email Log'" class="custom-tab-container"> Tab container 4</div>
+          <div *ngIf="item.name=='Seller Rating'" class="custom-tab-container"> Tab container 5</div>
+          <div *ngIf="item.name=='Audit Log'" class="custom-tab-container"> Tab container 6</div>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</ng-template>

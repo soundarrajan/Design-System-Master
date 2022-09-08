@@ -1,0 +1,604 @@
+<div class="shiptech-invoice-details">
+    <form>
+        <!-- Invoice Informaiton -->
+        <div class="section1">
+            <div class="row">
+                <!-- <div class="col-md-6 col-sm-12 col-12" style="line-height: 55px; padding: 0px; margin: 0px;">
+                    <div style="display:flex;align-items: center;margin-top: 15px;">
+                        <div class="col-md-3" style="padding-left:0;float: left;">
+               
+                            <div class="displayInvoiceType">
+                                <span class="toggle-icon"></span>
+                                <span class="invoice-type">Final Invoice</span>
+                            </div>
+                        </div>
+                        <div class="col-md-9" style="margin-left: 185px; position: absolute;">
+                            <div class="badge-header-v2" style="max-width: 385px;justify-content: initial;">
+                                <span class="label_text" matTooltip="" style="flex: 0 0 50%;margin-left: 10px;">Created by: <b>Yusuf Hassan</b></span>
+                                <span class="border_line"></span>
+                                <span class="label_text" matTooltip="" style="flex: 0 0 50%;margin-left: 15px;">On: <b>17/06/2020</b></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> -->
+                <div class="col-md-12 col-sm-12 col-12" style="line-height: 55px; padding: 0px; margin: 0px;">
+                    <!-- <div style="display:flex;align-items: center;margin-top: 15px;">
+                        <div class="col-md-3" style="padding-left:0;float: left;">
+               
+                            <div class="displayInvoiceType">
+                                <span class="toggle-icon"></span>
+                                <span class="invoice-type">Final Invoice</span>
+                            </div>
+                        </div>
+                        <div class="col-md-9" style="margin-left: 185px; position: absolute;">
+                            <div class="badge-header-v2" style="max-width: 385px;justify-content: initial;">
+                                <span class="label_text" matTooltip="" style="flex: 0 0 50%;margin-left: 10px;">Created by: <b>Yusuf Hassan</b></span>
+                                <span class="border_line"></span>
+                                <span class="label_text" matTooltip="" style="flex: 0 0 50%;margin-left: 15px;">On: <b>17/06/2020</b></span>
+                            </div>
+                        </div>
+                        
+                    </div>             -->
+
+                    <div class="pt-3" style="float:left;">
+                        <div class="flex-label-block" style="width: calc( 100vw - 660px);height: 65px;float: left;">
+                            <div class="flex-label" style="display:flex;align-items: center;margin-top: 15px;">
+                                <div class="dark col-md-3" style="padding-left:0;float: left;">
+
+                                    <div class="displayInvoiceType">
+                                        <span class="toggle-icon"></span>
+                                        <span class="invoice-type">Final Invoice</span>
+                                    </div>
+                                </div>
+                                <div class="grey col-md-9" style="margin-left: 185px; position: absolute;">
+                                    <div class="badge-header-v2" style="max-width: 385px;justify-content: initial;">
+                                        <span class="label_text" matTooltip=""
+                                            style="flex: 0 0 50%;margin-left: 10px;">Created by: <b>Yusuf
+                                                Hassan</b></span>
+                                        <span class="border_line"></span>
+                                        <span class="label_text" matTooltip=""
+                                            style="flex: 0 0 50%;margin-left: 15px;">On: <b>17/06/2020</b></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="custom-btn-toggle-v2" style="float:right;width: 620px;padding:0;margin:0">
+                            <div class="chip-container">
+                                <div *ngFor="let cData of chipData">
+                                    <div class="mchip-container">
+                                        <div [ngClass]="{'dashed-border-chip': cData.Title === 'Deductions'}">
+                                            <div class="title">
+                                                <span class="chipCircle"
+                                                    [ngClass]="{'dark': cData.status === 'Saved'}"></span>
+                                                <span>{{cData.Title}}</span>
+                                            </div>
+                                            <div class="data"
+                                                [ngClass]="{'light': cData.status === 'Draft', 'tile-2': cData.Title === 'Status', 'tile-4-5' : cData.Title === 'Estimated Total' || cData.Title === 'Total Difference' || cData.Title === 'Net Payable', 'tile-8' : cData.Title === 'Deductions' }">
+                                                {{cData.Data}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <div id="custom-form-field" class="custom-form-field" class="lightTheme darkBorder">
+
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Seller Invoice No.</mat-label>
+                                    <input matInput placeholder="000" type="number">
+                                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Invoice Date</mat-label>
+                                    <input name="invoiceDate" matInput [matDatepicker]="invoiceDate"
+                                        (focus)="invoiceDate.open()" autocomplete="off" placeholder="Invoice Date">
+                                    <mat-datepicker-toggle matSuffix [for]="invoiceDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #invoiceDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Received Date</mat-label>
+                                    <input name="receivedDate" matInput [matDatepicker]="receivedDate"
+                                        (focus)="receivedDate.open()" autocomplete="off" placeholder="Received Date">
+                                    <mat-datepicker-toggle matSuffix [for]="receivedDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #receivedDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="custom-form-field" class="lightTheme darkBorder">
+
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Payment Terms</mat-label>
+                                    <input matInput placeholder="000" type="number">
+                                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <div id="custom-form-field" class="custom-form-field" class="lightTheme darkBorder">
+
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Invoice Currency Details</mat-label>
+                                    <input matInput placeholder="000" type="number">
+                                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Due Date</mat-label>
+                                    <input name="dueDate" matInput [matDatepicker]="dueDate" (focus)="dueDate.open()"
+                                        autocomplete="off" placeholder="Invoice Date">
+                                    <mat-datepicker-toggle matSuffix [for]="dueDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #dueDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>working Due Date</mat-label>
+                                    <input name="wdueDate" matInput [matDatepicker]="wdueDate" (focus)="wdueDate.open()"
+                                        autocomplete="off" placeholder="Received Date">
+                                    <mat-datepicker-toggle matSuffix [for]="wdueDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #wdueDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="custom-form-field" class="lightTheme darkBorder">
+
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Document No.</mat-label>
+                                    <input matInput placeholder="000" type="number">
+                                    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Seller Due Date</mat-label>
+                                    <input name="selldueDate" matInput [matDatepicker]="selldueDate"
+                                        (focus)="selldueDate.open()" autocomplete="off" placeholder="Invoice Date">
+                                    <mat-datepicker-toggle matSuffix [for]="selldueDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #selldueDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Payment Date</mat-label>
+                                    <input name="payDate" matInput [matDatepicker]="payDate" (focus)="payDate.open()"
+                                        autocomplete="off" placeholder="Received Date">
+                                    <mat-datepicker-toggle matSuffix [for]="payDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #payDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Validation Date</mat-label>
+                                    <input name="validDate" matInput [matDatepicker]="validDate"
+                                        (focus)="validDate.open()" autocomplete="off" placeholder="Invoice Date">
+                                    <mat-datepicker-toggle matSuffix [for]="validDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #validDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Payment Status</mat-label>
+                                    <mat-select>
+                                        <mat-option value="Option1">Option1</mat-option>
+                                        <mat-option value="Option2">Option2</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Invoice Status</mat-label>
+                                    <mat-select>
+                                        <mat-option value="Option1">Option1</mat-option>
+                                        <mat-option value="Option2">Option2</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Accountancy Date</mat-label>
+                                    <input name="accountancyDate" matInput [matDatepicker]="accountancyDate"
+                                        (focus)="accountancyDate.open()" autocomplete="off"
+                                        placeholder="Accountancy Date">
+                                    <mat-datepicker-toggle matSuffix [for]="accountancyDate">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #accountancyDate></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="" style="float:left">
+                            <div id="custom-form-field" class="custom-form-field" class="lightTheme darkBorder">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Account No.</mat-label>
+                                    <input matInput name="accountNumber">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!---->
+                    </div>
+                </div>
+                <!-- <div class="col-md-6 col-sm-12 col-12" style="margin-top:5px;padding:0;line-height: 54px;">
+                    <div class="row">
+                        <div id="custom-btn-toggle-v2" style="padding:0;margin:0">
+                            <div class="chip-container">
+                                 <div *ngFor="let cData of chipData">
+                                    <div class="mchip-container">
+                                        <div [ngClass]="{'dashed-border-chip': cData.Title === 'Deductions'}" >         
+                                            <div class="title">
+                                              <span class="chipCircle" [ngClass]="{'light': cData.status === 'Saved'}"></span>
+                                              <span>{{cData.Title}}</span>
+                                            </div>
+                                            <div class="data" [ngClass]="{'tile-2': cData.Title === 'Status', 'tile-4-5' : cData.Title === 'Estimated Total' || cData.Title === 'Total Difference' || cData.Title === 'Net Payable', 'tile-8' : cData.Title === 'Deductions' }" >{{cData.Data}}</div>
+                                          </div>
+                                      </div>
+                                 </div>
+                            </div>
+                         </div>
+                    </div>
+                    
+                </div> -->
+
+            </div>
+        </div>
+        <!-- Order and Counterparty Details -->
+        <div class="section2 p-0">
+            <div class="row">
+                <div class="col-md-6 p-10 border-right-strong">
+                    <div class="section-header">
+                        <div class="header-label" style="font-size: 14px;color: #252A32;font-weight: 500;float:left;">
+                            Order Details: <span class="order-id">7823</span></div>
+                        <div class="header-data" style="float:right;font-size: 10px;">Order Date:
+                            <span>12/12/2021</span>
+                        </div>
+                    </div>
+                    <div class="section-content order-details">
+                        <div class="summaryLabel-component-v2" style="display: flex;">
+                            <div style="width: 70%; height: 50px; margin: 0px 8px 0px 0px;">
+                                <div class="" style="display: flex;justify-content: flex-start;">
+                                    <div class="badge-header">
+                                        <div class="col-md-3"><span class="label">Vessel</span>
+                                            <div class="value large-name"
+                                                matTooltip="GRACE OCEAN PRIVATE LIMITED-South Asia">GRACE OCEAN PRIVATE
+                                                LIMITED-South Asia </div>
+                                        </div>
+                                        <!-- <div class="border_line"></div> -->
+                                        <div class="col-md-3"> <span class="label">Vessel Code</span>
+                                            <div class="value">PUGET</div>
+                                        </div>
+                                        <!-- <div class="border_line"></div> -->
+                                        <div class="col-md-3"><span class="label">Port</span>
+                                            <div class="value">Melbourne</div>
+                                        </div>
+                                        <!-- <div class="border_line"></div> -->
+                                        <div class="col-md-3"><span class="label">ETA</span>
+                                            <div class="value">11/09/2020</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="width: 30%;">
+                                <div class="" style="display: flex;justify-content: flex-start;">
+                                    <div class="badge-header" style="height: 40px;">
+                                        <div class="col-md-6" style="line-height: 12px"><span
+                                                class="label">Seller</span>
+                                            <div class="value">AA fuel seller</div>
+                                        </div>
+                                        <div class="border_line"></div>
+                                        <div class="col-md-6" style="line-height: 12px"> <span
+                                                class="label">Broker</span>
+                                            <div class="value">AAA Brokerage</div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <div id="custom-form-field" class="lightTheme darkBorder" style="margin: 10px 15px 15px 0">
+                                <div class="d-flex">
+                                    <mat-form-field class="with-search" appearance="legacy">
+                                        <mat-label>Payment Company</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+
+                                    <div class="search-icon">
+                                        <div class="img"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="custom-form-field" class="lightTheme darkBorder" style="margin: 10px 15px 10px 0">
+                                <mat-form-field class="without-search" appearance="legacy">
+                                    <mat-label>Delivery Date</mat-label>
+                                    <input matInput [matDatepicker]="pickerDD" (focus)="pickerDD.open()">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerDD">
+                                        <mat-icon matDatepickerToggleIcon [svgIcon]="'data-picker-gray'">
+                                        </mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #pickerDD></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div id="custom-form-field" class="lightTheme darkBorder" style="margin: 10px 15px 10px 0;">
+                                <div class="d-flex">
+                                    <mat-form-field class="with-search" appearance="legacy">
+                                        <mat-label>Carrier</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+
+                                    <div class="search-icon">
+                                        <div class="img"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-textarea">
+                            <textarea rows="4" cols="50" placeholder="Type front office comments here"
+                                name="frontOfficeComments"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 p-10">
+                    <div class="section-header">
+                        <div class="header-label" style="font-size: 14px;color: #252A32;font-weight: 500;float:left;">
+                            Counterparty Details</div>
+                    </div>
+                    <div class="section-content order-details">
+                        <div class="col-md-8"
+                            style="float:left;border-right: 2px solid #E0E1E4; padding: 0px 14px 0px 0px;">
+                            <div class="summaryLabel-component-v2" style="width: 100%">
+                                <div class="">
+                                    <div class="" style="display: flex;justify-content: flex-start;">
+                                        <div class="badge-header" style="height: 40px">
+                                            <div class="col-md-8" style="line-height: 12px"><span
+                                                    class="label">Seller</span>
+                                                <div class="value large-name"
+                                                    matTooltip="Hin Leong Trading Pte Ltd - North Eca region">Hin Leong
+                                                    Trading Pte Ltd - North Eca region</div>
+                                            </div>
+                                            <div class="border_line"></div>
+                                            <div class="col-md-4"
+                                                style="line-height: 12px; min-width:28%; padding-left:4px"> <span
+                                                    class="label">Broker</span>
+                                                <div class="value">AAA Brokerage</div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-fields">
+                                <div id="custom-form-field" class="lightTheme darkBorder"
+                                    style="margin: 20px 10px 5px 0;">
+                                    <mat-form-field class="without-search" appearance="legacy">
+                                        <mat-label>Bank Account No</mat-label>
+                                        <mat-select disableOptionCentering>
+                                            <mat-option>Option1</mat-option>
+                                            <mat-option>Option2</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div id="custom-form-field" class="lightTheme darkBorder"
+                                    style="margin: 20px 5px 0 0;">
+                                    <div class="d-flex">
+                                        <mat-form-field class="with-search" appearance="legacy">
+                                            <mat-label>Customer</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+
+                                        <div class="search-icon">
+                                            <div class="img"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field-textarea" style="margin-top: 10px">
+                                <textarea rows="4" cols="50" placeholder="Type front office comments here"
+                                    name="frontOfficeComments"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="float:left;padding-right:0">
+                            <div style="display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap-reverse;
+                            justify-content: space-between;">
+                                <div id="custom-form-field" class="lightTheme darkBorder"
+                                    style="margin-right:0;margin-left:0;margin-bottom: 0px;">
+                                    <div class="d-flex">
+                                        <mat-form-field class="with-search" appearance="legacy">
+                                            <mat-label>Payable To</mat-label>
+                                            <input matInput>
+                                        </mat-form-field>
+
+                                        <div class="search-icon">
+                                            <div class="img"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 28px">
+                                    <mat-checkbox class="example-margin" style="color: #333333;font-size: 14px"
+                                        name="paymentProofReceived">Payment proof received</mat-checkbox>
+                                </div>
+                                <div class="field-textarea" style="margin-top: 15px;">
+                                    <textarea rows="4" cols="50" placeholder="Type front office comments here"
+                                        name="frontOfficeComments"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Product Details -->
+        <div class="section3" style="padding-right: 10px;">
+            <div class="row">
+                <div class="col-md-12" style="padding: 0px 10px !important;">
+                    <div class="section-header">
+                        <div class="header-label" style="font-size: 14px;color: #252A32;font-weight: 500;float:left;">
+                            Product Details</div>
+                    </div>
+                    <div class="agGrid-v2" style="height: auto;">
+                        <div style="width:100%;" #rolloverGridContainer>
+                            <ag-grid-angular style="width: 100%" [gridOptions]="gridOptions_rollover"
+                                domLayout='autoHeight' (window:resize)="onResize($event)" [masterDetail]="true"
+                                [detailCellRendererParams]="detailCellRendererParams"
+                                class="ag-theme-material cell-group-bg ag-grid-v2 col-menu-fly angular-v9 flexi-grid no-row-line">
+                            </ag-grid-angular>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Additional Cost Details -->
+        <div class="section3" style="padding-right: 10px;">
+            <div class="row">
+                <div class="col-md-12" style="padding: 0px 10px !important;">
+                    <div class="section-header">
+                        <div class="header-label" style="font-size: 14px;color: #252A32;font-weight: 500;float:left;">
+                            Additional Costs</div>
+                    </div>
+                    <div class="agGrid-v2" style="height: auto;">
+                        <div style="width:100%;" #rolloverGridContainer>
+                            <ag-grid-angular style="width: 100%;" [gridOptions]="gridOptions_addCost"
+                                domLayout='autoHeight' [masterDetail]="true"
+                                [detailCellRendererParams]="detailCellRendererParams"
+                                class="ag-theme-material cell-group-bg ag-grid-v2 col-menu-fly angular-v9 flexi-grid no-row-line">
+                            </ag-grid-angular>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="section3 notes-section3" style="padding-left: 10px;">
+            <div class="row">
+                <div class="col-12" style="padding: 0px 10px !important;">
+                    <div class="header-product-details col-md-12 no-padding notes-section" style="margin-top: 10px;">
+                        <!-- <span *ngIf="expandInvoiceNotes" (click)="expandInvoiceNotes = !expandInvoiceNotes">
+                        <a class="expand-icon">
+                        </a>
+                        </span>
+                        <span  *ngIf="!expandInvoiceNotes" (click)="expandInvoiceNotes = !expandInvoiceNotes">
+                        <a class="collapse-icon">
+                        </a>
+                        </span> -->
+                        <div class="title">
+                            Notes
+                        </div>
+                    </div>
+                    <div class="col-md-12 no-padding" style="margin: 15px 0px;" *ngIf="expandInvoiceNotes">
+                        <div class="row">
+                            <div class="col-md-12 no-padding">
+                                <!-- <div class="section-header">
+                                    <div class="header-label" style="font-size: 14px;color: #252A32;font-weight: 500;float:left;">Notes</div>
+                                </div> -->
+                                <div class="agGrid-v2" style="height: auto;margin:0">
+                                    <div style="width:100%;" #rolloverGridContainer>
+                                        <ag-grid-angular style="width: 100%;" [gridOptions]="gridOptions_notes"
+                                            domLayout='autoHeight' [masterDetail]="true"
+                                            [detailCellRendererParams]="detailCellRendererParams"
+                                            class="ag-theme-material cell-group-bg ag-grid-v2 col-menu-fly angular-v9 flexi-grid no-row-line">
+                                        </ag-grid-angular>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Related Invoice Details -->
+        <div class="section3" style="padding-left: 10px;">
+            <div class="row">
+                <div class="col-md-12" style="padding: 0px 10px !important;">
+                    <div class="match-grid" style="padding: 0px;">
+                        <div class="header-details col-md-12 no-padding related-inv-section" style="margin-top: 10px;">
+                            <span *ngIf="expandRelatedInvoice" (click)="expandRelatedInvoice = !expandRelatedInvoice">
+                                <a class="expand-icon">
+                                </a>
+                            </span>
+                            <span *ngIf="!expandRelatedInvoice" (click)="expandRelatedInvoice = !expandRelatedInvoice">
+                                <a class="collapse-icon">
+                                </a>
+                            </span>
+                            <div class="title" style="padding: 0px 10px;">Related Invoice Details</div>
+                        </div>
+                        <div class="agGrid-v2" style="margin: 0;height: auto;" *ngIf="expandRelatedInvoice">
+                            <div style="width:100%;">
+                                <ag-grid-angular style="width: 100%;" [gridOptions]="gridOptions_rel_invoice"
+                                    domLayout='autoHeight'
+                                    class="ag-theme-material ag-grid-v2 angular-v9 prod-details flexi-grid light"
+                                    (cellClicked)="onCellClicked($event)"></ag-grid-angular>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,324 @@
+<div class="add-movement-popup">
+  <span class="add-movement-header">Add Movement</span>
+  <mat-icon id="dialogCloseButton" matSuffix class="float-right close-icon" (click)="closeDialog()">close</mat-icon>
+  <hr class="m-t-5">
+  <div class="m-b-30">
+    <span class="m-r-70">Type:</span>
+    <mat-radio-group aria-label="Select an option" class="radio-toolbar">
+      <mat-radio-button name="options" type="radio" [value]="1" (click)="showInventry()" class="radio-font" checked>Inventory Movement
+      </mat-radio-button>
+      <mat-radio-button name="options"  class="m-l-15" type="radio" [value]="2" (click)="shoowB2B()" class="radio-font" >B2B Movement</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div *ngIf="showinvetory" class="inventory-movenment-block add-movement-primary-font">
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4"> Trade ID:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option> 12345 </mat-option>
+                <mat-option> 12345 </mat-option>
+                <mat-option> 12345 </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4"> Delivery No:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">PS001-1 Diesel Fuel</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4 p-r-0"> Movement Type:</div>
+          <div class="col-8 m-t-m18" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option"> In</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4"> Tank:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+
+              <mat-select placeholder="Select">
+                <mat-option value="option"> Tank1</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4"> In-Tank Product:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="Diesel Fuel">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4"> Planned Qty</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="1000 BBLS ">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4"> Utilized Qty</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="1000 BBLS ">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="showb2b" class="b2b-movenment-block add-movement-primary-font">
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Sales Trade ID:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput vlaue="PS002342"> 
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Delivery No.:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">PS001-1 Diesel Fuel</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4 p-r-0">Movement Type:</div>
+          <div class="col-8 m-t-m18" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">Out</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Buy Trade ID</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="PS002342 ">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Delivery No.:</div>
+          <div class="col-8 m-t-m18" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">PS001-1 </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4 p-r-0">Movement Type:</div>
+          <div class="col-8 m-t-m18" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">Out</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Planned Qty:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput vlaue="10000 BBLS">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Utilized Qty:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="5000 BBLS">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  </div>
+  <hr class="m-b-30">
+  <div class="src-details-block add-movement-primary-font">
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Source Doc:</div>
+          <div class="col-8 m-t-m18" >
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">Surveyor Report</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Reference No.:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="REF11223984">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Movement Date</div>
+          <div class="col-4 m-b-5 m-t-m25" >
+            <mat-form-field id="datePicker" style="width:90px" class="aggriddate-picker">
+              <input id="validFrom" class="text-center" style="width:100%" matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon svgIcon="data-picker" class="date-position"></mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-4 m-t-m20" >
+            <mat-form-field>
+              <input class="text-center time" matInput maxlength="5" [(ngModel)]="dateTime" [owlDateTime]="time">
+              <mat-icon matDatepickerToggleIcon matSuffix svgIcon="time-picker" [owlDateTimeTrigger]="time" class="timer-size"></mat-icon>
+              <owl-date-time [pickerType]="'timer'" #time class="time-picker"></owl-date-time>
+            </mat-form-field>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Mass Qty:</div>
+          <div class="col-5 m-t-m20" >
+            <mat-form-field>
+              <input matInput value="1000">
+            </mat-form-field>
+          </div>
+          <div class="col-3 m-t-m20" >
+            <mat-form-field>
+            <mat-select placeholder="Select">
+              <mat-option value="option">BBLS</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Volume Qty:</div>
+          <div class="col-5 m-t-m19">
+            <mat-form-field>
+              <input matInput value="1000">
+            </mat-form-field>
+          </div>
+          <div class="col-3 m-t-m20" >
+            <mat-form-field>
+            <mat-select placeholder="Select">
+              <mat-option value="option">BBLS</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-5">Manual Conversion:
+
+          </div>
+          <div class="col-7">
+            <mat-checkbox class="m-t-m18"></mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Volume Qty:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-4">Volume UOM:</div>
+          <div class="col-8 m-t-m20" >
+            <mat-form-field>
+              <input matInput>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- </mat-dialog-content> -->
+  <mat-dialog-actions class="float-right m-t-m10">
+    <button class="new-cancel-btn" mat-button [mat-dialog-close]="true">Cancel</button>
+    <button class="new-proceed-btn" mat-button [mat-dialog-close]="true" >Proceed</button>
+  </mat-dialog-actions>
+</div>

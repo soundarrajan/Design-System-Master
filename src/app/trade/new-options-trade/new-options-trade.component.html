@@ -1,0 +1,959 @@
+<div id="new-options-trade">
+  <mat-tab-group>
+    <mat-tab [label]="tab_label">
+      <ng-template mat-tab-label>
+        <span>{{tab_label}}</span>
+      </ng-template>
+      <div class="custom-tab">
+        <mat-tab-group #tabs id="second-row-tabs" [ngClass]="{'collapseHeader':isCollapsed}"
+          (selectedIndexChange)="selected = tabs.selectedIndex">
+          <mat-tab label="Details" >
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Details</span>
+            </ng-template>
+            <ng-container *ngIf="selected==0">
+              <ng-container *ngTemplateOutlet="details"></ng-container>
+            </ng-container>
+          </mat-tab>
+          <mat-tab label="Exposure">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Exposure</span>
+            </ng-template>
+            <app-exposure-details></app-exposure-details>
+          </mat-tab>
+          <mat-tab label="Allocations">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Allocations</span>
+            </ng-template>
+            <app-allocations></app-allocations>
+          </mat-tab>
+          <mat-tab label="Others">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Others</span>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="others"></ng-container>
+          </mat-tab>
+          <mat-tab label="Documents">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Documents</span>
+            </ng-template>
+            <ng-container *ngIf="selected==4">
+              <app-newoptiondocumentation></app-newoptiondocumentation>
+            </ng-container>
+          </mat-tab>
+          <mat-tab label="Audit Log">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Audit Log</span>
+            </ng-template>
+            <ng-container *ngIf="selected==5">
+              <app-newoptionauditlog></app-newoptionauditlog>
+            </ng-container>
+          </mat-tab>
+          <mat-tab label="Email Log">
+            <ng-template mat-tab-label>
+              <div class="custom-tab-ui"></div>
+              <span class="custom-label">Email Log</span>
+            </ng-template>
+            <ng-container *ngIf="selected==6">
+              <app-new-option-emaillog></app-new-option-emaillog>
+            </ng-container>
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="header-buttons">
+    <div matTooltip="Save" matTooltipShowDelay="500" *ngIf="show_save">
+      <button mat-raised-button class="blue-button" [disabled]="active_confirm" (click)="save()">
+        <span style="top: -1px;position: relative;">Save</span>
+      </button>
+    </div>
+    <div matTooltip="Confirm" matTooltipShowDelay="500" *ngIf="show_save">
+      <button mat-raised-button class="blue-button" [disabled]="!active_confirm" (click)="confirm()">
+        <span style="top: -1px;position: relative;">Confirm</span>
+      </button>
+    </div>
+    <div matTooltip="Unconfirm" matTooltipShowDelay="500" *ngIf="show_unconfirm">
+      <button mat-raised-button class="blue-button" disabled [disabled]="!active_settle" (click)="unconfirm()">
+        <span style="top: -1px;position: relative;">Unconfirm</span>
+      </button>
+    </div>
+    <div matTooltip="Settle" matTooltipShowDelay="500" *ngIf="show_unconfirm">
+      <button mat-raised-button class="blue-button" disabled [disabled]="!active_settle" (click)="settle()">
+        <span style="top: -1px;position: relative;">Settle</span>
+      </button>
+    </div>
+    <div class="more-btn" [ngClass]="{'disabled':settled}">
+    </div>
+    <div class="expand-collapse-btn" (click)="toggleCollapse()" [ngClass]="{'rotate180':isCollapsed}">
+    </div>
+  </div>
+
+</div>
+<ng-template #details>
+  <form [formGroup]="item">
+    <div class="details-container">
+      <div class="row1">
+        <div class="general-info">
+          <div>
+            <mat-button-toggle-group name="type" [value]="defaultToggle">
+              <mat-button-toggle value="buy" #buy style="margin-right: -5px;"> <span class="toggle-icon"
+                  *ngIf="buy.checked"></span>Buy
+              </mat-button-toggle>
+              <mat-button-toggle value="sell" #sell><span class="toggle-icon" *ngIf="sell.checked"></span>Sell
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Trade Category</mat-label>
+              <mat-select #temp disableOptionCentering panelClass='darkPanel' required
+                (selectionChange)="onTemplateSelect(temp.value)">
+                <mat-option *ngFor="let item of templates" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Company</mat-label>
+              <input matInput required formControlName="company" [matAutocomplete]="autoCompany">
+              <mat-autocomplete #autoCompany="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredCompanyOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item.company">
+              <mat-option *ngFor="let item of company" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Strategy</mat-label>
+              <input matInput required formControlName="strategy" [matAutocomplete]="autoStrategy">
+              <mat-autocomplete #autoStrategy="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredStrategyOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item.strategy">
+              <mat-option *ngFor="let item of strategy" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Trade Date</mat-label>
+              <input matInput required [matDatepicker]="picker" [formControl]="tradeDate" (focus)="picker.open()">
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray"></mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker panelClass="datepicker-darktheme"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Confirmed Date</mat-label>
+              <input matInput [matDatepicker]="picker1" (focus)="picker1.open()">
+              <mat-datepicker-toggle matSuffix [for]="picker1">
+                <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray"></mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker1 panelClass="datepicker-darktheme"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Trader</mat-label>
+              <input matInput required formControlName="trader" [matAutocomplete]="autoTrader">
+              <mat-autocomplete #autoTrader="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredTraderOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item.trader">
+              <mat-option *ngFor="let item of trader" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Book</mat-label>
+              <input matInput required formControlName="book" [matAutocomplete]="autoBook">
+              <mat-autocomplete #autoBook="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredBookOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item.book">
+              <mat-option *ngFor="let item of book" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Product</mat-label>
+              <input matInput required formControlName="product" [matAutocomplete]="autoProduct">
+              <mat-autocomplete #autoProduct="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredProductOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item.product">
+              <mat-option *ngFor="let item of product" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Business location</mat-label>
+              <input matInput required formControlName="location" [matAutocomplete]="autoLocation">
+              <mat-autocomplete #autoLocation="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredLocationOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <mat-select disableOptionCentering panelClass='darkPanel' required [value]="item.location">
+              <mat-option *ngFor="let item of location" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Counterparty Reference</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="table">
+          <div class="status-bar">
+            <div style="flex: 0 0 57%; display: flex;align-items: center;">Status:
+              <span *ngIf="!settled && !confirmed" class="new-status">New</span>
+              <span *ngIf="confirmed && !settled " class="confirmed-status">Confirmed</span>
+              <span *ngIf="settled" class="settled-status">Settled</span>
+            </div>
+            <div class="v-flex">
+              <div class="text-ellipsis">Total Quantity</div>
+              <div class="value text-ellipsis"><span *ngIf="active_confirm">100,000 MT</span><span
+                  *ngIf="!active_confirm">-</span></div>
+            </div>
+            <div class="v-flex">
+              <div class="text-ellipsis">Total Exposure</div>
+              <div class="value text-ellipsis">100,000 MT</div>
+            </div>
+            <div class="v-flex">
+              <div class="text-ellipsis">Expiry Countdown</div>
+              <div class="value text-ellipsis"><span *ngIf="active_confirm">122 Days</span><span
+                  *ngIf="!active_confirm">-</span></div>
+            </div>
+          </div>
+          <div class="d-flex" style="justify-content: space-between;height: 100%;">
+            <table class="table1" style="flex: 0 0 79%;margin-right: 5px;height: 97%;">
+              <tr>
+                <th>
+                  <span>Trade Economics</span>
+                </th>
+                <th>
+                  <span>Lots</span>
+                </th>
+                <th>
+                  <span>UOM</span>
+                </th>
+                <th>
+                  <span>Calc Price</span>
+                </th>
+                <th>
+                  <span>Amount</span>
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <span>Deal Price</span>
+                </td>
+                <td>
+                  {{deal_price.quantity?deal_price.quantity:'-'}}
+                </td>
+                <td>
+                  {{deal_price.uom?deal_price.uom:'-'}}
+                </td>
+                <td>
+                  {{deal_price.calc_price?deal_price.calc_price:'-'}}
+                </td>
+                <td>
+                  {{deal_price.amount?deal_price.amount:'-'}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>MTM Price</span>
+                </td>
+                <td>
+                  {{mtm_price.quantity?mtm_price.quantity:'-'}}
+                </td>
+                <td>
+                  {{mtm_price.uom?mtm_price.uom:'-'}}
+                </td>
+                <td>
+                  {{mtm_price.calc_price?mtm_price.calc_price:'-'}}
+                </td>
+                <td>
+                  {{mtm_price.amount?mtm_price.amount:'-'}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Premium</span>
+                </td>
+                <td>
+                  {{premium.quantity?premium.quantity:'-'}}
+                </td>
+                <td>
+                  {{premium.uom?premium.uom:'-'}}
+                </td>
+                <td>
+                  {{premium.calc_price?premium.calc_price:'-'}}
+                </td>
+                <td [ngClass]="{'color_red':premium.amount!=''}">
+                  {{premium.amount?premium.amount:'-'}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Net Add. Cost</span>
+                </td>
+                <td>
+                  {{net_cost.quantity?net_cost.quantity:'-'}}
+                </td>
+                <td>
+                  {{net_cost.uom?net_cost.uom:'-'}}
+                </td>
+                <td>
+                  {{net_cost.calc_price?net_cost.calc_price:'-'}}
+                </td>
+                <td>
+                  {{net_cost.amount?net_cost.amount:'-'}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>PnL</span>
+                </td>
+                <td>
+                  {{pnl.quantity?pnl.quantity:'-'}}
+                </td>
+                <td>
+                  {{pnl.uom?pnl.uom:'-'}}
+                </td>
+                <td>
+                  {{pnl.calc_price?pnl.calc_price:'-'}}
+                </td>
+                <td [ngClass]="{'color_red':pnl.amount!=''}">
+                  {{pnl.amount?pnl.amount:'-'}}
+                </td>
+              </tr>
+            </table>
+            <table class="table2" style="flex: 0 0 20%;height: 97%;">
+              <tr>
+                <th colspan="2" style="text-align: center;">
+                  <span>Greeks parameters</span>
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <span>Delta</span>
+                </td>
+                <td>0.9999</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Gamma</span>
+                </td>
+                <td>0.0012</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Vega</span>
+                </td>
+                <td>0.0000</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Theta</span>
+                </td>
+                <td>-0.0124</td>
+              </tr>
+              <tr>
+                <td>
+                  <span>Rho</span>
+                </td>
+                <td>0.0142</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="counterparty-details">
+          <div class="title">Counterparty details:</div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Type</mat-label>
+              <mat-select disableOptionCentering panelClass='darkPanel' required (selectionChange)="onSelect()"
+                [(value)]="typeSelected">
+                <mat-option *ngFor="let item of obtainedFrom" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="d-flex" *ngIf="typeSelected=='otc'">
+            <mat-form-field class="with-search">
+              <mat-label>Buyer/Seller</mat-label>
+              <input matInput formControlName="buyer_seller" [matAutocomplete]="autoBuyerSeller" required>
+              <mat-autocomplete #autoBuyerSeller="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredBuyerSellerOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex" *ngIf="typeSelected=='exchange'">
+            <mat-form-field class="with-search">
+              <mat-label>Exchange</mat-label>
+              <input matInput formControlName="exchange" [matAutocomplete]="autoExchange" required>
+              <mat-autocomplete #autoExchange="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredExchangeOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Executing Broker</mat-label>
+              <input matInput formControlName="executingbroker" [matAutocomplete]="autoExecutngBroker">
+              <mat-autocomplete #autoExecutngBroker="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredExecutingBrokerOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex" *ngIf="typeSelected=='exchange'">
+            <mat-form-field class="with-search">
+              <mat-label>Clearing Broker</mat-label>
+              <input matInput formControlName="broker" [matAutocomplete]="autoBroker" required>
+              <mat-autocomplete #autoBroker="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredBrokerOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row3">
+        <div class="option-info">
+          <div class="title">Option information:</div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Option Style</mat-label>
+              <mat-select disableOptionCentering panelClass='darkPanel' value="european">
+                <mat-option *ngFor="let item of optionstyle" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Option Mode</mat-label>
+              <mat-select disableOptionCentering panelClass='darkPanel' required value="call">
+                <mat-option *ngFor="let item of optionmode" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Underlying Index</mat-label>
+              <input matInput formControlName="underlyingIndex" [matAutocomplete]="autoIndex" required>
+              <mat-autocomplete #autoIndex="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredUnderlyingIndexOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="with-search">
+              <mat-label>Period</mat-label>
+              <input matInput formControlName="period" [matAutocomplete]="autoPeriod">
+              <mat-autocomplete #autoPeriod="matAutocomplete" class="darkPanelAuto">
+                <mat-option *ngFor="let item of filteredPeriodOptions | async" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="search-icon"></div>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="without-search">
+              <mat-label>Underlying Price</mat-label>
+              <input matInput value="1.0928" required>
+              <div matSuffix class="d-flex" style="align-items: center;">
+                <div class="currency-box">USD</div>
+                <div class="unit-box">MT</div>
+              </div>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Price Type</mat-label>
+              <mat-select disableOptionCentering panelClass='darkPanel' required value="mean">
+                <mat-option *ngFor="let item of pricetype" [value]="item.value">
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Expiry Date</mat-label>
+              <input matInput required [matDatepicker]="picker3" [formControl]="expiryDate" (focus)="picker3.open()">
+              <mat-datepicker-toggle matSuffix [for]="picker3">
+                <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray"></mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker3 panelClass="datepicker-darktheme"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Lots</mat-label>
+              <input matInput value="1" required>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="without-search">
+              <mat-label>Strike Price</mat-label>
+              <input matInput value="1.5400" required>
+              <div matSuffix class="d-flex" style="align-items: center;">
+                <div class="currency-box">USD</div>
+                <div class="unit-box">MT</div>
+              </div>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field class="without-search">
+              <mat-label>Premium</mat-label>
+              <input matInput value="0.1937" required>
+              <div matSuffix class="d-flex" style="align-items: center;">
+                <div class="currency-box">USD</div>
+                <div class="unit-box">MT</div>
+              </div>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Historical Volaitility(%)</mat-label>
+              <input matInput value="1" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Riskfree Rate(%)</mat-label>
+              <input matInput value="5.00" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Divident Yield(%)</mat-label>
+              <input matInput value="1" required>
+            </mat-form-field>
+          </div>
+          <div class="d-flex convertor">
+            <div> Options
+              <div class="value">1 Lot</div>
+            </div>
+            <div class="convertor_icon"></div>
+            <div> Vol UOM
+              <div class="value">42,000 BBL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row4">
+        <div class="settlement-info">
+          <div class="title">Settlement information:</div>
+          <div>
+            <mat-form-field class="without-search">
+              <mat-label>Settlement Date</mat-label>
+              <input matInput required [matDatepicker]="picker4" (focus)="picker4.open()">
+              <mat-datepicker-toggle matSuffix [for]="picker4">
+                <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray"></mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker4 panelClass="datepicker-darktheme"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="d-flex settlement-details">
+            <div style="width: 181px;">Settlement in Trade currency
+              <div class="value">103,983 USD</div>
+            </div>
+            <div class="border_line"></div>
+            <div style="    margin: 0px 25px;width: 210px;"> Settlement in Base currency
+              <div class="value">103,983 USD</div>
+            </div>
+            <!-- <div class="border_line"></div>
+            <div style="width: 221px; margin-left: 20px;"> Settlement using market exchage rate
+              <div class="value">103,983 USD</div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row4">
+        <div class="settlement-info">
+          <div class="title">Additional Costs</div>
+          <ag-grid-angular domLayout='normal' style="width: 100%;height:75px;" [gridOptions]="gridOptions_addcost"
+            class="ag-theme-material  add-cost-grid angular-v9"></ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+<!-- <ng-template #exposureDetails>
+  <div id="exposureDetails" class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-8 pd-0">
+          Exposure details
+        </div>
+        <div class="col-md-4 badge-header">
+          <div>Exposure on
+            <div class="value">12/09/2020</div>
+          </div>
+          <div class="border_line"></div>
+          <div> Index
+            <div class="value">ICE Brent</div>
+          </div>
+        </div>
+      </div>
+      <div class="exposure-table">
+        <table>
+          <tr>
+            <th style="width: 35%;">Date</th>
+            <th style="width: 25%;">Pricing status</th>
+            <th>Exposure</th>
+          </tr>
+          <tr>
+            <td>10/09/2020</td>
+            <td>
+              <div class="status_priced">Priced</div>
+            </td>
+            <td>10,000 BBL</td>
+          </tr>
+          <tr>
+            <td>10/10/2020</td>
+            <td>
+              <div class="status_unpriced">Unpriced</div>
+            </td>
+            <td>10,000 BBL</td>
+          </tr>
+          <tr>
+            <td>10/11/2020</td>
+            <td>
+              <div class="status_unpriced">Unpriced</div>
+            </td>
+            <td>10,000 BBL</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>Total exposure <span style="margin: 0px 10px;">20,000 BBL</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-8 pd-0">
+          Pricing forecast
+        </div>
+        <div class="col-md-4 badge-header">
+          <div>Deal date
+            <div class="value">12/09/2020</div>
+          </div>
+          <div class="border_line"></div>
+          <div> Index
+            <div class="value">ICE Brent</div>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-table">
+        <table>
+          <tr>
+            <th style="width: 35%;">Date</th>
+            <th style="width: 25%;">Pricing status</th>
+            <th>Exposure</th>
+          </tr>
+          <tr>
+            <td>10/09/2020</td>
+            <td>
+              <div class="status_priced">Priced</div>
+            </td>
+            <td>10,000 BBL</td>
+          </tr>
+          <tr>
+            <td>10/10/2020</td>
+            <td>
+              <div class="status_unpriced">Unpriced</div>
+            </td>
+            <td>10,000 BBL</td>
+          </tr>
+          <tr>
+            <td>10/11/2020</td>
+            <td>
+              <div class="status_unpriced">Unpriced</div>
+            </td>
+            <td>10,000 BBL</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>Total exposure <span style="margin: 0px 10px;">20,000 BBL</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-template> -->
+<ng-template #addCost>
+  <div id="addCost" class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div>
+          Costs
+        </div>
+      </div>
+      <div class="costs-table">
+        <table>
+          <tr>
+            <th style="padding:10px 10px 10px 8px;width: 1%;">
+              <div class="add-icon"></div>
+            </th>
+            <th style="width: 20%;">Cost Name</th>
+            <th>Service Provider</th>
+            <th>Cost Type</th>
+            <th>Costs</th>
+            <th>Currency</th>
+            <th>UOM</th>
+          </tr>
+          <tr>
+            <td>
+              <div class="remove-icon"></div>
+            </td>
+            <td><input value="Barging"></td>
+            <td>AMR Fuels</td>
+            <td>Flat</td>
+            <td>10,000</td>
+            <td>USD</td>
+            <td>MT</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="remove-icon"></div>
+            </td>
+            <td><input value="Barging"></td>
+            <td>AMR Fuels</td>
+            <td>Flat</td>
+            <td>10,000</td>
+            <td>USD</td>
+            <td>MT</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="remove-icon"></div>
+            </td>
+            <td><input value="Barging"></td>
+            <td>AMR Fuels</td>
+            <td>Flat</td>
+            <td>10,000</td>
+            <td>USD</td>
+            <td>MT</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div>
+          Revenue
+        </div>
+      </div>
+      <div class="revenue-table">
+        <table>
+          <tr>
+            <th style="padding:10px 10px 10px 8px;width: 1%;">
+              <div class="add-icon"></div>
+            </th>
+            <th style="width: 20%;">Income Name</th>
+            <th>Service Provider</th>
+            <th>Income Type</th>
+            <th>Income</th>
+            <th>Currency</th>
+            <th>UOM</th>
+          </tr>
+          <tr>
+            <td>
+              <div class="remove-icon"></div>
+            </td>
+            <td>
+              <input value="Barging">
+            </td>
+            <td>AMR Fuels</td>
+            <td>Flat</td>
+            <td>10,000</td>
+            <td>USD</td>
+            <td>MT</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="remove-icon"></div>
+            </td>
+            <td><input value="Barging"></td>
+            <td>AMR Fuels</td>
+            <td>Flat</td>
+            <td>10,000</td>
+            <td>USD</td>
+            <td>MT</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="remove-icon"></div>
+            </td>
+            <td><input value="Barging"></td>
+            <td>AMR Fuels</td>
+            <td>Flat</td>
+            <td>10,000</td>
+            <td>USD</td>
+            <td>MT</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #others>
+  <div class="details-container">
+    <div class="row2">
+      <div class="other-details">
+        <div class="title">Precisions</div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Qty precision</mat-label>
+            <input matInput value="3.0000" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Price precision</mat-label>
+            <input matInput value="6.00000" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Precision options</mat-label>
+            <mat-select disableOptionCentering panelClass='darkPanel' value="rounding">
+              <mat-option *ngFor="let item of precisionOptions" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+    <div class="row2">
+      <div class="other-details">
+        <div class="title">Rounding Factors</div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Rounding rule for Qty</mat-label>
+            <mat-select disableOptionCentering panelClass='darkPanel' value="rounding">
+              <mat-option *ngFor="let item of conversionFactor" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Rounding rule for Price</mat-label>
+            <mat-select disableOptionCentering panelClass='darkPanel' value="rounding">
+              <mat-option *ngFor="let item of conversionFactor" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row3" style="margin-bottom: 0px;">
+      <div class="other-details">
+        <div class="title">Conversion Factors</div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Mass UOM</mat-label>
+            <input matInput value="3.0000" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Conversin factor</mat-label>
+            <mat-select disableOptionCentering panelClass='darkPanel' value="rounding">
+              <mat-option *ngFor="let item of conversionFactor" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="without-search">
+            <mat-label>Volume UOM</mat-label>
+            <input matInput value="6.00000" required>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

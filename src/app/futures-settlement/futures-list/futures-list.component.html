@@ -1,0 +1,163 @@
+<div class="future-list-page">
+
+    <!-- Right Side Tabs -->
+    <div id="custom-tabs-v2" style="flex: 1;">
+        <div class="price-list-header p-l-15" *ngIf="!headerCollapse">
+            <!-- New Menu Button -->
+            <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+                <div id="menu-button-dots">
+                    <div id="dot1" class="dot"></div>
+                    <div id="dot2" class="dot"></div>
+                    <div id="dot3" class="dot"></div>
+                    <div id="dot4" class="dot"></div>
+                    <div id="dot5" class="dot"></div>
+                    <div id="dot6" class="dot"></div>
+                    <div id="dot7" class="dot"></div>
+                    <div id="dot8" class="dot"></div>
+                    <div id="dot9" class="dot"></div>
+                </div>
+            </div>
+            <!-- New Menu Button: End -->
+            <span *ngIf="!rolloverAction" style="height: 25px;">
+                <app-headerchip [chipStatus]="'active-chip'" [heading]="'Default View'"></app-headerchip>
+            </span>
+        </div>
+        <mat-tab-group #tabs [selectedIndex]="selectedInnerTab" [ngClass]="{'collapseHeader':headerCollapse}"
+            (selectedIndexChange)="selectedInnerTab = tabs.selectedIndex" mat-align-tabs="end">
+            <mat-tab [disabled]="rolloverAction">
+                <ng-template mat-tab-label>
+                    <div class="custom-label-holder">
+                        <div class="custom-tab-ui"></div>
+                        <div class="custom-label">Futures</div>
+                    </div>
+                </ng-template>
+                <ng-container *ngTemplateOutlet="futures"></ng-container>
+            </mat-tab>
+            <mat-tab [disabled]="!rolloverAction">
+                <ng-template mat-tab-label>
+                    <div class="custom-label-holder">
+                        <div class="custom-tab-ui"></div>
+                        <div class="custom-label">Rollover</div>
+                    </div>
+                </ng-template>
+                <ng-container *ngTemplateOutlet="selectedInnerTab==1?rollover:null"></ng-container>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+    <!--Hide or Show Column Start-->
+    <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+        <div class="tbl-context no-border">
+            <div class="p-tb-10">
+                <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                </span>
+                <span>Update Preference</span>
+            </div>
+            <div class="p-tb-10">
+                <span>
+                    <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                </span>
+                <span>Save Preference As</span>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+            <div class="p-tb-10" (click)="change_rowdensity()">
+                <span>
+                    <img class="p-r-10"
+                        src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}"
+                        alt="export to excel icon">
+                </span>
+                <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display
+                    Density Low':'Display Density High'}}</span>
+            </div>
+        </div>
+    </mat-menu>
+
+    <ng-template #futures>
+        <!-- GRID -->
+        <div style="height: 100%;width: 100%; padding-top: 1px;" class="aggrid-container"
+            [ngClass]="{'aggrid-dd-low-v2':isdisplaydensityhigh==false}">
+            <div style="width:50%; height: 100%; padding-right: 5px">
+                <div class="grid-header-section">
+                    <div class="left-item">
+                        <app-badge-v2 *ngIf="totBuyQty > 0" [badgeColor]="'seablue'" [heading]="'Buy Qty'"
+                            [value]="totBuyQty" [unit]="'Lots'">
+                        </app-badge-v2>
+                    </div>
+                    <div class="center-item">Buy Trades</div>
+                    <div class="right-item">
+
+                    </div>
+                </div>
+                <ag-grid-angular domLayout='normal' style="width: 100%;"
+                    [ngStyle]="headerCollapse?{'height': 'calc( 100vh - 157px )'} : {'height': 'calc( 100vh - 200px'}"
+                    [gridOptions]="gridOptions_buy" [ngClass]="{'collapsed':headerCollapse}"
+                    class="ag-theme-material angular-v9 ag-grid-dual-v2" (rowSelected)="onRowSelection($event, true)">
+                </ag-grid-angular>
+
+                <!-- <div
+                    style="font-size: 12px;font-weight:500;background-color: white; height: 35px;color: #828282; padding: 0px 10px;">
+                    <p class="aggrid-totalResults" style="width: 50%; float:left;margin:10px 0px;">
+                        <span>Total Results :</span><span class="aggrid-rowCount">{{rowCount_buy}}</span>
+                    </p>
+                    <div class="export-excel"
+                        style="width: 130px;float:right;height: 100%;border-left: 1px solid #EAECEE;padding-left: 10px;">
+                        Export to Excel
+                        <div class="export-excel-icon"></div>
+                    </div>
+
+                </div> -->
+                <app-footer-v2 id="pagination1" class="dual-footer" [singleGrid]="false" [dualfooter]="true" [doublePagination]="false" [maxSize]="5" [rowCount]="rowCount_buy"></app-footer-v2>
+            </div>
+            <div style="width:50%;height: 100%">
+
+                <div class="grid-header-section">
+                    <div class="left-item">
+                        <app-badge-v2 *ngIf="totSellQty > 0" [badgeColor]="'seablue'" [heading]="'Sell Qty'"
+                            [value]="totSellQty" [unit]="'Lots'">
+                        </app-badge-v2>
+                        <mat-divider *ngIf="totSellQty > 0 && totBuyQty > 0" [vertical]="true"></mat-divider>
+                        <app-badge-v2 *ngIf="totSellQty > 0 && totBuyQty > 0"
+                            [badgeColor]="totDiffQty>=0?'darkgreen':'red'" [heading]="'Difference'"
+                            [value]="totDiffQtyValue" [unit]="totDiffQty>0?'Lots':'Lot'">
+                        </app-badge-v2>
+                        <mat-divider *ngIf="totSellQty > 0 && totBuyQty > 0" [vertical]="true"></mat-divider>
+                    </div>
+                    <div class="center-item">Sell Trades</div>
+                    <div class="right-item">
+
+                    </div>
+                </div>
+
+                <ag-grid-angular domLayout='normal' style="width: 100%;"
+                    [ngStyle]="headerCollapse?{'height': 'calc( 100vh - 157px )'} : {'height': 'calc( 100vh - 200px'}"
+                    [ngClass]="{'collapsed':headerCollapse}" [gridOptions]="gridOptions_sell"
+                    class="ag-theme-material  angular-v9 ag-grid-dual-v2 "
+                    (rowSelected)="onRowSelection($event, false)">
+                </ag-grid-angular>
+
+                <!-- <div
+                    style="font-size: 12px;font-weight:500;background-color: white; height: 35px;color: #828282; padding: 0px 10px;">
+                    <p class="aggrid-totalResults" style="width: 50%; float:left;margin:10px 0px;">
+                        <span>Total Results :</span><span class="aggrid-rowCount">{{rowCount_sell}}</span>
+                    </p>
+                    <div class="export-excel"
+                        style="width: 130px;float:right;height: 100%;border-left: 1px solid #EAECEE;padding-left: 10px;">
+                        Export to Excel
+                        <div class="export-excel-icon"></div>
+                    </div>
+
+                </div> -->
+                <app-footer-v2 id="pagination2" class="dual-footer" [singleGrid]="false" [maxSize]="5" [dualfooter]="true" [doublePagination]="true" [rowCount]="rowCount_sell"></app-footer-v2>
+
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #rollover>
+        <!-- Rollover Details Section -->
+        <div>
+            <app-rollover-details (returnToList)="returnToListScreen($event)"></app-rollover-details>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,147 @@
+<div class="spot-nego-new-comments">
+    <div class="grid-in-accordion">
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="accordion-detail">
+                        <div class="open-close-arrow"></div>
+                        <span class="panel-title m-l-9">
+                            <span>Comments:</span>
+                            <span>Req 12321 - Merlion</span>
+                        </span>
+                        <div class="comments-type" (click)="$event.stopPropagation();">
+                            <span class="circle internal"></span>
+                            <span class="label internal">Internal Comments</span>
+                            <span class="circle external"></span>
+                            <span class="label external">External Comments</span>
+                            <span class="copy-btn" matTooltip="Duplicate Comments" matTooltipClass="blueTooltip"
+                                [matMenuTriggerFor]="clickmenu" #menuTrigger="matMenuTrigger">copy</span>
+
+                            <!-- <span class="duplicate-price" 
+                                matTooltip="Duplicate Comments" matTooltipClass="lightTooltip"></span> -->
+                            <mat-menu #clickmenu="matMenu" yPosition="below" xPosition="after"
+                                class="more-options-menu-panel menu-panel-requestOptionsDuplicate no-position">
+                                <div class="duplicate-price-menu">
+                                    <div class="text">
+                                        <span>Copy To</span>
+                                    </div>
+                                    <div class="divider-line"></div>
+                                    <div class="more-options-menu-inv no-border p-lr-0"
+                                        (click)="$event.stopPropagation()" style="margin: 7px 5px;">
+                                        <div class="checkboxOptions" *ngFor="let item of requestOptions">
+                                            <mat-checkbox [disabled]="item.selected==false" [checked]="item.selected" matTooltipClass="lightTooltip"  matTooltip="{{item.request}} - {{item.vessel}}" >
+                                                {{item.request}} - {{item.vessel}}</mat-checkbox>
+                                        </div>
+                                    </div>
+                                    <div class="proceed-div">
+                                        <button mat-button (click)="displaySuccessMsg()"
+                                            class="mid-blue-button proceed-btn">Proceed</button>
+                                    </div>
+                                </div>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-template matExpansionPanelContent>
+                <div class="row" style="padding: 0px 4px;">
+                    <div *ngFor="let item of commentsObj; index as i" class="col-md-3 spot-comments-section"
+                        style="padding: unset !important;display: flex;align-items: center;
+                        justify-content: space-between;">
+                        <div class="new-comments" (click)="editComments(item,i,$event)">
+                            <div style="padding: 15px;">
+                                <span class="circle"
+                                    [ngClass]="{'internal': item.type=='IC','external':item.type=='EC'}"></span>
+                                <span class="label">{{item.title}}</span>
+                                <span *ngIf="!item.selected" class="de-selected"
+                                (click)="$event.stopPropagation();selectComments(item,i,$event);"></span>
+                                <span *ngIf="item.selected" class="selected" (click)="$event.stopPropagation();selectComments(item,i,$event);"></span>
+                                <!-- <span *ngIf="item.currentEdit" class="selected"
+                                    (click)="saveComment(item,$event)"></span> -->
+                            </div>
+                            <div class="comments-div">
+                                <textarea #cmttext [attr.id]="item.id" [readonly]="!item.currentEdit"
+                                    placeholder="Type notes here.." class="comments-text"
+                                    [(ngModel)]="item.comments"></textarea>
+                                <div class="char-left" *ngIf="item.currentEdit">{{300 - item.comments.length}} characters left</div>
+                            </div>
+                            
+                        </div>
+                        <div class="splitter-band" *ngIf="i==1"><div></div></div>
+                    </div>
+                </div>
+                <div class="inner-accordion">
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <div class="accordion-detail">
+                                    <div class="open-close-arrow"></div>
+                                    <span class="panel-title m-l-9">
+                                        <span>Comments from Request</span>
+                                    </span>
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                            <div class="row" style="padding: 4px;">
+                                <div class="col-md-3 spot-comments-section2"
+                                    style="padding: unset !important; border-right: 5px solid #BEBEBE;">
+                                    <div class="new-comments" style="margin: 0px 14px;">
+                                        <div style="padding: 15px;">
+                                            <span class="circle internal"></span><span class="label">General</span>
+                                        </div>
+                                        <div style="padding: 0px 20px;">
+                                            <span class="comments-text with-scroll" *ngIf="!companyMaersk">
+                                                LPB not sent- Quantity to order directly
+                                                calculated and instructed by Ops. BO calculated
+                                                around 400MT below quantity validated. BO
+                                                calculated around 400MT below quantity validate.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 spot-comments-section2"
+                                    style="padding: unset !important;display:flex">
+                                    <div class="new-comments" style="margin: 0px 14px;flex:1">
+                                        <div style="padding: 15px;">
+                                            <span class="circle internal"></span><span class="label">Performance</span>
+                                        </div>
+                                        <div style="padding: 0px 20px;">
+                                            <span class="comments-text with-scroll" *ngIf="!companyMaersk">
+                                                LPB not sent- Quantity to order directly
+                                                calculated and instructed by Ops. BO calculated
+                                                around 400MT below quantity validated. BO
+                                                calculated around 400MT below quantity validate.
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="splitter-band"><div></div></div>
+                                </div>
+                                <div class="col-md-3 spot-comments-section2"
+                                    style="padding: unset !important; border-right: 5px solid #BEBEBE;">
+
+                                </div>
+                                <div class="col-md-3 spot-comments-section2" style="padding: unset !important;">
+                                    <div class="new-comments" style="margin: 0px 14px;">
+                                        <div style="padding: 15px;">
+                                            <span class="circle external"></span><span class="label">Vessel &
+                                                Agents</span>
+                                        </div>
+                                        <div style="padding: 0px 20px;">
+                                            <span class="comments-text with-scroll" *ngIf="!companyMaersk">
+                                                LPB not sent- Quantity to order directly
+                                                calculated and instructed by Ops. BO calculated
+                                                around 400MT below quantity validated. BO
+                                                calculated around 400MT below quantity validate.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </mat-expansion-panel>
+                </div>
+            </ng-template>
+        </mat-expansion-panel>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+/*.custom-btn-toggle-v2 {
+  background: #ffffff;
+  margin: 0px 20px;
+}
+.chip-container {
+  width: 100%;
+  min-height: 100px;
+  background-color: #e0e1e4;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.mchip-container { 
+    background-color: #364150 ;
+    width: 125px; height: 50px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    color:#fff;
+    line-height: 20px;
+  }
+  .mchip-container .title{
+      font-size: 12px;
+      font-weight: 100;
+  }
+  .inner-chip-circle{
+    content: url(src/assets/customicons/circle.svg);
+    padding-right: 5px;
+  }
+  .dashed-border-chip{
+    height: 40px;
+    padding: 0px 6px;
+    border-style: dashed;
+    border-width: 1px;
+    border-radius: 2px;
+  }
+  .tile-2{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #9E9E9E;
+  }
+  .tile-4-5{
+    font-size: 18px;
+    text-align: center;
+  }
+  .tile-8{
+    float: right;
+  }
+  */

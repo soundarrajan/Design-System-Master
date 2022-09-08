@@ -1,0 +1,36 @@
+#errorPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  img {
+      width: 25vmax;
+      height: auto;
+      margin: 5rem;
+      z-index: 2;
+  }
+
+  h2 {
+    position: absolute;
+    font-size: 35vmax;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: rgba(0,0,0,0.1);
+  }
+
+  h3 {
+      position: absolute;
+      bottom: -15%;
+      font-weight: 100;
+  }
+  span {
+      font-size: 5vmax;
+      font-weight: 700;
+  }
+
+  ::selection, ::-moz-selection {
+      background-color: transparent;
+  }
+}

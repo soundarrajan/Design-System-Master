@@ -1,0 +1,24 @@
+{
+
+	"configApiUrl": "https://nonprdsf.techoil.com/TechoilDEV183/Configuration.DEV183",
+
+	"bigDataServiceUrl":"https://nonprdsf.shiptech.com:8443/PlanningDashboardBVT/BigDataService/",
+
+	"blobUrl":"https://uswteonprdstorage.blob.core.windows.net/pdf/",
+	"integrationApiUrl": "https://nonprdsf.shiptech.com:8443/PlanningDashboardBVT/IntegrationService/",
+
+    "mongoUrl":"https://nonprdtm.techoil.com/mongodb/",
+    
+	"planningDashboardApiUrl":"http://localhost:30007",
+	
+	"DefaultFuelStatus":"ROB",
+
+	"ProductIntegration":"true",
+
+	"CommentsHover_PaddingY":"-90",
+
+	"ProductIntegrationRequestUrl":"http://pmg.shiptech.com/#/edit-request/",
+
+	"ProductIntegrationLocationUrl":"http://pmg.shiptech.com/#/masters/location/edit/"
+
+}    

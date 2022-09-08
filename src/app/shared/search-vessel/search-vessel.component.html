@@ -1,0 +1,52 @@
+<!-- <mat-form-field appearance="outline" [ngClass]="[isFilterSearchEnabled==false ? 'pt-3' : 'default-search']">
+  <mat-label>{{searchVesselLabel}}</mat-label>
+  <input #acVessel type="text" placeholder="Search For Vessels"  aria-label="Number" value="{{selectedVesselName}}" (keyup)="checkEmptyValue($event)" matInput [formControl]="serachVesselControl" [matAutocomplete]="auto" >
+  <mat-icon matPrefix>search</mat-icon>
+  <button matSuffix mat-icon-button *ngIf="isFilterSearchEnabled" (click)="this.SearchClick($event)">
+    <mat-icon>sort</mat-icon>
+  </button>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)='onVesselSelected($event)'>
+    <mat-option *ngFor="let vessel of filteredVesselList | async " [value]="vessel.VesselIMONO">
+      {{vessel.VesselName}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field> -->
+
+
+<div *ngIf="isFilterSearchEnabled" id="search-box" class="d-flex justify-content-between align-items-center">
+  <!-- If button is not required, remove it and keep only <mat-icon> -->
+  <button mat-icon-button>
+    <mat-icon id="searchIcon" matPrefix>search</mat-icon>
+  </button>
+
+  <div>
+    <input #acVessel id="vesselSearch" type="text" placeholder="Search For Vessels" aria-label="Number" value=""
+      (keyup)="checkEmptyValue($event)" [formControl]="serachVesselControl" [matAutocomplete]="auto">
+
+  </div>
+
+  <!-- <mat-icon matSuffix (click)="this.clearSearch()" *ngIf="this.serachVesselControl.value!=='' && selectedVesselName!==''" style="color: #d0d1d2; cursor: pointer; font-size: 20px; line-height: 25px;">clear</mat-icon> -->
+
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)='onVesselSelected($event)'>
+    <mat-option *ngFor="let vessel of vesselvalues" [value]="vessel.VesselIMONO">
+      {{vessel.VesselName}}
+    </mat-option>
+  </mat-autocomplete>
+  <button mat-icon-button (click)="this.SearchClick($event)">
+    <!-- <mat-icon id="sortIcon" matSuffix>sort</mat-icon> -->
+    <img id="filter-icon" src="../../../assets/customicons/filter.svg" alt="Filter Icon">
+  </button>
+</div>
+
+<!-- <mat-form-field *ngIf="!isFilterSearchEnabled" appearance="outline" class="pt-3">
+  <mat-label>Search &amp; Select Vessels</mat-label>
+  <input #acVessel matInput id="vesselSearch" type="text" placeholder="Search For Vessels" aria-label="Number" value="{{selectedVesselName}}"
+    (keyup)="checkEmptyValue($event)" [formControl]="serachVesselControl" [matAutocomplete]="auto">
+
+  <mat-icon matPrefix>search</mat-icon>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)='onVesselSelected($event)'>
+    <mat-option *ngFor="let vessel of vesselvalues" [value]="vessel.VesselIMONO">
+      {{vessel.VesselName}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field> -->

@@ -1,0 +1,25 @@
+<!-- <div class="ops-summary-component">
+    <div class="ops-summar-title">
+        <span class="ops-icon"></span>
+        <span class="ops-title">Ops Summary</span>
+    </div>
+    <div class="editableAgGrid-ops">
+        <div style="width: 100%;height:100%;">
+          <ag-grid-angular style="width: 100%;height:calc( 75vh - 37px ); margin-top: 50px; margin-left: 25px;" [gridOptions]="gridOptions_ops"
+            class="ag-theme-material ag-grid-v2 ag-ops-summary-grid angular-v9"></ag-grid-angular>
+        </div>
+    </div>
+</div> -->
+
+<div class="ops-summary-component">
+    <div class="ops-summar-title">
+        <span class="ops-icon"></span>
+        <span class="ops-title">Ops Summary</span>
+    </div>    
+    <div class="agGrid-v2" style="margin: 30px 2px 0 0">
+        <div style="width: 100%;height: 530px;">
+            <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_ops"
+              class="ag-theme-material ag-grid-v2 ag-ops-summary-grid angular-v9"></ag-grid-angular>
+          </div>
+    </div>
+  </div>

@@ -1,0 +1,85 @@
+<h2 mat-dialog-title>Available Filters
+  <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+</h2>
+<hr>
+
+<mat-dialog-content>
+
+  <div id="available-filter-content">
+    <!-- #region Filter Chips -->
+    <mat-chip-list>
+
+      <mat-chip class="active-chip text-center" matTooltip="Active Filter Chip" [matTooltipShowDelay]="500">
+        <div class="truncate-f85 text-center">
+          Active Filter Chip
+        </div>
+        <!-- <mat-icon matChipRemove>cancel</mat-icon> -->
+        <div matSuffix class="chip-circle">
+          <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+        </div>
+      </mat-chip>
+
+      <mat-chip class="inactive-chip text-center" matTooltip="Inactive Filter Chip" [matTooltipShowDelay]="500">
+        <div class="truncate-f85">
+          Inactive Filter Chip
+        </div>
+        <div matSuffix class="chip-circle">
+          <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+        </div>
+      </mat-chip>
+
+      <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+        [matTooltipShowDelay]="500">
+        <div class="truncate-f85">
+          This Filter Chip has Truncated Content
+        </div>
+        <div matSuffix class="chip-circle">
+          <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+        </div>
+      </mat-chip>
+
+      <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+        [matTooltipShowDelay]="500">
+        <div class="truncate-f85">
+          This Filter Chip has Truncated Content
+        </div>
+        <div matSuffix class="chip-circle">
+          <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+        </div>
+      </mat-chip>
+
+      <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+        [matTooltipShowDelay]="500">
+        <div class="truncate-f85">
+          This Filter Chip has Truncated Content
+        </div>
+        <div matSuffix class="chip-circle">
+          <i id="pin" class="fas fa-thumbtack aggrid-rotate-45"></i>
+        </div>
+      </mat-chip>
+
+      <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content"
+        [matTooltipShowDelay]="500">
+        <div class="truncate-f85">
+          This Filter Chip has Truncated Content
+        </div>
+        <div matSuffix class="chip-circle">
+          <i id="pin" class="fas fa-times"></i>
+        </div>
+      </mat-chip>
+
+
+
+
+
+    </mat-chip-list>
+    <!-- #endregion Filter Chips -->
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="float-right">
+  <button mat-button [mat-dialog-close]="true">CANCEL</button>
+  <button class="blue-outline-button" mat-stroked-button [mat-dialog-close]="true">EDIT</button>
+  <button class="blue-button" mat-button cdkFocusInitial [mat-dialog-close]="true">APPLY</button>
+</mat-dialog-actions>

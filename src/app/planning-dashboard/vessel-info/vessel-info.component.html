@@ -1,0 +1,387 @@
+
+<!-- <div class="container pt-5">
+
+  <div class="vessel-info-wrapper status-red">
+    <div class="row align-items-center justify-content-between">
+      <h3 class="vessel-name">Agnes</h3>
+      <div id="popupActionRow">
+          <img id="popupExpand" class="popup-action" (click)="this.expandClicked.emit()" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">               
+          <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+      </div>
+    </div>
+
+    <div class="row label">
+      <div class="col-4 br-black" matTooltip="Balboa" [matTooltipShowDelay]="500">
+        <div class="fs11">Destination</div>
+        <div class="truncate-100 fs18 fw700">Balboa</div>
+      </div>
+      <div class="col-8 pl25">
+        <div class="fs11">ETA</div>
+        <div class="truncate-230 fw700">2018-09-13 10:00 LT (UTC +8)</div>
+      </div>
+    </div>
+
+    <div id="details" class="row text-center ptb10">
+      <div class="col-4" matTooltip="Laden" [matTooltipShowDelay]="500">
+        <div class="fw600 d-flex justify-content-center">
+          <div class="truncate-100">Laden</div>
+        </div>
+        <div class="title">Voyage Status</div>
+      </div>
+      <div class="col-4" matTooltip="LR1" [matTooltipShowDelay]="500">
+        <div class="fw600 d-flex justify-content-center">
+          <div class="truncate-100">LR1</div>
+        </div>
+        <div class="title">Vessel Type</div>
+      </div>
+      <div class="col-4" matTooltip="Stemmed" [matTooltipShowDelay]="500">
+        <div class="fw600 d-flex justify-content-center">
+          <div class="truncate-100">Stemmed</div>
+        </div>
+        <div class="title">Request Status</div>
+      </div>
+    </div>
+
+    <div id="fuel-balance" class="row pt10 text-center">
+
+      <div class="col-3">
+        <div class="text-center critical" matTooltip="190 MT" matTooltipShowDelay="500">
+          <div class="truncate-90">190 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="HSFO" matTooltipShowDelay="500">
+          <div class="truncate-100">HSFO</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="text-center box" matTooltip="190 MT" matTooltipShowDelay="500">
+          <div class="truncate-90">190 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="VLSFO" matTooltipShowDelay="500">
+          <div class="truncate-100">VLSFO</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="text-center warning" matTooltip="400 MT" matTooltipShowDelay="500">
+          <div class="truncate-90">400 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="ULSFO" matTooltipShowDelay="500">
+          <div class="truncate-100">ULSFO</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="text-center box" matTooltip="250 MT" matTooltipShowDelay="500">
+          <div class="truncate-90">250 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="DOGO" matTooltipShowDelay="500">
+          <div class="truncate-100">DOGO</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div> -->
+
+
+
+<!--version 2-->
+<div class="container pt-5 vessel-container">
+
+  <div class="vessel-info-wrapper status-red">
+    <div class="vessel-popup-head row align-items-center ">
+      <div class="highlight-vessel"></div>
+      <h3 class="vessel-name ptb0">Torm Lilly</h3>
+      <div class="notification">
+        <div class="alarm-icon"></div>
+        <div class="count">3</div>
+      </div>
+      <div class="radar"></div>
+      <div class="comments">
+          <div class="comment-icon"></div>
+          <div class="count">3</div>
+      </div>
+      <div id="popupActionRow">
+          <img id="popupExpand" class="popup-action" (click)="this.expandClicked.emit()" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">               
+          <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+      </div>
+    </div>
+
+    <div class="row labels">
+      <div class="col-5" matTooltip="Balboa" [matTooltipShowDelay]="500">
+        <div class="fs11 mini">Destination</div>
+        <div class="truncate-150 fs18 fw700 br-dark">Balboa</div>
+      </div>
+      <div class="col-7 pl25">
+        <div class="fs11 mini">ETA</div>
+        <div class="truncate-230 fw500" style="position: relative;top: 3px;">2018-09-13 10:00 LT (UTC +8)</div>
+      </div>
+    </div>
+
+    <div id="details" class="row text-center ptb10">
+      <div class="col-4" matTooltip="Laden" [matTooltipShowDelay]="500">
+        <div class="fw600 d-flex justify-content-center">
+          <div class="truncate-100 fw400">Laden</div>
+        </div>
+        <div class="title">Voyage Status</div>
+      </div>
+      <div class="col-4" matTooltip="LR1" [matTooltipShowDelay]="500">
+        <div class="fw600 d-flex justify-content-center">
+          <div class="truncate-100 fw400">LR1</div>
+        </div>
+        <div class="title">Vessel Type</div>
+      </div>
+      <div class="col-4" matTooltip="Stemmed" [matTooltipShowDelay]="500">
+        <div class="fw600 d-flex justify-content-center">
+          <div class="truncate-100 fw400">Stemmed</div>
+        </div>
+        <div class="title">Request Status</div>
+      </div>
+    </div>
+
+    <div id="fuel-balance" class="row pt15 text-center">
+
+      <div class="col-3">
+        <div class="text-center critical" matTooltip="190 MT" matTooltipShowDelay="500">
+          <div class="truncate-90">190 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="HSFO" matTooltipShowDelay="500">
+          <div class="truncate-100">HSFO</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="text-center box" matTooltip="190 MT" matTooltipShowDelay="500">
+          <div class="truncate-90 fw400">190 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="VLSFO" matTooltipShowDelay="500">
+          <div class="truncate-100">VLSFO</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="text-center warning" matTooltip="400 MT" matTooltipShowDelay="500">
+          <div class="truncate-90">400 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="ULSFO" matTooltipShowDelay="500">
+          <div class="truncate-100">ULSFO</div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="text-center box" matTooltip="250 MT" matTooltipShowDelay="500">
+          <div class="truncate-90 fw400">250 MT</div>
+        </div>
+        <div class="fuel-name" matTooltip="DOGO" matTooltipShowDelay="500">
+          <div class="truncate-100">DOGO</div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-pointer"></div>
+
+  </div>
+
+</div>
+
+<!--blue-->
+<div class="container pt-5 vessel-container">
+
+    <div class="vessel-info-wrapper status-blue">
+      <div class="vessel-popup-head row align-items-center ">
+        <div class="highlight-vessel"></div>
+        <h3 class="vessel-name ptb0">Torm Lilly</h3>
+        <div class="notification">
+          <div class="alarm-icon"></div>
+          <div class="count">3</div>
+        </div>
+        <div class="radar"></div>
+        <div class="comments">
+            <div class="comment-icon"></div>
+            <div class="count">3</div>
+        </div>
+        <div id="popupActionRow">
+            <img id="popupExpand" class="popup-action" (click)="this.expandClicked.emit()" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">               
+            <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+        </div>
+      </div>
+  
+      <div class="row labels">
+        <div class="col-5" matTooltip="Balboa" [matTooltipShowDelay]="500">
+          <div class="fs11 mini">Destination</div>
+          <div class="truncate-150 fs18 fw700 br-dark">Balboa</div>
+        </div>
+        <div class="col-7 pl25">
+          <div class="fs11 mini">ETA</div>
+          <div class="truncate-230 fw500" style="position: relative;top: 3px;">2018-09-13 10:00 LT (UTC +8)</div>
+        </div>
+      </div>
+  
+      <div id="details" class="row text-center ptb10">
+        <div class="col-4" matTooltip="Laden" [matTooltipShowDelay]="500">
+          <div class="fw600 d-flex justify-content-center">
+            <div class="truncate-100 fw400">Laden</div>
+          </div>
+          <div class="title">Voyage Status</div>
+        </div>
+        <div class="col-4" matTooltip="LR1" [matTooltipShowDelay]="500">
+          <div class="fw600 d-flex justify-content-center">
+            <div class="truncate-100 fw400">LR1</div>
+          </div>
+          <div class="title">Vessel Type</div>
+        </div>
+        <div class="col-4" matTooltip="Stemmed" [matTooltipShowDelay]="500">
+          <div class="fw600 d-flex justify-content-center">
+            <div class="truncate-100 fw400">Stemmed</div>
+          </div>
+          <div class="title">Request Status</div>
+        </div>
+      </div>
+  
+      <div id="fuel-balance" class="row pt15 text-center">
+  
+        <div class="col-3">
+          <div class="text-center critical" matTooltip="190 MT" matTooltipShowDelay="500">
+            <div class="truncate-90">190 MT</div>
+          </div>
+          <div class="fuel-name" matTooltip="HSFO" matTooltipShowDelay="500">
+            <div class="truncate-100">HSFO</div>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="text-center box" matTooltip="190 MT" matTooltipShowDelay="500">
+            <div class="truncate-90 fw400">190 MT</div>
+          </div>
+          <div class="fuel-name" matTooltip="VLSFO" matTooltipShowDelay="500">
+            <div class="truncate-100">VLSFO</div>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="text-center warning" matTooltip="400 MT" matTooltipShowDelay="500">
+            <div class="truncate-90">400 MT</div>
+          </div>
+          <div class="fuel-name" matTooltip="ULSFO" matTooltipShowDelay="500">
+            <div class="truncate-100">ULSFO</div>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="text-center box" matTooltip="250 MT" matTooltipShowDelay="500">
+            <div class="truncate-90 fw400">250 MT</div>
+          </div>
+          <div class="fuel-name" matTooltip="DOGO" matTooltipShowDelay="500">
+            <div class="truncate-100">DOGO</div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-pointer"></div>
+  
+    </div>
+  
+  </div>
+
+  <!--amber-->
+
+  <div class="container pt-5 vessel-container">
+
+      <div class="vessel-info-wrapper status-amber">
+        <div class="vessel-popup-head row align-items-center ">
+          <div class="highlight-vessel"></div>
+          <h3 class="vessel-name ptb0">Torm Lilly</h3>
+          <div class="notification">
+            <div class="alarm-icon"></div>
+            <div class="count">3</div>
+          </div>
+          <div class="radar"></div>
+          <div class="comments">
+              <div class="comment-icon"></div>
+              <div class="count">3</div>
+          </div>
+          <div id="popupActionRow">
+              <img id="popupExpand" class="popup-action" (click)="this.expandClicked.emit()" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">               
+              <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+          </div>
+        </div>
+    
+        <div class="row labels">
+          <div class="col-5" matTooltip="Balboa" [matTooltipShowDelay]="500">
+            <div class="fs11 mini">Destination</div>
+            <div class="truncate-150 fs18 fw700 br-dark">Balboa</div>
+          </div>
+          <div class="col-7 pl25">
+            <div class="fs11 mini">ETA</div>
+            <div class="truncate-230 fw500" style="position: relative;top: 3px;">2018-09-13 10:00 LT (UTC +8)</div>
+          </div>
+        </div>
+    
+        <div id="details" class="row text-center ptb10">
+          <div class="col-4" matTooltip="Laden" [matTooltipShowDelay]="500">
+            <div class="fw600 d-flex justify-content-center">
+              <div class="truncate-100 fw400">Laden</div>
+            </div>
+            <div class="title">Voyage Status</div>
+          </div>
+          <div class="col-4" matTooltip="LR1" [matTooltipShowDelay]="500">
+            <div class="fw600 d-flex justify-content-center">
+              <div class="truncate-100 fw400">LR1</div>
+            </div>
+            <div class="title">Vessel Type</div>
+          </div>
+          <div class="col-4" matTooltip="Stemmed" [matTooltipShowDelay]="500">
+            <div class="fw600 d-flex justify-content-center">
+              <div class="truncate-100 fw400">Stemmed</div>
+            </div>
+            <div class="title">Request Status</div>
+          </div>
+        </div>
+    
+        <div id="fuel-balance" class="row pt15 text-center">
+    
+          <div class="col-3">
+            <div class="text-center critical" matTooltip="190 MT" matTooltipShowDelay="500">
+              <div class="truncate-90">190 MT</div>
+            </div>
+            <div class="fuel-name" matTooltip="HSFO" matTooltipShowDelay="500">
+              <div class="truncate-100">HSFO</div>
+            </div>
+          </div>
+    
+          <div class="col-3">
+            <div class="text-center box" matTooltip="190 MT" matTooltipShowDelay="500">
+              <div class="truncate-90 fw400">190 MT</div>
+            </div>
+            <div class="fuel-name" matTooltip="VLSFO" matTooltipShowDelay="500">
+              <div class="truncate-100">VLSFO</div>
+            </div>
+          </div>
+    
+          <div class="col-3">
+            <div class="text-center warning" matTooltip="400 MT" matTooltipShowDelay="500">
+              <div class="truncate-90">400 MT</div>
+            </div>
+            <div class="fuel-name" matTooltip="ULSFO" matTooltipShowDelay="500">
+              <div class="truncate-100">ULSFO</div>
+            </div>
+          </div>
+    
+          <div class="col-3">
+            <div class="text-center box" matTooltip="250 MT" matTooltipShowDelay="500">
+              <div class="truncate-90 fw400">250 MT</div>
+            </div>
+            <div class="fuel-name" matTooltip="DOGO" matTooltipShowDelay="500">
+              <div class="truncate-100">DOGO</div>
+            </div>
+          </div>
+        </div>
+        <div class="popup-pointer"></div>
+    
+      </div>
+    
+    </div>
+
+<!--version 2-->
+
+

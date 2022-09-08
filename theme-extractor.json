@@ -1,0 +1,17 @@
+{
+    "foldersToCopy":[
+      "css","fonts","i18n","icon","images","customicons","customimages"
+    ],
+    "themeFoldersToCopy":[
+      "defaultweb"
+    ],
+    "defaultwebToCopy":[
+      
+    ],
+    "themeFilesToSkip":[
+      
+    ],
+    "flatAbleToCopy":[
+      "nav"
+    ]    
+}

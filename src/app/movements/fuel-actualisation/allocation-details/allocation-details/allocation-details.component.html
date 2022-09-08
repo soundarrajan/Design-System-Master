@@ -1,0 +1,21 @@
+<div class="allocation-details">
+    <div class="preSelect-withLabel">
+        <mat-form-field class="without-search">
+          <mat-label>UOM</mat-label>
+          <mat-select disableOptionCentering panelClass='darkPanel' value="mt">
+            <mat-option value="mt">MT</mat-option>
+            <mat-option value="gal">GAL</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+<div class="match-grid">
+  <div class="title">Browse and Add Movements</div>
+  <div class="agGrid-v2" style="margin: 0">
+      <div style="width:100%;height:445px;">
+          <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_data"
+              class="ag-theme-material ag-grid-v2 angular-v9"></ag-grid-angular>
+      </div>
+  </div>
+</div>
+  

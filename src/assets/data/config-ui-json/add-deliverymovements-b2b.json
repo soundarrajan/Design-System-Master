@@ -1,0 +1,1831 @@
+[
+    {
+        "Module": "Delivery",
+        "Page": "AddDeliveryMovementsPopup",
+        "TenantId": 6,
+        "CustomFieldsUsed": 0.0,
+        "VersionName": "Default",
+        "sections": [
+            {
+                "Collapsable": false,
+                "NoTitle": false,
+                "sectionClass": "add-movements-subsection",
+                "display": "flex",
+                "items": [
+                    {
+                        "display": "flex",
+                        "items": [
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 203px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 5242.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "SellMovementId",
+                                "type": "contentmd",
+                                "titleMap": [],
+                                "title": "Movement ID",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "contentMap": [
+                                    {
+                                        "title": "Sell Movement",
+                                        "titleClass": "readonly-split-fields",
+                                        "dataKey": "SellMovementId",
+                                        "dataKeyClass": "value"
+                                    },
+                                    {
+                                        "title": "Status",
+                                        "titleClass": "readonly-split-fields1",
+                                        "dataKey": "SellMovementStatus",
+                                        "dataKeyClass": "status"
+                                    }
+                                ],
+                                "formFieldClass": "badge-header"
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "TradeId",
+                                "type": "lookup",
+                                "title": "Sell Trade ID",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "with-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "Intercompany Out",
+                                        "Id": "Intercompany Out"
+                                    }
+                                ],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "MovementTypeId1",
+                                "type": "selectmd",
+                                "title": "Movement Type",
+                                "tableName": "Get_TransferMovementTypeOut",
+                                "defaultSelect": true,
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "PMG tank 1",
+                                        "Id": "PMG tank 1"
+                                    }
+                                ],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "TankId1",
+                                "type": "selectmd",
+                                "title": "Tank",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 426px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 5242.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "OutMovementId",
+                                "type": "contentmd",
+                                "titleMap": [],
+                                "title": "",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "contentMap": [
+                                    {
+                                        "title": "In-tank Product",
+                                        "titleClass": "",
+                                        "dataKey": "IntankProduct",
+                                        "dataKeyClass": "value"
+                                    },
+                                    {
+                                        "title": "Available Qty",
+                                        "titleClass": "",
+                                        "dataKey": "InTankProductAvlQty",
+                                        "dataKeyClass": "value"
+                                    }
+                                ],
+                                "formFieldClass": "badge-header-withpopup-v2",
+                                "popupMap": {
+                                    "type": "tank_history",
+                                    "name": "Tank history"
+                                }
+                            },
+                            {
+                                "flex": "0 1 203px"
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CnCode1",
+                                "type": "lookup",
+                                "title": "CN Code",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "with-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomStatus1",
+                                "type": "selectmd",
+                                "title": "Custom Status",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField5",
+                                "type": "inputmd",
+                                "title": "Custom Field1",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField6",
+                                "type": "inputmd",
+                                "title": "Custom Field2",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField7",
+                                "type": "inputmd",
+                                "title": "Custom Field3",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField8",
+                                "type": "inputmd",
+                                "title": "Custom Field4",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField9",
+                                "type": "inputmd",
+                                "title": "Custom Field5",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            }
+                        ],
+                        "type": "div",
+                        "flex-direction": "row",
+                        "flex-flow": "row wrap",
+                        "fxLayoutGap": "15px grid",
+                        "flex": "0 1 100%"
+                    }
+                ],
+                "type": "div",
+                "flex-direction": "row",
+                "flex-flow": "row wrap",
+                "flex": "0 1 100%",
+                "fxLayoutGap": "15px grid",
+                "sectionTitle": ""
+            },
+            {
+                "Collapsable": false,
+                "NoTitle": false,
+                "sectionClass": "add-movements-subsection",
+                "display": "flex",
+                "items": [
+                    {
+                        "display": "flex",
+                        "items": [
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 203px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 5242.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "BuyMovementId",
+                                "type": "contentmd",
+                                "titleMap": [],
+                                "title": "Movement ID",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "contentMap": [
+                                    {
+                                        "title": "Buy Movement",
+                                        "titleClass": "readonly-split-fields",
+                                        "dataKey": "BuyMovementId",
+                                        "dataKeyClass": "value"
+                                    },
+                                    {
+                                        "title": "Status",
+                                        "titleClass": "readonly-split-fields1",
+                                        "dataKey": "BuyMovementStatus",
+                                        "dataKeyClass": "status"
+                                    }
+                                ],
+                                "formFieldClass": "badge-header"
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "BuyTradeId",
+                                "type": "lookup",
+                                "title": "Buy Trade ID",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "with-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "Intercompany Out",
+                                        "Id": "Intercompany Out"
+                                    }
+                                ],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "MovementTypeId2",
+                                "type": "selectmd",
+                                "title": "Movement Type",
+                                "tableName": "Get_TransferMovementTypeOut",
+                                "defaultSelect": true,
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "PMG tank 1",
+                                        "Id": "PMG tank 1"
+                                    }
+                                ],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "TankId2",
+                                "type": "selectmd",
+                                "title": "Tank",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 426px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 5242.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "OutMovementId",
+                                "type": "contentmd",
+                                "titleMap": [],
+                                "title": "",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "contentMap": [
+                                    {
+                                        "title": "In-tank Product",
+                                        "titleClass": "",
+                                        "dataKey": "IntankProduct",
+                                        "dataKeyClass": "value"
+                                    },
+                                    {
+                                        "title": "Available Qty",
+                                        "titleClass": "",
+                                        "dataKey": "InTankProductAvlQty",
+                                        "dataKeyClass": "value"
+                                    }
+                                ],
+                                "formFieldClass": "badge-header-withpopup-v2",
+                                "popupMap": {
+                                    "type": "tank_history",
+                                    "name": "Tank history"
+                                }
+                            },
+                            {
+                                "flex": "0 1 203px"
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CnCode2",
+                                "type": "lookup",
+                                "title": "CN Code",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "with-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomStatus2",
+                                "type": "selectmd",
+                                "title": "Custom Status",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField1",
+                                "type": "inputmd",
+                                "title": "Custom Field1",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField2",
+                                "type": "inputmd",
+                                "title": "Custom Field2",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField3",
+                                "type": "inputmd",
+                                "title": "Custom Field3",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField4",
+                                "type": "inputmd",
+                                "title": "Custom Field4",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField10",
+                                "type": "inputmd",
+                                "title": "Custom Field5",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            }
+                        ],
+                        "type": "div",
+                        "flex-direction": "row",
+                        "flex-flow": "row wrap",
+                        "fxLayoutGap": "15px grid",
+                        "flex": "0 1 100%"
+                    }
+                ],
+                "type": "div",
+                "flex-direction": "row",
+                "flex-flow": "row wrap",
+                "flex": "0 1 100%",
+                "fxLayoutGap": "15px grid",
+                "sectionTitle": ""
+            },
+            {
+                "Collapsable": false,
+                "NoTitle": false,
+                "sectionClass": "add-movements-section",
+                "display": "flex",
+                "items": [
+                    {
+                        "display": "flex",
+                        "items": [
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "Doc 1",
+                                        "Id": "1"
+                                    },
+                                    {
+                                        "Name": "Doc 2",
+                                        "Id": "2"
+                                    }
+                                ],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "SourceDocumentId",
+                                "type": "selectmd",
+                                "title": "Source Document",
+                                "tableName": "Get_OtherMovementSourceDoc",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 203px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 32.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "ReferenceNo",
+                                "type": "inputmd",
+                                "titleMap": [],
+                                "title": "Document Number",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "MasterType": "",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "MovementDate",
+                                "type": "date",
+                                "title": "Document Date",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "MasterType": "",
+                                "formFieldClass": "without-search-field",
+                                "customeDateIcon": true,
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "Pipeline",
+                                        "Id": "Pipeline"
+                                    }
+                                ],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "DeliveryModeId",
+                                "type": "selectmd",
+                                "title": "Delivery Mode",
+                                "tableName": "Get_TransferDeliveryModes",
+                                "defaultSelect": true,
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "Ethanol",
+                                        "Id": "Ethanol"
+                                    }
+                                ],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "ProductId",
+                                "type": "selectmd",
+                                "title": "Product",
+                                "tableName": "Get_OtherMovementProducts",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "removeSelectList": true,
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "Spec",
+                                "type": "lookup",
+                                "title": "Spec",
+                                "tableName": "Get_TransferTankDetails",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "with-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 203px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 5242.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "SellMovementId",
+                                "type": "contentmd",
+                                "titleMap": [],
+                                "title": "",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "contentMap": [],
+                                "formFieldClass": "badge-header-withpopup-v2",
+                                "popupMap": {
+                                    "type": "spec_parameter",
+                                    "name": "Spec Parameter"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [
+                                    {
+                                        "Name": "Kinder Morgan",
+                                        "Id": "Kinder Morgan"
+                                    }
+                                ],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CarrierId",
+                                "type": "selectmd",
+                                "title": "Carrier",
+                                "tableName": "Get_TransferCarrearList",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 203px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 32.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "BlendReferenceNo",
+                                "type": "inputmd",
+                                "titleMap": [],
+                                "title": "Blend Reference No.",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "MasterType": "",
+                                "formFieldClass": "without-search-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "TicketNumber",
+                                "type": "inputmd",
+                                "title": "Ticket Number",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "1",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 32.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "Notes",
+                                "type": "inputmd",
+                                "titleMap": [],
+                                "title": "Notes",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "MasterType": "",
+                                "formFieldClass": "notes-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            }
+                        ],
+                        "type": "div",
+                        "flex-direction": "row",
+                        "flex-flow": "row wrap",
+                        "fxLayoutGap": "15px grid",
+                        "flex": "0 1 100%"
+                    }
+                ],
+                "type": "div",
+                "flex-direction": "row",
+                "flex-flow": "row wrap",
+                "flex": "0 1 100%",
+                "fxLayoutGap": "15px grid",
+                "sectionTitle": ""
+            },
+            {
+                "Collapsable": false,
+                "NoTitle": false,
+                "sectionClass": "add-movements-section",
+                "display": "flex",
+                "items": [
+                    {
+                        "display": "flex",
+                        "items": [
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": true,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 100%",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 32.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "ManualConversion",
+                                "type": "checkbox",
+                                "titleMap": [],
+                                "title": "Enable Manual Conversion",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "MasterType": "",
+                                "formFieldClass": "checkbox-field",
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            }
+                        ],
+                        "type": "div",
+                        "flex-direction": "row",
+                        "flex-flow": "row wrap",
+                        "fxLayoutGap": "15px grid",
+                        "flex": "0 1 100%"
+                    },
+                    {
+                        "display": "flex",
+                        "items": [
+                            {
+                                "items": [
+                                    {
+                                        "readonly": false,
+                                        "isVisible": true,
+                                        "notitle": false,
+                                        "required": false,
+                                        "feedbackOnRender": true,
+                                        "IncludeIdParams": false,
+                                        "IncludeIdParamsKey": "",
+                                        "softWarning": false,
+                                        "softWarningMessage": "",
+                                        "titleMap": [],
+                                        "events": [],
+                                        "isNegativeCheck": true,
+                                        "isNegativeCheckField": "IsNegativeQty",
+                                        "flex": "0 1 203px",
+                                        "FormatSetting": "Default",
+                                        "minLength": 0.0,
+                                        "maxLength": 16.0,
+                                        "minimum": -1000000000000.0,
+                                        "maximum": 1000000000000.0,
+                                        "pattern": "",
+                                        "key": "MassQty",
+                                        "type": "numbermd",
+                                        "title": "Mass",
+                                        "tableName": "",
+                                        "controlName": "",
+                                        "controlValue": "",
+                                        "MasterType": "",
+                                        "formFieldClass": "without-search-field",
+                                        "combinedFieldCount": 2.0,
+                                        "validationMessages": {
+                                            "pattern": "Invalid"
+                                        }
+                                    },
+                                    {
+                                        "readonly": false,
+                                        "isVisible": true,
+                                        "notitle": true,
+                                        "required": true,
+                                        "feedbackOnRender": true,
+                                        "IncludeIdParams": false,
+                                        "IncludeIdParamsKey": "",
+                                        "softWarning": false,
+                                        "softWarningMessage": "",
+                                        "titleMap": [
+                                            {
+                                                "Name": "GAL",
+                                                "Id": "GAL"
+                                            },
+                                            {
+                                                "Name": "MT",
+                                                "Id": "MT"
+                                            }
+                                        ],
+                                        "events": [],
+                                        "flex": "0 1 103px",
+                                        "FormatSetting": "Default",
+                                        "minLength": 0.0,
+                                        "maxLength": 524288.0,
+                                        "minimum": -1000000000000.0,
+                                        "maximum": 1000000000000.0,
+                                        "pattern": "",
+                                        "title": "UOM",
+                                        "key": "MassUom",
+                                        "type": "selectmd",
+                                        "tableName": "Get_OtherMovementMassUom",
+                                        "controlName": "Name",
+                                        "controlValue": "Id",
+                                        "formFieldClass": "combined-field-uom",
+                                        "noPlaceHolder": true,
+                                        "validationMessages": {
+                                            "pattern": "Invalid"
+                                        },
+                                        "combinedField": true
+                                    }
+                                ],
+                                "type": "div",
+                                "flex": "0 1 203px"
+                            },
+                            {
+                                "items": [
+                                    {
+                                        "readonly": false,
+                                        "isVisible": true,
+                                        "notitle": false,
+                                        "required": false,
+                                        "feedbackOnRender": true,
+                                        "IncludeIdParams": false,
+                                        "IncludeIdParamsKey": "",
+                                        "softWarning": false,
+                                        "softWarningMessage": "",
+                                        "titleMap": [],
+                                        "events": [],
+                                        "isNegativeCheck": true,
+                                        "isNegativeCheckField": "IsNegativeQty",
+                                        "flex": "0 1 203px",
+                                        "FormatSetting": "Default",
+                                        "minLength": 0.0,
+                                        "maxLength": 16.0,
+                                        "minimum": -1000000000000.0,
+                                        "maximum": 1000000000000.0,
+                                        "pattern": "",
+                                        "key": "VolumeQty",
+                                        "type": "numbermd",
+                                        "title": "Volume",
+                                        "tableName": "",
+                                        "controlName": "",
+                                        "controlValue": "",
+                                        "MasterType": "",
+                                        "formFieldClass": "without-search-field",
+                                        "combinedFieldCount": 2.0,
+                                        "validationMessages": {
+                                            "pattern": "Invalid"
+                                        }
+                                    },
+                                    {
+                                        "readonly": false,
+                                        "isVisible": true,
+                                        "notitle": true,
+                                        "required": true,
+                                        "feedbackOnRender": true,
+                                        "IncludeIdParams": false,
+                                        "IncludeIdParamsKey": "",
+                                        "softWarning": false,
+                                        "softWarningMessage": "",
+                                        "titleMap": [
+                                            {
+                                                "Name": "GAL",
+                                                "Id": "GAL"
+                                            },
+                                            {
+                                                "Name": "MT",
+                                                "Id": "MT"
+                                            }
+                                        ],
+                                        "events": [],
+                                        "flex": "0 1 0px",
+                                        "FormatSetting": "Default",
+                                        "minLength": 0.0,
+                                        "maxLength": 524288.0,
+                                        "minimum": -1000000000000.0,
+                                        "maximum": 1000000000000.0,
+                                        "pattern": "",
+                                        "key": "VolumeUom",
+                                        "type": "selectmd",
+                                        "title": "UOM",
+                                        "tableName": "Get_OtherMovementVolumeUom",
+                                        "controlName": "Name",
+                                        "controlValue": "Id",
+                                        "formFieldClass": "combined-field-uom",
+                                        "noPlaceHolder": true,
+                                        "validationMessages": {
+                                            "pattern": "Invalid"
+                                        },
+                                        "combinedField": true
+                                    }
+                                ],
+                                "type": "div",
+                                "flex": "0 1 203px"
+                            },
+                            {
+                                "items": [
+                                    {
+                                        "readonly": false,
+                                        "isVisible": true,
+                                        "notitle": false,
+                                        "required": false,
+                                        "feedbackOnRender": true,
+                                        "IncludeIdParams": false,
+                                        "IncludeIdParamsKey": "",
+                                        "softWarning": false,
+                                        "softWarningMessage": "",
+                                        "titleMap": [],
+                                        "events": [],
+                                        "isNegativeCheck": true,
+                                        "isNegativeCheckField": "IsNegativeQty",
+                                        "flex": "0 1 203px",
+                                        "FormatSetting": "Default",
+                                        "minLength": 0.0,
+                                        "maxLength": 16.0,
+                                        "minimum": -1000000000000.0,
+                                        "maximum": 1000000000000.0,
+                                        "pattern": "",
+                                        "key": "GrossQty",
+                                        "type": "numbermd",
+                                        "title": "Gross",
+                                        "tableName": "",
+                                        "controlName": "",
+                                        "controlValue": "",
+                                        "MasterType": "",
+                                        "formFieldClass": "without-search-field",
+                                        "combinedFieldCount": 2.0,
+                                        "validationMessages": {
+                                            "pattern": "Invalid"
+                                        }
+                                    },
+                                    {
+                                        "readonly": false,
+                                        "isVisible": true,
+                                        "notitle": true,
+                                        "required": true,
+                                        "feedbackOnRender": true,
+                                        "IncludeIdParams": false,
+                                        "IncludeIdParamsKey": "",
+                                        "softWarning": false,
+                                        "softWarningMessage": "",
+                                        "titleMap": [
+                                            {
+                                                "Name": "GAL",
+                                                "Id": "GAL"
+                                            },
+                                            {
+                                                "Name": "MT",
+                                                "Id": "MT"
+                                            }
+                                        ],
+                                        "events": [],
+                                        "flex": "0 1 0px",
+                                        "FormatSetting": "Default",
+                                        "minLength": 0.0,
+                                        "maxLength": 524288.0,
+                                        "minimum": -1000000000000.0,
+                                        "maximum": 1000000000000.0,
+                                        "pattern": "",
+                                        "key": "GrossUom",
+                                        "type": "selectmd",
+                                        "title": "UOM",
+                                        "tableName": "Get_OtherMovementVolumeUom",
+                                        "controlName": "Name",
+                                        "controlValue": "Id",
+                                        "formFieldClass": "combined-field-uom",
+                                        "noPlaceHolder": true,
+                                        "validationMessages": {
+                                            "pattern": "Invalid"
+                                        },
+                                        "combinedField": true
+                                    }
+                                ],
+                                "type": "div",
+                                "flex": "0 1 203px"
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "flex": "0 1 203px",
+                                "events": [],
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 5242.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "SellMovementId",
+                                "type": "contentmd",
+                                "titleMap": [],
+                                "title": "",
+                                "tableName": "",
+                                "controlName": "",
+                                "controlValue": "",
+                                "contentMap": [
+                                    {
+                                        "title": "Calculated density",
+                                        "titleClass": "",
+                                        "dataKey": "CalculatedDensity",
+                                        "dataKeyClass": "value"
+                                    }
+                                ],
+                                "formFieldClass": "badge-header-withpopup-v2"
+                            }
+                        ],
+                        "type": "div",
+                        "flex-direction": "row",
+                        "flex-flow": "row wrap",
+                        "fxLayoutGap": "15px grid",
+                        "flex": "0 1 100%"
+                    }
+                ],
+                "type": "div",
+                "flex-direction": "row",
+                "flex-flow": "row wrap",
+                "flex": "0 1 100%",
+                "fxLayoutGap": "15px grid",
+                "sectionTitle": "Quantity Details"
+            },
+            {
+                "Collapsable": false,
+                "NoTitle": false,
+                "sectionClass": "add-movements-section",
+                "display": "flex",
+                "items": [
+                    {
+                        "display": "flex",
+                        "items": [
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField1",
+                                "type": "inputmd",
+                                "title": "Custom Field1",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField2",
+                                "type": "inputmd",
+                                "title": "Custom Field2",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField3",
+                                "type": "inputmd",
+                                "title": "Custom Field3",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            },
+                            {
+                                "readonly": false,
+                                "isVisible": true,
+                                "notitle": false,
+                                "required": false,
+                                "feedbackOnRender": true,
+                                "IncludeIdParams": false,
+                                "IncludeIdParamsKey": "",
+                                "softWarning": false,
+                                "softWarningMessage": "",
+                                "titleMap": [],
+                                "events": [],
+                                "flex": "0 1 203px",
+                                "FormatSetting": "Default",
+                                "minLength": 0.0,
+                                "maxLength": 524288.0,
+                                "minimum": -1000000000000.0,
+                                "maximum": 1000000000000.0,
+                                "pattern": "",
+                                "key": "CustomField4",
+                                "type": "inputmd",
+                                "title": "Custom Field4",
+                                "defaultSelect": true,
+                                "tableName": "Get_TransferMovementTypeIn",
+                                "controlName": "Name",
+                                "controlValue": "Id",
+                                "formFieldClass": "without-search-field",
+                                "changeResponseProperty": [
+                                    {
+                                        "IsNoCosting": "IsNoCostingIn"
+                                    }
+                                ],
+                                "validationMessages": {
+                                    "pattern": "Invalid"
+                                }
+                            }
+                        ],
+                        "type": "div",
+                        "flex-direction": "row",
+                        "flex-flow": "row wrap",
+                        "fxLayoutGap": "15px grid",
+                        "flex": "0 1 100%"
+                    }
+                ],
+                "type": "div",
+                "flex-direction": "row",
+                "flex-flow": "row wrap",
+                "flex": "0 1 100%",
+                "fxLayoutGap": "15px grid",
+                "sectionTitle": "Custom Fields"
+            }
+        ]
+    }
+]

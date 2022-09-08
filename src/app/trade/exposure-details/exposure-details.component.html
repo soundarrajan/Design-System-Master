@@ -1,0 +1,68 @@
+<div id="exposure">
+  <div class="row">
+    <div class="col-md-3">
+      Pricing Forecast Details
+    </div>
+    <div class="col-md-9" style="display: flex;justify-content: flex-end;">
+      <div class="badge-header">
+        <div><span class="label">Trade Date</span>
+          <div class="value">11/09/2020</div>
+        </div>
+        <div class="border_line"></div>
+        <div> <span class="label">Index</span>
+          <div class="value">ICE Brent Oct 2020</div>
+        </div>
+        <div class="border_line"></div>
+        <div><span class="label">Period</span>
+          <div class="value">Oct 2020</div>
+        </div>
+        <div class="border_line"></div>
+        <div><span class="label">Expiry Date</span>
+          <div class="value">11/09/2020</div>
+        </div>
+      </div>
+      <div class="total-exposure">
+        <div><span class="label">Total Exposure</span>
+          <div class="value">42,000 GAL</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row" style="border: 1px solid #E0E1E4;  border-radius: 4px;width: fit-content;margin: 0px 15px 15px 15px !important;">
+    <table class="headerTable">
+      <tr>
+        <th>
+          Date
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Pricing status
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Exposure
+        </th>
+      </tr>
+    </table>
+    <table class="dataTable" *ngFor="let item of items">
+      <tr>
+        <td>
+          {{item.date}}
+        </td>
+      </tr>
+      <tr>
+        <td [ngClass]="item.status | lowercase">
+          {{item.status}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{item.exposure}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

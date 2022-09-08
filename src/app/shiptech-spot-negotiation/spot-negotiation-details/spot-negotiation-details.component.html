@@ -1,0 +1,41 @@
+<div class="spot-nego-content">
+  <div class="grid-in-accordion">
+    <div id= port{{i+1}} #port{{i+1}} class="panel-container" *ngFor="let loc of requests[selectedRequestIndex]?.locations;let i = index">
+      <mat-expansion-panel [expanded]="i==portIndex?true:false" style="margin-top: 1px;">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <app-loc-pan-data [title]="loc['location-name']"></app-loc-pan-data>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div [ngStyle]="grid1Width" style="height: 100%;overflow-x:auto;" class="aggrid-container">
+            <div appResizable style="position: relative;width: 100%;">
+              <div class="grid-content" [style.width.px]="fullHeaderWidth">
+                <div class="grid-container">
+                  <div class="agGrid-v2" style="margin:0px">
+                    <div style="width:100%;height: 100%;">
+
+                      <!-- AG-Grid -->
+                      <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_counterparty"
+                        [rowClassRules]="rowClassRules" domLayout='autoHeight'
+                        class="ag-theme-material ag-grid-v2 angular-v9" (rowSelected)="onRowSelected($event)"
+                        (selectionChanged)="onSelectionChanged($event)" [context]="context"
+                        [rowSelection]="rowSelection">
+                      </ag-grid-angular>
+
+                      <!-- HTML Grid component don't delete-->
+                      <!-- <inatech-grid style="width: 100%;height: 100%;"></inatech-grid> -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </ng-template>
+      </mat-expansion-panel>
+    </div>
+
+  </div>
+</div>

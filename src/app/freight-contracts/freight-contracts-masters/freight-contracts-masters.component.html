@@ -1,0 +1,206 @@
+<div class="freight-masters" *ngIf="freightContractsMasters">
+  <div class="freight-datatable">
+
+    <div class="price-list-header m-t-7 p-l-15">
+      <!-- New Menu Button -->
+      <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+        <div id="menu-button-dots">
+          <div id="dot1" class="dot"></div>
+          <div id="dot2" class="dot"></div>
+          <div id="dot3" class="dot"></div>
+          <div id="dot4" class="dot"></div>
+          <div id="dot5" class="dot"></div>
+          <div id="dot6" class="dot"></div>
+          <div id="dot7" class="dot"></div>
+          <div id="dot8" class="dot"></div>
+          <div id="dot9" class="dot"></div>
+        </div>
+      </div>
+      <!-- New Menu Button: End -->
+      <!-- <p>Freight Contract</p> -->
+      <span style="height: 25px;">
+        <app-headerchip [chipStatus]="'active-chip'" [heading]="' Default'"></app-headerchip>
+        <app-headerchip  [heading]="' Physical an Vitol'"></app-headerchip>
+        <app-headerchip  [heading]="'BP Marine Fuels'"></app-headerchip>
+        <app-morefilterchip></app-morefilterchip>
+        </span>
+      <!-- <span style="margin-left:8px " class="header-chip">
+        <mat-chip-list>
+          <mat-chip class="active-chip text-center" matTooltip="Shell D14 Physical" [matTooltipShowDelay]="500">
+            <div class="truncate-f100 text-center title-divider">
+              Default
+            </div>
+            
+            <div class="pin-icon">
+              <div class="img"></div>
+             </div>
+          </mat-chip>
+
+          <mat-chip class="inactive-chip text-center" matTooltip="Physical an Vitol" [matTooltipShowDelay]="500">
+            <div class="truncate-f100 text-center title-divider">
+              Physical an Vitol
+            </div>
+          
+            <div class="pin-icon">
+              <div class="img"></div>
+             </div>
+          </mat-chip>
+
+          <mat-chip class="inactive-chip text-center title-divider" matTooltip="BP Marine Fuels" [matTooltipShowDelay]="500">
+            <div class="truncate-f100 text-center">
+              BP Marine Fuels
+            </div>
+           
+            <div class="pin-icon">
+              <div class="img"></div>
+             </div>
+          </mat-chip>
+          <div class="expand-filters"  (click)="openAvailableFilter()" matTooltip="Expand Filters">
+            <img src="../../../assets/customicons/dot-group.svg" alt="More Filters">
+          </div>
+
+        </mat-chip-list>
+      </span> -->
+      <div class="header-right-block">
+        <!-- <div class="create-new" matTooltip="Create New" matTooltipShowDelay="500">
+          <button mat-raised-button class="light-blue-button" (click)="createNewEvent.emit()">    
+            <img id="plus-icon" style="top: -2px;position: relative;" src="../../../assets/customicons/plus_w.svg" alt="plus">
+            <span style="top: -1px;position: relative;">Create New</span>
+          </button>
+        </div> -->
+        <!-- <div class="refresh-toggle">
+          <div class="refresh-icon">
+            <img class="p-r-10" src="../../../assets/customicons/refresh_blue.svg" alt="refresh">
+          </div>
+          <div class="slide-toggle" (click)="headerToggle();">
+            <img class="p-r-10" src="../../../assets/customicons/toggle-arrow.svg" class="header-slide" alt="header-slide">
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <!--Hide or Show Column Start-->
+    <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+      <div class="tbl-context no-border">
+        <div class="p-tb-10">
+          <span>
+            <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+          </span>
+          <span>Update Preference</span>
+        </div>
+              <div class="p-tb-10">
+                <span>
+                  <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+                </span>
+                <span>Save Preference As</span>
+              </div>
+              <!-- <div class="p-tb-10">
+                <span>
+                  <img class="p-r-10" src="../../../assets/customicons/context-export-excel.svg" alt="export to excel icon">
+                </span>
+                <span>Export To Excel</span>
+              </div> -->
+              <div class="b-top p-0 m-b-5"></div>
+                <div class="p-tb-10" (click)="change_rowdensity()">
+                  <span>
+                    <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+                  </span>
+                  <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+                </div>
+            </div>
+        </mat-menu>
+      <div [ngClass]="{'aggrid-onpinned-left':isPinnedLeft, 'aggrid-onpinned-right':isPinnedRight,'aggrid-dd-low':isdisplaydensityhigh==false}">
+          <span class="aggrid-whitebox"></span>
+          <ag-grid-angular style="width: 100%;" [ngStyle]="isCollapsed?{'height': 'calc( 100vh - 81px )'} : {'height': 'calc( 100vh - 174px'}" class=" freight-grid-height-v2 ag-theme-material aggrid-pinned-shadow angular-v9" 
+          [gridOptions]="gridOptions"></ag-grid-angular>  
+        
+      </div>
+     
+    <mat-menu #rowstate="matMenu" class="row-state" yPosition="below" xPosition="before" [overlapTrigger]="false">
+      <img id="down-icon" class="down-arrow" src="../../../assets/customicons/down-arrow.svg" alt="list" />
+      <button mat-menu-item>Active</button>
+      <button mat-menu-item>Deactivate</button>
+    </mat-menu>
+   
+    </div>
+    <!-- <section id="bottom-pagination">
+
+        <div id="show-rows" class="float-right pr-4">
+          <span>Show</span>
+          <span>
+            <mat-form-field style="width: 70px; margin: 0 10px;">
+              <mat-select>
+                <mat-option [value]="10">
+                  10
+                </mat-option>
+                <mat-option [value]="20">
+                  20
+                </mat-option>
+                <mat-option [value]="30">
+                  30
+                </mat-option>
+                <mat-option [value]="40">
+                  40
+                </mat-option>
+                <mat-option [value]="50">
+                  50
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span>Rows</span>
+        </div>
+      
+        <div class="mx-auto" id="pages">
+          <div style="display: flex; justify-content: center;">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-chevron-left"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">4</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="float-right" id="right-column">
+          <div class="float-left pl-4" id="left-column">
+            Total Results:
+            <span style="margin-left: 2px;">{{rowCount}}</span>
+          </div>
+          <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+          <div class="export-excel">
+            Export to Excel
+            <div class="export-excel-icon"></div>
+          </div>
+          <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+          <div id="goto-page" class="float-right" style="display: flex;align-items: center;">
+            Go to page
+            <mat-form-field style="width: 50px; margin: 0 5px; padding-left: 10px;">
+              <input matInput>
+            </mat-form-field>
+            <button mat-button class="page-button">Go</button>
+          </div>
+          
+        </div>
+      
+      </section>   -->
+      <app-footer-v2 [id]="'freight-contract-footer'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+    </div>
+<freight-contracts-new *ngIf="freightContractsNew" (returnlist)="returnToList()"></freight-contracts-new>

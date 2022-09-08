@@ -1,0 +1,138 @@
+<div class="controlTower-wrapper" [ngClass]="theme ? 'dark-theme' : 'light-theme'">  
+  <div class="header">
+  <div class="view-control">
+      <div class="header">View:</div>
+      <div class="controller">
+        <mat-radio-group  (change)="viewChange($event)">
+            <mat-radio-button [checked]="true" value="quality" (click)="$event.stopPropagation();">
+              <div class="truncate-130 value">Quality</div>
+            </mat-radio-button>
+            <mat-radio-button value="quantity" (click)="$event.stopPropagation();">
+                <div class="truncate-130 value">Quantity</div>
+            </mat-radio-button>
+            <mat-radio-button value="residue" (click)="$event.stopPropagation();">
+                <div class="truncate-130 value" >Residue</div>
+            </mat-radio-button>
+        </mat-radio-group>
+      </div>
+  </div>
+  <!-- <div class="search-notes" *ngIf="showSearchNotes">
+    <span class="icon"></span>
+    <input placeholder="Search Notes" spellcheck="false" (keyup)="searchNotes($event)">
+  </div> -->
+  <div class="last-updated">
+    <span>Last Updated: </span><b> Today 10:45:08</b>
+  </div>
+</div>
+  <div id="custom-tabs-v2" *ngIf="showQuality">
+    <mat-tab-group mat-align-tabs="center" mat-align-tabs="center" #tab (selectedIndexChange)="onTabChange(tab.selectedIndex)" (selectedTabChange)="selectedTabChange($event)">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Labs <span>12</span></div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-quality-labs [theme]="theme"></app-quality-labs>
+        </ng-container>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Claims<span>12</span></div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-quality-claims [theme]="theme"></app-quality-claims>
+        </ng-container>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">My Notes</div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-my-notes [theme]="theme"></app-my-notes>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div id="custom-tabs-v2" *ngIf="showQuantity">
+    <mat-tab-group mat-align-tabs="center" mat-align-tabs="center" (selectedTabChange)="quantityTabChange($event)">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Differences <span>16</span></div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-quantity-difference [theme]="theme"></app-quantity-difference>
+        </ng-container>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Claims<span>12</span></div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-quantity-claims [theme]="theme"></app-quantity-claims>
+        </ng-container>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">My Notes</div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-my-notes [theme]="theme"></app-my-notes>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div id="custom-tabs-v2" *ngIf="showResidue">
+    <mat-tab-group mat-align-tabs="center" mat-align-tabs="center" (selectedTabChange)="residueTabChange($event)">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Differences <span>12</span></div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-residue-difference [theme]="theme"></app-residue-difference>
+        </ng-container>
+      </mat-tab>
+      <!-- <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">Claims<span>12</span></div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-residue-claims [theme]="theme"></app-residue-claims>
+        </ng-container>
+      </mat-tab> -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="custom-label-holder">
+            <div class="custom-tab-ui"></div>
+            <div class="custom-label">My Notes</div>
+          </div>
+        </ng-template>
+        <ng-container>
+          <app-my-notes [theme]="theme"></app-my-notes>
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-1">
+<mat-form-field [formGroup]="myFormGroup" class="currency-select-trigger">
+    <mat-select placeholder="" formControlName="frequency" panelClass="currencyselecttrigger" >
+      <mat-select-trigger overlayPanelClass="123class">
+  
+        {{myFormGroup.controls['frequency'].value}}
+      </mat-select-trigger>
+      <mat-option [disabled]>Change Currency </mat-option>
+      <mat-option class="currency-mat-select" *ngFor="let frequency of frequencyArr" [value]="frequency.key">
+        <span> <mat-radio-button>{{ frequency.abbriviation}}</mat-radio-button></span>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  </div>
+  

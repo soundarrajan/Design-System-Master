@@ -1,0 +1,12 @@
+<div cdkDrag>
+  <app-vessellocationpopup ></app-vessellocationpopup>
+</div>
+<app-vesseldetailspopup  style="position: fixed;top: 60px;left: 100%;transform: translateX(-100%);"></app-vesseldetailspopup>
+<div cdkDrag>
+<app-vessellocationpopup [status]="'minor-warning-status'"></app-vessellocationpopup>
+</div>
+<app-vesseldetailspopup [status]="'minor-warning-status'" style="position: fixed;top: 325px;left: 100%;transform: translateX(-100%);"></app-vesseldetailspopup>
+<div cdkDrag>
+<app-vessellocationpopup [status]="'higher-warning-status'"></app-vessellocationpopup>
+</div>
+<app-vesseldetailspopup [status]="'higher-warning-status'" style="position: fixed;top: 580px;left: 100%;transform: translateX(-100%);"></app-vesseldetailspopup>

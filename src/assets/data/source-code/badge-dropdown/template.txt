@@ -1,0 +1,4 @@
+   <!-- multi without subtext,dot and divider -->
+      <div class="col-md-6">
+          <app-dynamic-badge [category]="componentDetails.key" [dropdown]="true" [items]="badgeitemsDropdown" [type]="'multi'" [dot]="false" [divider]="false"></app-dynamic-badge>
+      </div>

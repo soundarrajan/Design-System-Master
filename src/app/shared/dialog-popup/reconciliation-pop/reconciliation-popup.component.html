@@ -1,0 +1,61 @@
+<!-- <mat-dialog-content> -->
+<!-- <div class="create-invoice-section"> -->
+    <!-- <span class="close-btn"><img id="close-icon" src="../../../assets/customicons/close.svg" alt="list"></span>
+    <p class="b-bottom title p-t-20 p-b-15 p-l-24">Enter your specifications</p> -->
+
+    <h2 mat-dialog-title class="dialog-title">Enter your specifications
+            <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+    </h2>
+    <hr>
+    
+    <div class="container">
+        <div class="row label" style="align-items: center;">
+            <div class="col-4">
+                <label>Invoice Type:</label>
+            </div>
+            <div class="col-8">
+              <mat-form-field class="col-sm"> 
+                  <select matNativeControl required>
+                      <option value="Final">Volvo</option>
+                      <option value="saab">Saab</option>
+                      <option value="mercedes">Mercedes</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <label>Group By:</label>
+            </div>
+            <div class="col-8">
+              <mat-form-field class="col-sm">
+                  <select matNativeControl required>
+                      <option value="volvo">Individual</option>
+                      <option value="saab">Saab</option>
+                      <option value="mercedes">Mercedes</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <label>Currency:</label>
+            </div>
+            <div class="col-8">
+              <mat-form-field class="col-sm">
+                  <select matNativeControl required>
+                      <option value="volvo">USD</option>
+                      <option value="saab">Saab</option>
+                      <option value="mercedes">Mercedes</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                </mat-form-field>
+            </div>
+          </div>
+    </div>
+  <!-- </div> -->
+<!-- </mat-dialog-content> -->
+
+  <mat-dialog-actions class="float-right" style="padding-bottom: 10px;margin-right: 8px;">
+        <button mat-button [mat-dialog-close]="true">CANCEL</button>
+        <button class="blue-button" mat-button [mat-dialog-close]="true" style="width: 85px;border-radius: 0px !important;">PROCEED</button>
+</mat-dialog-actions>
+  

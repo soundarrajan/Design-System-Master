@@ -1,0 +1,137 @@
+<!-- <mat-dialog-content> -->
+  <img src="../../../assets/customicons/warning_r.svg" />
+    <span class="dialog-title">Bulk Import Error</span>
+      <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+      <hr>
+      <p>Failed to upload the LCFS Transactions. Refer Error log for details.</p>
+      <div class="product-terms p-b-5">
+      <span class="title">Error Log</span>
+      <button class="blue-outline-button">Export Log</button>
+      </div>
+      <div class="product-details-block">
+      <table>
+        <thead>
+            <tr>
+                <th class="text-right">Row No.</th>
+                <th class="text-right">Delivery ID</th>
+                <th class="text-right">Movement ID</th>
+                <th class="text-center">Import Status</th>
+                <th class="text-left">Reason</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>      
+            <td class="text-right">12</td>
+            <td class="text-right table-link">PS00000007-D1</td>
+            <td class="text-right table-link">MOV00000007</td>
+            <td class="text-center">
+                <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+                    <div class="truncate-100">
+                      Success
+                    </div>
+                  </div>
+            </td>
+            <td class="text-left">Completed</td>
+          </tr>
+          <tr>      
+              <td class="text-right">12</td>
+              <td class="text-right table-link">PS00000007-D1</td>
+              <td class="text-right table-link">MOV00000007</td>
+              <td class="text-center">
+                  <div class="custom-chip red" matTooltip="Confirmed" matTooltipShowDelay="500">
+                      <div class="truncate-100">
+                        Failed
+                      </div>
+                    </div>
+              </td>
+              <td class="text-left">Movement not matching the delivery</td>
+            </tr>
+            <tr>      
+                <td class="text-right">12</td>
+                <td class="text-right table-link">PS00000007-D1</td>
+                <td class="text-right table-link">MOV00000007</td>
+                <td class="text-center">
+                    <div class="custom-chip red" matTooltip="Confirmed" matTooltipShowDelay="500">
+                        <div class="truncate-100">
+                            Failed
+                        </div>
+                      </div>
+                </td>
+                <td class="text-left">Movement not matching the delivery</td>
+              </tr>
+              <tr>      
+                  <td class="text-right">12</td>
+                  <td class="text-right table-link">PS00000007-D1</td>
+                  <td class="text-right table-link">MOV00000007</td>
+                  <td class="text-center">
+                      <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+                          <div class="truncate-100">
+                            Success
+                          </div>
+                        </div>
+                  </td>
+                  <td class="text-left">Completed</td>
+                </tr>
+                <tr>      
+                    <td class="text-right">12</td>
+                    <td class="text-right table-link">PS00000007-D1</td>
+                    <td class="text-right table-link">MOV00000007</td>
+                    <td class="text-center">
+                        <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+                            <div class="truncate-100">
+                                Success
+                            </div>
+                          </div>
+                    </td>
+                    <td class="text-left">Completed</td>
+                  </tr>
+                  <tr>      
+                      <td class="text-right">12</td>
+                      <td class="text-right table-link">PS00000007-D1</td>
+                      <td class="text-right table-link">MOV00000007</td>
+                      <td class="text-center">
+                          <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+                              <div class="truncate-100">
+                                  Success
+                              </div>
+                            </div>
+                      </td>
+                      <td class="text-left">Completed</td>
+                    </tr>
+                    <tr>      
+                        <td class="text-right">12</td>
+                        <td class="text-right table-link">PS00000007-D1</td>
+                        <td class="text-right table-link">MOV00000007</td>
+                        <td class="text-center">
+                            <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+                                <div class="truncate-100">
+                                    Success
+                                </div>
+                              </div>
+                        </td>
+                        <td class="text-left">Completed</td>
+                      </tr>
+                      <tr>      
+                          <td class="text-right">12</td>
+                          <td class="text-right table-link">PS00000007-D1</td>
+                          <td class="text-right table-link">MOV00000007</td>
+                          <td class="text-center">
+                              <div class="custom-chip darkgreen" matTooltip="Confirmed" matTooltipShowDelay="500">
+                                  <div class="truncate-100">
+                                      Success
+                                  </div>
+                                </div>
+                          </td>
+                          <td class="text-left">Completed</td>
+                        </tr>
+        </tbody>
+      </table>
+      </div>
+        
+      
+      <!-- </mat-dialog-content> -->
+      
+      <mat-dialog-actions class="float-right">
+        <button class="cancel-btn" mat-button>CANCEL</button>
+        <button class="blue-button" mat-button [mat-dialog-close]="true" style="width: 90px;">PROCEED</button>
+      </mat-dialog-actions>

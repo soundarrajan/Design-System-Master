@@ -1,0 +1,51 @@
+<div class="container pt-5">
+
+  <!-- #region Filter Chips -->
+  <mat-chip-list>
+
+    <mat-chip class="active-chip text-center" matTooltip="Active Filter Chip" [matTooltipShowDelay]="500">
+      <div class="truncate-140">
+        Active Filter Chip
+      </div>
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+
+    <mat-chip class="inactive-chip text-center" matTooltip="Inactive Filter Chip" [matTooltipShowDelay]="500">
+      <div class="truncate-140">
+        Inactive Filter Chip
+      </div>
+    </mat-chip>
+
+    <mat-chip class="inactive-chip text-center" matTooltip="This Filter Chip has Truncated Content" [matTooltipShowDelay]="500">
+      <div class="truncate-140">
+        This Filter Chip has Truncated Content
+      </div>
+    </mat-chip>
+
+    <mat-chip class="icon-chip text-center" matTooltip="Expand Filters" [matTooltipShowDelay]="500">
+      <div class="mx-auto d-block">
+          <i class="fas fa-ellipsis-h"></i>          
+      </div>
+    </mat-chip>
+
+  </mat-chip-list>
+  <!-- #endregion Filter Chips -->
+
+
+
+
+  <!-- #region Copy Code -->
+  <mat-chip-list>
+    <!-- #region Start Loop here - within <mat-chip-list> -->
+    <mat-chip class="active-chip text-center" matTooltip="Bind Value" [matTooltipShowDelay]="500">
+      <div class="truncate-140">
+        Bind Value
+      </div>
+    </mat-chip>
+    <!-- #endregion End Loop here - within <mat-chip-list> -->
+  </mat-chip-list>
+  <!-- #endregion Copy Code -->
+
+
+
+</div>

@@ -1,0 +1,714 @@
+[
+    {
+        "projectname": "Techoil",
+        "screenname":"Trade List",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/zzP3gziuDfEzBTNO2nqsTe/Trade-List-bulk-update?node-id=12%3A0&scaling=scale-down-width&page-id=0%3A1",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+         
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Risk Simulator",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/ZrVpDmiLfgobXGvSgwFRNC/Options-simulator?node-id=1003%3A21426&scaling=min-zoom",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Ops&Inventory",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Pipeline Scheduling",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Rack Scheduling",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/ZX4v2xkaN2vJ5I9MbWPliNGH/Rack_Scheduling_Delivery_File?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Rack Marketing",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/T2dysM1OlQoB1w7DPH1sFOcl/Rack_maketing_DeliveryFile?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Freight Contracts",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Transaction List",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"BL Recon",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"BL List",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Reconciliation",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Journal Detail",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Swap Settlement",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Futures Settlement",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Actualisation",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Credit Actualisation",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Delivery Movements",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/rGrQThnxF1Sp9RzNOVGX1a/Delivery-Movements-Full-Prototype-2021?node-id=3%3A18&viewport=-9508%2C-1347%2C0.5770346522331238&scaling=min-zoom",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Transfer Movements",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=226%3A2&viewport=445%2C435%2C0.015625&scaling=min-zoom",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Other Movements",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/JugHpHhZl4Ao1fbHqVwGl7/Other-Movements-Full-Proto-2021?node-id=1%3A39955&viewport=323%2C443%2C0.01613009162247181&scaling=min-zoom",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"EOM List",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"EOM Closure",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Site Master",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/kCnCt9eZ8ZtMVV4jXdifeO/Transfer-Movements-Full-Proto-2021?node-id=246%3A2353&viewport=195%2C246%2C0.07841716706752777&scaling=contain",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"User Manual",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/VkDUBbV5B92qxEl9qNbviNfl/User-Manual-First-Prop.?node-id=1%3A98&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Techoil",
+        "screenname":"Matching Screens",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/file/luuekH0r8gwKEC2XWrXYXQ/Matching-screen-Analysis?node-id=255%3A2",
+        "changeLogs": [
+            {
+            "version": "1.0", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.1", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            },
+            {
+            "version": "1.2", "date": "29 - Aug - 2020 17:32", "description": "change description"
+            }
+        ]
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"SECA Region",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/stsLruYV5R3KxInd3DWtOt/New-ECA-UI?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"Shiptech Smart Trader Link",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/CE9KJHSHhDegXu79kroA35uv/Shiptech_smarttrader-link?node-id=40%3A2&scaling=min-zoom&page-id=22%3A1362",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"News analytics",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/j6aDNUCmKqHVt2XyVAeNyQ/News-Analytics-Tools?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"Onboarding",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/Rr6XSrggAK1CPQxFT37zqOh4/SmartTrader---Quick-Tour--Onboarding?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"AI",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/8XDJzDYffXigBzLkicPqgV/SmartTrader-AI-2020?node-id=15%3A771&scaling=min-zoom&page-id=15%3A771",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"Advanced Filters",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/DUM5L7gEK6h9phdIrGlfTso9/Advacned_Filter_behaviour?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"V2.0 of development of smart trader",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/Y6fwfm9g4DihWhJPsDOfsg/Smart-Trader-v2.0-Final?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"V2.1 of development of smart trader",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/GjMQQchr8Ylz4GhBDxBBUQ/Smart-Trader-v2.1-Final?node-id=7%3A2&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Trader",
+        "screenname":"Hapag delivery of smart trader",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/gRtbDdAK7KDMROyBrcNZAHZq/SmartTrader_V2_after_HapagReview?node-id=1%3A872&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Operator",
+        "screenname":"Smart Operator",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/Zyh74SfIiM8pXHU1g11bVn/Smart-Operator---7-July-Proto?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Smart Operator",
+        "screenname":"Smart Operator new filter_current view ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/KqZgUPZnNff0a5t65cBUNP/Smart-operator-Filter-2021?page-id=36%3A0&node-id=37%3A0&viewport=165%2C399%2C0.16700680553913116&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Shiptech Contracts Prototype",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/U2Nr41Lm7pryQrsS5QDO2H/Shiptech-Contracts_-for-Dev-5th-Nov'-20.?node-id=5%3A1242&viewport=536%2C402%2C0.023639865219593048&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"shiptech Invoice screen _Invoice type 2021",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/4yLRFXnyNK5ur5L2rwL58v/Shiptech_Invoice-screen-changes-2021?node-id=1%3A17992&viewport=997%2C762%2C0.11108597368001938&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Shiptech Multiple Invoice ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/wZNAoCzyyhoFERpySp0rn6/Shiptech-view-multiple-invoice?node-id=294%3A5&viewport=155%2C224%2C0.1528642624616623&scaling=scale-down-width",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Shiptech Multiple Invoice Jan'21 ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/wZNAoCzyyhoFERpySp0rn6/Shiptech-view-multiple-invoice?node-id=142%3A27&viewport=536%2C403%2C0.223181813955307&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"shiptech multile invoice delivery option 1 ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/wZNAoCzyyhoFERpySp0rn6/Shiptech-view-multiple-invoice?node-id=58%3A1&viewport=206%2C422%2C0.223181813955307&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"shiptech multile invoice delivery option 2",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/wZNAoCzyyhoFERpySp0rn6/Shiptech-view-multiple-invoice?node-id=28%3A2&viewport=908%2C403%2C0.16509750485420227&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Shiptech Contracts other tabs ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/UlVKeexzSrvPxo1DCgBPsI/Shiptech-Contracts-other-elements?node-id=1%3A8&viewport=81%2C402%2C0.04963606968522072&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Decision Tree",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/ca88y0NPGF3r7jLlo9gdE8/Shiptech-Configuration-screens?page-id=0%3A1&node-id=1%3A905&viewport=728%2C506%2C0.25082629919052124&scaling=min-zoom&starting-point-node-id=1%3A905",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Admin Trade book mapping",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/64OcQ57EYyvN7vFxIZ7lZ6/Admin-Trade-book-mapping?page-id=0%3A1&node-id=1%3A3&viewport=728%2C506%2C0.33236008882522583&scaling=min-zoom&starting-point-node-id=1%3A3",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Contract Screen- New ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/z6udnttORCIX7iv4k57x06/Shiptech-New-Contract-Screen?page-id=1%3A23577&node-id=1%3A24804&viewport=728%2C506%2C0.03288396820425987&scaling=min-zoom&starting-point-node-id=1%3A24804",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Delivery Screen- New ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/alBOTZoObg1gq39L8lLz1t/Shiptech-New-Delivery-screen?page-id=0%3A1&node-id=1%3A14262&viewport=728%2C506%2C0.047001343220472336&scaling=min-zoom&starting-point-node-id=1%3A14262",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Invoice Screen- New",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/d0AbazyWIEXICgMVLMDRBq/Shiptech-New-Invoice-Screen?page-id=1%3A3765&node-id=1%3A3768&viewport=728%2C506%2C0.05596984177827835&scaling=min-zoom&starting-point-node-id=1%3A3768",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Price Precision",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/aYqZiJxZmCiksEy3FiiHQZ/Shiptech-Price-precision?page-id=0%3A1&node-id=1%3A9&viewport=728%2C506%2C0.23231293261051178&scaling=min-zoom&starting-point-node-id=1%3A9",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Price override at request level",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/RAFo8wijxBn62RfNPwPkZm/Shiptech-VSTS-19304-OverRide-price?page-id=0%3A1&node-id=1%3A7&viewport=728%2C506%2C0.3055244982242584&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Masters configuration",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/ca88y0NPGF3r7jLlo9gdE8/Shiptech-Configuration-screens?page-id=1%3A2293&node-id=1%3A2294&viewport=728%2C506%2C0.4242284595966339&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Bookmark prorotype",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/Imdxn2qc4bW0OcujSEIODf/Shiptech-Bookmark-proto?page-id=0%3A1&node-id=2%3A3&viewport=728%2C506%2C0.23844368755817413&scaling=min-zoom&starting-point-node-id=2%3A3",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Price precision at order level ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/iZDJqm457TKLimq7ZU0jwj/Shiptech-Price-precision-at-order-level?page-id=0%3A1&node-id=2%3A3&viewport=728%2C506%2C0.41040995717048645&scaling=min-zoom&starting-point-node-id=2%3A3",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Version display",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/CfO4JPZ3F4Y5BbGG6Xjt8H/Shiptech-Version-display?page-id=0%3A1&node-id=2%3A2&viewport=728%2C506%2C1.0229620933532715&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Surveyor and lab contracts",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/k4oRYzDT6pyHNHeLfGcfl2/Shiptech-Surveyor-and-lab-contract-pop-up?page-id=0%3A1&node-id=2%3A11334&viewport=738%2C516%2C0.2272108793258667&scaling=min-zoom&starting-point-node-id=2%3A11334",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"ShiptechLite Reports",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/z1iEqlTlOxkSzA7jqxBkaB/ShiptechLite-Reports?page-id=2%3A2969&node-id=3%3A2&viewport=728%2C506%2C0.303636372089386&scaling=min-zoom&starting-point-node-id=3%3A2",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Shiptech",
+        "screenname":"Shiptech Contracts other tabs ",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/UlVKeexzSrvPxo1DCgBPsI/Shiptech-Contracts-other-elements?node-id=1%3A8&viewport=81%2C402%2C0.04963606968522072&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Others",
+        "screenname":"Vessel portal Maersk specific proto",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/KqZgUPZnNff0a5t65cBUNP/Smart-operator-Filter-2021?page-id=36%3A0&node-id=37%3A0&viewport=165%2C399%2C0.16700680553913116&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Others",
+        "screenname":"Vessel portal common proto",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/cSlasZkhQKuv365EokHjcc/Vessel-Portal-realigned-File-15-03-2021?page-id=155%3A2&node-id=157%3A0&viewport=848%2C312%2C0.05268459394574165&scaling=min-zoom",
+        "changeLogs": "test"
+    },
+    {
+        "projectname": "Others",
+        "screenname":"Vessel portal initial proto",
+        "modulename": "",
+        "lastupdatedDate": "",
+        "viewFigma": "https://www.figma.com/proto/2fSKDSR4gF4xiLzScKOSRN/Vessel-Portal_22022021?page-id=529%3A0&node-id=529%3A12401&viewport=781%2C575%2C0.03751584514975548&scaling=min-zoom",
+        "changeLogs": "test"
+    }
+    
+    
+]

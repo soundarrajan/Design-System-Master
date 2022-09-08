@@ -1,0 +1,98 @@
+
+<div id="set-price" class="p-l-3 p-tb-7 accrual">
+  <div class="price-dataset bg-white p-l-11 p-r-7">
+    <div class="price-dataset-row1">
+      <div id="menu-button" [matMenuTriggerFor]="togglecolumn1"
+        style="float:left;margin-right: 5px;position: relative;top: 3px;">
+        <div id="menu-button-dots">
+          <div id="dot1" class="dot"></div>
+          <div id="dot2" class="dot"></div>
+          <div id="dot3" class="dot"></div>
+          <div id="dot4" class="dot"></div>
+          <div id="dot5" class="dot"></div>
+          <div id="dot6" class="dot"></div>
+          <div id="dot7" class="dot"></div>
+          <div id="dot8" class="dot"></div>
+          <div id="dot9" class="dot"></div>
+        </div>
+      </div>
+      <mat-menu class="table-context contract-action" #togglecolumn1="matMenu" yPosition="below" xPosition="before"
+        [overlapTrigger]="false">
+        <div class="tbl-contract" style="width: 190px;">
+          <div class="p-tb-10">
+            <span class="">
+              <img class="p-r-10" src="../../../assets/customicons/copy2.svg" alt="duplicate contract">
+            </span>
+            <span>Duplicate Dataset</span>
+          </div>
+          <div class="b-top p-0 m-b-5"></div>
+          <div class="p-tb-10" >
+            <span>
+              <img class="p-r-10"
+                src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}"
+                alt="export to excel icon">
+            </span>
+            <span
+              [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+          </div>
+        </div>
+      </mat-menu>
+      <div class="title p-t-6">Accrual - Draft</div>
+      <div class="right-content right-contentpandl">
+        <div style="display:inline-block">
+          <app-badge [badgeColor]="'mediumpurple'" [heading]="'Total Credit'" [value]="'19,300,000'" [unit]="'USD'">
+          </app-badge>
+        </div>
+        <span class="seperator">|</span>
+        <div style="display:inline-block">
+          <app-badge [badgeColor]="'blue'" [heading]="'Total Debit'" [value]="'19,300,000'" [unit]="'USD'"></app-badge>
+        </div>
+      </div>
+    </div>
+    <div class="price-dataset-row2 p-r-7 p-l-7">
+      <div class=" dateset">For the Period of Nov 2019
+      </div>
+      <!--State Changes-->
+      <div class="state p-t-4 state-eom">
+        <div class="link-line">
+          <div class="link-line1"></div>
+          <div class="link-line2"></div>
+        </div>
+        <div class="status m-l-20  m-r-77">
+          <!--Add "status-active"-->
+          <div class="status-level">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="status-name">Start Closure</div>
+        </div>
+        <div class="status m-r-83" >
+          <!--Add "confirm-active"-->
+          <div class="status-level">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="status-name">Draft P&L</div>
+        </div>
+        <div class="status" >
+          <!--Add "publish-active"-->
+          <div class="status-level">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="status-name">Final</div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+<div style="clear:both"></div>
+<div class="container-fluid p-0" [ngClass]="{ 'aggrid-dd-low':isdisplaydensityhigh==false}">
+  <span class="aggrid-whitebox"></span>
+  <ag-grid-angular id="tradelistgrid" style="width: 100%; height:calc( 100vh - 171px )" [gridOptions]="gridOptions" class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+</div>
+</div>
+<section id="bottom-pagination">
+
+  <div class="float-left pl-4">
+    Total:
+    <span>{{rowCount}}</span>
+  </div>
+

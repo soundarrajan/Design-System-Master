@@ -1,0 +1,86 @@
+<div class="view-costing-movements">
+    <div class="view-costing-header">
+        <div class="preSelect-withLabel">
+            <mat-form-field class="without-search">
+                <mat-label>UOM</mat-label>
+                <mat-select disableOptionCentering panelClass='darkPanel' value="mt">
+                    <mat-option value="mt">MT</mat-option>
+                    <mat-option value="gal">GAL</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="preSelect-withLabel">
+            <mat-form-field class="without-search">
+                <mat-label>Currency</mat-label>
+                <mat-select disableOptionCentering panelClass='darkPanel' value="usd">
+                    <mat-option value="usd">USD</mat-option>
+                    <mat-option value="inr">INR</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div style="border-bottom: 4px solid #e5e5e5;">
+        <div class="match-grid">
+            <div class="grid-header">
+                <span style="margin-right: 30px;">Transfer Out Movement Details</span>
+                <span class="toggle-grid-arrow" (click)="toggleTransOutCollapse()"
+                    [ngClass]="{'rotate180':isTransOutCollapsed}"></span>
+            </div>
+            <div class="agGrid-v2" style="margin: 0" *ngIf="isTransOutCollapsed">
+                <div style="width:100%;height:245px;">
+                    <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_transOut"
+                        class="ag-theme-material ag-grid-v2 angular-v9"></ag-grid-angular>
+                </div>
+            </div>
+        </div>
+        <!-- GRIDS -->
+        <div *ngIf="isTransOutCollapsed">
+            <div class="view-costing-grids master" *ngFor="let item of displayGridListOut">
+                <div *ngIf="item.key.includes('show-master-journalOUT')">
+                    <div class="title">Draft Journal for Transfer Out <span
+                            class="highlight">{{item.data.mov_id}}</span>
+                    </div>
+                    <journal-grid [journalData]="item.data.journalData"></journal-grid>
+                </div>
+                <div *ngIf="item.key.includes('show-alloc-detailsOUT')">
+                    <div class="title">Allocation Price Details of Transfer Out <span
+                            class="highlight">{{item.data.mov_id}}</span></div>
+                    <allocation-price-details [allocationData]="item.data.allocationData"></allocation-price-details>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="match-grid">
+            <div class="grid-header">
+                <span style="margin-right: 30px;">Transfer In Movement Details</span>
+                <span class="toggle-grid-arrow" (click)="toggleTransInCollapse()"
+                    [ngClass]="{'rotate180':isTransInCollapsed}"></span>
+            </div>
+            <div class="agGrid-v2" style="margin: 0" *ngIf="isTransInCollapsed">
+                <div style="width:100%;height:245px;">
+                    <ag-grid-angular style="width: 100%;height: 100%;" [gridOptions]="gridOptions_transIn"
+                        class="ag-theme-material ag-grid-v2 angular-v9">
+                    </ag-grid-angular>
+                </div>
+            </div>
+        </div>
+        <!-- GRIDS -->
+        <div *ngIf="isTransInCollapsed">
+            <div class="view-costing-grids master" *ngFor="let item of displayGridListIn">
+                <div *ngIf="item.key.includes('show-master-journalIN')">
+                    <div class="title">Draft Journal for Transfer Out <span
+                            class="highlight">{{item.data.mov_id}}</span>
+                    </div>
+                    <journal-grid [journalData]="item.data.journalData"></journal-grid>
+                </div>
+                <div *ngIf="item.key.includes('show-alloc-detailsIN')">
+                    <div class="title">Allocation Price Details of Transfer Out <span
+                            class="highlight">{{item.data.mov_id}}</span></div>
+                    <allocation-price-details [allocationData]="item.data.allocationData">
+                    </allocation-price-details>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

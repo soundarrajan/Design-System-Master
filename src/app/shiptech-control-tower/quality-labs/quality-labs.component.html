@@ -1,0 +1,115 @@
+<div class="controlTower-content" [ngClass]="[theme ? 'dark-theme' : 'light-theme', newScreen ? 'new' : '']">
+    <div class="header-content">
+        <div *ngIf='!newScreen' class="title">
+            <div class="head">Failed Lab Results</div>
+        </div>
+        <div class="filters">
+            <!-- <div class="by-datePicker" [ngClass]="newScreen ? 'new' : ''">
+                
+                <div id="custom-form-field" [ngClass]="{'darkTheme':switchTheme,'lightTheme':!switchTheme}">
+                    <mat-form-field class="without-search datePicker" appearance="legacy">
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                            <mat-icon matDatepickerToggleIcon class="mini-dateIcon">
+                            </mat-icon>
+                        </mat-datepicker-toggle>
+                        <span class="from">From</span>
+                        <input matInput [matDatepicker]="picker" [formControl]="today" (focus)="picker.open()">
+                        <mat-datepicker #picker [panelClass]="switchTheme?'datepicker-darktheme':''"></mat-datepicker>
+                    </mat-form-field>
+                 </div>
+                 <div class="today">
+                    <span>-</span><p>To Today</p>
+                 </div>
+            </div> -->
+            <div id="menu-button" style="float: left;" [matMenuTriggerFor]="togglecolumn">
+                <div class="menu-icon-img"></div>
+                <div id="menu-button-dots">
+                    <div id="dot1" class="dot"></div>
+                    <div id="dot2" class="dot"></div>
+                    <div id="dot3" class="dot"></div>
+                    <div id="dot4" class="dot"></div>
+                    <div id="dot5" class="dot"></div>
+                    <div id="dot6" class="dot"></div>
+                    <div id="dot7" class="dot"></div>
+                    <div id="dot8" class="dot"></div>
+                    <div id="dot9" class="dot"></div>
+                </div>
+            </div>
+            <div class="filter-list-containerV2">
+                <app-filter-list style="height: inherit;" [filterList]="filterList"
+                    (toggleChipSelected)="filterGridNew($event)" [switchTheme]="theme"></app-filter-list>
+            </div>
+            <!-- <div class="by-action"> -->
+            <!-- <span class="filter-by" *ngIf='newScreen'>Filter By:</span> -->
+            <!-- <div class="header-chip-container">
+                    <app-filter-list style="height: inherit;" [filterList]="filterList" (toggleChipSelected)="filterGridNew($event)"></app-filter-list>
+                </div> -->
+            <!-- <div class="action" [ngClass]="!toggleNewFilter ? 'selected-blue' : ''" (click)="filterGridNew('New')"><span>New</span><div class="count">16</div></div>
+                <div class="action" [ngClass]="!toggleMASFilter ? 'selected-amber' : ''" (click)="filterGridMAS('Marked as Seen')"><span>Marked as seen</span><div class="count">6</div></div>
+                <div class="action" [ngClass]="!toggleResolvedFilter ? 'selected-green' : ''" (click)="filterGridResolved('Resolved')"><span>Resolved</span><div class="count">4</div></div> -->
+            <!-- </div> -->
+            <!-- <div class="splitter"></div>
+            <div class="by-nonResponseDays">
+                <div class="text">Filter by Non-Response days:</div>
+                <div class="action"><span>7 Days</span><div class="count">4</div></div>
+                <div class="action"><span>15 Days</span><div class="count">4</div></div>
+            </div> -->
+        </div>
+    </div>
+    <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+        <div class="tbl-context no-border" [ngClass]="[theme ? 'dark-theme' : 'light-theme']">
+            <div class="p-tb-10">
+                <span>
+                    <img class="p-r-10"
+                        [src]="theme ? '../../../assets/customicons/context-save-as-dark.svg' : '../../../assets/customicons/context-save-as-new.svg'"
+                        alt="Savc As icon">
+                </span>
+                <span>Save New Preference</span>
+            </div>
+            <div class="p-tb-10">
+                <span>
+                    <img class="p-r-10"
+                        [src]="theme ? '../../../assets/customicons/context-update-dark.svg' : '../../../assets/customicons/context-update.svg'"
+                        alt="Savc As icon">
+                </span>
+                <span>Update Preference</span>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+            <div class="p-tb-10" style="cursor: pointer;" (click)="showFilterDescription()">
+                <span>
+                    <img class="p-r-10"
+                        [src]="theme ? '../../../assets/customicons/filter-desc-dark.svg' : '../../../assets/customicons/filter-desc-light.svg'"
+                        alt="Savc As icon">
+                </span>
+                <span>Show Filter description</span>
+            </div>
+        </div>
+    </mat-menu>
+    <div class="filter-description" *ngIf="showFilterDesc">
+        <div class="text-label">
+            <span>Filtered by:</span>
+            <span class="circle"></span>
+            <span>Survey date in the range: <span class="value">Fri 19/11/2021 - Thu 25/11/2021</span></span>
+            <span class="circle" style="margin-left: 15px;"></span>
+            <span>Vessel not contains <span class="value">A la Marine</span></span>
+        </div>
+        <div class="close-icon" (click)="hideFilterDescription()"></div>
+    </div>
+    <div class="grid-container">
+        <div class="agGrid-v2" style="margin: 0">
+            <div style="width:100%;height: 100%;">
+                <ag-grid-angular
+                    [ngStyle]="newScreen?{'height': 'calc( 100vh - 182px )'} : {'height': 'calc( 100vh - 220px'}"
+                    style="width: 100%;" [gridOptions]="gridOptions_data" domLayout='normal'
+                    class="ag-theme-material ag-grid-v2 angular-v9" [rowSelection]="rowSelection"
+                    (selectionChanged)="onSelectionChanged($event)" (rowSelected)="onRowSelected($event)"
+                    (window:resize)="onResize($event)" (rowClicked)="onrowClicked($event)"></ag-grid-angular>
+            </div>
+        </div>
+    </div>
+    <div class="footer" [ngClass]="newScreen ? 'new' : ''">
+        <app-footer-v2 [id]="'controlTower-qualityLabs'" [singleGrid]="true" [doublePagination]="true"
+            [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+    </div>
+</div>
+<div class="mainFooterWhiteSpace" [ngClass]="newScreen ? 'new' : ''"></div>

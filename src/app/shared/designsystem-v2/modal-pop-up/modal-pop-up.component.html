@@ -1,0 +1,34 @@
+<div [ngClass]="{'darkTheme':!(properties.data.lightTheme)}">
+  <!-- Header Starts -->
+  <div class="popup-header">
+    <div class="title">{{properties.data.title}}</div>
+    <div class="action-btns">
+      <ng-container *ngFor="let btn of properties.data.actionButtons">
+        <button *ngIf="btn.display" class="blue-action-button" [mat-dialog-close]="true">{{btn.btnName}}</button>
+      </ng-container>
+      <span *ngIf="properties.data.displayClose" class="seperator-line"></span>
+      <span *ngIf="properties.data.displayClose" class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+    </div>
+  </div>
+  <!-- Header Ends -->
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content [ngClass]="{'customContentBorder':properties.data.displayContentBorder}">
+    <div class="modal-content-container">
+      <!-- Your modal template component starts here -->
+      <ng-template #renderComponentHere></ng-template>
+      <!-- Your modal template component ends here -->
+    </div>
+  </mat-dialog-content>
+  
+  <ng-contaner *ngIf="properties.data.showFooter">
+    <mat-divider></mat-divider>
+
+    <!-- Footer Starts -->
+    <div class="popup-footer">
+
+    </div>
+    <!-- Footer Ends -->
+  </ng-contaner>
+</div>

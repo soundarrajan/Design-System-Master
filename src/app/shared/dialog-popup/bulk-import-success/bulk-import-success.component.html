@@ -1,0 +1,15 @@
+<div class="bulk-import-transaction">
+  <p class="m-l-9">Bulk Import Success</p>
+  <mat-icon id="dialogCloseButton" matSuffix class="float-right">close</mat-icon>
+  <hr>
+  <img id="success-icon" src="../../../assets/customicons/success_g.svg" alt="list">
+  <div class="browse-file success-text">
+    
+    <div class="text">125 LCFS Transactions succesfully imported.</div>
+    <div class="text text-center">Do you wish to updated the movements?</div>
+  </div>
+  <mat-dialog-actions class="bulk-success">
+    <button class="btn-big red-button" mat-button [mat-dialog-close]="true" (click)="bulkImportError();">No</button>
+    <button class="btn-big blue-button" mat-button [mat-dialog-close]="true" CdkFocusInitial>Yes</button>
+  </mat-dialog-actions>
+  </div>

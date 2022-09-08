@@ -1,0 +1,7 @@
+<div class="badge-header-v2">
+	<div *ngFor="let content of contentMap1;let i = index"
+		[ngClass]="i !== (contentMap1.length - 1) ? 'border_line ' + content?.titleClass : content?.titleClass">
+		{{content.title}}
+		<div [ngClass]="content?.dataKeyClass">{{content.dataKey}}</div>
+	</div>
+</div>

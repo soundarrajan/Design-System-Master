@@ -1,0 +1,516 @@
+<!-- <div class="container pt-5"> -->
+
+
+  <!-- NEW LOCATION POPUP -->
+    <!-- <p>New Small Location Popup</p> -->
+
+    <!-- Small location popup -->
+    <!-- <div class="port-wrapper"> -->
+      <!-- <mat-icon id="box-arrow">play_arrow</mat-icon> -->
+      <!-- <div id="popupActionRow" class="row">
+        <img id="popupExpand" (click)="this.expandClicked.emit()" class="popup-action" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">
+        <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <h3 class="title">Location Information</h3>
+        </div>
+
+        <div id="date-section" class="col-8 text-right pt-0">
+          <div id="supplier-logo"> -->
+            <!-- <img src="../../../assets/customimages/suppliers/mabux-logo.png" alt="Mabux Logo" style="width: 80px; height: auto; float: right;"> -->
+            <!-- <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="SP Logo"
+              style="width: 80px; height: auto; float: right;">
+          </div>
+
+          <div style="padding: 15px; box-shadow: 0px 4px 5px -4px rgba(0,0,0,0.3); border-radius: 4px;">
+            <div class="muted-label d-flex align-items-center justify-content-between">Price as on: <span class="fs16 text-white ml-2">10/09/2018</span></div>
+            <div class="muted-label d-flex align-items-center justify-content-between">Barge charges: <span class="fs16 text-white ml-2">$18.00</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" style="position: relative; top: -40px;">
+
+        <div class="col-auto mr-auto port-name" matTooltip="Charleston" [matTooltipShowDelay]="500">
+
+          <div class="pr-3">
+            <img class="port-icon" src="../../../assets/customicons/port/major-port2.svg" alt="port-icon">
+          </div>
+
+          <div style="width:70%;">
+            <div class="truncate-160 text-left">Charleston</div>
+          </div>
+
+          <div matBadge="3" matBadgeColor="warn" matBadgeOverlap="true" matBadgePosition="before">
+              <img class="comment-icon" src="../../../assets/customicons/comment-dark.svg" alt="comment_icon">
+            </div>
+        </div> -->
+
+        <!-- <div class="col-auto pt10 pointer">
+          <div class="float-right" matBadge="3" matBadgeColor="warn" matBadgeOverlap="true" matBadgePosition="before">
+            <img class="comment-icon" src="../../../assets/customicons/comment-dark.svg" alt="comment_icon">
+          </div>
+        </div> -->
+
+      <!-- </div>
+
+      <div class="row" style="position: relative; top: -20px;">
+        <table id="location-popup" class="table table-responsive table-borderless">
+          <thead>
+            <tr>
+              <th>Fuel Type</th>
+              <th>$/mt</th>
+              <th class="br-dark">+/-</th>
+              <th>Fuel Type</th>
+              <th>$/mt</th>
+              <th class="br-dark">+/-</th>
+              <th>Fuel Type</th>
+              <th>$/mt</th>
+              <th class="br-dark">+/-</th>
+              <th>Fuel Type</th>
+              <th>$/mt</th>
+              <th>+/-</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="truncate-50">HSFO</div>
+              </td>
+              <td>
+                <div class="truncate-f40">423.00</div>
+              </td>
+              <td class="br-dark red-text">
+                <div class="truncate-f35">1.00</div>
+              </td>
+              <td>
+                <div class="truncate-50">VLSFO</div>
+              </td>
+              <td>
+                <div class="truncate-f40">423.00</div>
+              </td>
+              <td class="br-dark green-text">
+                <div class="truncate-f35">1.00</div>
+              </td>
+              <td>
+                <div class="truncate-50">ULSFO</div>
+              </td>
+              <td>
+                <div class="truncate-f40">476.00</div>
+              </td>
+              <td class="br-dark green-text">
+                <div class="truncate-f35">2.00</div>
+              </td>
+              <td>
+                <div class="truncate-50">DOGO</div>
+              </td>
+              <td>
+                <div class="truncate-f40">680.00</div>
+              </td>
+              <td class="red-text">
+                <div class="truncate-f35">1.50</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> -->
+    <!-- Small Location Popup end -->
+
+  
+
+
+<!-- </div> -->
+
+<!--Version 2-->
+
+<div class="container pt-5">
+
+
+  <!-- NEW LOCATION POPUP -->
+    <!-- <p>New Small Location Popup</p> -->
+
+    <!-- Small location popup -->
+    <div class="port-wrapper port-wrapper-v2 status-green">
+      <!-- <mat-icon id="box-arrow">play_arrow</mat-icon> -->
+      <div id="popupActionRow" class="row">
+        <img id="popupExpand" (click)="this.expandClicked.emit()" class="popup-action" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">
+        <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+      </div>
+      
+      <div class="col-4 title-wrapper">
+        <h3 class="title">Location Information</h3>
+      </div>
+      
+      <div class="vessel-popup-head row align-items-center mt0">
+        <div class="highlight-vessel"></div>
+        <h3 class="vessel-name ptb0">Amsterdom</h3>
+        <div class="notification">
+          <div class="alarm-icon"></div>
+          <div class="count">3</div>
+        </div>
+        <div class="comments">
+            <div class="comment-icon"></div>
+            <div class="count">3</div>
+        </div>
+      </div>
+
+      <div class="row">
+          <table id="location-popup" class="table table-borderless full-width mt10">
+            <thead>
+              <tr>
+                <th>Fuel Type</th>
+                <th><span>HSFO</span></th>
+                <th><span>VLSFO</span></th>
+                <th><span>ULSFO</span></th>
+                <th><span>DOGO</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="">Price</div>
+                </td>
+                <td>
+                  <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                </td>
+                <td>
+                    <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                </td>
+                <td>
+                    <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                </td>
+                <td>
+                    <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+            
+    
+            <div id="date-section" class="col-8 text-right pt-0">
+              <div class="date-block">
+                <div class="muted-label d-flex align-items-center justify-content-between">Price as on: <span class="fs16 text-white ml-2">10/09/2018</span></div>
+                <div class="muted-label d-flex align-items-center justify-content-between">Barge charges: <span class="fs16 text-white ml-2">$18.00</span></div>
+              </div>
+            </div>
+
+            <div class="col-4">
+                <div id="supplier-logo">
+                  <span>Market Prices provided by</span>
+                    <!-- <img src="../../../assets/customimages/suppliers/mabux-logo.png" alt="Mabux Logo" style="width: 80px; height: auto; float: right;"> -->
+                    <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="SP Logo"
+                      style="width: 80px; height: auto; float: right;">
+                  </div>
+            </div>
+    
+          </div>
+      
+
+ 
+
+          <div class="popup-pointer"></div>
+    </div>
+    <!-- Small Location Popup end -->
+
+  
+
+
+</div>
+
+<!--red-->
+<div class="container pt-5">
+
+
+    <!-- NEW LOCATION POPUP -->
+      <!-- <p>New Small Location Popup</p> -->
+  
+      <!-- Small location popup -->
+      <div class="port-wrapper port-wrapper-v2 status-red">
+        <!-- <mat-icon id="box-arrow">play_arrow</mat-icon> -->
+        <div id="popupActionRow" class="row">
+          <img id="popupExpand" (click)="this.expandClicked.emit()" class="popup-action" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">
+          <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+        </div>
+        
+        <div class="col-4 title-wrapper">
+          <h3 class="title">Location Information</h3>
+        </div>
+        
+        <div class="vessel-popup-head row align-items-center mt0">
+          <div class="highlight-vessel"></div>
+          <h3 class="vessel-name ptb0">Amsterdom</h3>
+          <div class="notification">
+            <div class="alarm-icon"></div>
+            <div class="count">3</div>
+          </div>
+          <div class="comments">
+              <div class="comment-icon"></div>
+              <div class="count">3</div>
+          </div>
+        </div>
+  
+        <div class="row">
+            <table id="location-popup" class="table table-borderless full-width mt10">
+              <thead>
+                  <tr>
+                      <th>Fuel Type</th>
+                      <th><span>HSFO</span></th>
+                      <th><span>VLSFO</span></th>
+                      <th><span>ULSFO</span></th>
+                      <th><span>DOGO</span></th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="">Price</div>
+                  </td>
+                  <td>
+                    <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="row">
+              
+      
+              <div id="date-section" class="col-8 text-right pt-0">
+                <div class="date-block">
+                  <div class="muted-label d-flex align-items-center justify-content-between">Price as on: <span class="fs16 text-white ml-2">10/09/2018</span></div>
+                  <div class="muted-label d-flex align-items-center justify-content-between">Barge charges: <span class="fs16 text-white ml-2">$18.00</span></div>
+                </div>
+              </div>
+  
+              <div class="col-4">
+                  <div id="supplier-logo">
+                    <span>Market Prices provided by</span>
+                      <!-- <img src="../../../assets/customimages/suppliers/mabux-logo.png" alt="Mabux Logo" style="width: 80px; height: auto; float: right;"> -->
+                      <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="SP Logo"
+                        style="width: 80px; height: auto; float: right;">
+                    </div>
+              </div>
+      
+            </div>      
+  
+            <div class="popup-pointer"></div>
+      </div>
+      <!-- Small Location Popup end -->
+  
+    
+  
+  
+  </div>
+<!--amber-->
+<div class="container pt-5">
+
+
+    <!-- NEW LOCATION POPUP -->
+      <!-- <p>New Small Location Popup</p> -->
+  
+      <!-- Small location popup -->
+      <div class="port-wrapper port-wrapper-v2 status-amber">
+        <!-- <mat-icon id="box-arrow">play_arrow</mat-icon> -->
+        <div id="popupActionRow" class="row">
+          <img id="popupExpand" (click)="this.expandClicked.emit()" class="popup-action" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">
+          <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+        </div>
+        
+        <div class="col-4 title-wrapper">
+          <h3 class="title">Location Information</h3>
+        </div>
+        
+        <div class="vessel-popup-head row align-items-center mt0">
+          <div class="highlight-vessel"></div>
+          <h3 class="vessel-name ptb0">Amsterdom</h3>
+          <div class="notification">
+            <div class="alarm-icon"></div>
+            <div class="count">3</div>
+          </div>
+          <div class="comments">
+              <div class="comment-icon"></div>
+              <div class="count">3</div>
+          </div>
+        </div>
+  
+        <div class="row">
+            <table id="location-popup" class="table table-borderless full-width mt10">
+              <thead>
+                  <tr>
+                      <th>Fuel Type</th>
+                      <th><span>HSFO</span></th>
+                      <th><span>VLSFO</span></th>
+                      <th><span>ULSFO</span></th>
+                      <th><span>DOGO</span></th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="">Price</div>
+                  </td>
+                  <td>
+                    <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="row">
+              
+      
+              <div id="date-section" class="col-8 text-right pt-0">
+                <div class="date-block">
+                  <div class="muted-label d-flex align-items-center justify-content-between">Price as on: <span class="fs16 text-white ml-2">10/09/2018</span></div>
+                  <div class="muted-label d-flex align-items-center justify-content-between">Barge charges: <span class="fs16 text-white ml-2">$18.00</span></div>
+                </div>
+              </div>
+  
+              <div class="col-4">
+                  <div id="supplier-logo">
+                    <span>Market Prices provided by</span>
+                      <!-- <img src="../../../assets/customimages/suppliers/mabux-logo.png" alt="Mabux Logo" style="width: 80px; height: auto; float: right;"> -->
+                      <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="SP Logo"
+                        style="width: 80px; height: auto; float: right;">
+                    </div>
+              </div>
+      
+            </div> 
+  
+   
+  
+            <div class="popup-pointer"></div>
+      </div>
+      <!-- Small Location Popup end -->
+  
+    
+  
+  
+  </div>
+<!--blue-->
+<div class="container pt-5">
+
+
+    <!-- NEW LOCATION POPUP -->
+      <!-- <p>New Small Location Popup</p> -->
+  
+      <!-- Small location popup -->
+      <div class="port-wrapper port-wrapper-v2 status-blue">
+        <!-- <mat-icon id="box-arrow">play_arrow</mat-icon> -->
+        <div id="popupActionRow" class="row">
+          <img id="popupExpand" (click)="this.expandClicked.emit()" class="popup-action" src="../../../assets/customicons/expand-btn.svg" alt="Expand-Btn">
+          <img id="popupClose" class="popup-action" src="../../../assets/customicons/close-btn.svg" alt="Close-Btn">
+        </div>
+        
+        <div class="col-4 title-wrapper">
+          <h3 class="title">Location Information</h3>
+        </div>
+        
+        <div class="vessel-popup-head row align-items-center mt0">
+          <div class="highlight-vessel"></div>
+          <h3 class="vessel-name ptb0">Amsterdom</h3>
+          <div class="notification">
+            <div class="alarm-icon"></div>
+            <div class="count">3</div>
+          </div>
+          <div class="comments">
+              <div class="comment-icon"></div>
+              <div class="count">3</div>
+          </div>
+        </div>
+  
+        <div class="row">
+            <table id="location-popup" class="table table-borderless full-width mt10">
+              <thead>
+                  <tr>
+                      <th>Fuel Type</th>
+                      <th><span>HSFO</span></th>
+                      <th><span>VLSFO</span></th>
+                      <th><span>ULSFO</span></th>
+                      <th><span>DOGO</span></th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="">Price</div>
+                  </td>
+                  <td>
+                    <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value red-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  <td>
+                      <div class="price-value green-value">$489.00 <span class="arrow"></span><span class="value">1.5</span></div>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="row">
+              
+      
+              <div id="date-section" class="col-8 text-right pt-0">
+                <div class="date-block">
+                  <div class="muted-label d-flex align-items-center justify-content-between">Price as on: <span class="fs16 text-white ml-2">10/09/2018</span></div>
+                  <div class="muted-label d-flex align-items-center justify-content-between">Barge charges: <span class="fs16 text-white ml-2">$18.00</span></div>
+                </div>
+              </div>
+  
+              <div class="col-4">
+                  <div id="supplier-logo">
+                    <span>Market Prices provided by</span>
+                      <!-- <img src="../../../assets/customimages/suppliers/mabux-logo.png" alt="Mabux Logo" style="width: 80px; height: auto; float: right;"> -->
+                      <img src="../../../assets/customimages/suppliers/spglobal.svg" alt="SP Logo"
+                        style="width: 80px; height: auto; float: right;">
+                    </div>
+              </div>
+      
+            </div>
+  
+   
+  
+            <div class="popup-pointer"></div>
+      </div>
+      <!-- Small Location Popup end -->
+  
+    
+  
+  
+  </div>

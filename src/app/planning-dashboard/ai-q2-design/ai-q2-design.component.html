@@ -1,0 +1,111 @@
+<div class="bunkering-range new-design">
+  <div class="chips-block float-left">
+      <div class="title">
+          Best Price based on:
+      </div>
+    <div class="chips">
+       <div class="custom-chip small-chip float-left active price-btn" (click)="fuelChipClick($event)">
+           <div class="truncate-100 text">
+             Market Prices
+           </div>
+       </div>
+       <div class="custom-chip small-chip float-left price-btn" (click)="fuelChipClick($event)">
+           <div class="truncate-100 text">
+             Contract Prices
+           </div>
+       </div>
+       <div class="custom-chip small-chip float-left price-btn" (click)="fuelChipClick($event)">
+           <div class="truncate-100 text">
+             Spot Prices
+           </div>
+       </div>
+    </div>
+    <div class="title">
+      Bunkering Range for <span>Tom Lilly</span> based on<span>:</span>
+    </div>
+  </div>
+  <div class="fillterchips-container float-left">
+      <div *ngFor="let item of tagfillterData; let i = index">
+      <div class="status-badge" (click)="filterChipClick(item)" [ngStyle]="{'opacity': selectedFillterTag==item.name ? '1' : selectedFillterTag==''?'1':'0.4','color': selectedFillterTag==item.name ? '#FFFFFF' : selectedFillterTag==''?'#FFFFFF':'#AEB3BC' }">
+        {{item.name}}
+        <div class="status-indicator">
+          <div class="count">{{item.count}}</div>
+          <div class="bar" [ngStyle]="{'background-color':item.color}"></div>
+        </div>
+      </div>   
+      </div> 
+  </div>
+
+</div>
+
+<div class="close-Ai">
+Close
+</div>
+
+<!-- Fuel Indicator-->
+<div style="margin-left:10px;">
+<div>FUEL INDICATOR</div>
+<div style="height: 17px; clear:both;margin: 5px;">class: amber</div>
+<div class="fuel-indicator-block">
+  <div class="best-price" style="display:none;">
+      <div class="triangle-right"><div class="triangle-border"></div></div>
+      <div class="text"><span>BEST PRICE</span></div>
+      <div class="divider" style="height: 8px;border-left: 0.6px solid #27AE60;"></div>
+      <div class="price"><span>$460.20</span></div>
+  </div>
+  <div class="fuel-indicator amber">
+    <div class="text"><span>Est. ROB</span></div>
+    <div class="divider"></div>
+    <div class="qty">400<span>MT</span></div>
+    <div class="divider"></div>
+  </div>
+</div>
+
+<div style="height: 17px; clear:both;margin: 5px;">class: red</div>
+<div class="fuel-indicator-block">
+    <div class="best-price" style="display:none;">
+        <div class="triangle-right"><div class="triangle-border"></div></div>
+        <div class="text"><span>BEST PRICE</span></div>
+        <div class="divider" style="height: 8px;border-left: 0.6px solid #27AE60;"></div>
+        <div class="price"><span>$460.20</span></div>
+    </div>
+    <div class="fuel-indicator red">
+      <div class="text"><span>Est. ROB</span></div>
+      <div class="divider"></div>
+      <div class="qty">400<span>MT</span></div>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <div style="height: 17px; clear:both;margin: 5px;">class: blue</div>
+  <div class="fuel-indicator-block">
+      <div class="best-price">
+          <div class="triangle-right"><div class="triangle-border"></div></div>
+          <div class="text"><span>BEST PRICE</span></div>
+          <div class="divider" style="height: 8px;border-left: 0.6px solid #27AE60;"></div>
+          <div class="price"><span>$460.20</span></div>
+      </div>
+      <div class="fuel-indicator blue">
+        <div class="text"><span>Est. ROB</span></div>
+        <div class="divider"></div>
+        <div class="qty">400<span>MT</span></div>
+        <div class="divider"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-left: 10px;margin-top: 30px">
+    <div>DARK PORT ICONS</div>
+    <div class="dark-port-icon">
+        <img  src="../../../assets/images/dark-port-icon.svg" alt="Port Icon">
+    </div>
+    <div class="dark-port-icon">
+        <img  src="../../../assets/images/dark-marker.svg" alt="Port Icon">
+    </div>
+  </div>
+
+  <div style="margin-left: 10px;margin-top: 30px">
+      <div>MID POINT</div>
+      <div class="mid-point">
+          <img class="mid-point-svg" src="../../../assets/customicons/port/mid-point.svg" alt="Mid Point Icon">
+      </div>
+  </div>

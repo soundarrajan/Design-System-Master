@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  
+
+  <meta charset="utf-8">
+  <title>Inatech - Design System</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FAVICONS -->
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>  
+  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdVK16SZowTKDNWy5NMc6opVw_pqmsdig"></script>
+</head>
+
+<body>
+  <app-root></app-root>
+  <script>
+
+    function clearItems(){
+      localStorage.setItem('selectedROBOption', null);
+      localStorage.removeItem('selectedROBOption');
+
+      localStorage.setItem('lastVesselFilterConditionApplied', null);
+      localStorage.removeItem('lastVesselFilterConditionApplied');
+
+      localStorage.setItem('filteredVessels', null);
+      localStorage.removeItem('filteredVessels');
+
+      localStorage.setItem('SearchedVesselIMONO', null);
+      localStorage.removeItem('SearchedVesselIMONO');
+
+      localStorage.setItem('appSettings', null);
+      localStorage.removeItem('appSettings');
+
+      localStorage.setItem('LastVesselFilterROB', null);
+      localStorage.removeItem('LastVesselFilterROB');
+    }
+
+    window.onload=function(e){
+      clearItems();
+    }
+
+    window.onabort=function(e){
+      clearItems();
+    }
+
+    window.onunload=function(e){
+      clearItems();
+    }
+  </script>  
+    
+    
+</body>
+
+</html>

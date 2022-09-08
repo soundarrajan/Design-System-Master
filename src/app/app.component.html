@@ -1,0 +1,16 @@
+
+<inatech-nav
+(onRefreshCache) ="this.print('onRefreshCache')" 
+(onRefreshMenu) ="this.print('onRefreshMenu')"  
+(onLogout) ="onLogout()" 
+(onProfile)="this.print('onProfile')" 
+(onHelp)="this.print('onHelp')"
+(onBreadcrumbClick)="this.print('onBreadcrumbClick')"
+(onAppRedirectClick)="this.print('App Redirect Clicked')"
+[notificationList]="alertsArray"
+(notificationClick)="clickNotify($event)"
+(clearAllNotification)="clearNotify()"
+(deleteNotification)="deleteNotification($event)" (notificationSettingClick)="settingsClicked()"
+[(showSettingNotification)] = "showNotificationSettings" [showHeader]="showHeader"
+[showNotification]="false" [isSmartTrader]="false" [isDesignSystem]="true" [version_no]="'2.0.1'">
+</inatech-nav>

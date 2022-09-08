@@ -1,0 +1,19 @@
+<div id="audit-log">
+  <div class="row">
+    <!-- <div class="col-md-12" style="display: flex;justify-content: flex-end;">
+      <div class="badge-header">
+        <div class="label">Displaying Mail Log:</div>
+        <div><span class="from-to">From</span>
+          <div class="value">11/09/2020</div>
+        </div>
+        <div> <span class="from-to">To</span>
+          <div class="value">12/09/2020</div>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-12 pd-0" style="width:100%;">
+      <ag-grid-angular domLayout='autoHeight' style="width: 100%;height:100%;"
+        [gridOptions]="gridOptions_emailLog" class="ag-theme-material ag-audit-log angular-v9"></ag-grid-angular>
+    </div>
+  </div>
+</div>

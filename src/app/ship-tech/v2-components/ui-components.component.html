@@ -1,0 +1,142 @@
+<div class="component-container uiComponent-v2">
+    <!-- COMPONENT TITLE -->
+    <div class="component-title">
+        {{componentDetails?.title}}
+    </div>
+    <div class="component-viewer">
+        <!-- COMPONENT NAME WITH ACTIONS -->
+        <div class="component-title" [ngClass]="{'darkTheme':switchTheme}">
+            <div class="component-title-spacer">{{componentDetails?.displayName}}</div>
+            <button mat-icon-button="" *ngIf="componentDetails?.enableCodeView" type="button" aria-label="View source"
+                [matTooltip]="!showCode?'View source':'Hide source'"
+                class="mat-focus-indicator mat-icon-button mat-button-base" (click)="viewSourceCode();">
+                <mat-icon [ngClass]="{'darkTheme':switchTheme}">code</mat-icon>
+            </button>
+            <div class="switchThemeIcon"
+                [ngClass]="{'disableSwitch':!componentDetails?.enableThemeSwitch,'darkTheme':componentDetails?.enableThemeSwitch && switchTheme}"
+                [matTooltip]="switchTheme?'Switch to light theme':'Switch to dark theme'"
+                (click)="switchTheme = !switchTheme"></div>
+        </div>
+        <!-- SOURCE CODE -->
+        <div class="component-code-view" *ngIf="showCode" [ngClass]="{'darkTheme':switchTheme}">
+            <mat-tab-group>
+                <mat-tab label="HTML">
+                    <div *ngIf="!sourceFetchError3" class="copy-button">
+                        <button mat-icon-button type="button" (click)="copySource(copyHTMLContent)"
+                            [matTooltip]="'Copy source code'" aria-label="Copy source code to clipboard">
+                            <mat-icon [ngClass]="{'darkTheme':switchTheme}">content_copy</mat-icon>
+                        </button>
+                    </div>
+                    <pre
+                        class="display-content">{{!sourceFetchError3?templateSource:"Failed to load source code"}}</pre>
+                </mat-tab>
+                <mat-tab label="TS">
+                    <div *ngIf="!sourceFetchError1" class="copy-button">
+                        <button mat-icon-button type="button" (click)="copySource(copyTSContent)"
+                            [matTooltip]="'Copy source code'" aria-label="Copy source code to clipboard">
+                            <mat-icon [ngClass]="{'darkTheme':switchTheme}">content_copy</mat-icon>
+                        </button>
+                    </div>
+                    <pre
+                        class="display-content">{{!sourceFetchError1?componentSource:"Failed to load source code"}}</pre>
+                </mat-tab>
+                <mat-tab label="CSS">
+                    <div *ngIf="!sourceFetchError2" class="copy-button">
+                        <button mat-icon-button type="button" (click)="copySource(copyCSSContent)"
+                            [matTooltip]="'Copy source code'" title="Copy source code"
+                            aria-label="Copy source code to clipboard">
+                            <mat-icon [ngClass]="{'darkTheme':switchTheme}">content_copy</mat-icon>
+                        </button>
+                    </div>
+                    <pre class="display-content">{{!sourceFetchError2?stylesSource:"Failed to load source code"}}</pre>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <!-- COMPONENT VIEW -->
+        <div [ngSwitch]="componentSelectedKey" class="component-body" [ngClass]="{'darkTheme':switchTheme}">
+            <!-- CHIPS -->
+            <div *ngSwitchCase="'chips-group'">
+                <app-chips-group></app-chips-group>
+            </div>
+            <!-- TABS -->
+            <div *ngSwitchCase="'tabs'">
+                <div class="row" style="display: flex;align-items: center;width: 100%;margin-top: -31px !important;">
+                    <div *ngIf="componentDetails.key=='tabs'" style="width: 100%;">
+                        <app-tabs [data]="customTabData"></app-tabs>
+                    </div>
+                    <div *ngIf="componentDetails.key=='tabs_header'" style="width: 100%;">
+                        <app-tabs-header [data]="customTabHeaderData"></app-tabs-header>
+                    </div>
+                </div>
+            </div>
+            <!-- AUTO-COMPLETE WITH SEARCH POPUP -->
+            <div *ngSwitchCase="'autocomplete'">
+                <app-autocomplete-with-search [switchTheme]="switchTheme"></app-autocomplete-with-search>
+            </div>
+            <!-- BUTTON TOGGLE -->
+            <div *ngSwitchCase="'buttonToggle'">
+                <app-more-button-toggle></app-more-button-toggle>
+            </div>
+            <!-- EXPANSION POPUP -->
+            <div *ngSwitchCase="'expansion-popup'">
+                <app-expansion-popup></app-expansion-popup>
+            </div>
+            <!-- ADD/DELETE INFORMATION -->
+            <div *ngSwitchCase="'add-delete-info'">
+                <app-add-delete-info [category]="componentDetails.key"></app-add-delete-info>
+            </div>
+            <!-- Select Radio -->
+            <div *ngSwitchCase="'select-radio'">
+                <app-select-radio></app-select-radio>
+            </div>
+            <!-- Badges -->
+            <div *ngSwitchCase="'badge'">
+                <!-- normal -->
+                <div class="col-md-6">
+                    <app-dynamic-badge *ngIf="componentDetails.key=='badge'" [category]="componentDetails.key"
+                        [type]="'single'"></app-dynamic-badge>
+                </div>
+                <!-- multi with subtext,dot and divider -->
+                <div class="col-md-6 m-t-20">
+                    <app-dynamic-badge *ngIf="componentDetails.key=='badge'" [category]="componentDetails.key"
+                        [dropdown]="false" [items]="badgeitems" [type]="'multi'" [dot]="true" [divider]="true">
+                    </app-dynamic-badge>
+                </div>
+                <!-- multi without subtext,dot and divider -->
+                <div class="col-md-6 m-t-20">
+                    <app-dynamic-badge *ngIf="componentDetails.key=='badge'" [category]="componentDetails.key"
+                        [dropdown]="false" [items]="badgeitems" [type]="'multi'" [dot]="false" [divider]="false">
+                    </app-dynamic-badge>
+                </div>
+                <!-- multi without subtext,dot and divider -->
+                <div class="col-md-6 m-t-20">
+                    <app-dynamic-badge *ngIf="componentDetails.key=='badge-dropdown'" [category]="componentDetails.key"
+                        [dropdown]="true" [items]="badgeitemsDropdown" [type]="'multi'" [dot]="false" [divider]="false">
+                    </app-dynamic-badge>
+                </div>
+            </div>
+
+            <!-- Pop-up Modal -->
+            <div *ngSwitchCase="'modal'">
+                <div class="d-flex" style="flex-wrap: wrap;" style="margin: 10px;">
+                    <button class="btnV2 primary" label="Modal1"(click)="openDialog1();">Modal1</button>
+                    <button class="btnV2 primary" label="Modal2" (click)="openDialog2();">Modal2</button>
+                </div>
+            </div>
+
+            <!-- AG GRID -->
+            <div *ngSwitchCase="'aggrid'">
+                <app-editable-grid></app-editable-grid>
+            </div>
+        </div>
+    </div>
+    <!-- COMPONENT DESCRIPTION -->
+    <div class="component-details"
+        *ngIf="componentDetails?.descriptionList && componentDetails.descriptionList.length > 0;">
+        <div *ngFor="let item of componentDetails.descriptionList">
+            <h5>{{item.subTitle}}</h5>
+            <p>{{item.subDesc}}</p>
+            <br>
+        </div>
+    </div>
+</div>

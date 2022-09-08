@@ -1,0 +1,28 @@
+<div class="summaryLabel-component-v2">
+	<div class="row">
+		<div class="col-md-9" style="display: flex;justify-content: flex-start;">
+			<div class="badge-header">
+				<div><span class="label">Trade Date</span>
+					<div class="value">11/09/2020</div>
+				</div>
+				<div class="border_line"></div>
+				<div> <span class="label">Index</span>
+					<div class="value">ICE Brent Oct 2020</div>
+				</div>
+				<div class="border_line"></div>
+				<div><span class="label">Period</span>
+					<div class="value">Oct 2020</div>
+				</div>
+				<div class="border_line"></div>
+				<div><span class="label">Expiry Date</span>
+					<div class="value">11/09/2020</div>
+				</div>
+			</div>
+			<div class="total-exposure">
+				<div><span class="label">Total Exposure</span>
+					<div class="value">42,000 GAL</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

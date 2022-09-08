@@ -1,0 +1,39 @@
+p {
+  font-family: Lato;
+}.badge-header-v2 {
+  width: 198px !important;
+  height: 40px;
+  background: #f1f1f2;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #252a32;
+  padding: 6px;
+  display: flex;
+  justify-content: space-around;
+  .readonly-split-fields {
+    width: 45%;
+  }
+  .value {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .status,.status-empty,.status-planned {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #252A32;
+  }
+  .status-verified {
+    color: #96CF55;
+  }
+  .border_line {
+    padding-right: 10px;
+    border-right: 1px solid #252a32;
+  }
+}

@@ -1,0 +1,226 @@
+<mat-tab-group class="tab-bar-blue">
+  <mat-tab label="RECONCILIATION">
+<!--CONTECNT HERE-->
+<div class="price-list-page">
+  <div class="price-list-header p-l-15">
+    <!-- New Menu Button -->
+    <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+      <div id="menu-button-dots">
+        <div id="dot1" class="dot"></div>
+        <div id="dot2" class="dot"></div>
+        <div id="dot3" class="dot"></div>
+        <div id="dot4" class="dot"></div>
+        <div id="dot5" class="dot"></div>
+        <div id="dot6" class="dot"></div>
+        <div id="dot7" class="dot"></div>
+        <div id="dot8" class="dot"></div>
+        <div id="dot9" class="dot"></div>
+      </div>
+    </div>
+    <!-- New Menu Button: End -->
+
+    <!-- <p>Trade List</p> -->
+    <span style="height: 25px;">
+      <app-headerchip [chipStatus]="'active-chip'" [heading]="'All Deliveries'"></app-headerchip>
+      <app-headerchip  [heading]="' Red Card Diesel'"></app-headerchip>
+      <app-headerchip  [heading]="'Contract Trades'"></app-headerchip>
+      <app-morefilterchip></app-morefilterchip>
+      </span>
+    <!-- <span style="margin-left:8px " class="header-chip" >
+      <mat-chip-list>
+        <mat-chip class="active-chip text-center" matTooltip="Shell D14 Physical" [matTooltipShowDelay]="500">
+          <div class="truncate-f100 text-center title-divider">
+            All Deliveries
+          </div>
+          
+          <div class="pin-icon">
+            <div class="img"></div>
+          </div>
+        </mat-chip>
+
+        <mat-chip class="inactive-chip text-center" matTooltip="Diesel C14 Vitol" [matTooltipShowDelay]="500">
+          <div class="truncate-f100 text-center title-divider">
+            Red Card Diesel
+          </div>
+      
+          <div class="pin-icon">
+            <div class="img"></div>
+          </div>
+        </mat-chip>
+
+        <mat-chip class="inactive-chip text-center" matTooltip="Los Angeles D14" [matTooltipShowDelay]="500">
+          <div class="truncate-f100 text-center title-divider">
+            Contract Trades
+          </div>
+         
+          <div class="pin-icon">
+            <div class="img"></div>
+          </div>
+        </mat-chip>
+
+      </mat-chip-list>
+      <div class="expand-filters">
+        <img src="../../../assets/customicons/dot-group.svg" alt="More Filters">
+      </div>      
+    </span> -->
+    <!-- <div class="right-button m-t-8">
+      <button mat-button class="grey-button" (click)="this.createInvoice()">Raise Invoice</button>
+    </div>  -->
+    
+    <div class="header-right-block">
+      <div class="rack-match p-t-4" matTooltip="Raise Invoice" matTooltipShowDelay="500">
+        <button mat-raised-button class="green-button h-25" [disabled]="disableBtn" (click)="this.createInvoice()">Raise Invoice</button>
+      </div>
+      <!-- <div class="refresh-toggle">
+        <div class="refresh-icon">
+          <img class="p-r-10" src="../../../assets/customicons/refresh_blue.svg" alt="refresh">
+        </div>
+        <div class="slide-toggle" (click)="headerToggle();">
+          <img class="p-r-10" src="../../../assets/customicons/toggle-arrow.svg" class="header-slide" alt="header-slide">
+        </div>
+      </div> -->
+    </div>   
+  </div>
+  <!--Hide or Show Column Start-->
+  <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before" [overlapTrigger]="false">
+    <div class="tbl-context no-border">
+      <div class="p-tb-10">
+        <span>
+          <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+        </span>
+        <span>Update Preference</span>
+      </div>
+        <div class="p-tb-10">
+            <span>
+              <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+            </span>
+            <span>Save Preference As</span>
+          </div>
+          <!-- <div class="p-tb-10">
+            <span>
+              <img class="p-r-10" src="../../../assets/customicons/context-export-excel.svg" alt="export to excel icon">
+            </span>
+            <span>Export To Excel</span>
+          </div> -->
+          <div class="b-top p-0 m-b-5"></div>
+      <div class="p-tb-10">
+        <span>
+          <img class="p-r-10" src="../../../assets/icon/upload.svg" alt="Savc As icon">
+        </span>
+        <span (click)="open_bulkactualise()">Update CI values</span>
+      </div>
+      <div class="p-tb-10">
+        <span>
+          <img class="p-r-10 grayscale" style="height: 30px;width: 30px;" src="../../../assets/icon/unmatch.svg" alt="Revert Deliveries">
+        </span>
+        <span>Revert Deliveries</span>
+      </div>
+      <div class="b-top p-0 m-b-5"></div>
+      <div class="p-tb-10" (click)="change_rowdensity()">
+        <span>
+          <img class="p-r-10" src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}" alt="export to excel icon">
+        </span>
+        <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display Density Low':'Display Density High'}}</span>
+      </div>
+    </div>
+  </mat-menu>
+</div>
+
+<div class="container-fluid p-0" [ngClass]="{'aggrid-onpinned-left':isPinnedLeft, 'aggrid-onpinned-right':isPinnedRight,'aggrid-dd-low':isdisplaydensityhigh==false}">
+  <span class="aggrid-whitebox"></span>
+  <ag-grid-angular id="tradelistgrid" style="width: 100%;" [ngStyle]="isCollapsed?{'height': 'calc( 100vh - 44px )'} : {'height': 'calc( 100vh - 167px'}" [gridOptions]="gridOptions" class="ag-theme-material aggrid-pinned-shadow angular-v9" (rowSelected)="onRowSelected($event)"></ag-grid-angular>
+</div>
+
+
+
+
+<!-- <section id="bottom-pagination">
+
+    <div id="show-rows" class="float-right pr-4">
+      <span>Show</span>
+      <span>
+        <mat-form-field style="width: 70px; margin: 0 10px;">
+          <mat-select>
+            <mat-option [value]="10">
+              10
+            </mat-option>
+            <mat-option [value]="20">
+              20
+            </mat-option>
+            <mat-option [value]="30">
+              30
+            </mat-option>
+            <mat-option [value]="40">
+              40
+            </mat-option>
+            <mat-option [value]="50">
+              50
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+      <span>Rows</span>
+    </div>
+  
+    <div class="mx-auto" id="pages">
+      <div style="display: flex; justify-content: center;">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-chevron-left"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">3</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">4</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="float-right" id="right-column">
+      <div class="float-left pl-4" id="left-column">
+        Total Results:
+        <span style="margin-left: 2px;">{{rowCount}}</span>
+      </div>
+      <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+      <div class="export-excel">
+        Export to Excel
+        <div class="export-excel-icon"></div>
+      </div>
+      <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+      <div id="goto-page" class="float-right" style="display: flex;align-items: center;">
+        Go to page
+        <mat-form-field style="width: 50px; margin: 0 5px; padding-left: 10px;">
+          <input matInput>
+        </mat-form-field>
+        <button mat-button class="page-button">Go</button>
+      </div>
+      
+    </div>
+  
+  </section> -->
+  <app-footer-v2 [id]="'recon-footer'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+</mat-tab>
+<mat-tab label="COST RECONCILIATION">
+  <app-cost-reconciliation style="height: 100%; width:100%"></app-cost-reconciliation>
+</mat-tab>
+</mat-tab-group>
+<!-- <div class="rack-refresh" matTooltip="Refresh Data" matTooltipShowDelay="500">
+  <button mat-raised-button class="blue-button">    
+    <img id="refresh-icon" src="../../../assets/customicons/refresh_w.svg" alt="refresh">
+  </button>
+</div> -->

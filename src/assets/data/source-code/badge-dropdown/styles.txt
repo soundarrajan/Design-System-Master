@@ -1,0 +1,102 @@
+/** DYNAMIC BADGE - START **/
+.dynamic-badge{
+  &.with-dropdown{
+    height: 60px;
+        background: #E0E1E4;
+        border-radius: 4px;
+        padding: 0 7px;
+  }
+  .badge-header-v2{
+    font-size: 14px;
+    width: auto !important;
+    display: flex;
+    align-items: center;
+    .border_line {
+      padding: 0;
+      height: 20px;
+      border-right: 1px solid #252a32;
+    }
+  }
+  .summaryLabel-component-v2{
+    .badge-header{
+      width: 100% !important;
+      margin-right: 0;
+      height: 40px;
+      &.with-dropdown{
+        height: 60px;
+        background: #E0E1E4;
+        //border-radius: 4px;
+        .items{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          color: #FFFFFF;
+         
+          &.dark{
+            background: #364150;
+            border-radius : 4px 0px 0px 4px;
+            padding: 5px 10px;
+            width: 35%;
+            & ~ .dark{
+              border-radius: 0
+            }
+            &:last-child{
+              border-radius: 0 4px 4px 0;
+            }
+          }
+          &.light{
+            background: #f1f1f2;
+            margin: 0 12px 0 0;
+            border-radius: 4px;
+            padding: 5px;
+            width: 23%;
+            .label{
+              font-size: 12px;
+              line-height: 14px;
+              color: #364150;
+            }
+            .inline-dropdown{
+              .mat-form-field {
+                height: 18px !important;
+                .mat-form-field-infix {
+                  padding: 0 !important;
+                  border-top: 0 !important;
+              }
+              .mat-select-arrow {
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-top: 6px solid;
+                margin: 0 4px;
+                color: #364150 !important;
+            }
+              }
+              .mat-select-value-text {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 16px;
+                color: #252A32;
+            }
+            }
+          }
+        }
+      }
+      .value{
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0px 2px;
+      }
+      .large-name{
+        max-width: 225px;
+      }
+      div{
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+/** DYNAMIC BADGE - END **/

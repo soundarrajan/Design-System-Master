@@ -1,0 +1,413 @@
+<div class="dark-wrapper">
+  <div class="info-bar">
+    <table class="table table-noborder table-responsive tbl-shadow">
+      <tbody>
+        <tr>
+          <td class="vessel-name" colspan="3" matTooltip="Balboa" [matTooltipShowDelay]="500" width="150px">
+            <div class="truncate-150 pl15">Balboa</div>
+          </td>
+          <td class="dark-text">ETA</td>
+          <td class="white-text">13/09/2018</td>
+          <td class="dark-text fs10 w70 text-right">Latest ETA</td>
+          <td class="br-dark white-text fs10">13/09/2018</td>
+          <td class="dark-text">ETB</td>
+          <td class="white-text">13/09/2018</td>
+          <td class="dark-text fs10 w70 text-right">Latest ETB</td>
+          <td class="br-dark white-text fs10">13/09/2018</td>
+          <td class="dark-text">ETD</td>
+          <td class="white-text">18/09/2018</td>
+          <td class="dark-text fs10 w70 text-right">Latest ETD</td>
+          <td class="fs10 white-text">18/09/2018</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="popup-body">
+
+    <div class="row">
+      <!-- Current ROB Card -->
+
+      <div class="col-6 mb10 pr-0">
+        <section id="currentROB">
+          <div class="dark-card">
+            <div class="dark-card-title">Current ROB</div>
+            <div id="currentROBData" style="max-height: 31vh;">
+              <table class="table table-noborder dark-row">
+                <tbody>
+                  <tr>
+                    <td>HSFO</td>
+                    <td>
+                      <div class="critical">
+                        <div class="truncate-70">190</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">4.5</td>
+                  </tr>
+                  <tr>
+                    <td>ULSFO</td>
+                    <td>
+                      <div class="box" matTooltip="400 MT" matTooltipShowDelay="500">
+                        <div class="truncate-70">400</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">10</td>
+                  </tr>
+                  <tr>
+                    <td>DOGO</td>
+                    <td>
+                      <div class="box">
+                        <div class="truncate-70">450</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">6.5</td>
+                  </tr>
+                  <tr>
+                    <td>VLSFO</td>
+                    <td>
+                      <div class="box">
+                        <div class="truncate-70">450</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">6.5</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- Estimated ROB Card -->
+      <div class="col-6 mb10">
+        <section id="estimatedROB">
+          <div class="dark-card">
+            <div class="dark-card-title">Estimated ROB</div>
+            <div id="estimatedROBData" style="max-height: 31vh;">
+              <table class="table table-noborder dark-row">
+                <tbody>
+                  <tr>
+                    <td>HSFO</td>
+                    <td>
+                      <div class="critical">
+                        <div class="truncate-70">150</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">3.75</td>
+                  </tr>
+                  <tr>
+                    <td>ULSFO</td>
+                    <td>
+                      <div class="box">
+                        <div class="truncate-70">280</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">9.5</td>
+                  </tr>
+                  <tr>
+                    <td>DOGO</td>
+                    <td>
+                      <div class="box">
+                        <div class="truncate-70">230</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">5.75</td>
+                  </tr>
+                  <tr>
+                    <td>VLSFO</td>
+                    <td>
+                      <div class="box">
+                        <div class="truncate-70">230</div>&nbsp;MT
+                      </div>
+                    </td>
+                    <td>SMTG Days</td>
+                    <td class="grey500">5.75</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-5 pr-0">
+        <div class="row">
+          <div id="currentState" class="dark-card mb10">
+            <div class="dark-card-title">Current State</div>
+
+            <table id="currentState" class="table table-noborder">
+              <tbody>
+                <tr>
+                  <td>Voyage Status</td>
+                  <td>LADEN</td>
+                </tr>
+                <tr>
+                  <td>Vessel Type</td>
+                  <td>LR1</td>
+                </tr>
+                <tr>
+                  <td>Speed (KNOTS)</td>
+                  <td>12.5</td>
+                </tr>
+                <tr>
+                  <td>24H Consp (MT)</td>
+                  <td>40</td>
+                </tr>
+                <tr>
+                  <td>Last Bunker Date</td>
+                  <td>2018-08-31</td>
+                </tr>
+                <tr>
+                  <td>Position LAT-LOG</td>
+                  <td>99N 13E</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="dark-card">
+            <div class="dark-card-title d-flex justify-content-between">
+              <span>Request Details</span>
+              <a href="#" class="blue-link fs16">+Create New</a>
+            </div>
+
+            <div id="request-body">
+              <!-- <div class="row">
+                <div class="col-1 my-auto">
+                  <div class="grey-dot"></div>
+                </div>
+                <div class="col-6">
+                  <a href="#" class="blue-link fs16">Request Created <br> Req ID 412</a>
+                </div>
+                <div class="col-4">08/09/2018</div>
+              </div>
+
+              <div class="row">
+                <div class="col-1 my-auto">
+                  <div class="red-dot"></div>
+                </div>
+                <div class="col-6">
+                  Stemmed</div>
+                <div class="col-4">08/09/2018</div>
+              </div>          -->
+              <table class="table table-noborder dark-row">
+                <tbody>
+                  <tr>
+                    <td><span class="round"></span><a href="#" class="blue-link fs16">Req ID 1234</a></td>
+                    <td class="text">
+                      <div class="box light" matTooltip="Stemmed" matTooltipShowDelay="500">
+                        <div class="truncate-70">Stemmed</div>
+                      </div>
+                    </td>
+                    <td class="text">08/09/2018</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-7">
+
+        <section id="comments">
+          <div class="dark-card">
+            <div class="dark-card-title">Comments (4)</div>
+            <!-- comments -->
+
+            <div class="comments-section" style="height: 27vh;">
+
+              <!-- Single Comment Start -->
+              <div class="dark-comment">
+                <div class="row">
+                  <div class="col-1">
+                    <div class="comment-user">AS</div>
+                  </div>
+                  <div class="col-11">
+                    <div class="row pl5">
+                      <div class="name float-left" matTooltip="Adam Smith" matTooltipShowDelay="700">
+                        <div class="truncate-180">Adam Smith</div>
+                      </div>
+                      <div class="date ml-auto">13 June 2018 09:49
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+                    </div>
+                    <div class="row pl5">
+                      <div class="comment">
+                        Bunkers on arrival - intend to pre book. After Balboa vessel might proceed to NY directly.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Single Comment End -->
+
+              <!-- Single Comment Start -->
+              <div class="dark-comment">
+                <div class="row">
+                  <div class="col-1">
+                    <div class="comment-user">JL</div>
+                  </div>
+                  <div class="col-11">
+                    <div class="row pl5">
+                      <div class="name float-left" matTooltip="John Lewis" matTooltipShowDelay="700">
+                        <div class="truncate-150">John Lewis</div>
+                      </div>
+                      <div class="date ml-auto">08 September 2018 17:49
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+                    </div>
+                    <div class="row pl5">
+                      <div class="comment">
+                        She is so low that we need to take HSFO - at least 200 MT, so she potentially can reach load
+                        Houston. LSMGO is only necessary if we can get a good price.
+                      </div>
+                    </div>
+                    <div class="row pl5 pt10">
+                      <div class="attachment">
+                        <div class="attachment-icon float-left">
+                          <img src="../../../assets/images/attachment.svg" alt="Attachment">
+                        </div>
+                        <div class="attachment-text float-left pl10 pt5">
+                          <a href="#" target="_blank" rel="noopener">Screenshot 2018-06-21 at 10:58am</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Single Comment End -->
+
+              <!-- Single Comment Start -->
+              <div class="dark-comment">
+                <div class="row">
+                  <div class="col-1">
+                    <div class="comment-user">KM</div>
+                  </div>
+                  <div class="col-11">
+                    <div class="row pl5">
+                      <div class="name float-left" matTooltip="Kevin Miranda" matTooltipShowDelay="700">
+                        <div class="truncate-150">Kevin M</div>
+                      </div>
+                      <div class="date ml-auto">26 August 2018 20:40
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+                    </div>
+                    <div class="row pl5">
+                      <div class="comment">
+                        PERS comprises a set of guidelines to (self-)assess the individual performance of ports in the
+                        area of environmental management.
+                      </div>
+                    </div>
+                    <div class="row pl5 pt10">
+                      <div class="attachment">
+                        <div class="attachment-icon float-left">
+                          <img src="../../../assets/images/attachment.svg" alt="Attachment">
+                        </div>
+                        <div class="attachment-text float-left pl10 pt5">
+                          <a href="#" target="_blank" rel="noopener">Screenshot 2018-06-21 at 10:58am</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Single Comment End -->
+
+              <!-- Single Comment Start -->
+              <div class="dark-comment">
+                <div class="row">
+                  <div class="col-1">
+                    <div class="comment-user">JD</div>
+                  </div>
+                  <div class="col-11">
+                    <div class="row pl5">
+                      <div class="name float-left" matTooltip="John Doe" matTooltipShowDelay="700">
+                        <div class="truncate-150">John Doe</div>
+                      </div>
+                      <div class="date ml-auto">13 June 2018 09:50
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+                    </div>
+                    <div class="row pl5">
+                      <div class="comment">
+                        PERS comprises a set of guidelines to (self-)assess the individual performance of ports in the
+                        area of environmental management.
+                      </div>
+                    </div>
+                    <div class="row pl5 pt10">
+                      <div class="attachment">
+                        <div class="attachment-icon float-left">
+                          <img src="../../../assets/images/attachment.svg" alt="Attachment">
+                        </div>
+                        <div class="attachment-text float-left pl10 pt5">
+                          <a href="#" target="_blank" rel="noopener">Screenshot 2018-06-21 at 10:58am</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Single Comment End -->
+
+            </div>
+
+
+
+            <div class="new-comment-section">
+              <div class="row">
+                <div class="col-md-10 p-0">
+                  <div class="new-comment">
+                    <mat-form-field>
+                      <!-- <input matInput type="text" placeholder="Your comments here"> -->
+                      <textarea class="new-comment-field" matInput placeholder="Your comments here"></textarea>
+                      <button mat-button matSuffix mat-icon-button aria-label="Your comments here">
+                        <mat-icon>attach_file</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button mat-flat-button class="post-btn">post</button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <!-- comments -->
+          </div>
+        </section>
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

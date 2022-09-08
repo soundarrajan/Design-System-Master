@@ -1,0 +1,1336 @@
+<div id="pcoded" (window:resize)="onResize($event)" class="pcoded iscollapsed" theme-layout="vertical"
+  vertical-placement="left" vertical-layout="wide" [attr.pcoded-device-type]="deviceType"
+  [attr.vertical-nav-type]="verticalNavType" [attr.vertical-effect]="verticalEffect" vnavigation-view="view1">
+  <!-- <div class="pcoded-overlay-box"></div> -->
+  <!-- Opacity Overlay -->
+  <div class="pcoded-container navbar-wrapper">
+    <nav [ngStyle]="{'display': showHeader?'block':'none'}" class="navbar header-navbar  pcoded-header" header-theme="theme4" style="position: fixed;"
+      [ngClass]="{'st-header-navbar':isSmartTrader}">
+      <div class="navbar-wrapper" style="display: flex;">
+        <div class="navbar-logo" navbar-theme="theme5" style="flex: 0 0 20%;">
+          <!-- <a class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()" [exclude]="'#main_navbar'" (clickOutside)="onClickedOutside($event)">
+            <i class="fa fa-bars"></i>
+          </a> -->
+
+          <a href="javascript:;" (click)="toggleOpened()">
+            <img class="img-fluid" class="burgerSvg pr-3" alt="burger-icon" title="Menu" />
+          </a>
+
+          <a [routerLink]="['/']">
+            <img *ngIf="this.appLogo=='designSystem'"  src="assets/customimages/designsystem-logo.png"
+              class="ds-logo "alt="Design System Logo" style="padding-top: 5px; width: 155px;" />
+            <!-- New Logos -->
+            <img *ngIf="this.appLogo=='techoil'" class="img-fluid" src="assets/customimages/techoil-color-white.svg"
+              alt="Techoil Logo" style="width: 110px; height:auto; padding-top: 4px;" />
+            <img *ngIf="this.appLogo=='shiptech'" class="img-fluid" src="assets/customimages/shiptech-color-white.svg"
+              alt="Shiptech Logo" style="padding-top: 7px; width: 115px; height:auto;" />
+
+            <!-- <img *ngIf="this.appLogo=='techoil'" class="img-fluid" src="assets/customimages/techoil-logo.png" alt="Logo"
+              style="width: 125px;" />
+            <img *ngIf="this.appLogo=='shiptech'" class="img-fluid" src="assets/customimages/shiptech-logo.png" alt="Logo"
+              style="padding-top: 7px; width: 125px;" /> -->
+            <img *ngIf="this.appLogo=='tenantWhite'" class="img-fluid" src="assets/customimages/tenant-white.png"
+              alt="TenantSettings Logo" style="padding-top: 7px; width: 175px; height:auto;" />
+            <img *ngIf="this.appLogo=='tenantColor'" class="img-fluid" src="assets/customimages/tenant-color.png"
+              alt="TenantSettings Logo" style="padding-top: 7px; width: 175px; height:auto;" />
+          </a>
+
+          <!-- <a href="javascript:;" (click)="toggleOpened()">
+              <i class="fa fa-bars"></i>
+            </a> -->
+
+          <a (click)="onMobileMenu()" class="mobile-options">
+            <i class="ti-more"></i>
+          </a>
+        </div>
+
+        <div class="nav-title page-title">
+          <div class="header-title">{{breadCrumbModuleName}}
+          </div>
+          <div class="path-text">
+            <span *ngIf="!isSmartTrader">
+             <span (click)="this.breadcrumbClick('breadCrumb1')" class="breadcrumbs"
+              *ngFor="let item of Breadcrumbs | keyvalue; let i = index">
+                <span *ngIf="i != 0">&nbsp; &gt; &nbsp;</span>
+                <a>{{item.value}}</a>
+             </span>
+              <span *ngIf="(Breadcrumbs | keyvalue)?.length == 0">{{HomeBreadcrumb}}</span>
+              <!--<span id="breadcrumb-1"
+                *ngIf="this.breadCrumb1!='' && (this.breadCrumb2=='' || this.breadCrumb2==undefined)">
+                {{breadCrumb1}}
+              </span>
+              <span (click)="this.breadcrumbClick('breadCrumb1')" id="breadcrumb-1"
+                *ngIf="this.breadCrumb1!='' && this.breadCrumb2!=''">
+                <a *ngIf="this.breadCrumb2!=''">{{breadCrumb1}}</a>
+              </span>
+              <span (click)="this.breadcrumbClick('breadCrumb2')" id="breadcrumb-2" *ngIf="this.breadCrumb2!=''">
+                &gt;
+                <a>{{breadCrumb2}}</a>
+              </span>
+
+              <span (click)="this.breadcrumbClick('breadCrumb3')" id="breadcrumb-3" *ngIf="this.breadCrumb3!=''">
+                &gt;
+                <a>{{breadCrumb3}}</a>
+              </span>
+
+              <span id="breadcrumb-4" *ngIf="this.breadCrumb4!=''">
+                &gt; {{breadCrumb4}}
+              </span>-->
+            </span>
+            <span *ngIf="isSmartTrader"> Smart Trader App </span>
+          </div>
+        </div>
+
+        <!-- NAVBAR NEW START -->
+        <section id="app-navbar" style="flex: 0 0 20%;">
+          <div class="navbar-container">
+
+            <!-- Side bar toggle & full screen -->
+            <!-- <ul class="nav-left">
+                    <li>
+                      <div class="sidebar_toggle"><a href="javascript:;" (click)="toggleOpened()"><i class="ti-menu f-18"></i></a></div>
+                    </li>
+                    <li>
+                      <a href="javascript:;" appToggleFullscreen>
+                        <i class="ti-fullscreen"></i>
+                      </a>
+                    </li>
+                  </ul> -->
+
+            <ul id="header-icons" class="nav-right" [ngClass]="isCollapsedMobile">
+
+              <li *ngIf="appRedirection" (click)="this.onAppRedirection()">
+                <div id="nav-menu-button">
+                  <div id="nav-menu-button-dots">
+                    <div id="nav-dot1" class="whitedot"></div>
+                    <div id="nav-dot2" class="whitedot"></div>
+                    <div id="nav-dot3" class="whitedot"></div>
+                    <div id="nav-dot4" class="whitedot"></div>
+                    <div id="nav-dot5" class="whitedot"></div>
+                    <div id="nav-dot6" class="whitedot"></div>
+                    <div id="nav-dot7" class="whitedot"></div>
+                    <div id="nav-dot8" class="whitedot"></div>
+                    <div id="nav-dot9" class="whitedot"></div>
+                  </div>
+                </div>
+              </li>
+    
+              <!--Shiptech Link-->
+              <li id="alertsIcon" *ngIf="showNotification" style="cursor: pointer;border: 1px solid #FFFFFF;border-top: none;border-bottom: none;padding: 0 8px !important;">
+              <a style="border: 2px solid #FFFFFF;border-radius: 50%;width: 36px;display: inline-block;height: 35px;vertical-align: middle;">
+              <img src="assets/customicons/shiptechLink.svg" alt="Shiptech-Link" class="header-icon-group" style="width: 24px;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);">
+              </a>
+              </li>
+              <!--Shiptech Link-->
+
+                            <!--Shiptech - Switch Theme-->
+                            <li *ngIf="showSwitchThemeMenu" (click)="showThemeMenu()" (clickOutside)="toggleMenu()">
+                              <span class="shiptech-switchTheme"></span>
+                            </li>
+                            <div *ngIf="showMenu" (click)="$event.stopPropagation();" class="header-menu" style="position: fixed;top:48px;right:110px;z-index: 1050;">               
+                              <div class="panel-up-arrow">
+                                  <div style="margin: 12px 10px;line-height: 20px;">
+                                    <div class="p-tb-5" style="display:flex;align-items:center;">
+                                      <span><div class="user-manual-icon"></div></span>
+                                      <span class="fs-14">User Manual</span>
+                                    </div>
+                                    <div class="p-tb-5" style="display:flex;align-items:center;">
+                                      <span><div class="tutorial-icon"></div></span>
+                                      <span class="fs-14">On Boarding Tutorial</span>
+                                    </div>
+                                  </div>
+                                  <div class="divider-line"></div>
+                                  <div class="mode">
+                                      <div>Turn {{themeDark?'on':'off'}} Light Mode</div>
+                                      <img src="../../assets/customicons/mode-icon.svg" alt="mode" [ngStyle]="{'transform':themeDark?'rotate(0deg)':'rotate(180deg)'}" (click)="changeTheme()">
+                                      <!-- <mat-slide-toggle disabled></mat-slide-toggle> -->
+                                  </div>
+                              </div>
+                          </div>
+                            <!--Shiptech - Switch Theme-->
+                      
+              <li class="header-notification">
+                <div class="header-icon-group nav-user-bg" title="Profile">{{nameInitials1 | uppercase}}</div>
+
+                <div id="user-box" style="position: relative;">
+
+                  <ul class="show-notification profile-notification">
+                    <mat-icon id="user-box-arrow" style="position: absolute;">play_arrow</mat-icon>
+                    <li class="user-bottom-border" (click)="this.profilePage()">
+
+                      <div class="float-left" style="padding-right: 5px">
+                        <div class="user-bg">{{nameInitials1 | uppercase}}</div>
+                      </div>
+                      <div class="float-left">
+                        <div class="user-name">{{loginName}}</div>
+                        <div class="user-email">{{userEmailID}}</div>
+                        <div class="my-profile">
+                          <a href="#">My Profile</a>
+                        </div>
+                      </div>
+
+                    </li>
+
+                    <!-- <li class="hand">
+                        <span class="version-icon" style="width: 22px; height: auto; margin-right: 15px;"></span>
+                        <span class="version-number"> Version {{version_no}} </span>
+                    </li> -->
+
+                    <li id="refresh-menu" class="hand" (click)="this.refreshMenu()">
+                      <img id="refresh-icon" src="../../assets/customicons/reload_w.svg" alt="reload"
+                        style="width: 22px; height: auto; margin-right: 15px;">
+                      Refresh Menu
+                    </li>
+
+                    <li id="refresh-cache" class="hand" (click)="this.refreshCache()">
+                      <img id="refresh-icon" src="../../assets/customicons/reload_w.svg" alt="reload"
+                        style="width: 22px; height: auto; margin-right: 15px;">
+                      Refresh Cache
+                    
+                    </li>                   
+
+                    <li id="logout" class="hand" (click)="this.logout()">
+                      <img id="logout-icon" src="../../assets/customicons/power_w.svg" alt="logout-icon"
+                        style="width: 22px; height: auto; margin-right: 15px;">
+                      Logout
+                    </li>
+                  </ul>
+                </div>
+
+              </li>
+
+              <li (click)="this.openHelp()">
+                <img src="assets/customicons/help2.svg" alt="Help" class="header-icon-group hand" title="Help">
+              </li>
+
+              <li (click)="alertSidebarToggle()" id="alertsIcon" *ngIf="showNotification && !showLoadingnotification" style="cursor: pointer;">
+                <span *ngIf="notificationList?.length>0" matBadge="{{notificationList?.length}}" matBadgeColor="warn" matBadgeSize="medium" id="alertBadge"></span>
+                <a>
+                  <img src="assets/customicons/notif.svg" alt="Notification" class="header-icon-group">
+                </a>
+              </li>
+
+              <li (click)="alertSidebarToggle()" id="alertsIcon" *ngIf="showNotification && showLoadingnotification" style="cursor: pointer;">
+                <!-- <span *ngIf="notificationList?.length>0" matBadge="{{notificationList?.length}}" matBadgeColor="warn" matBadgeSize="medium" id="alertBadge"></span> -->
+                <a>
+                  <img src="assets/customicons/notif.svg" alt="Notification" class="header-icon-group">
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+        </section>
+        <!-- NAVBAR NEW END -->
+      </div>
+    </nav>
+
+    <div id="mainContainer" class="pcoded-main-container " (click)="closeSidemenu()">
+      <div class="pcoded-wrapper">
+        <!-- Change pcoded-navbar-position="fixed" -> absolute to revert -->
+        <nav id="main_navbar" class=" pcoded-navbar" [ngStyle]="{'display': showHeader?'block':'none'}" navbar-theme="theme1" active-item-theme="theme5"
+          sub-item-theme="theme2" active-item-style="style0" pcoded-navbar-position="fixed"
+          (clickOutside)="onClickedOutside($event)" [exclude]="'#mobile-collapse'" (click)="onEvent($event)">
+          <div class="sidebar_toggle">
+            <a href="javascript:;">
+              <i class="icon-close icons"></i>
+            </a>
+          </div>
+          <div class="pcoded-inner-navbar main-menu" appAccordion slimScroll width="100%" height="100%" size="4px"
+            color="#fff" opacity="0.3" allowPageScroll="false">
+            <div class="">
+              <!-- <div class="main-menu-header">
+                <img class="img-40" src="assets/images/user.png" alt="User-Profile-Image">
+                <div class="user-details">
+                  <div class="white-text">sabhari</div>
+                  <div class="white-text" id="more-details" (click)="toggleOpenedSidebar()">Admin</div>
+                </div>
+              </div> -->
+
+              <!-- <div class="main-menu-content">
+                <ul>
+                  <li [@mobileMenuTop]="isCollapsedSideBar" class="more-details" [ngClass]="isCollapsedSideBar">
+                    <a href="javascript:">
+                      <i class="fa fa-user-o pr-10"></i>View Profile</a>
+                    <a href="javascript:">
+                      <i class="fa fa-gear font-awesomeWhite pr-10"></i>Settings</a>
+                    <a href="javascript:">
+                      <i class="ti-layout-sidebar-left pr-10"></i>Logout</a>
+                  </li>
+                </ul>
+              </div> -->
+            </div>
+            <div>
+
+              <!-- LEFT MENU START -->
+              <!-- <div *ngFor="let asideItems of menus"> -->
+              <div *ngFor="let asideItems of menuFlteredByAccess">
+                <div id="sideMenu">
+                  <ul class="pcoded-item pcoded-left-item" item-border="none" item-border-style="solid"
+                    subitem-border="solid" *ngFor="let asideItem of asideItems.main" appAccordionLink
+                    group="{{asideItem.state}}">
+
+                    <!-- MENU TYPE = LINK (OPENS THE PAGE) -->
+                    <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'link'" appAccordionLink
+                      group="{{asideItem.state}}">
+                      <a *ngIf="( asideItem.MenuUrl.indexOf('http') === -1 ) && asideItem.main_state"
+                        [routerLink]="routeMenuItems([asideItem.main_state, asideItem.state],asideItem.MenuUrl)"
+                        target="_self" appAccordionToggle>
+                        <span class="pcoded-micon">
+                          <i class="far fa-square"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ asideItem.MainMenuDisplayName }}</span>
+                      </a>
+
+                      <a *ngIf="(  asideItem.MenuUrl.indexOf('http') > -1 )  && asideItem.main_state"
+                        [href]="routeMenuItems([asideItem.main_state, asideItem.state],asideItem.MenuUrl)"
+                        target="_self" appAccordionToggle>
+                        <span class="pcoded-micon">
+                          <i class="far fa-square"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ asideItem.MainMenuDisplayName }}</span>
+                      </a>
+                      <!-- <ng-template #mainContent>
+                      <a [routerLink]="['/', asideItem.state]" target="{{asideItem.target ? '_blank' : '_self'}}" appAccordionToggle>
+                        <span class="pcoded-micon">
+                          <i class="{{ asideItem.icon }}"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ asideItem.name }}</span>                        
+                      </a>
+                    </ng-template> -->
+                    </li>
+                    <!-- END MENU TYPE = LINK -->
+
+
+                    <!-- MENU TYPE = MAIN -->
+                    <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'main'" class="pcoded-hasmenu"
+                      dropdown-icon="style3" subitem-icon="style6" appAccordionLink group="{{asideItem.state}}">
+                      <a [routerLinkActive]="['active']" href="javascript:;" appAccordionToggle>
+                        <!-- <span class="pcoded-micon">
+                        <i class="far fa-square"></i>
+                      </span> -->
+                        <span class="{{ asideItem.icon }}"></span>
+                        <span class="pcoded-mtext menu-item text-uppercase">{{ asideItem.MainMenuDisplayName }}</span>
+                        <span class="icn-display float-right p-t-4 chevron-up-white"></span>
+                        <br />
+                        <span class="description">{{ asideItem.description }} </span>
+                      </a>
+
+                      <!-- #SUBMENU START -->
+                      <ul class="pcoded-submenu">
+
+                        <!-- MENU TYPE NOT SUB -->
+                        <ng-template ngFor let-asideChildren [ngForOf]="asideItem.children">
+                          <li [routerLinkActive]="['active']" *ngIf="asideChildren.type !== 'sub'" class="p-l-15">
+                            <a *ngIf="( asideChildren.MenuUrl.indexOf('http') === -1 )" target="_self"
+                              [routerLink]="routeMenuItems([ asideItem.state, asideChildren.state],asideChildren.MenuUrl)"
+                              (click)="closeSidemenu()">
+                              <div class="{{ asideChildren.leftIcon }}" style="float: left; margin-right: 10px;"></div>
+                              <div class="pcoded-mtext p-l-3 fw-500"> {{ asideChildren.MenuItemName }}</div>
+                            </a>
+                            <a *ngIf="( asideChildren.MenuUrl.indexOf('http') > -1 ) && (!asideChildren.target)" target="_self"
+                              [href]="routeMenuItems([ asideItem.state, asideChildren.state],asideChildren.MenuUrl)"
+                              (click)="closeSidemenu()">
+                              <div class="{{ asideChildren.leftIcon }}" style="float: left; margin-right: 10px;"></div>
+                              <div class="pcoded-mtext p-l-3 fw-500"> {{ asideChildren.MenuItemName }}</div>
+                            </a>
+                            <a *ngIf="( asideChildren.MenuUrl.indexOf('http') > -1 ) && (asideChildren.target)" target="_blank"
+                              [href]="asideChildren.MenuUrl"
+                              (click)="closeSidemenu()">
+                              <div class="{{ asideChildren.leftIcon }}" style="float: left; margin-right: 10px;"></div>
+                              <div class="pcoded-mtext p-l-3 fw-500"> {{ asideChildren.MenuItemName }}</div>
+                            </a>
+                          </li>
+
+                          <!-- MENU TYPE = SUB -->
+                          <li id="subMenu" [routerLinkActive]="['active']" class="pcoded-hasmenu p-l-15"
+                            dropdown-icon="style3" subitem-icon="style6" *ngIf="asideChildren.type === 'sub'"
+                            appAccordionLink group="sub-toggled">
+                            <a href="javascript:;" appAccordionToggle>
+                              <div class="{{ asideChildren.leftIcon }}" style="float: left; margin-right: 10px;"></div>
+                              <div class="pcoded-mtext p-l-3 fw-500"> {{ asideChildren.MenuItemName }}
+                                <i id="expandIcon" class="float-right {{ asideChildren.subIcon }}"></i>
+                              </div>
+                              <!-- <div class="pcoded-mtext p-l-3 fw-500"> {{ asideChildren.MenuItemName }} <i class="float-right chevron-down chevron-up-white"></i> </div> -->
+                            </a>
+
+                            <!-- SUB-CHILD MENU (LEVEL 3) START -->
+                            <ul class="pcoded-submenu" appAccordionLink>
+                              <ng-template ngFor let-asideChildrenSub [ngForOf]="asideChildren.children">
+                                <li [routerLinkActive]="['active']" appAccordionLink>
+                                  <a *ngIf="( asideChildrenSub.MenuUrl.indexOf('http') === -1 )" target="_self"
+                                    [routerLink]="routeMenuItems([ asideItem.state, asideChildren.state,asideChildrenSub.state],asideChildrenSub.MenuUrl)"
+                                    (click)="closeSidemenu()">
+                                    <span class="pcoded-mtext lh-12">
+                                      <i class="fas fa-circle fs-5 pr-1"></i> {{ asideChildrenSub.MenuItemName }}</span>
+                                  </a>
+                                  <a *ngIf="( asideChildrenSub.MenuUrl.indexOf('http') > -1 )" target="_self"
+                                    [href]="routeMenuItems([ asideItem.state, asideChildren.state,asideChildrenSub.state],asideChildrenSub.MenuUrl)"
+                                    (click)="closeSidemenu()">
+                                    <span class="pcoded-mtext lh-12">
+                                      <i class="fas fa-circle fs-5 pr-1"></i> {{ asideChildrenSub.MenuItemName }}</span>
+                                  </a>
+                                </li>
+                              </ng-template>
+                            </ul>
+                            <!-- SUB-CHILD MENU (LEVEL 3) END -->
+                          </li>
+
+                        </ng-template>
+                      </ul>
+                      <!-- #SUBMENU END -->
+                    </li>
+                    <!-- MAIN MENU END -->
+                  </ul>
+                </div>
+
+                <!-- BOTTOM MENU -->
+                <div id="bottomMenu" class="bottom-menu">
+                  <!-- <div id="masters" class="bottom-menu-item align-middle border-top">
+                    <a href="" [routerLink]="['/']">
+                      <span class="master-cogs" style="float: left; margin-right: 15px;"></span>
+                      <span>MASTERS</span>
+                    </a>
+                  </div>
+                  <div id="admin" class="bottom-menu-item">
+                    <a href="" [routerLink]="['/']">
+                      <span class="admin-boxes" style="float: left; margin-right: 15px;"></span>
+                      <span>ADMIN</span>
+                    </a>
+                  </div> -->
+                  <div id="version" class="bottom-menu-item" style="border-top: 1px solid #404853;">
+
+                    <span class="version-icon" style="float: left; margin-right: 15px;"></span>
+                    <span>{{appVersion}}</span>
+                  </div>
+                  <ul style="padding: 10px 15px 0px 15px; margin-bottom: 10px;">
+                    <!-- <div class="" style="text-transform: initial; color: #52a5de; font-weight: 500;">Powered by:</div> -->
+                    <img src="../../assets/customimages/inatech_logo_new.png" style="height: 35px; width: auto;">
+                    <!-- <img src="../../assets/customimages/inatech-white.svg" style="height: 35px; width: auto;"> -->
+                  </ul>
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </nav>
+        <div class="pcoded-content">
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <router-outlet (activate)='onActivate($event)' (deactivate)='onDeactivate($event)'></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- Alert Sidebar Start -->
+        <section id="alertsSidebar" [ngClass]="alertSidebarStatus ? 'active' : 'inactive'">
+
+          <div class="alertsSection">
+
+            <div id="alertHeader">
+              <div style="font-size: 18px;">Notifications <span *ngIf="notificationList!=undefined &&  notificationList?.length!=0 && !showLoadingnotification">({{notificationList?.length}})</span></div>
+              <button mat-stroked-button class="btn" (click)="clearAllNotifiation()">Clear all notifications</button>
+            </div>
+
+            <div id="alertContainer">
+              <div *ngIf="notificationList==undefined || notificationList?.length==0 || showLoadingnotification" style="color:rgba(84, 97, 122, 0.8)">You currently have no new notifications!</div>
+              <!-- Single Alert Start -->
+              <div *ngIf="!showLoadingnotification">
+              <div  *ngFor="let alert of notificationList">
+                <div class="alert-notification" (click)="clickNotification(alert)"
+                  [ngClass]="{'red-alert': 1== alert.ColorFlag, 'amber-alert': 2 == alert.ColorFlag, 'green-alert':3== alert.ColorFlag}">
+                  <div class="alert-header">
+                    <div class="alert-title truncate-f160">{{alert.AlertName}}</div>
+                    <div class="alert-date">{{alert.LastUpdatedDate}}
+                      <i class="material-icons" [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">keyboard_arrow_down</i>
+                      <mat-menu class="dark-menu" #menu="matMenu">
+                        <button mat-menu-item (click)="deleteNotifiation(alert);$event.stopPropagation()">
+                          <img src="../../assets/customicons/bin_w.svg" alt="icon" style="width: 15px; margin-right: 10px;">
+                          Delete Notification</button>
+                      </mat-menu>
+                    </div>
+                  </div>
+                  <div class="alert-content">
+                    {{alert.Message}}
+                  </div>
+                </div>
+              </div>
+              <!-- Single Alert End -->
+
+            </div>
+          </div>
+
+            <div id="alertFooter">
+              <button mat-stroked-button class="btn float-right" (click)="settingNotifiation();">Alert Settings</button>
+            </div>
+
+          </div>
+
+        </section>
+        <!-- Alert Sidebar End -->
+
+        <!-- Alert Config Start -->
+        <section id="alertConfig" [ngClass]="showSettingNotification ? 'active' : 'inactive'">
+
+          <div class="alertConfigPanel">
+            <div id="alertConfigHeader">Notification Rules (4)</div>
+
+            <div id="alertConfigContent">
+
+              <mat-accordion>
+                <!-- New Rule Panel Start -->
+                <mat-expansion-panel class="dark-panel" (click)="showhideDeleteRule=false">
+                  <mat-expansion-panel-header [collapsedHeight]="newPanelCollapsedHeight"
+                    [expandedHeight]="newPanelExpandedHeight" class="p-r-15">
+                    <mat-panel-title>
+                      <div class="panel-circle"></div>
+                      <img src="../../assets/customicons/blue-plus.svg" alt="plus"
+                        style="width: 17px; margin-right: 10px;">
+
+                      <div class="rule-name">New Rule</div>
+                                            
+                      <mat-form-field class="dark-input new-rule" style="width: 450px;">
+                        <input matInput value="ROB Alert indication for MR Vessels">
+                      </mat-form-field>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </mat-panel-title>
+
+                    <div class="panel-action">
+                      <button class="blue-btn" mat-stroked-button>+ Create New</button>
+                    </div>                    
+                  </mat-expansion-panel-header>                  
+
+
+                  <div class="d-flex align-items-center justify-content-between"
+                    style="border-bottom: 1px solid rgba(84, 97, 122, 0.3); padding-left: 16px; padding-right: 16px;">
+                    <div class="d-flex align-items-baseline" style="width: 500px;">
+                      <div style="width: 85px;">
+                        Rule Type:
+                      </div>
+                      <mat-form-field class="dark-select" style="width: 160px;">
+                        <mat-select matNativeControl>
+                          <mat-option value="a">ROB</mat-option>
+                          <mat-option value="b">Option B</mat-option>
+                          <mat-option value="c">Option C</mat-option>
+                          <mat-option value="d">Option D</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="blue-tag" style="margin: 0 15px;">ROB</div>
+                      <!-- <button mat-flat-button class="rnd-blue-btn" style="margin: 0 15px;">ROB</button> -->
+                    </div>
+                    <div style="width: 200px; display: flex; align-items: center; justify-content: flex-end;">
+                      <mat-slide-toggle labelPosition='before' class="transparent-slider" checked>Status
+                      </mat-slide-toggle>
+
+                      <div id="dark-menu-button">
+                        <div id="dot1" class="whitedot"></div>
+                        <div id="dot2" class="whitedot"></div>
+                        <div id="dot3" class="whitedot"></div>
+                        <div id="dot4" class="whitedot"></div>
+                        <div id="dot5" class="whitedot"></div>
+                        <div id="dot6" class="whitedot"></div>
+                        <div id="dot7" class="whitedot"></div>
+                        <div id="dot8" class="whitedot"></div>
+                        <div id="dot9" class="whitedot"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="padding: 24px 16px 0 16px;">
+                    <div class="row">
+                      <div class="col-7 pl-0 pr-0">
+                        Trigger Rule
+                        <div class="delete-rule-menu" (mouseover)="showhideDeleteRule=true">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        
+                          <div class="delete-rule" *ngIf="showhideDeleteRule" (click)="showhideDeleteRule=false">
+                            <div class="delete-icon"></div>
+                            <span>Delete Rule 1</span>
+                          </div>
+                       
+                        <div class="rounded-group-box p-r-0" style="font-size: 14px;">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            <div class="row align-items-center">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px; color: rgba(143, 155, 171, 0.5);">remove_circle
+                                </mat-icon>
+                              </div>
+                              <mat-form-field class="dark-select" style="width: 21%; margin: 0 4px;" [ngClass]="showToCalendar ? 'withToCalendar':''">
+                                <!-- <mat-label>Parameter</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">ROB</mat-option>
+                                  <mat-option value="b">Option B</mat-option>
+                                  <mat-option value="c">Option C</mat-option>
+                                  <mat-option value="d">Option D</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field class="dark-select" style="width: 21%; margin: 0 4px;" [ngClass]="showToCalendar ? 'withToCalendar':''">
+                                <!-- <mat-label>Condition</mat-label> -->
+                                <mat-select matNativeControl  (selectionChange)="selectionChanged($event.value)">
+                                  <mat-option value="a">less than</mat-option>
+                                  <mat-option value="b">greater than</mat-option>
+                                  <mat-option value="c">equal to</mat-option>
+                                  <mat-option value="between">between</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <!-- <mat-form-field style="width: 70px; margin: 0 10px;">
+                                <input matInput value="2000">
+                              </mat-form-field> -->
+                              <!-- <mat-form-field class="dark-select" style="width: 70px;">
+                                <select matNativeControl>
+                                  <option value="a">BBL</option>
+                                  <option value="b">GAL</option>
+                                  <option value="c">MT</option>
+                                </select>
+                              </mat-form-field> -->
+                             <!--<mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">--> 
+                                <!-- <mat-select placeholder="dsdad">
+                                  <mat-option class="dark-option" value="a">BBL</mat-option>
+                                  <mat-option class="dark-option" value="b">GAL</mat-option>
+                                  <mat-option class="dark-option" value="c">MT</mat-option>
+                                </mat-select> -->
+                               <!-- <select matNativeControl>
+                                  <option value="a">2000 BBL</option>
+                                  <option value="b">2000 GAL</option>
+                                  <option value="c">2000 MT</option>
+                                </select>-->
+                                <!--</mat-form-field>--> 
+                                <mat-form-field class="dark-select" style="width:23%; margin: 0 4px; height: 64px;" [ngClass]="showToCalendar ? 'withToCalendar':''">
+                                    <input class="datepicker-darkthemeInput"matInput [matDatepicker]="picker" style="position:relative;top:5px">
+                                  <mat-datepicker-toggle matSuffix [for]="picker">
+                                        <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray" ></mat-icon>
+                                   </mat-datepicker-toggle> 
+                                    <mat-datepicker  #picker panelClass="datepicker-darktheme"></mat-datepicker>
+                                  </mat-form-field>
+                                  
+                                  <mat-form-field *ngIf="ifBetween" class="dark-select" style="width:23%; margin: 0 4px; height: 64px;" [ngClass]="showToCalendar ? 'withToCalendar':''">
+                                    <input class="datepicker-darkthemeInput"matInput [matDatepicker]="topicker" style="position:relative;top:5px">
+                                  <mat-datepicker-toggle matSuffix [for]="topicker">
+                                        <mat-icon matDatepickerToggleIcon svgIcon="data-picker-gray" ></mat-icon>
+                                   </mat-datepicker-toggle> 
+                                    <mat-datepicker  #topicker panelClass="datepicker-darktheme"></mat-datepicker>
+                                  </mat-form-field>                                   
+                            </div>
+
+                            <div class="row align-items-center" style="cursor: pointer">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px;">add_circle</mat-icon>
+                              </div>
+                              <div style="margin-left: 10px;">Add more</div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-5 pr-0">
+                        Display Message
+                        <div class="rounded-group-box">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            For the vessel <span class="keyword">Vessel Name</span>, ROB is lesser than <span
+                              class="keyword">2000 BBL</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bb-dark d-flex align-items-center justify-content-between">
+                      <div>
+                        Alert Criticality:
+                        <!-- <mat-form-field class="dark-select" style="width: 150px;">
+                          <select matNativeControl>
+                            <option value="red">
+                              <div class="red"></div>
+                              Red Alert</option>
+                            <option value="yellow">Yellow Alert</option>
+                          </select>
+                        </mat-form-field> -->
+                        <mat-form-field class="dark-select" style="width: 150px;">
+                          <mat-select [formControl]="customSelect">                            
+                            <mat-option *ngFor="let item of selectOptions" [value]="item">{{item}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        
+
+                      </div>
+
+                      <div style="font-size: 14px; position: relative; left: -10px;">
+                        <mat-checkbox class="blue-checkbox">Flag Vessel</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Email</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Notification</mat-checkbox>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                      <button mat-stroked-button class="dark-trans-btn">+ New Trigger Rule</button>
+                    </div>
+
+                  </div>
+
+                </mat-expansion-panel>
+                <!-- New Rule Panel End -->
+
+
+
+                <!-- Single Panel Start -->
+                <mat-expansion-panel class="dark-panel green" (click)="showhideDeleteRule=false">
+                  <mat-expansion-panel-header [collapsedHeight]="panelCollapsedHeight"
+                    [expandedHeight]="panelExpandedHeight" class="p-r-15">
+                    <mat-panel-title>
+                      <div class="panel-circle"></div>
+                      <img class="panel-collapse-indicator" src="../../assets/customicons/panel-collapse-icon.svg"
+                        alt="collapse-icon" style="width: 17px; margin-right: 10px;">
+                      Voyage Alert
+                    </mat-panel-title>
+
+                    <div class="panel-description">
+                      <div>App: Vessel</div>
+                      <div class="small-text">Last Updated: 12/04/2019</div>
+                    </div>
+                    <div class="panel-action">
+                      <button class="blue-btn" mat-stroked-button disabled>Save Update</button>
+                    </div>
+                  </mat-expansion-panel-header>
+
+                  <!-- Body Content -->
+                  <div class="d-flex align-items-center justify-content-between"
+                    style="border-bottom: 1px solid rgba(84, 97, 122, 0.3); padding-left: 16px; padding-right: 16px;">
+                    <div class="d-flex align-items-baseline" style="width: 500px;">
+                      <div style="width: 85px;">
+                        Rule Type:
+                      </div>
+                      <mat-form-field class="dark-select" style="width: 160px;">
+                        <mat-select matNativeControl>
+                          <mat-option value="a">ROB</mat-option>
+                          <mat-option value="b">Option B</mat-option>
+                          <mat-option value="c">Option C</mat-option>
+                          <mat-option value="d">Option D</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="blue-tag" style="margin: 0 15px;">ROB</div>
+                      <!-- <button mat-flat-button class="rnd-blue-btn" style="margin: 0 15px;">ROB</button> -->
+                    </div>
+                    <div style="width: 200px; display: flex; align-items: center; justify-content: flex-end;">
+                      <mat-slide-toggle labelPosition='before' class="transparent-slider" checked>Status
+                      </mat-slide-toggle>
+
+                      <div id="dark-menu-button">
+                        <div id="dot1" class="whitedot"></div>
+                        <div id="dot2" class="whitedot"></div>
+                        <div id="dot3" class="whitedot"></div>
+                        <div id="dot4" class="whitedot"></div>
+                        <div id="dot5" class="whitedot"></div>
+                        <div id="dot6" class="whitedot"></div>
+                        <div id="dot7" class="whitedot"></div>
+                        <div id="dot8" class="whitedot"></div>
+                        <div id="dot9" class="whitedot"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="padding: 24px 16px 0 16px;">
+                    <div class="row">
+                      <div class="col-7 pl-0 pr-0">
+                        Trigger Rule
+                        <div class="delete-rule-menu" (mouseover)="showhideDeleteRule=true">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        
+                          <div class="delete-rule" *ngIf="showhideDeleteRule" (click)="showhideDeleteRule=false">
+                            <div class="delete-icon"></div>
+                            <span>Delete Rule 1</span>
+                          </div>
+                        
+                        <div class="rounded-group-box p-r-0" style="font-size: 14px;">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            <div class="row align-items-center">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px; color: rgba(143, 155, 171, 0.5);">remove_circle
+                                </mat-icon>
+                              </div>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Parameter</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">ROB</mat-option>
+                                  <mat-option value="b">Option B</mat-option>
+                                  <mat-option value="c">Option C</mat-option>
+                                  <mat-option value="d">Option D</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Condition</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">less than</mat-option>
+                                  <mat-option value="b">greater than</mat-option>
+                                  <mat-option value="c">equal to</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <!-- <mat-form-field style="width: 27%; margin: 0 10px;">
+                                <input matInput value="2000">
+                              </mat-form-field> -->
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">2000 BBL</mat-option>
+                                  <mat-option value="b">2000 GAL</mat-option>
+                                  <mat-option value="c">2000 MT</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+
+                            <div class="row align-items-center" style="cursor: pointer">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px;">add_circle</mat-icon>
+                              </div>
+                              <div style="margin-left: 10px;">Add more</div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-5 pr-0">
+                        Display Message
+                        <div class="rounded-group-box">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            For the vessel <span class="keyword">Vessel Name</span>, ROB is lesser than <span
+                              class="keyword">2000
+                              BBL</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bb-dark d-flex align-items-center justify-content-between">
+                      <div>
+                        Alert Criticality:
+                        <mat-form-field class="dark-select" style="width: 150px;">
+                          <mat-select matNativeControl>
+                            <mat-option value="red">Red Alert</mat-option>
+                            <mat-option value="yellow">Yellow Alert</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <div style="font-size: 14px; position: relative; left: -10px;">
+                        <mat-checkbox class="blue-checkbox">Flag Vessel</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Email</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Notification</mat-checkbox>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                      <button mat-stroked-button class="dark-trans-btn">+ New Trigger Rule</button>
+                    </div>
+
+                  </div>
+
+                  <!-- Body Content -->
+                </mat-expansion-panel>
+                <!-- Single Panel End -->
+
+                <!-- Single Panel Start -->
+                <mat-expansion-panel class="dark-panel grey" (click)="showhideDeleteRule=false">
+                  <mat-expansion-panel-header [collapsedHeight]="panelCollapsedHeight"
+                    [expandedHeight]="panelExpandedHeight" class="p-r-15">
+                    <mat-panel-title>
+                      <div class="panel-circle"></div>
+                      <img class="panel-collapse-indicator" src="../../assets/customicons/panel-collapse-icon.svg"
+                        alt="collapse-icon" style="width: 17px; margin-right: 10px;">
+                      Request Alert
+                    </mat-panel-title>
+
+                    <div class="panel-description">
+                      <div>App: Vessel</div>
+                      <div class="small-text">Last Updated: 12/04/2019</div>
+                    </div>
+                    <div class="panel-action">
+                      <button class="blue-btn" mat-stroked-button disabled>Save Update</button>
+                    </div>
+                  </mat-expansion-panel-header>
+
+                  <!-- Body Content -->
+                  <div class="d-flex align-items-center justify-content-between"
+                    style="border-bottom: 1px solid rgba(84, 97, 122, 0.3); padding-left: 16px; padding-right: 16px;">
+                    <div class="d-flex align-items-baseline" style="width: 500px;">
+                      <div style="width: 85px;">
+                        Rule Type:
+                      </div>
+                      <mat-form-field class="dark-select" style="width: 160px;">
+                        <mat-select matNativeControl>
+                          <mat-option value="a">ROB</mat-option>
+                          <mat-option value="b">Option B</mat-option>
+                          <mat-option value="c">Option C</mat-option>
+                          <mat-option value="d">Option D</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="blue-tag" style="margin: 0 15px;">ROB</div>
+                      <!-- <button mat-flat-button class="rnd-blue-btn" style="margin: 0 15px;">ROB</button> -->
+                    </div>
+                    <div style="width: 200px; display: flex; align-items: center; justify-content: flex-end;">
+                      <mat-slide-toggle labelPosition='before' class="transparent-slider" checked>Status
+                      </mat-slide-toggle>
+
+                      <div id="dark-menu-button">
+                        <div id="dot1" class="whitedot"></div>
+                        <div id="dot2" class="whitedot"></div>
+                        <div id="dot3" class="whitedot"></div>
+                        <div id="dot4" class="whitedot"></div>
+                        <div id="dot5" class="whitedot"></div>
+                        <div id="dot6" class="whitedot"></div>
+                        <div id="dot7" class="whitedot"></div>
+                        <div id="dot8" class="whitedot"></div>
+                        <div id="dot9" class="whitedot"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="padding: 24px 16px 0 16px;">
+                    <div class="row">
+                      <div class="col-7 pl-0 pr-0">
+                        Trigger Rule
+                        <div class="delete-rule-menu" (mouseover)="showhideDeleteRule=true">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        
+                          <div class="delete-rule" *ngIf="showhideDeleteRule" (click)="showhideDeleteRule=false">
+                            <div class="delete-icon"></div>
+                            <span>Delete Rule 1</span>
+                          </div>
+                        <div class="rounded-group-box p-r-0" style="font-size: 14px;">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            <div class="row align-items-center">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px; color: rgba(143, 155, 171, 0.5);">remove_circle
+                                </mat-icon>
+                              </div>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Parameter</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">ROB</mat-option>
+                                  <mat-option value="b">Option B</mat-option>
+                                  <mat-option value="c">Option C</mat-option>
+                                  <mat-option value="d">Option D</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Condition</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">less than</mat-option>
+                                  <mat-option value="b">greater than</mat-option>
+                                  <mat-option value="c">equal to</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <!-- <mat-form-field style="width: 70px; margin: 0 10px;">
+                                <input matInput value="2000">
+                              </mat-form-field> -->
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">2000 BBL</mat-option>
+                                  <mat-option value="b">2000 GAL</mat-option>
+                                  <mat-option value="c">2000 MT</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+
+                            <div class="row align-items-center" style="cursor: pointer">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px;">add_circle</mat-icon>
+                              </div>
+                              <div style="margin-left: 10px;">Add more</div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-5 pr-0">
+                        Display Message
+                        <div class="rounded-group-box">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            For the vessel <span class="keyword">Vessel Name</span>, ROB is lesser than <span
+                              class="keyword">2000
+                              BBL</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bb-dark d-flex align-items-center justify-content-between">
+                      <div>
+                        Alert Criticality:
+                        <mat-form-field class="dark-select" style="width: 150px;">
+                          <mat-select matNativeControl>
+                            <mat-option value="red">Red Alert</mat-option>
+                            <mat-option value="yellow">Yellow Alert</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <div style="font-size: 14px; position: relative; left: -10px;">
+                        <mat-checkbox class="blue-checkbox">Flag Vessel</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Email</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Notification</mat-checkbox>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                      <button mat-stroked-button class="dark-trans-btn">+ New Trigger Rule</button>
+                    </div>
+
+                  </div>
+                  <!-- Body Content -->
+                </mat-expansion-panel>
+                <!-- Single Panel End -->
+
+                <!-- Single Panel Start -->
+                <mat-expansion-panel class="dark-panel green" (click)="showhideDeleteRule=false">
+                  <mat-expansion-panel-header [collapsedHeight]="panelCollapsedHeight"
+                    [expandedHeight]="panelExpandedHeight" class="p-r-15">
+                    <mat-panel-title>
+                      <div class="panel-circle"></div>
+                      <img class="panel-collapse-indicator" src="../../assets/customicons/panel-collapse-icon.svg"
+                        alt="collapse-icon" style="width: 17px; margin-right: 10px;">
+                      ROB Alert
+                    </mat-panel-title>
+
+                    <div class="panel-description">
+                      <div>App: Vessel</div>
+                      <div class="small-text">Last Updated: 12/04/2019</div>
+                    </div>
+                    <div class="panel-action">
+                      <button class="blue-btn" mat-stroked-button disabled>Save Update</button>
+                    </div>
+                  </mat-expansion-panel-header>
+
+                  <!-- Body Content -->
+                  <div class="d-flex align-items-center justify-content-between"
+                    style="border-bottom: 1px solid rgba(84, 97, 122, 0.3); padding-left: 16px; padding-right: 16px;">
+                    <div class="d-flex align-items-baseline" style="width: 500px;">
+                      <div style="width: 85px;">
+                        Rule Type:
+                      </div>
+                      <mat-form-field class="dark-select" style="width: 160px;">
+                        <mat-select matNativeControl>
+                          <mat-option value="a">ROB</mat-option>
+                          <mat-option value="b">Option B</mat-option>
+                          <mat-option value="c">Option C</mat-option>
+                          <mat-option value="d">Option D</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="blue-tag" style="margin: 0 15px;">ROB</div>
+                      <!-- <button mat-flat-button class="rnd-blue-btn" style="margin: 0 15px;">ROB</button> -->
+                    </div>
+                    <div style="width: 200px; display: flex; align-items: center; justify-content: flex-end;">
+                      <mat-slide-toggle labelPosition='before' class="transparent-slider" checked>Status
+                      </mat-slide-toggle>
+
+                      <div id="dark-menu-button">
+                        <div id="dot1" class="whitedot"></div>
+                        <div id="dot2" class="whitedot"></div>
+                        <div id="dot3" class="whitedot"></div>
+                        <div id="dot4" class="whitedot"></div>
+                        <div id="dot5" class="whitedot"></div>
+                        <div id="dot6" class="whitedot"></div>
+                        <div id="dot7" class="whitedot"></div>
+                        <div id="dot8" class="whitedot"></div>
+                        <div id="dot9" class="whitedot"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="padding: 24px 16px 0 16px;">
+                    <div class="row">
+                      <div class="col-7 pl-0 pr-0">
+                        Trigger Rule
+                        <div class="delete-rule-menu" (mouseover)="showhideDeleteRule=true">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        
+                          <div class="delete-rule" *ngIf="showhideDeleteRule" (click)="showhideDeleteRule=false">
+                            <div class="delete-icon"></div>
+                            <span>Delete Rule 1</span>
+                          </div>
+                        <div class="rounded-group-box p-r-0" style="font-size: 14px;">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            <div class="row align-items-center">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px; color: rgba(143, 155, 171, 0.5);">remove_circle
+                                </mat-icon>
+                              </div>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Parameter</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">ROB</mat-option>
+                                  <mat-option value="b">Option B</mat-option>
+                                  <mat-option value="c">Option C</mat-option>
+                                  <mat-option value="d">Option D</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Condition</mat-label> -->
+                                <select matNativeControl>
+                                  <option value="a">less than</option>
+                                  <option value="b">greater than</option>
+                                  <option value="c">equal to</option>
+                                </select>
+                              </mat-form-field>
+                              <!-- <mat-form-field style="width: 70px; margin: 0 10px;">
+                                <input matInput value="2000">
+                              </mat-form-field> -->
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">2000 BBL</mat-option>
+                                  <mat-option value="b">2000 GAL</mat-option>
+                                  <mat-option value="c">2000 MT</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+
+                            <div class="row align-items-center" style="cursor: pointer">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px;">add_circle</mat-icon>
+                              </div>
+                              <div style="margin-left: 10px;">Add more</div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-5 pr-0">
+                        Display Message
+                        <div class="rounded-group-box">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            For the vessel <span class="keyword">Vessel Name</span>, ROB is lesser than <span
+                              class="keyword">2000
+                              BBL</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bb-dark d-flex align-items-center justify-content-between">
+                      <div>
+                        Alert Criticality:
+                        <mat-form-field class="dark-select" style="width: 150px;">
+                          <select matNativeControl>
+                            <option value="red">Red Alert</option>
+                            <option value="yellow">Yellow Alert</option>
+                          </select>
+                        </mat-form-field>
+                      </div>
+
+                      <div style="font-size: 14px; position: relative; left: -10px;">
+                        <mat-checkbox class="blue-checkbox">Flag Vessel</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Email</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Notification</mat-checkbox>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                      <button mat-stroked-button class="dark-trans-btn">+ New Trigger Rule</button>
+                    </div>
+
+                  </div>
+                  <!-- Body Content -->
+                </mat-expansion-panel>
+                <!-- Single Panel End -->
+
+                <!-- Single Panel Start -->
+                <mat-expansion-panel class="dark-panel green" (click)="showhideDeleteRule=false">
+                  <mat-expansion-panel-header [collapsedHeight]="panelCollapsedHeight"
+                    [expandedHeight]="panelExpandedHeight" class="p-r-15">
+                    <mat-panel-title>
+                      <div class="panel-circle"></div>
+                      <img class="panel-collapse-indicator" src="../../assets/customicons/panel-collapse-icon.svg"
+                        alt="collapse-icon" style="width: 17px; margin-right: 10px;">
+                      Price Variance Alert
+                    </mat-panel-title>
+
+                    <div class="panel-description">
+                      <div>App: Vessel</div>
+                      <div class="small-text">Last Updated: 12/04/2019</div>
+                    </div>
+                    <div class="panel-action">
+                      <button class="blue-btn" mat-stroked-button disabled>Save Update</button>
+                    </div>
+                  </mat-expansion-panel-header>
+
+                  <!-- Body Content -->
+                  <div class="d-flex align-items-center justify-content-between"
+                    style="border-bottom: 1px solid rgba(84, 97, 122, 0.3); padding-left: 16px; padding-right: 16px;">
+                    <div class="d-flex align-items-baseline" style="width: 500px;">
+                      <div style="width: 85px;">
+                        Rule Type:
+                      </div>
+                      <mat-form-field class="dark-select" style="width: 160px;">
+                        <mat-select matNativeControl>
+                          <mat-option value="a">ROB</mat-option>
+                          <mat-option value="b">Option B</mat-option>
+                          <mat-option value="c">Option C</mat-option>
+                          <mat-option value="d">Option D</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div class="blue-tag" style="margin: 0 15px;">ROB</div>
+                      <!-- <button mat-flat-button class="rnd-blue-btn" style="margin: 0 15px;">ROB</button> -->
+                    </div>
+                    <div style="width: 200px; display: flex; align-items: center; justify-content: flex-end;">
+                      <mat-slide-toggle labelPosition='before' class="transparent-slider" checked>Status
+                      </mat-slide-toggle>
+
+                      <div id="dark-menu-button">
+                        <div id="dot1" class="whitedot"></div>
+                        <div id="dot2" class="whitedot"></div>
+                        <div id="dot3" class="whitedot"></div>
+                        <div id="dot4" class="whitedot"></div>
+                        <div id="dot5" class="whitedot"></div>
+                        <div id="dot6" class="whitedot"></div>
+                        <div id="dot7" class="whitedot"></div>
+                        <div id="dot8" class="whitedot"></div>
+                        <div id="dot9" class="whitedot"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div style="padding: 24px 16px 0 16px;">
+                    <div class="row">
+                      <div class="col-7 pl-0 pr-0">
+                        Trigger Rule
+                        <div class="delete-rule-menu" (mouseover)="showhideDeleteRule=true">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        
+                          <div class="delete-rule" *ngIf="showhideDeleteRule" (click)="showhideDeleteRule=false">
+                            <div class="delete-icon"></div>
+                            <span>Delete Rule 1</span>
+                          </div>
+                        <div class="rounded-group-box p-r-0" style="font-size: 14px;">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            <div class="row align-items-center">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px; color: rgba(143, 155, 171, 0.5);">remove_circle
+                                </mat-icon>
+                              </div>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Parameter</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">ROB</mat-option>
+                                  <mat-option value="b">Option B</mat-option>
+                                  <mat-option value="c">Option C</mat-option>
+                                  <mat-option value="d">Option D</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <!-- <mat-label>Condition</mat-label> -->
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">less than</mat-option>
+                                  <mat-option value="b">greater than</mat-option>
+                                  <mat-option value="c">equal to</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                              <!-- <mat-form-field style="width: 70px; margin: 0 10px;">
+                                <input matInput value="2000">
+                              </mat-form-field> -->
+                              <mat-form-field class="dark-select" style="width: 27%; margin: 0 10px;">
+                                <mat-select matNativeControl>
+                                  <mat-option value="a">2000 BBL</mat-option>
+                                  <mat-option value="b">2000 GAL</mat-option>
+                                  <mat-option value="c">2000 MT</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+
+                            <div class="row align-items-center" style="cursor: pointer">
+                              <div class="icon">
+                                <mat-icon style="font-size: 20px;">add_circle</mat-icon>
+                              </div>
+                              <div style="margin-left: 10px;">Add more</div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-5 pr-0">
+                        Display Message
+                        <div class="rounded-group-box">
+                          <div style="height: 100px; overflow-y: scroll;">
+                            For the vessel <span class="keyword">Vessel Name</span>, ROB is lesser than <span
+                              class="keyword">2000
+                              BBL</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bb-dark d-flex align-items-center justify-content-between">
+                      <div>
+                        Alert Criticality:
+                        <mat-form-field class="dark-select" style="width: 150px;">
+                          <mat-select matNativeControl>
+                            <mat-option value="red">Red Alert</mat-option>
+                            <mat-option value="yellow">Yellow Alert</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <div style="font-size: 14px; position: relative; left: -10px;">
+                        <mat-checkbox class="blue-checkbox">Flag Vessel</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Email</mat-checkbox>
+                        <mat-checkbox class="blue-checkbox">Notification</mat-checkbox>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                      <button mat-stroked-button class="dark-trans-btn">+ New Trigger Rule</button>
+                    </div>
+
+                  </div>
+                  <!-- Body Content -->
+                </mat-expansion-panel>
+                <!-- Single Panel End -->
+
+
+
+              </mat-accordion>
+            </div>
+
+          </div>
+        </section>
+        <!-- Alert Config End -->
+
+        <!-- Overlay Start -->
+        <div id="overlay" style="z-index: 99" [ngClass]="alertSidebarStatus ? 'active' : 'inactive'"
+          (click)="alertSidebarToggle()"></div>
+        <div id="overlay2" style="z-index: 99" [ngClass]="showSettingNotification ? 'active' : 'inactive'"
+          (click)="showSettingNotification=!showSettingNotification"></div>
+        <!-- Overlay End -->
+
+      </div>
+
+    </div>
+  </div>
+</div>

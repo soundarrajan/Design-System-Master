@@ -1,0 +1,3 @@
+ <button class="btnV2 primary">Primary</button>
+ <button class="btnV2 primary" disabled>Disabled</button>
+ <button class="btnV2 warning">Warning</button>

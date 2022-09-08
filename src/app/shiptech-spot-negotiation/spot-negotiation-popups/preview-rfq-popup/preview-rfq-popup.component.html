@@ -1,0 +1,40 @@
+<div class="preview-rfq-popup">
+    <div class="header">
+        <div class="title">Preview RFQ</div>
+        <div class="header-btn">
+            <button class="blue-button h-25" (click)="openEmailPreview()">Preview</button>
+            <span class="seperator"></span>
+            <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+        </div>
+    </div>
+    <div class="seperator-line"></div>
+    <mat-dialog-content>
+        <div class="content-title">
+            <span>Email preference</span>
+        </div>
+        <div class="preview-content">
+            <mat-radio-group [(ngModel)]="previewPref" name="previewList" fxLayout="column">
+                <mat-radio-button value="Consolidated RFQ of all products">
+                    Consolidated RFQ of all products
+                </mat-radio-button>
+                <div class="products">
+                    <ul>
+                        <li *ngFor="let prod of productList">
+                            <span [ngClass]="prod.mailStatus === 'sent' ? 'selected-product' : 'unselected-product'"><span [ngClass]="prod.mailStatus === 'sent' ? 'grey-circle' : 'tick-icon'"></span>  {{prod.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <mat-radio-button value="Selected Product only">
+                    Selected Product only
+                </mat-radio-button>
+                <div class="products">
+                    <ul>
+                        <li *ngFor="let prod of productList">
+                            <span class="unselected-product" *ngIf="prod.mailStatus === 'not-sent'"><span class='tick-icon'></span>  {{prod.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </mat-radio-group>
+        </div>          
+    </mat-dialog-content>
+</div>

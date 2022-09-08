@@ -1,0 +1,32 @@
+.chip-group{
+.chip-container{
+  width: 100%;
+  min-height: 100px;
+  //background-color:#e0e1e4;
+  background-color:#364150;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 10px;
+  .mchip-container{
+    height: 45px;
+    width: 110px;
+    padding: 5px 8px;
+    background: #FFFFFF;
+    color: #364150;
+    .title{
+      color: #364150;
+      font-weight: 400;
+    }
+    .data{
+      font-weight: 500;
+      font-size: 14px;
+      color: #364150;
+      &.light{
+        color: #9E9E9E;
+      }
+    }
+  }
+}
+}

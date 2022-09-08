@@ -1,0 +1,117 @@
+.smart-filter-V2{
+  display: flex;
+  align-items: center;
+  margin: 0px 20px;
+.smartfiltertitle{
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #1D2A45;
+}
+.smartfilterchips,.addfilterchips{
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #1D2A45;
+  display: flex;
+  white-space: nowrap;
+  margin-left: 8px;
+  .chip{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: 1px dashed #C4C4c4;
+    padding: 2px 6px;
+  }
+}
+.addfilterchips{
+  cursor: pointer;
+  .addNewChip{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: 1px dashed #C4C4c4;
+    padding: 2px 6px;
+    color: #1D9FFF;
+  }
+}
+.filterClose{
+  cursor: pointer;
+  margin-left: 5px;
+  width: 6.5px;
+  height: 6.5px;
+  content: url("data:image/svg+xml,%3Csvg width='7' height='7' viewBox='0 0 7 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 0.65L5.85 0L3.25 2.6L0.65 0L0 0.65L2.6 3.25L0 5.85L0.65 6.5L3.25 3.9L5.85 6.5L6.5 5.85L3.9 3.25L6.5 0.65Z' fill='%23EB5757'/%3E%3C/svg%3E%0A");
+}
+.addFilter{
+  margin-left: 5px;
+  width: 6.5px;
+  height: 6.5px;
+  content: url("data:image/svg+xml,%3Csvg width='9' height='9' viewBox='0 0 9 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.70962 0.113425L3.79038 0.113425V3.79038L0.113428 3.79038V4.70962L3.79038 4.70962V8.38657L4.70962 8.38657L4.70962 4.70962L8.38658 4.70962V3.79038L4.70962 3.79038L4.70962 0.113425Z' fill='%23C4C4C4'/%3E%3C/svg%3E%0A");
+}
+}
+.add-filter-menu-panel{
+  .mat-menu-content{
+    background: #364150;
+    box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.25);
+    margin-top: 3px;
+  }
+}
+.smart-filter-menu{
+  .add-filter-menu {
+    width: 154px;
+    min-height: 120px;
+    background: #364150;
+    border-radius: 4px;
+    cursor: context-menu;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 15px;
+    div {
+      display: flex;
+      align-items: center;
+    }
+
+    div:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    .filter-name{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #FFFFFF;
+    }
+    .filter-checkebox{
+      .mat-checkbox-frame{
+        border-color: #FFFFFF;
+      }
+      &.mat-checkbox-checked .mat-checkbox-background{
+        background: #FFFFFF;
+      }
+      .mat-checkbox-checkmark-path {
+        stroke: #364150 !important;
+      }
+    }
+    .mright-5{
+      margin-right: 5px
+    }
+  }
+  .applyBtn{
+    height: 46px;
+    box-shadow: 0px -4px 4px -4px  rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 4px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .blue-button{
+      width: 71px;
+      height: 26px;
+      background: #00AAE2;
+      border-radius: 3px;
+    }
+  }
+}

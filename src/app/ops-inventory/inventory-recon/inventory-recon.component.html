@@ -1,0 +1,178 @@
+<div class="inv-recon-list">
+  <div [ngClass]="{'collapseHeaderTab': collapseTab}">
+    <div class="inv-Recon">
+      <div class="page-common-header">
+        <!-- New Menu Button -->
+        <div id="menu-button" [matMenuTriggerFor]="togglecolumn">
+          <div id="menu-button-dots">
+            <div id="dot1" class="dot"></div>
+            <div id="dot2" class="dot"></div>
+            <div id="dot3" class="dot"></div>
+            <div id="dot4" class="dot"></div>
+            <div id="dot5" class="dot"></div>
+            <div id="dot6" class="dot"></div>
+            <div id="dot7" class="dot"></div>
+            <div id="dot8" class="dot"></div>
+            <div id="dot9" class="dot"></div>
+          </div>
+        </div>
+        <!-- New Menu Button: End -->
+        <div class="header-chip-container">
+          <div style="height: 25px;overflow: hidden;">
+            <app-headerchip [chipStatus]="'active-chip'" [heading]="'Default'" (click)="showNoDataMessage(true)">
+            </app-headerchip>
+          </div>
+        </div>
+        <!--Hide or Show menu-->
+        <mat-menu class="hideshow no-boxshadow" #togglecolumn yPosition="below" xPosition="before"
+          [overlapTrigger]="false">
+          <div class="tbl-context no-border">
+            <div class="p-tb-10">
+              <span>
+                <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+              </span>
+              <span>Update Preference</span>
+            </div>
+            <div class="p-tb-10">
+              <span>
+                <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="Savc As icon">
+              </span>
+              <span>Save Preference As</span>
+            </div>
+            <div class="p-tb-10" (click)="openBulkUpdate()">
+              <span>
+                <img class="p-r-10" src="../../../assets/customicons/context-save-as.svg" alt="export to excel icon">
+              </span>
+              <span>Bulk Update Information</span>
+            </div>
+            <div class="b-top p-0 m-b-5"></div>
+            <div class="p-tb-10" (click)="change_rowdensity()">
+              <span>
+                <img class="p-r-10"
+                  src="{{isdisplaydensityhigh?'../../../assets/customicons/isdisplaydensity-low.svg':'../../../assets/customicons/isdisplaydensity-high.svg'}}"
+                  alt="export to excel icon">
+              </span>
+              <span [ngClass]="{'aggrid-dd-menu-high':isdisplaydensityhigh==false}">{{isdisplaydensityhigh? 'Display
+                Density Low':'Display Density High'}}</span>
+            </div>
+          </div>
+        </mat-menu>
+        <!---->
+
+      </div>
+    </div>
+    <div class="inv-recon-tabs">
+      <div id="custom-tabs-v2">
+        <mat-tab-group mat-align-tabs="end" (selectedTabChange)="selectedTabChange($event)" mat-align-tabs="end">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <div class="custom-label-holder">
+                <div class="custom-tab-ui"></div>
+                <div class="custom-label">Details</div>
+              </div>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="details"></ng-container>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <div class="custom-label-holder">
+                <div class="custom-tab-ui"></div>
+                <div class="custom-label">Bulk Import</div>
+              </div>
+            </ng-template>
+            <ng-container>
+              <app-bulk-import></app-bulk-import>
+            </ng-container>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <ng-template #details>
+      <div class="container-fluid p-0" [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}">
+        <span class="aggrid-whitebox"></span>
+        <ag-grid-angular id="tradelistgrid" style="width: 100%;height: calc( 100vh - 132px );"
+          [gridOptions]="gridOptions" class="ag-theme-material aggrid-pinned-shadow angular-v9"></ag-grid-angular>
+      </div>
+      <!-- <section id="bottom-pagination">
+
+        <div id="show-rows" class="float-right pr-4">
+          <span>Show</span>
+          <span>
+            <mat-form-field style="width: 70px; margin: 0 10px;">
+              <mat-select>
+                <mat-option [value]="10">
+                  10
+                </mat-option>
+                <mat-option [value]="20">
+                  20
+                </mat-option>
+                <mat-option [value]="30">
+                  30
+                </mat-option>
+                <mat-option [value]="40">
+                  40
+                </mat-option>
+                <mat-option [value]="50">
+                  50
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span>Rows</span>
+        </div>
+
+        <div class="mx-auto" id="pages">
+          <div style="display: flex; justify-content: center;">
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-chevron-left"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">4</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="float-right" id="right-column">
+          <div class="float-left pl-4" id="left-column">
+            Total Results:
+            <span style="margin-left: 2px;">{{rowCount}}</span>
+          </div>
+          <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+          <div class="export-excel">
+            Export to Excel
+            <div class="export-excel-icon"></div>
+          </div>
+          <div class="divider" style="border: 1px solid #EAECEE;height: 36px;margin: 0 17px 0 30px;"></div>
+          <div id="goto-page" class="float-right" style="display: flex;align-items: center;">
+            Go to page
+            <mat-form-field style="width: 50px; margin: 0 5px; padding-left: 10px;">
+              <input matInput>
+            </mat-form-field>
+            <button mat-button class="page-button">Go</button>
+          </div>
+
+        </div>
+
+      </section> -->
+      <app-footer-v2 [id]="'inv-recon'" [singleGrid]="true" [doublePagination]="true" [rowCount]="rowCount" [maxSize]="7"></app-footer-v2>
+    </ng-template>
+  </div>
+</div>

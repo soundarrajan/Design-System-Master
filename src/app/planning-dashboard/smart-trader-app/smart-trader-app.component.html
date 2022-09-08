@@ -1,0 +1,2 @@
+<pld-map [vesselList]="this.vesselList"  [TodayMarketPriceList]="this.TodayMarketPriceList" [ports]="this.ports" *ngIf=" this.showTable==null || !this.showTable" (showTableViewEmit)="this.toggle($event)"></pld-map>
+<app-smart-trader *ngIf=" this.showTable!=null && this.showTable" (showTableViewEmit)="this.toggle($event)"></app-smart-trader>

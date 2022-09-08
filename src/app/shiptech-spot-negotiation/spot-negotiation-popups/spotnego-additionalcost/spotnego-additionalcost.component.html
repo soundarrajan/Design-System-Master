@@ -1,0 +1,366 @@
+<div class="spot-popup-header-container applicable-cost-popup-header"><div class="spot-nego-title">Additional Cost</div>
+  <div class="spot-dialog-title-right popup-header-form" >
+    <!-- <mat-checkbox class="checkbox-alignment" ></mat-checkbox>
+
+    <div class="check-text">Duplicate Costs to: </div>
+    <div [matMenuTriggerFor]="clickmenu" #menuTrigger="matMenuTrigger" class="vessels_req">
+      All Vessels <span class="down-arrow"></span>
+    </div>
+    <mat-menu #clickmenu="matMenu" class="more-options-menu-panel menu-panel-requestOptions" xPosition="after"
+        style="position: relative;bottom: 15px;left: 66px;min-height: unset !important;">
+        <div (click)="$event.stopPropagation()">
+            <div class="more-options-menu-inv no-border p-lr-0">
+              <div class="checkboxOptions" *ngFor="let item of requestOptions">
+                <mat-checkbox [disabled]="item.selected==false" [checked]="item.selected">{{item.request}} - {{item.vessel}}</mat-checkbox>
+              </div>
+            </div>
+        </div>
+    </mat-menu> -->
+
+    <!-- <div class=" dropdown-alignment"><mat-form-field appearance="none">
+      <select matNativeControl>
+        <option value="volvo">All Vessels</option>
+        <option value="saab">Selected Vessels</option>
+
+      </select>
+    </mat-form-field>
+    </div> -->
+    <span class="duplicate-costs" [matMenuTriggerFor]="clickmenu" #menuTrigger="matMenuTrigger" matTooltip="Duplicate Costs" matTooltipClass="lightTooltip"></span>
+    <mat-menu #clickmenu="matMenu" class="more-options-menu-panel menu-panel-requestOptionsDuplicate">
+      <div class="duplicate-price-menu">
+              <div class="text">
+                <span>Copy To</span>
+              </div>  
+              <div class="divider-line"></div>
+              <div class="more-options-menu-inv no-border p-lr-0" (click)="$event.stopPropagation()" style="margin: 7px 5px;">
+                <div class="checkboxOptions" *ngFor="let item of requestOptions">
+                  <mat-checkbox [disabled]="item.selected==false" [checked]="item.selected" matTooltipClass="lightTooltip" matTooltip="{{item.request}} - {{item.vessel}}" >{{item.request}} - {{item.vessel}}</mat-checkbox>
+                </div>
+              </div>
+              <div class="proceed-div">
+                  <button mat-button class="mid-blue-button proceed-btn">Proceed</button>
+              </div>
+      </div>
+    </mat-menu>
+    <button class="save-btn" mat-button [mat-dialog-close]="true" >Save</button>
+    <div class="title-divider">|</div>
+    <span class="close" style="cursor:pointer;" [mat-dialog-close]="true"></span>
+    <!-- <div class="close-circle" style="padding:0px;">
+    <mat-icon id="dialogCloseButton" matSuffix class="" (click)="closeDialog() " style="font-size: 14px; display: inline; ">close</mat-icon>
+      </div> -->
+    </div>
+    
+</div>
+  <hr class="hr-line">
+  <div style="max-height:500px;overflow-y: auto;">
+   <div class="p-r-15 p-l-15 additional-cost-subheading1"> Offer Additional Costs</div>
+  <div class="product-terms p-b-5 p-r-15 p-l-15">
+    <div class="operations-details-block auto-height">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th class="increment-circle-button" style="width: 20px;" (click)="addNew();"> 
+              <div class="increment-circle">
+                <div class="plus">+</div>
+              </div> 
+            </th> -->
+            <th class="increment-circle-button">
+              <div class="increment-circle" (click)="addNew()">
+                <div class="plus">+</div>
+              </div>
+              <div class="location-cost-header-checkbox">
+                <mat-checkbox [checked]="checkAll" (change)="setAll($event.checked)"></mat-checkbox>
+              </div>
+            </th>
+            <th class=" text-left">Cost Name</th>
+            <th class=" text-left">Cost Type</th>
+            <th class="text-left "> Max Qty</th>
+            <th class="text-left">Price</th>
+            <th class=" text-left">Applicable for</th>
+            <th class=" text-left">Extra(%)</th>
+            <th class=" text-left">Extra Amt</th>
+            <th class=" text-left">Total Amt</th>
+            <th class=" text-left">Rate/MT</th>
+            <th class=" text-left">Comments</th>
+          </tr>
+        </thead>
+        </table>
+        <div style="min-height:105px;max-height: 178px; overflow-y: scroll; background: #ffffff;">
+        <table>
+        <tbody #scrollMe1 [scrollTop]="scrollMe1.scrollHeight">
+          <tr class="border-bottom" *ngFor="let tabledata of  tableData; let j = index" >
+            <!-- <td class="decrement-circle-button" (click)="delete1(j)" style="width: 30px;">
+              <div class="decrement-circle">
+                <div class="minus">-</div>
+              </div>
+            </td>  -->
+            <td class="decrement-circle-button">
+              <div class="decrement-circle" (click)="delete1(j)">
+                <div class="minus">-</div>
+              </div>
+              <div class="location-cost-inner-checkbox">
+                <mat-checkbox [(ngModel)]="tabledata.checked" (ngModelChange)="updateAll($event.checked)" ></mat-checkbox>
+              </div>
+            </td>           
+            <td class="cell-dashed-border " contenteditable="true">{{tabledata.costname}}</td>
+            <td class="cell-dashed-border " contenteditable="true" ><mat-form-field appearance="none">
+              <select matNativeControl value={{tabledata.costtype}}>
+                <option value="Unit">Unit</option>
+                <option value="Flat">Flat</option>
+
+              </select>
+            </mat-form-field></td>
+            <td class="text-left "> {{tabledata.maxqty}}</td>
+            <td class="text-left cell-dashed-border " contenteditable="true">
+              <div id="custom-form-field" style="float: left;margin: 0px 5px !important;width: 26px;" class="priceCalculated">
+              <mat-form-field class="without-search currency-select-trigger" appearance="none" [formGroup]="myFormGroup">
+                  <mat-select disableOptionCentering 
+                  [(ngModel)]="select"
+                  formControlName="frequency" panelClass="currencyselecttrigger"
+                  >
+                  <mat-select-trigger overlayPanelClass="123class">
+                      {{myFormGroup.controls['frequency'].value}}
+                  </mat-select-trigger>
+                  <mat-option [disabled]>Change Currency </mat-option>
+                  <mat-option class="currency-mat-select" *ngFor="let frequency of frequencyArr" [value]="frequency.key">
+                    <span> <mat-radio-button>{{ frequency.abbriviation}}</mat-radio-button></span>
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field>
+              </div>
+              <div style="padding-top: 5px;">{{tabledata.price}}</div>
+            </td>
+            <td class="text-left cell-dashed-border " contenteditable="true" style="width: 125px;">   
+              <mat-form-field appearance="none">
+                <select matNativeControl value={{tabledata.applicationFor}}>
+                  <option value="RMG 380 3.5%">RMG 380 3.5%</option>
+                  <option value="DMA 0.1%">DMA 0.1%</option>
+                  <option value="All">All</option>
+                </select>
+              </mat-form-field>         
+            </td>
+            <td class="text-left cell-dashed-border " contenteditable="true" > {{tabledata.extra}}</td>
+            <td class="text-left cell-dashed-border " contenteditable="true">
+              <div id="custom-form-field" style="float: left;margin: 0px 5px !important;width: 26px;" class="priceCalculated">
+                <mat-form-field class="without-search currency-select-trigger" appearance="none" [formGroup]="myFormGroup">
+                    <mat-select disableOptionCentering 
+                    [(ngModel)]="select"
+                    formControlName="frequency" panelClass="currencyselecttrigger"
+                    >
+                    <mat-select-trigger overlayPanelClass="123class">
+                        {{myFormGroup.controls['frequency'].value}}
+                    </mat-select-trigger>
+                    <mat-option [disabled]>Change Currency </mat-option>
+                    <mat-option class="currency-mat-select" *ngFor="let frequency of frequencyArr" [value]="frequency.key">
+                      <span> <mat-radio-button>{{ frequency.abbriviation}}</mat-radio-button></span>
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+                <div style="padding-top: 5px;">{{tabledata.extraamt}}</div>
+            </td>
+            <td class="text-left cell-dashed-border " contenteditable="true">{{tabledata.totalamt}}</td>
+            <td class="text-left cell-dashed-border " contenteditable="true" >{{tabledata.rate}}</td>
+            <td class="text-left cell-dashed-border " contenteditable="true" > </td>
+          </tr>
+  
+         
+          <ng-container *ngIf="isShown">
+            <tr class="border-bottom" id="commentList" *ngFor="let tabledata of tabledatas2;let i = index">
+              <!-- <td class="decrement-circle-button" (click)="delete(i)" style="width: 30px;">
+                <div class="decrement-circle">
+                  <div class="minus">-</div>
+                </div>
+              </td> -->
+              <td class="decrement-circle-button">
+                <div class="decrement-circle" (click)="delete(i)">
+                  <div class="minus">-</div>
+                </div>
+                <div class="location-cost-inner-checkbox">
+                  <mat-checkbox [(ngModel)]="tabledata.checked" (ngModelChange)="updateAll($event.checked)" ></mat-checkbox>
+                </div>
+              </td> 
+              <td class="cell-dashed-border " contenteditable="true" >              
+              </td>
+              <td class="cell-dashed-border" contenteditable="true">
+                <mat-form-field appearance="none">
+                  <select matNativeControl>
+                    <option value="volvo"></option>
+                    <option value="saab"></option>
+  
+                  </select>
+                </mat-form-field>
+              </td>
+              <td class="text-left cell-dashed-border" contenteditable="true"> 
+                
+              </td>
+              <td class="text-left cell-dashed-border">
+                <div id="custom-form-field" style="float: left;margin: 0px 5px !important;width: 26px;" class="priceCalculated">
+                  <mat-form-field class="without-search currency-select-trigger" appearance="none" [formGroup]="myFormGroup">
+                      <mat-select disableOptionCentering 
+                      [(ngModel)]="select"
+                      formControlName="frequency" panelClass="currencyselecttrigger"
+                      >
+                      <mat-select-trigger overlayPanelClass="123class">
+                          {{myFormGroup.controls['frequency'].value}}
+                      </mat-select-trigger>
+                      <mat-option [disabled]>Change Currency </mat-option>
+                      <mat-option class="currency-mat-select" *ngFor="let frequency of frequencyArr" [value]="frequency.key">
+                        <span> <mat-radio-button>{{ frequency.abbriviation}}</mat-radio-button></span>
+                      </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                  </div>
+                  <div style="padding-top: 5px;"></div>
+              </td>
+              <td class="text-left cell-dashed-border " contenteditable="true"style="width: 125px;">   
+                <mat-form-field appearance="none">
+                  <select matNativeControl>
+                    <option value="volvo"></option>
+                    <option value="saab"></option>
+  
+                  </select>
+                </mat-form-field>         
+              </td>
+              <td class="text-left  cell-dashed-border" contenteditable="true">
+                
+              </td>
+              <td class="text-left  cell-dashed-border" contenteditable="true">
+                <div id="custom-form-field" style="float: left;margin: 0px 5px !important;width: 26px;" class="priceCalculated">
+                  <mat-form-field class="without-search currency-select-trigger" appearance="none" [formGroup]="myFormGroup">
+                      <mat-select disableOptionCentering 
+                      [(ngModel)]="select"
+                      formControlName="frequency" panelClass="currencyselecttrigger"
+                      >
+                      <mat-select-trigger overlayPanelClass="123class">
+                          {{myFormGroup.controls['frequency'].value}}
+                      </mat-select-trigger>
+                      <mat-option [disabled]>Change Currency </mat-option>
+                      <mat-option class="currency-mat-select" *ngFor="let frequency of frequencyArr" [value]="frequency.key">
+                        <span> <mat-radio-button>{{ frequency.abbriviation}}</mat-radio-button></span>
+                      </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                  </div>
+                  <div style="padding-top: 5px;"></div>
+              </td>
+              <td class="text-left  cell-dashed-border" contenteditable="true"> </td>
+              <td class="text-left  cell-dashed-border" contenteditable="true"> </td>
+              <td class="text-left  cell-dashed-border" contenteditable="true"> </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  <div class="p-r-15 p-l-15 additional-cost-subheading1">Location Based Costs</div>
+  <div class="product-terms p-b-5 p-r-15 p-l-15">
+    <div class="operations-details-block auto-height">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th class="increment-circle-button" style="width: 30px;" (click)="addNewlocationbasedcost()"> 
+              <div class="increment-circle">
+                <div class="plus">+</div>
+              </div> 
+            </th> -->
+            <th class="increment-circle-button">
+              <div class="increment-circle" (click)="addNewlocationbasedcost()">
+                <div class="plus">+</div>
+              </div>
+              <div class="location-cost-header-checkbox">
+                <mat-checkbox [checked]="checkAll2" (change)="setAll2($event.checked)"></mat-checkbox>
+              </div>
+            </th>
+            <th class=" text-left">Cost Name</th>
+            <th class=" text-left">Cost Type</th>
+            <th class="text-left "> Max Qty</th>
+            <th class="text-left">Price</th>
+            <th class=" text-left">Applicable for</th>
+            <th class=" text-left">Extra(%)</th>
+            <th class=" text-left">Extra Amt</th>
+            <th class=" text-left">Total Amt</th>
+            <th class=" text-left">Rate/MT</th>
+            <th class=" text-left">Comments</th>
+          </tr>
+        </thead>
+        </table>
+        <div style="min-height:105px;max-height: 178px;overflow-y: scroll;background: #ffffff;">
+        <table>
+        <tbody >
+          <tr class="border-bottom" *ngFor="let tabledata of  locationBasedData; let j = index" >
+           <!--  <td class="decrement-circle-button" (click)="delete3(j)" style="width: 30px;">
+              <div class="decrement-circle">
+                <div class="minus">-</div>
+              </div>
+            </td>   --> 
+            <td class="decrement-circle-button">
+              <div class="decrement-circle" (click)="delete3(j)">
+                <div class="minus">-</div>
+              </div>
+              <div class="location-cost-inner-checkbox">
+                <mat-checkbox [(ngModel)]="tabledata.checked" (ngModelChange)="updateAll2($event.checked)" ></mat-checkbox>
+              </div>
+            </td>          
+            <td class="">{{tabledata.costname}}</td>
+            <td class="" >{{tabledata.costtype}}</td>
+            <td class="text-left "> {{tabledata.maxqty}}</td>
+            <td class="text-left ">{{tabledata.price }}</td>
+            <td class="text-left cell-dashed-border" contenteditable="true">   
+              <mat-form-field appearance="none">
+                <select matNativeControl>
+                  <option value="volvo"></option>
+                  <option value="saab"></option>
+
+                </select>
+              </mat-form-field>         
+            </td>
+            <td class="text-left " > {{tabledata.extra}}</td>
+            <td class="text-left ">{{tabledata.extraamt}} </td>
+            <td class="text-left">{{tabledata.totalamt}}</td>
+            <td class="text-left" >{{tabledata.rate}}</td>
+            <td class="text-left" > </td>
+          </tr>
+         
+          <ng-container *ngIf="isShown2">
+            <tr class="border-bottom" id="commentList" *ngFor="let tabledata of  tabledataslocation;let j = index">
+              <!-- <td class="decrement-circle-button" (click)="delete2(j)" style="width: 30px;">
+                <div class="decrement-circle">
+                  <div class="minus">-</div>
+                </div>
+              </td> -->
+              <td class="decrement-circle-button">
+                <div class="decrement-circle" (click)="delete2(j)">
+                  <div class="minus">-</div>
+                </div>
+                <div class="location-cost-inner-checkbox">
+                  <mat-checkbox [(ngModel)]="tabledata.checked" (ngModelChange)="updateAll2($event.checked)" ></mat-checkbox>
+                </div>
+              </td>  
+              <td class=""></td>
+              <td class="" ></td>
+              <td class="text-left "> </td>
+              <td class="text-left ">$5000</td>
+              <td class="text-left cell-dashed-border " contenteditable="true">   
+                <mat-form-field appearance="none">
+                  <select matNativeControl>
+                    <option value="volvo"></option>
+                    <option value="saab"></option>
+  
+                  </select>
+                </mat-form-field>         
+              </td>
+              <td class="text-left  " > 5.5</td>
+              <td class="text-left  ">$5000 </td>
+              <td class="text-left"> </td>
+              <td class="text-left" > </td>
+              <td class="text-left" > </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

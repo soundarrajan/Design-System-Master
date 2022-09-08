@@ -1,0 +1,43 @@
+<div class="row add-delete-info-component">
+  <div class="col-md-12 sample-details-container">
+    <div class="col-md-12 sample-details-header-container">
+      <div class="sample-details-options">
+        <div class="sampleDetails-add">
+          <a class="add-sample-details-icon" (click)="addSampleSources()"></a>
+        </div>
+        <div class="sampleDetails-select">
+          <ng-container *ngFor="let sampleDetail of sampleSources | keyvalue; let i = index">
+            <div class="sampleDetails-addRemove">
+              <div class="divider"></div>
+            <a class="remove-sample-details-icon" (click)="removeSampleSources(i)"></a>
+            <div class="sampleDetails-options">
+              
+           <div class="custom-form-field sample-details-info select lightTheme">
+              <mat-form-field class="without-search sample-details-component" appearance="legacy">
+                <mat-select [disableOptionCentering]="true"
+                            [ngModel]="source"
+                            panelClass="bdn-additional-select-container">
+                    <mat-option *ngFor="let option of simpleSource" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="dash-line"></div>
+            <div class="custom-form-field sample-details-info input lightTheme" style="margin-right: 0;
+            padding-left: 20px;">
+              <mat-form-field class="without-search" appearance="legacy">
+                <input  
+                    matInput 
+                    placeholder="Value"
+                    autocomplete="off">
+              </mat-form-field>
+          </div>
+            </div>
+        </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

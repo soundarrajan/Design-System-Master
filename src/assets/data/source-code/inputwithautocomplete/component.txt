@@ -1,0 +1,30 @@
+import { Component } from "@angular/core";
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {FormControl} from '@angular/forms';
+
+@Component({
+  selector: 'app-form-field',
+  templateUrl: './form-field.component.html',
+  styleUrls: ['./form-field.component.css']
+})
+
+export class FormFieldComponent {
+  switchTheme; //false-Light Theme, true- Dark Theme
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
+ myControl = new FormControl();
+
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
+}

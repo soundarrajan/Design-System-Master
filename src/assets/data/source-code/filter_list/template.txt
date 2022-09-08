@@ -1,0 +1,3 @@
+<div style="width: 100%;height: 26px;display: flex;align-items: center;">
+  <app-filter-list style="height: inherit;" [filterList]="filterList"></app-filter-list>
+</div>

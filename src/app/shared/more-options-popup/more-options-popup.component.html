@@ -1,0 +1,11 @@
+<span>
+  <div class="more-options-menu no-border p-lr-0">
+
+    <div *ngFor="let item of optionsList">
+      <span>
+        <img class="p-r-10 mright-5" [src]="item.icon" width="22" [alt]="item.name">
+      </span>
+      <span class="item-name">{{item.name}}</span>
+    </div>
+  </div>
+</span>

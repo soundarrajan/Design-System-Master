@@ -1,0 +1,36 @@
+<div class="product-filters"  [ngClass]="expandable ? 'expanded' : 'collapsed'">
+  <div class="expand-collapse" (click)="expand();">
+  <div class="all-products truncate-f140" *ngIf="expandable">
+      Product List
+  </div>
+  <div class="expand-icon" *ngIf="!expandable"></div>
+  <div class="collapse-icon" *ngIf="expandable"></div>
+  <div class="close-panel-popup"><span>Close Panel</span></div>
+  </div>
+  <!-- <div class="all-products-chip" *ngIf="allProduct" (click)="allProductClick();">
+      All Products
+  </div> -->
+  <div class="all-bunkers" *ngIf="expandable">
+      <div class="all-products">
+      <div  activeClick class="all-product-box brl-dark active" (click)="checkUncheckAll()" [ngClass]="{'active': masterSelected ? true:false}">
+            <div class="detail">All Products</div>
+            <mat-checkbox class="dark-bg-checkbox noborder" [(ngModel)]="masterSelected" (click)="clickAllCheckbox($event);false"></mat-checkbox>
+        </div>
+      </div>
+      <!--dynamic-->
+      <div class="each-bunkers active" *ngFor="let bunkerList of productFilters">
+              <span class="bunker-name truncate-f100">{{bunkerList.BunkerName}}</span>
+                <div  activeClick class="grey-border-box brl-dark" *ngFor="let productList of bunkerList.product" [ngClass]="{'active': productList.isSelected ? true:false}" >
+                    <div (click)="isAllSelected(productList)">
+                      <div class="detail truncate-f125">{{productList.name}}</div>
+                      <mat-checkbox class="dark-bg-checkbox noborder"  [(ngModel)]= "productList.isSelected" (click)="clickCheckbox($event,productList);false"></mat-checkbox>
+                   </div>
+                </div>
+      </div>
+  </div>
+</div>
+<div class="container-fluid p-0" [ngClass]="expandable ? 'collapsed' : 'expanded'" style="float:right;">
+  <!-- <span style="width: 1px;height: 50px;margin-top: 2px; background-color: white;display: inline-block;float: left;"></span> -->
+  <!-- (firstDataRendered)="onFirstDataRendered($event)" -->
+  <ag-grid-angular style="width: 100%; height:calc( 100vh - 265px )" [gridOptions]="gridOptions"  [ngClass]="{'aggrid-dd-low':isdisplaydensityhigh==false}" class="ag-theme-balham-dark aggrid-pinned-shadow aggrid-blue-theme angular-v9"></ag-grid-angular>
+</div>

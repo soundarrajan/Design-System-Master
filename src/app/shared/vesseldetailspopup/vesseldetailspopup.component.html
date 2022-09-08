@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="vessel-popup-container" >
+    <div class="vessel-location-popup-wrapper">
+      <div class="vessel-location-popup-header" [ngClass]="status">
+        <div class="row align-items-center ">
+          <div class="location">
+            <div class="location-icon"></div>
+            <div class="white-circle"></div>
+          </div>
+          <div class="col-6 m-r-8">
+            <span class="vessel-name-location-popup" matTooltip={{popup_desti_data.destination}} >{{popup_desti_data.destination}}</span>
+          </div>
+          <div class="col-2 m-l-9">
+            <div class="bell-notification">
+              <div class="bell-icon"></div>
+              <div class="bell-count-position">
+              <div class="bell-count"> 8 </div>
+              </div>
+            </div>
+          </div>
+          <span class="icon-seperator">|</span>
+          <div class="col-2 m-l-m13">
+            <div class="commentsection">
+              <div class="comment-icon"></div>
+              <div class="comment-count-position">
+              <div class="comment-count">8</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fuel-table">
+        <table>
+          <thead>
+            <tr>
+              <th> Fuel Type</th>
+              <th></th>
+              <th> Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let value of fueltable">
+              <td class="fuel-type">{{value.fuel_type}}</td>
+              <td class="seperator-icon">|</td>
+              <td class="fuel-price-data">${{popup_desti_data.hsfo}}.00</td>
+              <td class="fuel-indication value-increased">  <!--value-decreased-->
+                {{value.fuel_indication_value}}</td>
+            </tr>
+            <!--<tr *ngFor="let values of fueltable2">
+              <td class="fuel-type">{{values.fuel_type}}</td>
+              <td class="seperator-icon">|</td>
+              <td class="fuel-price-data">{{values.fuel_price_data}}</td>
+              <td class="fuel-indication value-decreased"><i class="fas fa-caret-down "></i>
+                {{values.fuel_indication_value}}</td>
+            </tr>-->
+          </tbody>
+        </table>
+      </div>
+      <div class="fuel-price">
+        <div class="row">
+          <div class="col-6 fl-price-id">Price as on:</div>
+          <div class="col-6 fl-price-value">{{popup_desti_data.eta | date : "dd/MM/y"}}</div>
+        </div>
+        <div class="row">
+          <div class="col-6 fl-price-id">Barge Charges:</div>
+          <div class="col-6 fl-price-value">$18.00</div>
+        </div>
+      </div>
+      <div class="vessel-location-popup-footer ">
+        <div class="row ">
+          <div class="footer-mp">Market Prices Provided By</div>
+          <div class="sp-logo"></div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>

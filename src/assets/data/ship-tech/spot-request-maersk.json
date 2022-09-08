@@ -1,0 +1,15 @@
+{
+    "request-id": 12321,
+    "locations": [
+        {
+            "location-name": "SINGAPORE",
+            "location-id": "maersk",
+            "port-id": "1"
+        },
+        {
+            "location-name": "SHENZHEN",
+            "location-id": "002",
+            "port-id": "1"
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+<app-smart-filter [enableAddNew]="true " [smartFilterArray]="smartFilterArray" [enableRemoveFilter] = "true"></app-smart-filter>

@@ -1,0 +1,62 @@
+<div class="accordion-detail">
+    <div class="open-close-arrow"></div>
+    <span class="panel-title" style="margin-left: 3px;"><span>Location:</span><span>{{title}}</span></span>
+</div>
+
+<div class="header-content" (click)="$event.stopPropagation();">
+    <div matTooltip="View/edit location additional costs" matTooltipClass="lightTooltip" class="location-cost"
+        (click)="additionalcostpopup()">
+        <span class="eye-icon"></span>
+        <span class="title">View location cost</span>
+    </div>
+    <div class="terminal">
+        <span class="title">Terminal:</span>
+        <div class="location w-160" style="margin-bottom: 2px;">
+            <span class="terminal-name">Mainport {{title | titlecase}} Service</span>
+        </div>
+    </div>
+    <div class="date" (menuClosed)="ETAMenuClosed($event)" [matMenuTriggerFor]="clickmenu"
+        #menuTrigger="matMenuTrigger">
+        <span class="title">ETA:</span>
+        <span class="text" *ngIf="!showselectedETA">{{ETAdatetime.value | date:'d/MM/yyyy : hh:mm'}}</span>
+        <span class="text" *ngIf="showselectedETA">{{ETASelectDate.value | date:'d/MM/yyyy'}}<span
+                style="padding-left:3px">{{ETASelectTime}}</span></span>
+        <span class="dropdown-icon"></span>
+    </div>
+    <mat-menu #clickmenu="matMenu" class="more-options-menu-panel menu-panel-eta" xPosition="after"
+        style="position: relative;bottom: 15px;left: 66px;min-height: unset !important;">
+        <div>
+            <div class="more-options-menu-inv no-border p-lr-0">
+                <div class="date" (click)="ETASelected()">
+                    <span class="title">ETA:</span>
+                    <div class="by-datePicker">
+                        <div id="custom-form-field">
+                            <app-date-time-toggle (onDatePicked)="doSomething($event)"
+                                [valueField]="'01/22/2022 10:10'"></app-date-time-toggle>
+                        </div>
+                    </div>
+                </div>
+                <div class="date" (click)="ETASelected()">
+                    <span class="title">ETB:</span>
+                    <div class="by-datePicker">
+                        <div id="custom-form-field">
+                            <app-date-time-toggle [valueField]="'01/22/2022 10:10'"></app-date-time-toggle>
+                        </div>
+                    </div>
+                </div>
+                <div class="date" (click)="ETASelected()">
+                    <span class="title">ETD:</span>
+                    <div class="by-datePicker">
+                        <div id="custom-form-field">
+                            <app-date-time-toggle [valueField]="'01/23/2022 10:10'"></app-date-time-toggle>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-menu>
+    <div class="labels">
+        <div class="content"><span class="title">Delivery Window </span><span class="text">{{deliveryWindow}}</span>
+        </div>
+    </div>
+</div>

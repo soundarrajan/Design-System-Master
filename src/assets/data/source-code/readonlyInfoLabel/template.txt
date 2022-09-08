@@ -1,0 +1,16 @@
+<div class="readonlyInfoLabel">
+	<div class="label-block">
+		<div class="title">Total Quantity</div>
+		<div class="value">42,000 GAL</div>
+	</div>
+	<div class="divider"></div>
+	<div class="label-block">
+		<div class="title">Total Exposure</div>
+		<div class="value">42,000 GAL</div>
+	</div>
+	<div class="divider"></div>
+	<div class="label-block">
+		<div class="title">Expiry count down</div>
+		<div class="value">65 Days</div>
+	</div>
+</div>

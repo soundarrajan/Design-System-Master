@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Available Columns</h2>
+  <hr>
+
+<mat-dialog-content>
+  <div class="container-fluid">
+    <div class="row" style="width: 100%;">
+      <div class="col-md-6" style="width: 100%;">
+        <mat-checkbox [(ngModel)]="checked">Transaction Type</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Trade ID</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Status</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Counterparty</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Strategy</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Location</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Product/Instrument</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Quantity</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Price</mat-checkbox>
+        
+        <!-- <mat-checkbox [(ngModel)]="checked">Book</mat-checkbox> -->
+        <mat-checkbox [(ngModel)]="checked">Trader</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Executing Broker</mat-checkbox>
+        <mat-checkbox [(ngModel)]="checked">Exposure</mat-checkbox>
+      </div>
+      <div class="col-md-6" style="width: 100%;">
+        <mat-checkbox [(ngModel)]="indeterminate">Trade Date</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Load Location</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Discharge Location</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Buy/Sell</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">EFP ID</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Broker</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Commission</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Delivery Mode</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Delivery Terms</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Clearing Broker</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Exchange</mat-checkbox>
+        <mat-checkbox [(ngModel)]="indeterminate">Settlement Date</mat-checkbox>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions class="float-right">  
+    <button mat-button [mat-dialog-close]="true">CANCEL</button>
+    <button class="dark-button" mat-button [mat-dialog-close]="true">APPLY</button>
+  </mat-dialog-actions>
